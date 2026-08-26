@@ -258,9 +258,9 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--gray3); fon
 
 <div class="ask">
   <p>Submit for a grade</p>
-  <p class="hint">Once the board is full, submit for a grade. You get a yes or no, and why. Do not score it yourselves.</p>
+  <p class="hint">Fill the board, then submit. Atlas grades it. You get a yes or no, and why. Do not score it yourselves.</p>
   <div class="actions">
-    <button type="button" class="go" id="submit" disabled>Submit the board</button>
+    <button type="button" class="go" id="submit">Submit for a grade</button>
     <button type="button" class="reset" id="reset">Clear the group</button>
     <span class="copied" id="copied"></span>
   </div>
@@ -288,7 +288,7 @@ function el(t,c,x){ var n=document.createElement(t); if(c) n.className=c; if(x!=
 
 function canSubmit(){
   var ok = $("team").value.trim() && state.container && state.tools.length>=2 && state.trigger && state.input && state.action && state.handoff && state.instruction.trim().length>8;
-  $("submit").disabled = !ok;
+  $("submit").classList.toggle("ready", !!ok);
 }
 
 function selectSlot(name){
@@ -323,7 +323,7 @@ function slotBox(key, empty, value, multi){
       var pills = el("div","pills");
       value.forEach(function(t){
         var p = el("span","pill", t);
-        var x = el("button","x","×");
+        var x = el("button","x","\u00d7");
         x.addEventListener("click", function(ev){ ev.stopPropagation(); toggleTool(t); });
         p.appendChild(x); pills.appendChild(p);
       });
@@ -332,7 +332,7 @@ function slotBox(key, empty, value, multi){
   } else if (!value){
     box.appendChild(document.createTextNode(empty));
   } else {
-    var x = el("button","x","×");
+    var x = el("button","x","\u00d7");
     x.addEventListener("click", function(ev){ clearBlock(key, ev); });
     box.appendChild(x);
     box.appendChild(document.createTextNode(value));
@@ -444,15 +444,34 @@ function boardText(){
 
 $("team").addEventListener("input", function(){ render(); maybeStart(); });
 $("members").addEventListener("input", render);
+function missingBits(){
+  var m = [];
+  if (!$("team").value.trim()) m.push("group number");
+  if (!state.container) m.push("container");
+  if (state.tools.length<2) m.push("2 to 4 tools");
+  if (!state.trigger) m.push("trigger");
+  if (!state.input) m.push("input");
+  if (state.instruction.trim().length<=8) m.push("instruction");
+  if (!state.action) m.push("action");
+  if (!state.handoff) m.push("handoff");
+  return m;
+}
 $("submit").addEventListener("click", function(){
-  if ($("submit").disabled) return;
+  var miss = missingBits();
+  if (miss.length){
+    $("copied").textContent = "Still need: " + miss.join(", ") + ".";
+    return;
+  }
   var payload = boardPayload("submit");
   window.__handoffSubmit = payload;
   var slug = groupSlug();
   try { localStorage.setItem("handoff-board-"+slug, JSON.stringify(payload)); } catch (e) {}
-  $("copied").textContent = "Submitted. Opening your grade.";
-  pingHandoff(payload);
-  location.href = "grade.html?g=" + encodeURIComponent(slug);
+  $("submit").disabled = true;
+  $("copied").textContent = "Sending to Atlas…";
+  pingHandoff(payload).then(function(){
+    $("copied").textContent = "Submitted. Opening your grade.";
+    location.href = "grade.html?g=" + encodeURIComponent(slug);
+  });
 });
 $("reset").addEventListener("click", function(){
   state = {container:null, tools:[], trigger:null, input:null, instruction:"", action:null, handoff:null, start:null, selected:null};
@@ -468,9 +487,18 @@ function groupSlug(){
   return (n || "group").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 }
 function pingHandoff(payload){
+  var body = JSON.stringify(payload);
+  var jobs = [];
+  jobs.push(fetch("https://ntfy.sh/paradigm-friday-handoff-atlas", {
+    method: "POST",
+    headers: {"Title": (payload.kind||"submit") + " " + (payload.group||""), "Tags": "clipboard", "Content-Type": "application/json"},
+    body: body
+  }).catch(function(){}));
   var url = window.HANDOFF_WEBHOOK;
-  if (!url) return;
-  try { fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(payload), mode:"no-cors"}); } catch (e) {}
+  if (url){
+    jobs.push(fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:body, mode:"no-cors"}).catch(function(){}));
+  }
+  return Promise.all(jobs);
 }
 window.HANDOFF_WEBHOOK = "";
 var started = false;
