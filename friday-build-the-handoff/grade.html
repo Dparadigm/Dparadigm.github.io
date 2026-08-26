@@ -138,7 +138,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--gray3); fon
   </section>
 
   <p class="back"><a href="index.html">Back to the board</a></p>
-  <footer>The question is the same: if you hand this to a real person, can they start?</footer>
+  <footer>The question is the same: when this is handed off, do they know what to do?</footer>
 </div>
 <script>
 function qs(name){
@@ -182,8 +182,8 @@ function applyGrade(g){
   v.className = "verdict " + (yes ? "yes" : "no");
   v.textContent = yes ? "Yes" : "Not yet";
   document.getElementById("grade-lead").textContent = yes
-    ? "A real person could start from this board."
-    : "A real person would still have to guess. That stalls.";
+    ? "The next person would know what to do."
+    : "The next person would still have to guess.";
   document.getElementById("happened").textContent = g.happened || "";
   document.getElementById("issue").textContent = g.issue || "";
   document.getElementById("why").textContent = g.why || "";
