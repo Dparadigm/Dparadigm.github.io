@@ -1,0 +1,19 @@
+{
+  "group": "Group Test",
+  "members": "Dan, Pweb and Mike Berg",
+  "verdict": "not-yet",
+  "happened": "An email asked for policy and illustration materials today. The board put an agent on it, then asked who owns this and handed it to a named specialist.",
+  "issue": "The next person still has to guess. The instruction is one broken sentence. It never says this is from sales, not a household. It never names who it is for, what to send, or which specialist.",
+  "why": "When this is handed off, they would not know what to do, who it is coming from, who it is for, or what they need.",
+  "board": {
+    "group": "Group Test",
+    "members": "Dan, Pweb and Mike Berg",
+    "container": "AI Agent — decides when the next step is not the same every time",
+    "tools": ["SMS", "Email"],
+    "trigger": "An email request lands",
+    "input": "The email",
+    "instruction": "It sends a requests",
+    "action": "Ask who owns this",
+    "handoff": "The named specialist"
+  }
+}
