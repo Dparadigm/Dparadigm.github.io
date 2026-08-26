@@ -180,8 +180,8 @@ textarea:focus,input:focus,.chip:focus-visible,.go:focus-visible,.reset:focus-vi
 }
 .ask button.picked{background:#FFF8E0; border-color:var(--legacy); border-left-color:var(--legacy); color:var(--black)}
 .actions{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:8px}
-.go{background:var(--black); color:#fff; border:1px solid var(--black); padding:12px 20px; font-size:15px; cursor:pointer; font-family:"Montserrat",sans-serif; font-weight:600; text-transform:uppercase; letter-spacing:.06em}
-.go[disabled]{opacity:.35; cursor:not-allowed}
+.ask .go{background:var(--growth); color:var(--black); border:1px solid var(--black); padding:12px 22px; font-size:16px; cursor:pointer; font-family:"Montserrat",sans-serif; font-weight:700; text-transform:uppercase; letter-spacing:.08em}
+.ask .go[disabled]{opacity:.35; cursor:not-allowed}
 .reset{background:none; border:0; color:var(--gray11); text-decoration:underline; cursor:pointer; font:inherit}
 .copied{font-size:13px; color:var(--legacy)}
 
@@ -260,7 +260,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--gray3); fon
   <p>Submit for a grade</p>
   <p class="hint">Fill the board, then submit. Atlas grades it. You get a yes or no, and why. Do not score it yourselves.</p>
   <div class="actions">
-    <button type="button" class="go" id="submit">Submit for a grade</button>
+    <button type="button" class="go" id="submit">Submit</button>
     <button type="button" class="reset" id="reset">Clear the group</button>
     <span class="copied" id="copied"></span>
   </div>
@@ -467,7 +467,7 @@ $("submit").addEventListener("click", function(){
   var slug = groupSlug();
   try { localStorage.setItem("handoff-board-"+slug, JSON.stringify(payload)); } catch (e) {}
   $("submit").disabled = true;
-  $("copied").textContent = "Sending to Atlas…";
+  $("copied").textContent = "Sending to Atlas\u2026";
   pingHandoff(payload).then(function(){
     $("copied").textContent = "Submitted. Opening your grade.";
     location.href = "grade.html?g=" + encodeURIComponent(slug);
