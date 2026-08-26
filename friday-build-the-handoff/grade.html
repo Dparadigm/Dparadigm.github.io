@@ -154,7 +154,7 @@ function line(k, v){
   var d = document.createElement("div");
   d.className = "board-line";
   var a = document.createElement("div"); a.className = "k"; a.textContent = k;
-  var b = document.createElement("div"); b.textContent = v || "—";
+  var b = document.createElement("div"); b.textContent = v || "\u2014";
   d.appendChild(a); d.appendChild(b);
   return d;
 }
