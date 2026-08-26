@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Your grade — Build the handoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#000000;
+  --gray11:#54565A;
+  --gray3:#C8C8C8;
+  --paper:#FFFFFF;
+  --wash:#F4F4F4;
+  --growth:#AAC27F;
+  --income:#65B2E8;
+  --legacy:#DAA900;
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--wash); color:var(--black);
+  font-family:"Open Sans",system-ui,sans-serif;
+  font-size:16px; line-height:1.5; -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none; z-index:0;
+  background-image:url("shield.svg");
+  background-repeat:no-repeat;
+  background-position:center 42%;
+  background-size:auto 50vh;
+  opacity:.5;
+}
+.top, .wrap{position:relative; z-index:1}
+.top{background:var(--black); color:#fff; padding:16px 20px 18px}
+.top-inner{max-width:720px;margin:0 auto}
+.wordmark{
+  font-family:"Montserrat",sans-serif; font-weight:700;
+  font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+}
+.stages{
+  margin-top:6px; font-family:"Montserrat",sans-serif; font-weight:500;
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gray3);
+}
+.stages span.g{color:var(--growth)}
+.stages span.i{color:var(--income)}
+.stages span.l{color:var(--legacy)}
+.wrap{max-width:720px;margin:0 auto;padding:28px 20px 72px}
+.eyebrow{
+  font-family:"Montserrat",sans-serif; font-weight:600;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--legacy);
+}
+h1{
+  font-family:"Montserrat",sans-serif; font-weight:700;
+  font-size:clamp(26px,5.4vw,38px); line-height:1.15; letter-spacing:-.02em;
+  margin:10px 0 0; text-transform:uppercase;
+}
+h1 em{font-style:normal; color:var(--legacy); font-weight:600}
+.card{
+  border:1px solid var(--gray3); background:var(--paper);
+  padding:16px 18px; margin:0 0 18px;
+}
+.card.grade{border-left:4px solid var(--black)}
+.card.yes{border-left-color:var(--growth)}
+.card.no{border-left-color:var(--legacy)}
+.lbl{
+  font-family:"Montserrat",sans-serif; font-weight:600;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--legacy); margin-bottom:8px;
+}
+.card.grade .lbl{color:var(--gray11)}
+.verdict{
+  font-family:"Montserrat",sans-serif; font-weight:700;
+  font-size:clamp(28px,6vw,42px); letter-spacing:.04em; text-transform:uppercase;
+  margin:4px 0 8px;
+}
+.verdict.yes{color:var(--black)}
+.verdict.no{color:var(--black)}
+p{margin:0; color:var(--gray11)}
+p + p{margin-top:8px}
+.card p.lead{color:var(--black); font-weight:700}
+.board-line{
+  display:grid; grid-template-columns:110px 1fr; gap:8px;
+  padding:8px 0; border-top:1px solid var(--gray3); font-size:15px;
+}
+.board-line:first-of-type{border-top:0}
+.board-line .k{
+  font-family:"Montserrat",sans-serif; font-weight:600;
+  font-size:10px; letter-spacing:.12em; text-transform:uppercase; color:var(--gray11);
+}
+.back{color:var(--gray11); font-size:14px}
+.back a{color:var(--black)}
+.wait{color:var(--gray11); font-size:14px; margin-top:8px}
+footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--gray3); font-size:13px; color:var(--gray11)}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="top-inner">
+    <div class="wordmark">Paradigm Life®</div>
+    <div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div>
+  </div>
+</div>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">AI Friday · Q4 Team Challenge · Week 1</div>
+    <h1>Your <em>grade</em></h1>
+  </header>
+
+  <section class="card grade" id="grade-card">
+    <div class="lbl">The grade</div>
+    <div class="verdict" id="verdict">Waiting</div>
+    <p id="grade-lead">Atlas is reading the board. This page will update.</p>
+  </section>
+
+  <section class="card" id="happened-card" hidden>
+    <div class="lbl">What happened</div>
+    <p id="happened"></p>
+  </section>
+
+  <section class="card" id="issue-card" hidden>
+    <div class="lbl">The issue</div>
+    <p id="issue"></p>
+  </section>
+
+  <section class="card" id="why-card" hidden>
+    <div class="lbl" id="why-lbl">Why</div>
+    <p id="why"></p>
+  </section>
+
+  <section class="card" id="board-card" hidden>
+    <div class="lbl">What you handed over</div>
+    <div id="board"></div>
+  </section>
+
+  <p class="back"><a href="index.html">Back to the board</a></p>
+  <footer>The question is the same: if you hand this to a real person, can they start?</footer>
+</div>
+<script>
+function qs(name){
+  var m = location.search.match(new RegExp("[?&]"+name+"=([^&]*)"));
+  return m ? decodeURIComponent(m[1].replace(/\+/g," ")) : "";
+}
+function slug(){
+  var g = qs("g");
+  if (g) return g;
+  return "";
+}
+function line(k, v){
+  var d = document.createElement("div");
+  d.className = "board-line";
+  var a = document.createElement("div"); a.className = "k"; a.textContent = k;
+  var b = document.createElement("div"); b.textContent = v || "—";
+  d.appendChild(a); d.appendChild(b);
+  return d;
+}
+function showBoard(b){
+  if (!b) return;
+  var box = document.getElementById("board");
+  box.innerHTML = "";
+  box.appendChild(line("Group", b.group));
+  if (b.members) box.appendChild(line("Members", b.members));
+  box.appendChild(line("Container", b.container));
+  box.appendChild(line("Tools", (b.tools||[]).join(", ")));
+  box.appendChild(line("Trigger", b.trigger));
+  box.appendChild(line("Input", b.input));
+  box.appendChild(line("Instruction", b.instruction));
+  box.appendChild(line("Action", b.action));
+  box.appendChild(line("Handoff", b.handoff));
+  document.getElementById("board-card").hidden = false;
+}
+function applyGrade(g){
+  var yes = g.verdict === "yes";
+  var card = document.getElementById("grade-card");
+  var v = document.getElementById("verdict");
+  card.classList.remove("yes","no");
+  card.classList.add(yes ? "yes" : "no");
+  v.className = "verdict " + (yes ? "yes" : "no");
+  v.textContent = yes ? "Yes" : "Not yet";
+  document.getElementById("grade-lead").textContent = yes
+    ? "A real person could start from this board."
+    : "A real person would still have to guess. That stalls.";
+  document.getElementById("happened").textContent = g.happened || "";
+  document.getElementById("issue").textContent = g.issue || "";
+  document.getElementById("why").textContent = g.why || "";
+  document.getElementById("why-lbl").textContent = yes ? "Why yes" : "Why not yet";
+  document.getElementById("happened-card").hidden = !g.happened;
+  document.getElementById("issue-card").hidden = !g.issue;
+  document.getElementById("why-card").hidden = !g.why;
+  if (g.board) showBoard(g.board);
+  else if (g.group) showBoard(g);
+}
+function loadLocal(){
+  var s = slug();
+  if (!s) return;
+  try {
+    var raw = localStorage.getItem("handoff-board-"+s);
+    if (raw) showBoard(JSON.parse(raw));
+  } catch (e) {}
+}
+function poll(){
+  var s = slug();
+  if (!s){
+    document.getElementById("verdict").textContent = "Missing group";
+    document.getElementById("grade-lead").textContent = "Open this page from Submit on the board so we know which group to grade.";
+    return;
+  }
+  fetch("grades/" + encodeURIComponent(s) + ".json?t=" + Date.now(), {cache:"no-store"})
+    .then(function(r){ if (!r.ok) throw new Error("pending"); return r.json(); })
+    .then(function(g){ applyGrade(g); })
+    .catch(function(){ setTimeout(poll, 4000); });
+}
+loadLocal();
+poll();
+</script>
+</body>
+</html>
