@@ -293,8 +293,8 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 
 <section class="sit">
   <div class="lbl">The situation</div>
-  <p>An email asked for policy and illustration materials. Someone wants them provided today.</p>
-  <p class="trap">It looks like a household (a client) request. It is not. It is from sales.</p>
+  <p>An email just came in, it's an in-force policy request asking for policy and illustration materials. Someone wants them provided today.</p>
+  <p class="trap">It looks like a client request. It is not. It is from sales.</p>
 </section>
 
 
@@ -390,7 +390,7 @@ function slotBox(key, empty, value, multi){
       var pills = el("div","pills");
       value.forEach(function(t){
         var p = el("span","pill", t);
-        var x = el("button","x","\u00d7");
+        var x = el("button","x","×");
         x.addEventListener("click", function(ev){ ev.stopPropagation(); toggleTool(t); });
         p.appendChild(x); pills.appendChild(p);
       });
@@ -399,7 +399,7 @@ function slotBox(key, empty, value, multi){
   } else if (!value){
     box.appendChild(document.createTextNode(empty));
   } else {
-    var x = el("button","x","\u00d7");
+    var x = el("button","x","×");
     x.addEventListener("click", function(ev){ clearBlock(key, ev); });
     box.appendChild(x);
     box.appendChild(document.createTextNode(value));
@@ -534,7 +534,7 @@ $("submit").addEventListener("click", function(){
   var slug = groupSlug();
   try { localStorage.setItem("handoff-board-"+slug, JSON.stringify(payload)); } catch (e) {}
   $("submit").disabled = true;
-  $("copied").textContent = "Sending to Atlas\u2026";
+  $("copied").textContent = "Sending to Atlas…";
   pingHandoff(payload).then(function(){
     $("copied").textContent = "Submitted. Opening your grade.";
     location.href = "grade.html?g=" + encodeURIComponent(slug);
