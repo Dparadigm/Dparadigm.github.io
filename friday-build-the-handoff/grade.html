@@ -180,7 +180,7 @@ function line(k, v){
   var d = document.createElement("div");
   d.className = "board-line";
   var a = document.createElement("div"); a.className = "k"; a.textContent = k;
-  var b = document.createElement("div"); b.textContent = v || "\u2014";
+  var b = document.createElement("div"); b.textContent = v || "—";
   d.appendChild(a); d.appendChild(b);
   return d;
 }
@@ -206,10 +206,10 @@ function applyGrade(g){
   card.classList.remove("yes","no");
   card.classList.add(yes ? "yes" : "no");
   v.className = "verdict " + (yes ? "yes" : "no");
-  v.textContent = yes ? "Yes" : "Not yet";
+  v.textContent = yes ? "Success" : "Try Again";
   document.getElementById("grade-lead").textContent = yes
-    ? "The next person would know what to do."
-    : "The next person would still have to guess.";
+    ? "The next person knows what to do next."
+    : "The next person would have to guess what to do next.";
   document.getElementById("happened").textContent = g.happened || "";
   document.getElementById("issue").textContent = g.issue || "";
   document.getElementById("why").textContent = g.why || "";
