@@ -1,19 +1,19 @@
 {
   "group": "Group Test",
-  "members": "Dan T, Mike B, Pat D",
+  "members": "Dan T, Tony M, Thierry H",
   "verdict": "not-yet",
-  "happened": "They put an AI agent on an inbound email, using Email and the CRM. The instruction says it is from a specified agent, collect who it is from and which policy it is for, notify the salesperson, then send API requests to pull the requested information and name a specialist.",
-  "issue": "The next person is still \"the named specialist\" with no name. They are not told which materials to send (policy and illustration), which policy or person it is for, or whether to send today.",
-  "why": "They caught the trap: this is from sales, not a client. That part is solid. A real next owner still has to guess who they are, what to pull, and who it is for beyond \"a policy.\" Until the handoff names a person and the packet, they would have to ask.",
+  "happened": "They put an AI agent on inbound email, using Email and the CRM. The instruction assigns the work to John S., pulls the in-force packet (policy and illustration), delivers it, and notifies salesman Frank N. The action is send the emails now.",
+  "issue": "The handoff slot is still \"the named specialist,\" not John S. They never named which policy or which person the packet is for, so a real next owner still has to open the email to find that.",
+  "why": "They caught that this is from sales (Frank N), named the materials, and said send today. That is real progress. A next owner still cannot start without guessing which policy it is for, and the board never actually hands it to John S. Until those two are on the board, they would have to ask.",
   "board": {
     "group": "Group Test",
-    "members": "Dan T, Mike B, Pat D",
+    "members": "Dan T, Tony M, Thierry H",
     "container": "AI Agent — decides when the next step is not the same every time",
     "tools": ["Email", "CRM / case record"],
     "trigger": "An email request lands",
     "input": "The email",
-    "instruction": "I get the requests from a specified agent requesting this information. I collect who it is from and which policy it is for. Notify that sales person it has been received.  Send our API requests to the needed areas to retrieve the requested information",
-    "action": "Name a specialist",
+    "instruction": "Process through the email, assign to John S., provide the in-force requested documents - policy and illustration. deliver and notify Salesman Frank N",
+    "action": "Send the emails now",
     "handoff": "The named specialist"
   }
 }
