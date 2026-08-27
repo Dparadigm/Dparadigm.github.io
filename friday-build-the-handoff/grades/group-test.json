@@ -1,19 +1,19 @@
 {
   "group": "Group Test",
-  "members": "Dan, Pweb and Mike Berg",
+  "members": "Dan T, Mike B, Pat D",
   "verdict": "not-yet",
-  "happened": "An email asked for policy and illustration materials today. The board put an agent on it, then asked who owns this and handed it to a named specialist.",
-  "issue": "The next person still has to guess. The instruction is one broken sentence. It never says this is from sales, not a household. It never names who it is for, what to send, or which specialist.",
-  "why": "When this is handed off, they would not know what to do, who it is coming from, who it is for, or what they need.",
+  "happened": "They put an AI agent on an inbound email, using Email and the CRM. The instruction says it is from a specified agent, collect who it is from and which policy it is for, notify the salesperson, then send API requests to pull the requested information and name a specialist.",
+  "issue": "The next person is still \"the named specialist\" with no name. They are not told which materials to send (policy and illustration), which policy or person it is for, or whether to send today.",
+  "why": "They caught the trap: this is from sales, not a client. That part is solid. A real next owner still has to guess who they are, what to pull, and who it is for beyond \"a policy.\" Until the handoff names a person and the packet, they would have to ask.",
   "board": {
     "group": "Group Test",
-    "members": "Dan, Pweb and Mike Berg",
+    "members": "Dan T, Mike B, Pat D",
     "container": "AI Agent — decides when the next step is not the same every time",
-    "tools": ["SMS", "Email"],
+    "tools": ["Email", "CRM / case record"],
     "trigger": "An email request lands",
     "input": "The email",
-    "instruction": "It sends a requests",
-    "action": "Ask who owns this",
+    "instruction": "I get the requests from a specified agent requesting this information. I collect who it is from and which policy it is for. Notify that sales person it has been received.  Send our API requests to the needed areas to retrieve the requested information",
+    "action": "Name a specialist",
     "handoff": "The named specialist"
   }
 }
