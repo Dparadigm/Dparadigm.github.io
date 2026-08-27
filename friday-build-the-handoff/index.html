@@ -64,6 +64,9 @@ body::before{
   border-bottom:1px solid var(--color-border-default);
 }
 .top-inner{max-width:1080px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.shield-mark{height:36px;width:auto;display:block;flex:0 0 auto}
+.brand-text{min-width:0}
 .wordmark{
   font-family:var(--font-family-display); font-weight:700;
   font-size:13px; letter-spacing:.18em; text-transform:uppercase;
@@ -266,8 +269,13 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 <body>
 <div class="top">
   <div class="top-inner">
-    <div class="wordmark">Paradigm Life®</div>
-    <div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div>
+    <div class="brand">
+      <img class="shield-mark" src="shield-mark.svg" alt="" />
+      <div class="brand-text">
+        <div class="wordmark">Paradigm Life®</div>
+        <div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div>
+      </div>
+    </div>
   </div>
 </div>
 <div class="wrap">
