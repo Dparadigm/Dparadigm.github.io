@@ -140,7 +140,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
   <section class="card grade" id="grade-card">
     <div class="lbl">The grade</div>
     <div class="verdict" id="verdict">Waiting</div>
-    <p id="grade-lead">Atlas is reading the board. This page will update.</p>
+    <p id="grade-lead">Your challenge is being graded. It will update shortly.</p>
   </section>
 
   <section class="card" id="happened-card" hidden>
@@ -238,7 +238,7 @@ function poll(){
   fetch("grades/" + encodeURIComponent(s) + ".json?t=" + Date.now(), {cache:"no-store"})
     .then(function(r){ if (!r.ok) throw new Error("pending"); return r.json(); })
     .then(function(g){ applyGrade(g); })
-    .catch(function(){ setTimeout(poll, 4000); });
+    .catch(function(){ setTimeout(poll, 2000); });
 }
 loadLocal();
 poll();
