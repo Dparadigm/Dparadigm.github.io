@@ -1,0 +1,17 @@
+{
+  "group": "Group 1",
+  "members": "Ashley Hurst, Rachel, John Keever, Marika, Gilly",
+  "verdict": "not-yet",
+  "happened": "Group 1 built an automated workflow that wakes when an email request lands, reads the email, uses email and the CRM, names a specialist, and hands off to that named specialist. The instruction is to create the case in the CRM, assign it to a case specialist, and connect the case to the appropriate opportunity and contact.",
+  "issue": "The next person still has to guess who owns it next and who it is for. A case specialist is a role, not a named owner, and the board never says which policy or person this is for, or that the email is from a wealth strategist.",
+  "why": "The outcome is a simple document: job in plain words, the tools needed, and a real person who owns it next. The CRM intake job and the tools are clear. The next owner is not a named person, and who it is for is still inside the email. Someone who was not in the group would still have to guess which specialist and which policy.",
+  "board": {
+    "container": "Automated Workflow \u2014 if this, then that",
+    "tools": ["CRM / case record", "Email"],
+    "trigger": "An email request lands",
+    "input": "The email",
+    "instruction": "Create the case in the CRM and assign it to a case specialist. Connect the case to the appropriate opportunity and contact in the CRM.",
+    "action": "Name a specialist",
+    "handoff": "The named specialist"
+  }
+}
