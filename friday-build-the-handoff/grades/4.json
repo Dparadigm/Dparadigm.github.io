@@ -1,0 +1,17 @@
+{
+  "group": "Group 4",
+  "members": "Lourdes, Don, Mark, Tammy, and Ben",
+  "verdict": "not-yet",
+  "happened": "Group 4 built an AI agent that wakes when an email request lands, reads what is being asked, uses email and the CRM, sends the emails now, and hands off to a named specialist. The instruction is that the request is completed and it provides the illustration.",
+  "issue": "Client-facing files go out unreviewed, and there is no named owner. Send the emails now plus provide the illustration is the send. The named specialist is never named in the instruction, and the board never says who the email is from or which policy it is for.",
+  "why": "The outcome is a simple document: job in plain words, the tools needed, and a real person who owns it next. Completing the request by sending the illustration now leaves the next person with files already out and no named owner. Someone who was not in the group still has to guess the job, who it is from, who it is for, and who owns it next.",
+  "board": {
+    "container": "AI Agent \u2014 decides when the next step is not the same every time",
+    "tools": ["Email", "CRM / case record"],
+    "trigger": "An email request lands",
+    "input": "What is being asked",
+    "instruction": "the request is completed, provides the illustration",
+    "action": "Send the emails now",
+    "handoff": "The named specialist"
+  }
+}
