@@ -1,0 +1,17 @@
+{
+  "group": "Group 3",
+  "members": "Derek Williams, Ashley Devereaux, Alonya Blackmore, Lynsday Hurst, Anai Hernandez",
+  "verdict": "not-yet",
+  "happened": "Group 3 built an automated workflow that wakes when an email request lands, reads what is being asked, uses email and the CRM, names a specialist, and hands off to that named specialist. The instruction is always include illustration variables, always include carrier, and never assign to someone who is out.",
+  "issue": "The next person still has to guess who owns it next, who it is from, and who it is for. The named specialist is never named. The instruction is a list of rules, not the job to be done, and the board never says this is from a wealth strategist or which policy it is for.",
+  "why": "The outcome is a simple document: job in plain words, the tools needed, and a real person who owns it next. Tools are fine, and they did not send files now. Illustration variables and carrier are constraints, not the job. Someone who was not in the group still has to guess the job, which policy, and which person owns it next.",
+  "board": {
+    "container": "Automated Workflow \u2014 if this, then that",
+    "tools": ["Email", "CRM / case record"],
+    "trigger": "An email request lands",
+    "input": "What is being asked",
+    "instruction": "Always include illustration variables, always include carrier, never assign to someone who is out",
+    "action": "Name a specialist",
+    "handoff": "The named specialist"
+  }
+}
