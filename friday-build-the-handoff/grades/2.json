@@ -1,0 +1,17 @@
+{
+  "group": "Group 2",
+  "members": "Miranda, Mitch, Paul. Nick, Whitney",
+  "verdict": "not-yet",
+  "happened": "Group 2 built an automated workflow that wakes when an email request lands, reads what is being asked, uses email and the CRM, names a specialist, and hands off to an associate who is not out. The instruction is not to assume, and to identify the client, the policy, and the ask.",
+  "issue": "The next person still has to guess who owns it next. An associate who is not out is a staffing rule, not a named owner. The instruction also never states the job to be done (a reviewed inforce illustration) or that the email is from a wealth strategist, not the client.",
+  "why": "The outcome is a simple document: job in plain words, the tools needed, and a real person who owns it next. Tools are fine. The job is a fragment, not the job to be done. Handoff is not a person. Someone who was not in the group still has to guess who they hand this to and what file they owe.",
+  "board": {
+    "container": "Automated Workflow \u2014 if this, then that",
+    "tools": ["Email", "CRM / case record"],
+    "trigger": "An email request lands",
+    "input": "What is being asked",
+    "instruction": "Never want it to assume. Must identfy, client policy, the ask",
+    "action": "Name a specialist",
+    "handoff": "An associate who is not out"
+  }
+}
