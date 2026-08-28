@@ -92,19 +92,19 @@ h1{
 h1 em{font-style:normal; color:var(--color-brand-legacy); font-weight:600}
 .lede{color:var(--color-text-body); margin:12px 0 0; font-size:16px}
 header{padding:0 0 18px}
-.sit, .out{
+.sit, .out, .job{
   border:1px solid var(--color-border-default); border-left:4px solid var(--color-brand-legacy);
   background:var(--color-surface-card); padding:16px 18px; margin:0 0 22px;
   border-radius:var(--radius-xl); box-shadow:var(--shadow-card);
 }
 .out{border-left-color:var(--color-brand-primary)}
-.sit .lbl, .out .lbl{
+.sit .lbl, .out .lbl, .job .lbl{
   font-family:var(--font-family-display); font-weight:600;
   font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   color:var(--color-brand-primary); margin-bottom:8px;
 }
-.sit p, .out p{margin:0; color:var(--color-text-body)}
-.sit p + p, .out p + p{margin-top:8px}
+.sit p, .out p, .job p{margin:0; color:var(--color-text-body)}
+.sit p + p, .out p + p, .job p + p{margin-top:8px}
 .sit .trap{font-weight:700; color:var(--color-ink)}
 .out p{color:var(--color-ink); font-weight:700}
 .out ul{margin:8px 0 0; padding:0 0 0 1.2em; color:var(--color-ink)}
@@ -289,20 +289,25 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 
 <section class="sit">
   <div class="lbl">The situation</div>
-  <p>An email just came in, it's an in-force policy request asking for policy and illustration materials. Someone wants them provided today.</p>
+  <p>An email just came in: an in-force policy request asking for policy and illustration materials, wanted today.</p>
   <p class="trap">It looks like a client request. It is not. It is from sales.</p>
+  <p>So "just send the files" is the wrong move. Client-facing materials going out to the wrong person, unreviewed, is the failure mode here.</p>
 </section>
 
 <section class="out">
   <div class="lbl">The outcome</div>
-  <p>When this is complete and handed off, the next person knows what to do:</p>
+  <p>A complete spec. Someone who wasn't in your group could read your board and know exactly what this thing does.</p>
   <ul>
-    <li>What to do</li>
-    <li>Who it is from</li>
-    <li>Who it is for</li>
+    <li>One job, stated in plain words</li>
+    <li>Only the tools it actually needs</li>
+    <li>A real person who owns it next</li>
   </ul>
 </section>
 
+<section class="job">
+  <div class="lbl">Your job</div>
+  <p>In your group, spec the thing that handles this email. Pick what kind of system it is, what it's allowed to use, what starts it, what it reads, what it does, and who owns it next. Write the instruction in your own words. Then submit for a grade.</p>
+</section>
 
 <div class="who">
   <div class="field">
@@ -323,7 +328,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
   </div>
   <div>
     <h2>The pieces</h2>
-    <p class="note">One container. Two to four tools. Chips for four blocks. You write the instruction.</p>
+    <p class="note">One container. Two to four tools. One piece each for trigger, input, action, and handoff. You write the instruction.</p>
     <div class="pieces-hd"><span>Pieces</span></div>
   </div>
 </div>
@@ -331,7 +336,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 
 <div class="ask">
   <p>Submit for a grade</p>
-  <p class="hint">Fill the board, then submit. You get Success or Try Again, and why.</p>
+  <p class="hint">Every slot needs a piece and the instruction needs words. You'll get Success or Try Again, plus the reason why.</p>
   <div class="actions">
     <button type="button" class="go" id="submit">Submit</button>
     <button type="button" class="reset" id="reset">Clear form</button>
@@ -447,10 +452,10 @@ function rightGroup(label, kind, items, usedFn){
 }
 
 var DEFS = {
-  Container: "The kind of system you are building. An agent decides, because the next step is not the same every time. A workflow never decides: if this, then that.",
-  Tools: "The systems it is allowed to use. Email, chat, a doc, the CRM. If a tool is not on the board, it cannot use it.",
-  Trigger: "The moment this starts. An email lands. Someone asks for the files today.",
-  Input: "The information it must have in front of it to do the job. The email. Who it is actually for. What is being asked.",
+  Container: "The kind of system you are building. An agent decides. A workflow never decides: if this, then that.",
+  Tools: "The systems it is allowed to use. Email, chat, a doc, the CRM. If a tool is not on the board, it cannot use it. Pick only what it actually needs. Every extra tool is something it can misuse.",
+  Trigger: "The moment it wakes up. One event, not a situation. Pick one.",
+  Input: "The one thing it has to read to get this right. Not everything it could read. The thing that decides how it goes. Pick one.",
   Instruction: "The one job you write in your own words: what good looks like, and what it must never do. This is the only free text.",
   Action: "The one move it makes. Send. Hold. Name someone. Ask who owns it. Not a list of maybe later.",
   Handoff: "The real person who owns it after this runs. A named specialist. Whoever asked. An associate who is actually in."
@@ -468,18 +473,18 @@ function render(){
   if (hd) hd.textContent = groupLabel();
   var work = $("work");
   work.innerHTML = "";
-  work.appendChild(pair("Container", slotBox("container","Tap a container piece", state.container), "container", CONTAINERS.map(function(c){return c.text;}), function(t){ return state.container===t; }));
+  work.appendChild(pair("Container", slotBox("container","Tap 1 container piece", state.container), "container", CONTAINERS.map(function(c){return c.text;}), function(t){ return state.container===t; }));
   work.appendChild(pair("Tools", slotBox("tools","Tap 2 to 4 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
-  work.appendChild(pair("Trigger", slotBox("trigger","What starts it", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
-  work.appendChild(pair("Input", slotBox("input","What it has to see", state.input), "input", CHIPS.input, function(t){ return state.input===t; }));
+  work.appendChild(pair("Trigger", slotBox("trigger","Tap 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
+  work.appendChild(pair("Input", slotBox("input","Tap 1 input", state.input), "input", CHIPS.input, function(t){ return state.input===t; }));
   var inst = document.createElement("textarea");
   inst.placeholder = "One job. What good looks like. What never to do.";
   inst.value = state.instruction;
   inst.addEventListener("input", function(){ state.instruction = inst.value; canSubmit(); });
   inst.addEventListener("focus", function(){ selectSlot("instruction"); });
   work.appendChild(pair("Instruction", inst, "instruction", null, function(){ return false; }));
-  work.appendChild(pair("Action", slotBox("action","The one thing it does", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
-  work.appendChild(pair("Handoff", slotBox("handoff","Who owns it next", state.handoff), "handoff", CHIPS.handoff, function(t){ return state.handoff===t; }));
+  work.appendChild(pair("Action", slotBox("action","Tap 1 action", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
+  work.appendChild(pair("Handoff", slotBox("handoff","Tap 1 handoff", state.handoff), "handoff", CHIPS.handoff, function(t){ return state.handoff===t; }));
   canSubmit();
 }
 
