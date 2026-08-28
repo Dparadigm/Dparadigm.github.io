@@ -1,19 +1,20 @@
 {
   "group": "Group Test",
-  "members": "Dan T, Tony M, Thierry H",
-  "verdict": "not-yet",
-  "happened": "They put an AI agent on inbound email, using Email and the CRM. The instruction assigns the work to John S., pulls the in-force packet (policy and illustration), delivers it, and notifies salesman Frank N. The action is send the emails now.",
-  "issue": "The handoff slot is still \"the named specialist,\" not John S. They never named which policy or which person the packet is for, so a real next owner still has to open the email to find that.",
-  "why": "They caught that this is from sales (Frank N), named the materials, and said send today. That is real progress. A next owner still cannot start without guessing which policy it is for, and the board never actually hands it to John S. Until those two are on the board, they would have to ask.",
+  "members": "Dan",
+  "verdict": "yes",
+  "happened": "They built an AI agent that wakes when an email request lands, uses email and the CRM, holds the send, looks up which in-force policy it is actually for, and hands reviewed policy and illustration materials to Alex Rivera on In Force.",
+  "issue": "A next owner would stall if the board did not say this is from sales, which policy to find, or who takes it next. This board names all three.",
+  "why": "The job is in plain words. Tools are only email and CRM. The next owner is Alex Rivera on In Force. Sales is the source, not the client, and client-facing files do not go out unreviewed.",
   "board": {
-    "group": "Group Test",
-    "members": "Dan T, Tony M, Thierry H",
     "container": "AI Agent — decides when the next step is not the same every time",
-    "tools": ["Email", "CRM / case record"],
+    "tools": [
+      "Email",
+      "CRM / case record"
+    ],
     "trigger": "An email request lands",
-    "input": "The email",
-    "instruction": "Process through the email, assign to John S., provide the in-force requested documents - policy and illustration. deliver and notify Salesman Frank N",
-    "action": "Send the emails now",
+    "input": "Who it is actually for",
+    "instruction": "This is from sales, not a client. Hold the send. Look up which in-force policy the email is actually for, pull the policy and illustration, get them reviewed, then hand them to Alex Rivera on In Force. Do not send client-facing files to the salesperson unreviewed.",
+    "action": "Hold the send",
     "handoff": "The named specialist"
   }
 }
