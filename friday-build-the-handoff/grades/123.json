@@ -1,0 +1,20 @@
+{
+  "group": "Group 123",
+  "members": "Dan Testing",
+  "verdict": "yes",
+  "happened": "They built an AI agent that wakes when an email request lands, uses email and the CRM, holds the send, looks up which in-force policy it is actually for, and hands reviewed policy and illustration materials to Alex Rivera on In Force.",
+  "issue": "A next owner would stall if the board did not say this is from sales, which policy to find, or who takes it next. This board names all three.",
+  "why": "The job is in plain words. Tools are only email and CRM. The next owner is Alex Rivera on In Force. Sales is the source, not the client, and client-facing files do not go out unreviewed.",
+  "board": {
+    "container": "AI Agent — decides when the next step is not the same every time",
+    "tools": [
+      "Email",
+      "CRM / case record"
+    ],
+    "trigger": "An email request lands",
+    "input": "Who it is actually for",
+    "instruction": "This is from sales, not a client. Hold the send. Look up which in-force policy the email is actually for, pull the policy and illustration, get them reviewed, then hand them to Alex Rivera on In Force. Do not send client-facing files to the salesperson unreviewed.",
+    "action": "Hold the send",
+    "handoff": "The named specialist"
+  }
+}
