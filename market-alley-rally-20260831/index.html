@@ -111,9 +111,7 @@ header{padding:0 0 18px}
 .out li{margin:4px 0; font-weight:400; color:var(--color-text-body)}
 .who{
   display:grid; gap:12px; margin:0 0 18px;
-}
-@media (min-width:860px){
-  .who{grid-template-columns:1fr 1fr; gap:22px}
+  max-width:420px;
 }
 .heads, .work{
   display:grid; gap:16px;
@@ -310,12 +308,8 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 
 <div class="who">
   <div class="field">
-    <div class="fl">Group</div>
+    <div class="fl">Group number</div>
     <input class="team" id="team" type="text" placeholder="Group number, e.g. 3" autocomplete="off" />
-  </div>
-  <div class="field">
-    <div class="fl">Group members</div>
-    <textarea class="members" id="members" placeholder="Names of who is in this group"></textarea>
   </div>
 </div>
 
@@ -477,12 +471,12 @@ function rightGroup(label, kind, items, usedFn){
 }
 
 var DEFS = {
-  Container: "A container is where the work runs. AI Agent: you give it a job; it reads the situation and decides what to do next. Automated Workflow: if this, then that; the steps never change.",
+  Container: "A container is where the work runs. AI Agent. You give it a job. It reads the situation and decides what to do next. Automated Workflow. If this, then that. The steps never change. Pick 1.",
   Tools: "A tool is something it is allowed to use to do the job. If it is not on the list, it cannot use it. Pick only what this situation needs. Three of these fit. Four do not. Pick the three that fit.",
-  Trigger: "The moment it wakes up. One event, not a situation. Two of these can start this job. Two cannot. Choose the best 1.",
+  Trigger: "The moment it wakes up. One event, not a situation. Pick 1. Two of these can start this job. Two cannot. Choose the best 1.",
   Inputs: "What it has to see before it acts. The facts this job needs. Not the whole file. Three of these belong. Three do not. Pick the three that belong.",
   Skills: "A skill is a job it already knows how to do, written down. What good looks like, and what it must never do. Not a tool. Not a person. Choose the top 3.",
-  Action: "The one move it makes with the information gathered. Not a list of maybes. One thing. Choose the best 1."
+  Action: "The one move it makes with the information gathered. Not a list of maybes. One thing. Pick 1. Choose the best 1."
 };
 
 function pair(label, leftNode, kind, items, usedFn){
@@ -519,14 +513,13 @@ function groupLabel(){
   if (/^group\b/i.test(n)) return n;
   return "Group " + n;
 }
-function membersText(){ return $("members").value.trim(); }
+function membersText(){ return ""; }
 
 function boardText(){
   var team = groupLabel();
   var people = membersText();
   return [
     team + " — Build the board",
-    "Group members: " + (people || "(none listed)"),
     "Container: " + (state.container||""),
     "Tools: " + state.tools.join(", "),
     "Trigger: " + (state.trigger||""),
@@ -538,7 +531,6 @@ function boardText(){
 }
 
 $("team").addEventListener("input", function(){ render(); maybeStart(); });
-$("members").addEventListener("input", render);
 function missingBits(){
   var m = [];
   if (!$("team").value.trim()) m.push("group number");
@@ -570,7 +562,7 @@ $("submit").addEventListener("click", function(){
 $("reset").addEventListener("click", function(){
   state = {container:null, tools:[], trigger:null, inputs:[], skills:[], action:null, start:null, selected:null};
   started = false;
-  $("team").value=""; $("members").value=""; $("copied").textContent="";
+  $("team").value=""; $("copied").textContent="";
   render();
 });
 
