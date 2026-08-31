@@ -205,14 +205,17 @@ textarea:focus,input:focus,.chip:focus-visible,.go:focus-visible,.reset:focus-vi
   font-family:var(--font-family-display); font-weight:600;
   font-size:11px; letter-spacing:.14em; text-transform:uppercase;
   color:var(--color-brand-primary); margin-bottom:8px;
-  display:flex; flex-wrap:wrap; align-items:baseline; gap:6px;
+  display:flex; flex-direction:column; align-items:flex-start; gap:6px;
 }
 .grp .lbl .name{color:var(--color-brand-primary)}
 .grp .lbl .def{
-  font-family:var(--font-family-secondary); font-weight:700; letter-spacing:0;
+  font-family:var(--font-family-secondary); font-weight:400; letter-spacing:0;
   text-transform:none; color:var(--color-ink); font-size:14px;
-  flex:1 1 220px; line-height:1.4;
+  width:100%; line-height:1.45;
 }
+.grp .lbl .def p{margin:0 0 8px}
+.grp .lbl .def p:last-child{margin-bottom:0}
+.grp .lbl .def strong{font-weight:700; color:var(--color-ink)}
 .chips{display:flex; flex-wrap:wrap; gap:8px}
 .chip{
   font:inherit; font-size:14px; cursor:pointer; text-align:left;
@@ -451,7 +454,11 @@ function rightGroup(label, kind, items, usedFn){
   var g = el("div","grp");
   var lab = el("div","lbl");
   lab.appendChild(el("span","name", label + ":"));
-  if (DEFS[label]) lab.appendChild(el("span","def", DEFS[label]));
+  if (DEFS[label]){
+    var d = el("span","def");
+    d.innerHTML = DEFS[label];
+    lab.appendChild(d);
+  }
   g.appendChild(lab);
   if (items){
     var chips = el("div","chips");
@@ -471,12 +478,12 @@ function rightGroup(label, kind, items, usedFn){
 }
 
 var DEFS = {
-  Container: "A container is where the work runs. AI Agent. You give it a job. It reads the situation and decides what to do next. Automated Workflow. If this, then that. The steps never change. Pick 1.",
-  Tools: "A tool is something it is allowed to use to do the job. If it is not on the list, it cannot use it. Pick only what this situation needs. Three of these fit. Four do not. Pick the three that fit.",
-  Trigger: "The moment it wakes up. One event, not a situation. Pick 1. Two of these can start this job. Two cannot. Choose the best 1.",
-  Inputs: "What it has to see before it acts. The facts this job needs. Not the whole file. Three of these belong. Three do not. Pick the three that belong.",
-  Skills: "A skill is a job it already knows how to do, written down. What good looks like, and what it must never do. Not a tool. Not a person. Choose the top 3.",
-  Action: "The one move it makes with the information gathered. Not a list of maybes. One thing. Pick 1. Choose the best 1."
+  Container: "<p>A container is where the work runs.</p><p><strong>AI Agent.</strong> You give it a job. It reads the situation and decides what to do next.</p><p><strong>Automated Workflow.</strong> If this, then that. The steps never change.</p><p><strong>Containers for this exercise.</strong> Pick 1.</p>",
+  Tools: "<p>A tool is something it is allowed to use to do the job. If it is not on the list, it cannot use it. Pick only what this situation needs.</p><p><strong>Tools for this exercise.</strong> Three of these fit. Four do not. Pick the three that fit.</p>",
+  Trigger: "<p>The moment it wakes up. One event, not a situation. Pick 1.</p><p><strong>Triggers for this exercise.</strong> Two of these can start this job. Two cannot. Choose the best 1.</p>",
+  Inputs: "<p>What it has to see before it acts. The facts this job needs. Not the whole file.</p><p><strong>Inputs for this exercise.</strong> Three of these belong. Three do not. Pick the three that belong.</p>",
+  Skills: "<p>A skill is a job it already knows how to do, written down. What good looks like, and what it must never do. Not a tool. Not a person.</p><p><strong>Skills for this exercise.</strong> Choose the top 3.</p>",
+  Action: "<p>The one move it makes with the information gathered. Not a list of maybes. One thing. Pick 1.</p><p><strong>Actions for this exercise.</strong> Choose the best 1.</p>"
 };
 
 function pair(label, leftNode, kind, items, usedFn){
