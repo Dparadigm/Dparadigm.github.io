@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gather the feedback</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Open+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --color-brand-primary:#73a950;
+  --color-brand-primary-hover:#5f9143;
+  --color-brand-growth:#6FA34D;
+  --color-brand-income:#65B2E8;
+  --color-brand-legacy:#DAA900;
+  --color-brand-gray-11:#54565A;
+  --color-brand-gray-3:#CBCBC8;
+  --color-brand-black:#000;
+  --color-ink:#231f20;
+  --color-text-body:#515867;
+  --color-text-muted:#6e7a87;
+  --color-text-on-ink:#ffffff;
+  --color-surface-shell:#fafafa;
+  --color-surface-card:#fff;
+  --color-surface-subtle:#f9f9f9;
+  --color-surface-muted:#f5f7f9;
+  --color-surface-accent:#f1f6ee;
+  --color-surface-field:#ffffff;
+  --color-success-surface:#f3faf2;
+  --color-success-border:#92c575;
+  --color-success-chip:#eff5eb;
+  --color-border-default:#e2e2e2;
+  --color-border-subtle:#eceef0;
+  --color-ring:#73a950;
+  --font-family-display:"Montserrat","Gotham","GothamMedium",sans-serif;
+  --font-family-secondary:"Open Sans","Helvetica Neue",Arial,sans-serif;
+  --font-size-body:14px;
+  --radius-lg:8px;
+  --radius-xl:12px;
+  --shadow-card:0 4px 16px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--color-surface-shell); color:var(--color-ink);
+  font-family:var(--font-family-secondary);
+  font-size:var(--font-size-body); line-height:1.5; -webkit-font-smoothing:antialiased;
+  position:relative;
+}
+body::before{
+  content:"";
+  position:fixed; inset:0;
+  pointer-events:none; z-index:0;
+  background-image:url("shield.svg");
+  background-repeat:no-repeat;
+  background-position:center 42%;
+  background-size:auto 50vh;
+  opacity:.4;
+}
+.top, .wrap{position:relative; z-index:1}
+.top{
+  background:var(--color-surface-card); color:var(--color-ink);
+  padding:16px 20px 18px;
+  border-bottom:1px solid var(--color-border-default);
+}
+.top-inner{max-width:1080px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px}
+.shield-mark{height:36px;width:auto;display:block;flex:0 0 auto}
+.brand-text{min-width:0}
+.wordmark{
+  font-family:var(--font-family-display); font-weight:700;
+  font-size:13px; letter-spacing:.18em; text-transform:uppercase;
+  color:var(--color-ink);
+}
+.stages{
+  margin-top:6px; font-family:var(--font-family-display); font-weight:500;
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--color-brand-gray-3);
+}
+.stages span.g{color:var(--color-brand-growth)}
+.stages span.i{color:var(--color-brand-income)}
+.stages span.l{color:var(--color-brand-legacy)}
+.wrap{max-width:1080px;margin:0 auto;padding:28px 20px 72px}
+.eyebrow{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:11px; letter-spacing:.16em; text-transform:uppercase; color:var(--color-brand-primary);
+}
+h1{
+  font-family:var(--font-family-display); font-weight:700;
+  font-size:clamp(26px,5.4vw,38px); line-height:1.15; letter-spacing:-.02em;
+  margin:10px 0 0; text-transform:uppercase; color:var(--color-ink);
+}
+h1 em{font-style:normal; color:var(--color-brand-legacy); font-weight:600}
+.lede{color:var(--color-text-body); margin:12px 0 0; font-size:16px}
+header{padding:0 0 18px}
+.sit, .out, .job{
+  border:1px solid var(--color-border-default); border-left:4px solid var(--color-brand-legacy);
+  background:var(--color-surface-card); padding:16px 18px; margin:0 0 22px;
+  border-radius:var(--radius-xl); box-shadow:var(--shadow-card);
+}
+.out{border-left-color:var(--color-brand-primary)}
+.sit .lbl, .out .lbl, .job .lbl{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--color-brand-primary); margin-bottom:8px;
+}
+.sit p, .out p, .job p{margin:0; color:var(--color-text-body)}
+.sit p + p, .out p + p, .job p + p{margin-top:8px}
+.sit .trap{font-weight:700; color:var(--color-ink)}
+.out p{color:var(--color-ink); font-weight:700}
+.out ul{margin:8px 0 0; padding:0 0 0 1.2em; color:var(--color-ink)}
+.out li{margin:4px 0; font-weight:400; color:var(--color-text-body)}
+.who{
+  display:grid; gap:12px; margin:0 0 18px;
+}
+@media (min-width:860px){
+  .who{grid-template-columns:1fr 1fr; gap:22px}
+}
+.heads, .work{
+  display:grid; gap:16px;
+}
+@media (min-width:860px){
+  .heads, .work{grid-template-columns:1fr 1fr; column-gap:22px; align-items:stretch}
+}
+.pair{display:contents}
+.pair-left, .pair-right{
+  background:var(--color-surface-card);
+  border:1px solid var(--color-border-default);
+  border-bottom-width:0;
+}
+.work .pair:last-child .pair-left,
+.work .pair:last-child .pair-right{
+  border-bottom-width:1px;
+  border-radius:0 0 var(--radius-xl) var(--radius-xl);
+}
+.pair-left .row{border-top:0; height:100%; align-items:start}
+.pair-right{padding:12px 16px}
+.pieces-hd{
+  background:var(--color-surface-accent); color:transparent; padding:14px 16px;
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  border:1px solid var(--color-border-default); border-bottom-width:0;
+  border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+}
+.pieces-hd span{visibility:hidden}
+h2{
+  font-family:var(--font-family-display); font-weight:700;
+  font-size:16px; margin:0 0 6px; letter-spacing:.04em; text-transform:uppercase;
+  color:var(--color-ink);
+}
+.note{color:var(--color-text-body); font-size:14px; margin:0 0 14px}
+.grp .hint{margin:0; color:var(--color-text-body); font-size:14px}
+.who{margin-bottom:14px}
+.field{margin-bottom:10px}
+.field:last-child{margin-bottom:0}
+.field .fl{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--color-brand-gray-11); margin-bottom:6px;
+}
+.team,.members{
+  width:100%; font:inherit; padding:10px 12px;
+  border:1px solid var(--color-border-default); background:var(--color-surface-field);
+  border-radius:var(--radius-lg); color:var(--color-ink);
+}
+.members{min-height:72px; resize:vertical}
+.board{border:1px solid var(--color-border-default); background:var(--color-surface-card); border-radius:var(--radius-xl); box-shadow:var(--shadow-card)}
+.board-hd{
+  padding:14px 16px; background:var(--color-surface-accent); color:var(--color-ink);
+  border:1px solid var(--color-border-default); border-bottom-width:0;
+  border-radius:var(--radius-xl) var(--radius-xl) 0 0;
+}
+.board-hd .eyebrow{color:var(--color-brand-primary)}
+.row{display:grid; grid-template-columns:118px 1fr; gap:10px; padding:12px 16px; border-top:1px solid var(--color-border-subtle); align-items:center}
+.row .k{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:10px; letter-spacing:.12em; text-transform:uppercase;
+  color:var(--color-brand-gray-11);
+}
+.slot{
+  min-height:40px; border:1px dashed var(--color-border-default); background:var(--color-surface-muted);
+  padding:8px 10px; font-size:15px; color:var(--color-text-muted); cursor:pointer;
+  border-radius:var(--radius-lg);
+}
+.slot.on{outline:2px solid var(--color-brand-primary); outline-offset:1px}
+.slot.filled{border-style:solid; border-color:var(--color-success-border); background:var(--color-success-surface); color:var(--color-ink)}
+.slot .x{float:right; border:0; background:none; color:var(--color-text-muted); cursor:pointer; font-size:16px; line-height:1; padding:0 0 0 8px}
+.pills{display:flex; flex-wrap:wrap; gap:6px}
+.pill{
+  background:var(--color-success-chip); border:1px solid var(--color-success-border); color:var(--color-ink);
+  padding:5px 8px; font-size:13px; border-radius:var(--radius-lg);
+}
+textarea{
+  width:100%; font:inherit; min-height:88px; padding:10px 12px;
+  border:1px solid var(--color-border-default); background:var(--color-surface-field);
+  resize:vertical; border-radius:var(--radius-lg); color:var(--color-ink);
+}
+textarea:focus,input:focus,.chip:focus-visible,.go:focus-visible,.reset:focus-visible,.ask button:focus-visible{
+  outline:2px solid var(--color-ring); outline-offset:2px;
+}
+.bank{background:var(--color-surface-card); border:1px solid var(--color-border-default); padding:16px; border-radius:var(--radius-xl); box-shadow:var(--shadow-card)}
+.grp{margin:0}
+.grp .lbl{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--color-brand-primary); margin-bottom:8px;
+  display:flex; flex-wrap:wrap; align-items:baseline; gap:6px;
+}
+.grp .lbl .name{color:var(--color-brand-primary)}
+.grp .lbl .def{
+  font-family:var(--font-family-secondary); font-weight:700; letter-spacing:0;
+  text-transform:none; color:var(--color-ink); font-size:14px;
+  flex:1 1 220px; line-height:1.4;
+}
+.chips{display:flex; flex-wrap:wrap; gap:8px}
+.chip{
+  font:inherit; font-size:14px; cursor:pointer; text-align:left;
+  background:var(--color-surface-subtle); color:var(--color-ink);
+  border:1px solid var(--color-border-default); border-left:3px solid var(--color-border-default);
+  padding:8px 10px; border-radius:var(--radius-lg);
+}
+.chip:hover{border-left-color:var(--color-brand-primary); background:var(--color-surface-accent)}
+.chip.used{opacity:.4}
+.ask{
+  margin-top:22px; background:var(--color-surface-card); border:1px solid var(--color-border-default);
+  padding:16px 18px; border-radius:var(--radius-xl); box-shadow:var(--shadow-card);
+}
+.ask p{margin:0 0 10px; font-weight:700; font-family:var(--font-family-display); text-transform:uppercase; letter-spacing:.03em; font-size:14px; color:var(--color-ink)}
+.ask .hint{font-weight:400; color:var(--color-text-body); font-size:14px; font-family:var(--font-family-secondary); text-transform:none; letter-spacing:0; margin:0 0 8px}
+.ask .hint:last-of-type{margin-bottom:12px}
+.ask .btns{display:flex; gap:8px; flex-wrap:wrap; margin-bottom:12px}
+.ask button{
+  font:inherit; cursor:pointer; background:var(--color-surface-card); border:1px solid var(--color-border-default);
+  border-left:3px solid var(--color-border-default); padding:10px 14px; border-radius:var(--radius-lg); color:var(--color-ink);
+}
+.ask button.picked{background:var(--color-success-surface); border-color:var(--color-brand-primary); border-left-color:var(--color-brand-primary); color:var(--color-ink)}
+.actions{display:flex; gap:14px; align-items:center; flex-wrap:wrap; margin-top:8px}
+.ask .go{
+  background:var(--color-brand-primary); color:var(--color-text-on-ink); border:0; border-left:0;
+  min-height:40px; height:40px; padding:0 22px; font-size:14px; cursor:pointer;
+  font-family:var(--font-family-display); font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  border-radius:var(--radius-lg);
+}
+.ask .go:hover:not([disabled]){background:var(--color-brand-primary-hover)}
+.ask .go[disabled]{opacity:.35; cursor:not-allowed}
+.ask .reset{
+  background:var(--color-surface-subtle); color:var(--color-ink); border:0; border-left:0;
+  text-decoration:none; min-height:40px; height:40px; padding:0 22px; font-size:14px; cursor:pointer;
+  font-family:var(--font-family-display); font-weight:700; text-transform:uppercase; letter-spacing:.08em;
+  border-radius:var(--radius-lg); box-shadow:var(--shadow-card);
+}
+.copied{font-size:13px; color:var(--color-brand-primary)}
+
+.defs{border:1px solid var(--color-border-default); background:var(--color-surface-card); padding:16px 18px; margin:0 0 22px; border-radius:var(--radius-xl); box-shadow:var(--shadow-card)}
+.defs .lbl{
+  font-family:var(--font-family-display); font-weight:600;
+  font-size:11px; letter-spacing:.14em; text-transform:uppercase;
+  color:var(--color-brand-primary); margin-bottom:10px;
+}
+.defs dl{margin:0; display:grid; gap:10px}
+@media (min-width:720px){ .defs dl{grid-template-columns:1fr 1fr} }
+.defs div{margin:0}
+.defs dt{
+  font-family:var(--font-family-display); font-weight:700;
+  font-size:12px; letter-spacing:.06em; text-transform:uppercase;
+  margin:0 0 2px; color:var(--color-ink);
+}
+.defs dd{margin:0; color:var(--color-text-body); font-size:14px}
+.defs .full{grid-column:1 / -1; padding-top:6px; border-top:1px solid var(--color-border-subtle)}
+footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-border-subtle); font-size:13px; color:var(--color-text-body)}
+</style>
+</head>
+<body>
+<div class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <img class="shield-mark" src="shield-mark.svg" alt="" />
+      <div class="brand-text">
+        <div class="wordmark">Paradigm Life®</div>
+        <div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="wrap">
+<header>
+  <div class="eyebrow">AI Monday · Q4 Team Challenge · Week 2</div>
+  <h1>Gather the <em>feedback</em></h1>
+</header>
+
+<section class="sit">
+  <div class="lbl">The situation</div>
+  <p>We have a new technology solution. People are using it.</p>
+  <p>We want to know what they think.</p>
+  <p>Build the thing that gathers their feedback.</p>
+</section>
+
+<section class="out">
+  <div class="lbl">The outcome</div>
+  <p>A complete spec. Someone who wasn't in your group could read your board and know exactly what this thing does.</p>
+  <ul>
+    <li>How feedback gets in</li>
+    <li>Where it lives after</li>
+    <li>A real person who owns it next</li>
+  </ul>
+</section>
+
+<section class="job">
+  <div class="lbl">Your job</div>
+  <p>In your group, spec the thing that gathers feedback on the new tool. Pick what kind of system it is, what it's allowed to use, what starts it, what it reads, what it does, and who owns it next. Then submit for a grade.</p>
+</section>
+
+<div class="who">
+  <div class="field">
+    <div class="fl">Group</div>
+    <input class="team" id="team" type="text" placeholder="Group number, e.g. 3" autocomplete="off" />
+  </div>
+  <div class="field">
+    <div class="fl">Group members</div>
+    <textarea class="members" id="members" placeholder="Names of who is in this group"></textarea>
+  </div>
+</div>
+
+<div class="heads">
+  <div>
+    <h2>The board</h2>
+    <p class="note">Tap a slot, then a piece. Or tap a piece and it lands in the open slot.</p>
+    <div class="board-hd"><div class="eyebrow" id="group-hd">Your group</div></div>
+  </div>
+  <div>
+    <h2>The pieces</h2>
+    <p class="note">One container. Two to four tools. One piece each for trigger, input, action, and handoff.</p>
+    <div class="pieces-hd"><span>Pieces</span></div>
+  </div>
+</div>
+<div class="work" id="work"></div>
+
+<div class="ask">
+  <p>Submit for a grade</p>
+  <p class="hint">Every slot needs a piece. You'll get Success or Try Again, plus the reason why.</p>
+  <div class="actions">
+    <button type="button" class="go" id="submit">Submit</button>
+    <button type="button" class="reset" id="reset">Clear form</button>
+    <span class="copied" id="copied"></span>
+  </div>
+</div>
+
+<footer>Fill out the board. Submit for a grade.</footer>
+</div>
+<script>
+var CONTAINERS = [
+  "AI Agent",
+  "Automated Workflow",
+  "Workflow with one agent step"
+];
+var TOOLS = ["In-app feedback button","Feedback log","Email","Slack / Zoom chat","SMS"];
+var CHIPS = {
+  trigger: ["A user submits feedback in the tool","We ask users what they think","The end of the week"],
+  input: ["What they said","Who they are","Whether we can fix it"],
+  action: ["Log it and route it to an owner","Log it","Create a ticket","Reply to the user"],
+  handoff: ["A named owner for feedback","The product team","Whoever built the tool"]
+};
+
+var state = {container:null, tools:[], trigger:null, input:null, action:null, handoff:null, start:null, selected:null};
+
+function $(id){ return document.getElementById(id); }
+function el(t,c,x){ var n=document.createElement(t); if(c) n.className=c; if(x!=null) n.textContent=x; return n; }
+
+function canSubmit(){
+  var ok = $("team").value.trim() && state.container && state.tools.length>=2 && state.trigger && state.input && state.action && state.handoff;
+  $("submit").classList.toggle("ready", !!ok);
+}
+
+function selectSlot(name){
+  state.selected = name;
+  document.querySelectorAll(".slot").forEach(function(s){ s.classList.toggle("on", s.dataset.slot===name); });
+}
+
+function setContainer(text){ state.container = text; render(); }
+function toggleTool(text){
+  var i = state.tools.indexOf(text);
+  if (i>=0) state.tools.splice(i,1);
+  else if (state.tools.length<4) state.tools.push(text);
+  render();
+}
+function setBlock(key, text){ state[key]=text; state.selected=null; render(); }
+function clearBlock(key, e){
+  if (e) e.stopPropagation();
+  if (key==="tools") state.tools=[];
+  else state[key]=null;
+  render();
+}
+
+function slotBox(key, empty, value, multi){
+  var box = el("div", "slot"+(value && (!multi || value.length) ? " filled":""));
+  box.dataset.slot = key;
+  if (state.selected===key) box.classList.add("on");
+  box.addEventListener("click", function(){ selectSlot(key); });
+  if (multi){
+    if (!value.length) box.appendChild(document.createTextNode(empty));
+    else {
+      var pills = el("div","pills");
+      value.forEach(function(t){
+        var p = el("span","pill", t);
+        var x = el("button","x","\u00d7");
+        x.addEventListener("click", function(ev){ ev.stopPropagation(); toggleTool(t); });
+        p.appendChild(x); pills.appendChild(p);
+      });
+      box.appendChild(pills);
+    }
+  } else if (!value){
+    box.appendChild(document.createTextNode(empty));
+  } else {
+    var x = el("button","x","\u00d7");
+    x.addEventListener("click", function(ev){ clearBlock(key, ev); });
+    box.appendChild(x);
+    box.appendChild(document.createTextNode(value));
+  }
+  return box;
+}
+
+function leftRow(k, node){
+  var r = el("div","row");
+  r.appendChild(el("div","k", k));
+  r.appendChild(node);
+  var wrap = el("div","pair-left");
+  wrap.appendChild(r);
+  return wrap;
+}
+
+function rightGroup(label, kind, items, usedFn){
+  var right = el("div","pair-right");
+  var g = el("div","grp");
+  var lab = el("div","lbl");
+  lab.appendChild(el("span","name", label + ":"));
+  if (DEFS[label]) lab.appendChild(el("span","def", DEFS[label]));
+  g.appendChild(lab);
+  if (items){
+    var chips = el("div","chips");
+    items.forEach(function(t){
+      var b = el("button","chip", t);
+      b.type="button";
+      if (usedFn(t)) b.classList.add("used");
+      b.addEventListener("click", function(){ place(kind, t); });
+      chips.appendChild(b);
+    });
+    g.appendChild(chips);
+  } else {
+    g.appendChild(el("p","hint", "Write it on the board. No piece for this one."));
+  }
+  right.appendChild(g);
+  return right;
+}
+
+var DEFS = {
+  Container: "The kind of system you are building.",
+  Tools: "The systems it is allowed to use, including how feedback comes in and where it lives. If a tool is not on the board, it cannot use it. Pick only what it actually needs.",
+  Trigger: "The moment it wakes up.",
+  Input: "The one thing it has to capture.",
+  Action: "The one move it makes.",
+  Handoff: "The real person who owns it after this runs."
+};
+
+function pair(label, leftNode, kind, items, usedFn){
+  var p = el("div","pair");
+  p.appendChild(leftRow(label, leftNode));
+  p.appendChild(rightGroup(label, kind, items, usedFn));
+  return p;
+}
+
+function render(){
+  var hd = $("group-hd");
+  if (hd) hd.textContent = groupLabel();
+  var work = $("work");
+  work.innerHTML = "";
+  work.appendChild(pair("Container", slotBox("container","Tap 1 container piece", state.container), "container", CONTAINERS, function(t){ return state.container===t; }));
+  work.appendChild(pair("Tools", slotBox("tools","Tap 2 to 4 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
+  work.appendChild(pair("Trigger", slotBox("trigger","Tap 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
+  work.appendChild(pair("Input", slotBox("input","Tap 1 input", state.input), "input", CHIPS.input, function(t){ return state.input===t; }));
+  work.appendChild(pair("Action", slotBox("action","Tap 1 action", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
+  work.appendChild(pair("Handoff", slotBox("handoff","Tap 1 handoff", state.handoff), "handoff", CHIPS.handoff, function(t){ return state.handoff===t; }));
+  canSubmit();
+}
+
+function place(kind, text){
+  if (kind==="container"){ setContainer(text); return; }
+  if (kind==="tools"){ toggleTool(text); return; }
+  var key = (state.selected && CHIPS[state.selected]) ? state.selected : kind;
+  if (CHIPS[key] && CHIPS[key].indexOf(text)>=0) setBlock(key, text);
+}
+
+function groupLabel(){
+  var n = $("team").value.trim();
+  if (!n) return "Your group";
+  if (/^group\b/i.test(n)) return n;
+  return "Group " + n;
+}
+function membersText(){ return $("members").value.trim(); }
+
+function boardText(){
+  var team = groupLabel();
+  var people = membersText();
+  return [
+    team + " \u2014 Gather the feedback",
+    "Group members: " + (people || "(none listed)"),
+    "Container: " + (state.container||""),
+    "Tools: " + state.tools.join(", "),
+    "Trigger: " + (state.trigger||""),
+    "Input: " + (state.input||""),
+    "Action: " + (state.action||""),
+    "Handoff: " + (state.handoff||""),
+    "Submitted for grade"
+  ].join("\n");
+}
+
+$("team").addEventListener("input", function(){ render(); maybeStart(); });
+$("members").addEventListener("input", render);
+function missingBits(){
+  var m = [];
+  if (!$("team").value.trim()) m.push("group number");
+  if (!state.container) m.push("container");
+  if (state.tools.length<2) m.push("2 to 4 tools");
+  if (!state.trigger) m.push("trigger");
+  if (!state.input) m.push("input");
+  if (!state.action) m.push("action");
+  if (!state.handoff) m.push("handoff");
+  return m;
+}
+$("submit").addEventListener("click", function(){
+  var miss = missingBits();
+  if (miss.length){
+    $("copied").textContent = "Still need: " + miss.join(", ") + ".";
+    return;
+  }
+  var payload = boardPayload("submit");
+  window.__handoffSubmit = payload;
+  var slug = groupSlug();
+  try { localStorage.setItem("gather-feedback-board-"+slug, JSON.stringify(payload)); } catch (e) {}
+  $("submit").disabled = true;
+  $("copied").textContent = "Sending to Atlas\u2026";
+  pingHandoff(payload).then(function(){
+    $("copied").textContent = "Submitted. Opening your grade.";
+    location.href = "grade.html?g=" + encodeURIComponent(slug);
+  });
+});
+$("reset").addEventListener("click", function(){
+  state = {container:null, tools:[], trigger:null, input:null, action:null, handoff:null, start:null, selected:null};
+  started = false;
+  $("team").value=""; $("members").value=""; $("copied").textContent="";
+  render();
+});
+
+function groupSlug(){
+  var n = $("team").value.trim();
+  var m = n.match(/(\d+)/);
+  if (m) return m[1];
+  return (n || "group").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+}
+function pingHandoff(payload){
+  var body = JSON.stringify(payload);
+  var jobs = [];
+  jobs.push(fetch("https://ntfy.sh/paradigm-gather-feedback-atlas", {
+    method: "POST",
+    headers: {"Title": (payload.kind||"submit") + " " + (payload.group||""), "Tags": "clipboard", "Content-Type": "application/json"},
+    body: body
+  }).catch(function(){}));
+  var url = window.HANDOFF_WEBHOOK;
+  if (url){
+    jobs.push(fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:body, mode:"no-cors"}).catch(function(){}));
+  }
+  return Promise.all(jobs);
+}
+window.HANDOFF_WEBHOOK = "";
+var started = false;
+function boardPayload(kind){
+  return {
+    kind: kind,
+    at: new Date().toISOString(),
+    group: groupLabel(),
+    members: membersText(),
+    container: state.container,
+    tools: state.tools.slice(),
+    trigger: state.trigger,
+    input: state.input,
+    action: state.action,
+    handoff: state.handoff
+  };
+}
+function maybeStart(){
+  if (started) return;
+  if (!$("team").value.trim()) return;
+  started = true;
+  var p = boardPayload("start");
+  window.__handoffStart = p;
+  pingHandoff(p);
+}
+
+render();
+</script>
+</body>
+</html>
