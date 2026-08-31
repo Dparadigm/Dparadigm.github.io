@@ -1,0 +1,16 @@
+{
+  "group": "Group Test 1",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group Test 1 built an AI agent that wakes on an email notification, reads phone number, client name, and policy number, uses Email, Call Transcript, and Zoom Channel, matches the client to a team, summarizes the call, includes a thank-you email skill, and forwards the voicemail and summary to the representing team.",
+  "issue": "Tools, inputs, and skills miss the warmup best board. Zoom Channel is in instead of CRM. Policy number is in instead of team name. The thank-you email is a skill instead of matching the caller to an existing client.",
+  "why": "The best board is Call Transcript, CRM, and Email; phone number, client name, and team name; match the caller, match the team, summarize; then forward. Action and trigger are right. The extra Zoom channel, policy number, and thank-you skill mean the next person still has the wrong facts and the wrong first jobs.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["Email", "Call Transcript", "Zoom Channel"],
+    "trigger": "An email notification",
+    "inputs": ["Phone number", "Client name", "Policy number"],
+    "skills": ["Match the client to the Team that best represents them", "Summarize the call and what is requested", "Send response email to client with \"Thank You, we received your message and will get back to you by the end of the next business day.\""],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
