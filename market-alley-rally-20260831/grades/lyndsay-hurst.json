@@ -1,0 +1,16 @@
+{
+  "group": "Group Lyndsay Hurst",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group Lyndsay Hurst built an AI agent that wakes on an email notification, reads client name, team name, and phone number, uses Call Transcript, CRM, and Email, matches the caller to an existing client, logs the call in the CRM, matches the client to the representing team, and forwards the voicemail and summary to that team.",
+  "issue": "Skills miss the warmup best board. Log the call in the CRM is in instead of summarize the call and what is requested.",
+  "why": "Container, tools, trigger, inputs, and action match the best board. The three skills should be match the caller, match the team, and summarize. Logging the call is not one of those three, so the next person still has to guess the job of turning the voicemail into what was asked.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["Call Transcript", "CRM", "Email"],
+    "trigger": "An email notification",
+    "inputs": ["Client name", "Team name", "Phone number"],
+    "skills": ["Match the caller to an existing client", "Log the call in the CRM", "Match the client to the Team that best represents them"],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
