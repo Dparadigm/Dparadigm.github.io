@@ -1,0 +1,16 @@
+{
+  "group": "Group Test",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Group Test built an AI agent that wakes on an email notification, reads phone number, client name, and team name, uses Call Transcript, CRM, and Email, matches the caller to an existing client, matches them to the representing team, summarizes the call and the ask, then forwards the voicemail and summary to that team.",
+  "issue": "None. This is the warmup best board.",
+  "why": "Container is AI Agent because the next step is not the same every time. Tools are Call Transcript, CRM, and Email. Trigger is the voicemail box mailing that a new message landed. Inputs are who called, who they are, and which team. Skills identify the client, identify the team, and summarize. Action is the forward to the representing team, not a thank-you or a CRM log.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["Call Transcript", "Email", "CRM"],
+    "trigger": "An email notification",
+    "inputs": ["Phone number", "Client name", "Team name"],
+    "skills": ["Match the client to the Team that best represents them", "Summarize the call and what is requested", "Match the caller to an existing client"],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
