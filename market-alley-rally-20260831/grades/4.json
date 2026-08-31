@@ -2,9 +2,9 @@
   "group": "Group 4",
   "members": "",
   "verdict": "not-yet",
-  "happened": "Group 4 built an automated workflow that wakes on an email notification, reads client name, phone number, and team name, uses Call Transcript, CRM, and Email, matches the caller to an existing client, logs the call in the CRM, and uses the forward both as a skill and as the action.",
-  "issue": "Container and skills miss the warmup best board. Automated Workflow is in instead of AI Agent. Logging the call and the forward are skills instead of matching the team and summarizing the call.",
-  "why": "Tools, trigger, inputs, and action are right. This is not the same job every time, so it needs an AI Agent. The CRM log and the forward-as-skill leave matching the team and summarizing the ask unassigned.",
+  "happened": "Group 4 built an automated workflow that wakes on an email notification, reads client name, phone number, and team name, uses Call Transcript, CRM, and Email, matches the caller, logs the call, uses forward-the-voicemail as a skill, and forwards the voicemail and summary to the representing team.",
+  "issue": "Container and skills miss the warmup best board. Automated Workflow is in instead of AI Agent. Skills log the call and repeat the forward instead of matching the team and summarizing.",
+  "why": "The message changes and who they need changes, so the container is AI Agent. Tools, trigger, inputs, and action match. The three skills should be match the caller, match the team, and summarize.",
   "board": {
     "container": "Automated Workflow",
     "tools": ["Call Transcript", "CRM", "Email"],
