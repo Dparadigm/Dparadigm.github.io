@@ -1,0 +1,16 @@
+{
+  "group": "Group Wade Reed",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group Wade Reed built an AI agent that wakes on an email notification, reads phone number, client name, and team name, uses CRM, Call Transcript, and Claude MCP Server, matches the caller to an existing client, matches them to the representing team, uses the forward as a skill, then sends a thank-you email to the client.",
+  "issue": "Tools, skills, and action miss the warmup best board. Claude MCP Server is in instead of Email. The forward is a skill instead of summarizing the call. The action is a thank-you email instead of the forward to the representing team.",
+  "why": "Inputs, trigger, and container are right. Email is missing, the first job after matching is a thank-you instead of a summary, and the voicemail never actually goes to the team as the action. Client follow-up still happens; it is just not the chip.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["CRM", "Call Transcript", "Claude MCP Server"],
+    "trigger": "An email notification",
+    "inputs": ["Phone number", "Client name", "Team name"],
+    "skills": ["Match the caller to an existing client", "Match the client to the Team that best represents them", "Forward voicemail and a summary of the call request to the representing team"],
+    "action": "Send response email to client with \"Thank You, we received your message and will get back to you by the end of the next business day.\""
+  }
+}

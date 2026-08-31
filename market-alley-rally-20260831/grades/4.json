@@ -1,0 +1,16 @@
+{
+  "group": "Group 4",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group 4 built an automated workflow that wakes on an email notification, reads client name, phone number, and team name, uses Call Transcript, CRM, and Email, matches the caller to an existing client, logs the call in the CRM, and uses the forward both as a skill and as the action.",
+  "issue": "Container and skills miss the warmup best board. Automated Workflow is in instead of AI Agent. Logging the call and the forward are skills instead of matching the team and summarizing the call.",
+  "why": "Tools, trigger, inputs, and action are right. This is not the same job every time, so it needs an AI Agent. The CRM log and the forward-as-skill leave matching the team and summarizing the ask unassigned.",
+  "board": {
+    "container": "Automated Workflow",
+    "tools": ["Call Transcript", "CRM", "Email"],
+    "trigger": "An email notification",
+    "inputs": ["Client name", "Phone number", "Team name"],
+    "skills": ["Match the caller to an existing client", "Log the call in the CRM", "Forward voicemail and a summary of the call request to the representing team"],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
