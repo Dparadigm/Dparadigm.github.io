@@ -1,0 +1,16 @@
+{
+  "group": "Group Stevens - Group 5",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group Stevens built an AI agent that wakes on an email notification, reads client name, phone number, and team name, uses Call Transcript, CRM, and Claude MCP Server, turns the voicemail into text, matches the team, matches the caller, and sends the client a thank-you email.",
+  "issue": "Tools, skills, and action miss the warmup best board. Claude MCP Server is in instead of Email. Skills turn the voicemail into text instead of summarizing. The action is the thank-you email instead of the forward.",
+  "why": "Best board tools are Call Transcript, CRM, and Email. Skills are match the caller, match the team, and summarize. Action is forward the voicemail and summary to the representing team. The thank-you is not the one move on this board.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["Call Transcript", "CRM", "Claude MCP Server"],
+    "trigger": "An email notification",
+    "inputs": ["Client name", "Phone number", "Team name"],
+    "skills": ["Turn the voicemail into text", "Match the client to the Team that best represents them", "Match the caller to an existing client"],
+    "action": "Send response email to client with \"Thank You, we received your message and will get back to you by the end of the next business day.\""
+  }
+}
