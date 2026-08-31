@@ -319,7 +319,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 <div class="heads">
   <div>
     <h2>The board</h2>
-    <p class="note">Tap a slot, then a piece. Or tap a piece and it lands in the open slot.</p>
+    <p class="note">Select a slot, then a piece. Or select a piece and it lands in the open slot.</p>
     <div class="board-hd"><div class="eyebrow" id="group-hd">Your group</div></div>
   </div>
   <div>
@@ -498,12 +498,12 @@ function render(){
   if (hd) hd.textContent = groupLabel();
   var work = $("work");
   work.innerHTML = "";
-  work.appendChild(pair("Container", slotBox("container","Tap 1 container", state.container), "container", CONTAINERS, function(t){ return state.container===t; }));
-  work.appendChild(pair("Tools", slotBox("tools","Tap 3 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
-  work.appendChild(pair("Trigger", slotBox("trigger","Tap 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
-  work.appendChild(pair("Inputs", slotBox("inputs","Tap 3 inputs", state.inputs, true), "inputs", CHIPS.inputs, function(t){ return state.inputs.indexOf(t)>=0; }));
-  work.appendChild(pair("Skills", slotBox("skills","Tap 3 skills", state.skills, true), "skills", CHIPS.skills, function(t){ return state.skills.indexOf(t)>=0; }));
-  work.appendChild(pair("Action", slotBox("action","Tap 1 action", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
+  work.appendChild(pair("Container", slotBox("container","Select 1 container", state.container), "container", CONTAINERS, function(t){ return state.container===t; }));
+  work.appendChild(pair("Tools", slotBox("tools","Select 3 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
+  work.appendChild(pair("Trigger", slotBox("trigger","Select 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
+  work.appendChild(pair("Inputs", slotBox("inputs","Select 3 inputs", state.inputs, true), "inputs", CHIPS.inputs, function(t){ return state.inputs.indexOf(t)>=0; }));
+  work.appendChild(pair("Skills", slotBox("skills","Select 3 skills", state.skills, true), "skills", CHIPS.skills, function(t){ return state.skills.indexOf(t)>=0; }));
+  work.appendChild(pair("Action", slotBox("action","Select 1 action", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
   canSubmit();
 }
 
