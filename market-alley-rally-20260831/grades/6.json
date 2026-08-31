@@ -1,0 +1,16 @@
+{
+  "group": "Group 6",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group 6 built an automated workflow that wakes on a Zoom chat notification, reads phone number, client name, and team name, uses Email, CRM, and Call Transcript, logs the call, summarizes, matches the caller, and forwards the voicemail and summary to the representing team.",
+  "issue": "Container and skills miss the warmup best board. Automated Workflow is in instead of AI Agent. Skills log the call instead of matching the client to the representing team.",
+  "why": "The next step is not the same every time, so the container is AI Agent. Zoom chat as trigger is allowed. Tools, inputs, and action match. The three skills should be match the caller, match the team, and summarize.",
+  "board": {
+    "container": "Automated Workflow",
+    "tools": ["Email", "CRM", "Call Transcript"],
+    "trigger": "A Zoom chat notification",
+    "inputs": ["Phone number", "Client name", "Team name"],
+    "skills": ["Log the call in the CRM", "Summarize the call and what is requested", "Match the caller to an existing client"],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
