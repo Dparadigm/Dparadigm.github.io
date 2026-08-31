@@ -1,0 +1,16 @@
+{
+  "group": "Group Wade",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Group Wade built an AI agent that wakes on an email notification, reads phone number, client name, and team name, uses Email, Call Transcript, and CRM, matches the caller to an existing client, matches the client to the representing team, summarizes the call and what is requested, then forwards the voicemail and summary to that team.",
+  "issue": "",
+  "why": "Container, tools, trigger, inputs, skills, and action all match the warmup best board.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["Email", "Call Transcript", "CRM"],
+    "trigger": "An email notification",
+    "inputs": ["Phone number", "Client name", "Team name"],
+    "skills": ["Match the caller to an existing client", "Match the client to the Team that best represents them", "Summarize the call and what is requested"],
+    "action": "Forward voicemail and a summary of the call request to the representing team"
+  }
+}
