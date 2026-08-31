@@ -1,0 +1,16 @@
+{
+  "group": "Group Wade Reed",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group Wade Reed built an AI agent that wakes on an email notification, reads phone number, client name, and team name, uses CRM, Call Transcript, and Claude MCP Server, matches the caller, matches the team, uses forward-the-voicemail as a skill, and sends the client a thank-you email.",
+  "issue": "Tools, skills, and action miss the warmup best board. Claude MCP Server is in instead of Email. Forwarding the voicemail is a skill instead of summarizing. The action is the thank-you email instead of the forward to the representing team.",
+  "why": "Best board tools are Call Transcript, CRM, and Email. Skills are match the caller, match the team, and summarize. Action is the forward. The thank-you goes to the client before a human closes it, and it is not the one move on this board.",
+  "board": {
+    "container": "AI Agent",
+    "tools": ["CRM", "Call Transcript", "Claude MCP Server"],
+    "trigger": "An email notification",
+    "inputs": ["Phone number", "Client name", "Team name"],
+    "skills": ["Match the caller to an existing client", "Match the client to the Team that best represents them", "Forward voicemail and a summary of the call request to the representing team"],
+    "action": "Send response email to client with \"Thank You, we received your message and will get back to you by the end of the next business day.\""
+  }
+}
