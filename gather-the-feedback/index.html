@@ -109,6 +109,8 @@ header{padding:0 0 18px}
 .out p{color:var(--color-ink); font-weight:700}
 .out ul{margin:8px 0 0; padding:0 0 0 1.2em; color:var(--color-ink)}
 .out li{margin:4px 0; font-weight:400; color:var(--color-text-body)}
+.job ul{margin:8px 0 0; padding:0 0 0 1.2em}
+.job li{margin:4px 0; color:var(--color-text-body)}
 .who{
   display:grid; gap:12px; margin:0 0 18px;
 }
@@ -291,32 +293,35 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
   <div class="lbl">The situation</div>
   <p>We have a new technology solution. People are using it.</p>
   <p>We want to know what they think.</p>
-  <p>Build the thing that gathers their feedback.</p>
+  <p>Build a feedback solution</p>
 </section>
 
 <section class="out">
   <div class="lbl">The outcome</div>
-  <p>A complete spec. Someone who wasn't in your group could read your board and know exactly what this thing does.</p>
   <ul>
     <li>How feedback gets in</li>
     <li>Where it lives after</li>
-    <li>A real person who owns it next</li>
+    <li>Who owns the feedback</li>
   </ul>
 </section>
 
 <section class="job">
   <div class="lbl">Your job</div>
-  <p>In your group, spec the thing that gathers feedback on the new tool. Pick what kind of system it is, what it's allowed to use, what starts it, what it reads, what it does, and who owns it next. Then submit for a grade.</p>
+  <p>In your group:</p>
+  <ul>
+    <li>Pick what kind of system it is</li>
+    <li>what it's allowed to use,</li>
+    <li>what starts it</li>
+    <li>what it reads</li>
+    <li>what it does</li>
+    <li>and who owns it next</li>
+  </ul>
 </section>
 
 <div class="who">
   <div class="field">
     <div class="fl">Group</div>
     <input class="team" id="team" type="text" placeholder="Group number, e.g. 3" autocomplete="off" />
-  </div>
-  <div class="field">
-    <div class="fl">Group members</div>
-    <textarea class="members" id="members" placeholder="Names of who is in this group"></textarea>
   </div>
 </div>
 
@@ -328,7 +333,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
   </div>
   <div>
     <h2>The pieces</h2>
-    <p class="note">One container. Two to four tools. One piece each for trigger, input, action, and handoff.</p>
+    <p class="note">One container. One to four tools. One trigger. One to four inputs. One to four actions. One handoff.</p>
     <div class="pieces-hd"><span>Pieces</span></div>
   </div>
 </div>
@@ -336,7 +341,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 
 <div class="ask">
   <p>Submit for a grade</p>
-  <p class="hint">Every slot needs a piece. You'll get Success or Try Again, plus the reason why.</p>
+  <p class="hint">Fill every slot. Tools, inputs, and actions can take more than one piece. You'll get Success or Try Again, plus the reason why.</p>
   <div class="actions">
     <button type="button" class="go" id="submit">Submit</button>
     <button type="button" class="reset" id="reset">Clear form</button>
@@ -349,24 +354,24 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 <script>
 var CONTAINERS = [
   "AI Agent",
-  "Automated Workflow",
-  "Workflow with one agent step"
+  "AI Automated Workflow"
 ];
-var TOOLS = ["In-app feedback button","Feedback log","Email","Slack / Zoom chat","SMS"];
+var TOOLS = ["In-app feedback button","Phone call","Feedback log","Email","Slack / Zoom chat","SMS","Verbal communication"];
 var CHIPS = {
-  trigger: ["A user submits feedback in the tool","We ask users what they think","The end of the week"],
-  input: ["What they said","Who they are","Whether we can fix it"],
-  action: ["Log it and route it to an owner","Log it","Create a ticket","Reply to the user"],
-  handoff: ["A named owner for feedback","The product team","Whoever built the tool"]
+  trigger: ["The user thinks of feedback","A user submits feedback in the tool","We ask users what they think","The end of the week"],
+  input: ["What they said","When we can fix it","Who they are","Whether we can fix it","Is the tool helping them"],
+  action: ["Log it and route it to an owner","Log it","Create a ticket","Reply to user","Refresh","Update all company users","Confirm receipt with submitting user"],
+  handoff: ["The user who submitted","A named owner for feedback","The product team","Whoever built the tool"]
 };
+var MULTI = { tools: TOOLS, input: CHIPS.input, action: CHIPS.action };
 
-var state = {container:null, tools:[], trigger:null, input:null, action:null, handoff:null, start:null, selected:null};
+var state = {container:null, tools:[], trigger:null, input:[], action:[], handoff:null, start:null, selected:null};
 
 function $(id){ return document.getElementById(id); }
 function el(t,c,x){ var n=document.createElement(t); if(c) n.className=c; if(x!=null) n.textContent=x; return n; }
 
 function canSubmit(){
-  var ok = $("team").value.trim() && state.container && state.tools.length>=2 && state.trigger && state.input && state.action && state.handoff;
+  var ok = $("team").value.trim() && state.container && state.tools.length>=1 && state.trigger && state.input.length>=1 && state.action.length>=1 && state.handoff;
   $("submit").classList.toggle("ready", !!ok);
 }
 
@@ -376,16 +381,17 @@ function selectSlot(name){
 }
 
 function setContainer(text){ state.container = text; render(); }
-function toggleTool(text){
-  var i = state.tools.indexOf(text);
-  if (i>=0) state.tools.splice(i,1);
-  else if (state.tools.length<4) state.tools.push(text);
+function toggleMulti(key, text){
+  var arr = state[key];
+  var i = arr.indexOf(text);
+  if (i>=0) arr.splice(i,1);
+  else if (arr.length<4) arr.push(text);
   render();
 }
 function setBlock(key, text){ state[key]=text; state.selected=null; render(); }
 function clearBlock(key, e){
   if (e) e.stopPropagation();
-  if (key==="tools") state.tools=[];
+  if (MULTI[key]) state[key]=[];
   else state[key]=null;
   render();
 }
@@ -402,7 +408,7 @@ function slotBox(key, empty, value, multi){
       value.forEach(function(t){
         var p = el("span","pill", t);
         var x = el("button","x","\u00d7");
-        x.addEventListener("click", function(ev){ ev.stopPropagation(); toggleTool(t); });
+        x.addEventListener("click", function(ev){ ev.stopPropagation(); toggleMulti(key, t); });
         p.appendChild(x); pills.appendChild(p);
       });
       box.appendChild(pills);
@@ -453,11 +459,11 @@ function rightGroup(label, kind, items, usedFn){
 
 var DEFS = {
   Container: "The kind of system you are building.",
-  Tools: "The systems it is allowed to use, including how feedback comes in and where it lives. If a tool is not on the board, it cannot use it. Pick only what it actually needs.",
-  Trigger: "The moment it wakes up.",
-  Input: "The one thing it has to capture.",
-  Action: "The one move it makes.",
-  Handoff: "The real person who owns it after this runs."
+  Tools: "The Systems it is allowed to use, including how feedback comes in and where it lives. (Select 1-4 tools)",
+  Trigger: "What starts the process (Select 1)",
+  Input: "The information it captures (Select 1-4 items)",
+  Action: "The action it takes (Select 1-4)",
+  Handoff: "The person who owns the feedback (Select 1)"
 };
 
 function pair(label, leftNode, kind, items, usedFn){
@@ -473,17 +479,21 @@ function render(){
   var work = $("work");
   work.innerHTML = "";
   work.appendChild(pair("Container", slotBox("container","Tap 1 container piece", state.container), "container", CONTAINERS, function(t){ return state.container===t; }));
-  work.appendChild(pair("Tools", slotBox("tools","Tap 2 to 4 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
+  work.appendChild(pair("Tools", slotBox("tools","Tap 1 to 4 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
   work.appendChild(pair("Trigger", slotBox("trigger","Tap 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
-  work.appendChild(pair("Input", slotBox("input","Tap 1 input", state.input), "input", CHIPS.input, function(t){ return state.input===t; }));
-  work.appendChild(pair("Action", slotBox("action","Tap 1 action", state.action), "action", CHIPS.action, function(t){ return state.action===t; }));
+  work.appendChild(pair("Input", slotBox("input","Tap 1 to 4 inputs", state.input, true), "input", CHIPS.input, function(t){ return state.input.indexOf(t)>=0; }));
+  work.appendChild(pair("Action", slotBox("action","Tap 1 to 4 actions", state.action, true), "action", CHIPS.action, function(t){ return state.action.indexOf(t)>=0; }));
   work.appendChild(pair("Handoff", slotBox("handoff","Tap 1 handoff", state.handoff), "handoff", CHIPS.handoff, function(t){ return state.handoff===t; }));
   canSubmit();
 }
 
 function place(kind, text){
   if (kind==="container"){ setContainer(text); return; }
-  if (kind==="tools"){ toggleTool(text); return; }
+  if (MULTI[kind]){
+    var key = (state.selected && MULTI[state.selected]) ? state.selected : kind;
+    if (MULTI[key] && MULTI[key].indexOf(text)>=0) toggleMulti(key, text);
+    return;
+  }
   var key = (state.selected && CHIPS[state.selected]) ? state.selected : kind;
   if (CHIPS[key] && CHIPS[key].indexOf(text)>=0) setBlock(key, text);
 }
@@ -494,34 +504,30 @@ function groupLabel(){
   if (/^group\b/i.test(n)) return n;
   return "Group " + n;
 }
-function membersText(){ return $("members").value.trim(); }
 
 function boardText(){
   var team = groupLabel();
-  var people = membersText();
   return [
     team + " \u2014 Gather the feedback",
-    "Group members: " + (people || "(none listed)"),
     "Container: " + (state.container||""),
     "Tools: " + state.tools.join(", "),
     "Trigger: " + (state.trigger||""),
-    "Input: " + (state.input||""),
-    "Action: " + (state.action||""),
+    "Input: " + state.input.join(", "),
+    "Action: " + state.action.join(", "),
     "Handoff: " + (state.handoff||""),
     "Submitted for grade"
   ].join("\n");
 }
 
 $("team").addEventListener("input", function(){ render(); maybeStart(); });
-$("members").addEventListener("input", render);
 function missingBits(){
   var m = [];
   if (!$("team").value.trim()) m.push("group number");
   if (!state.container) m.push("container");
-  if (state.tools.length<2) m.push("2 to 4 tools");
+  if (state.tools.length<1) m.push("1 to 4 tools");
   if (!state.trigger) m.push("trigger");
-  if (!state.input) m.push("input");
-  if (!state.action) m.push("action");
+  if (state.input.length<1) m.push("1 to 4 inputs");
+  if (state.action.length<1) m.push("1 to 4 actions");
   if (!state.handoff) m.push("handoff");
   return m;
 }
@@ -543,9 +549,9 @@ $("submit").addEventListener("click", function(){
   });
 });
 $("reset").addEventListener("click", function(){
-  state = {container:null, tools:[], trigger:null, input:null, action:null, handoff:null, start:null, selected:null};
+  state = {container:null, tools:[], trigger:null, input:[], action:[], handoff:null, start:null, selected:null};
   started = false;
-  $("team").value=""; $("members").value=""; $("copied").textContent="";
+  $("team").value=""; $("copied").textContent="";
   render();
 });
 
@@ -576,12 +582,12 @@ function boardPayload(kind){
     kind: kind,
     at: new Date().toISOString(),
     group: groupLabel(),
-    members: membersText(),
+    members: "",
     container: state.container,
     tools: state.tools.slice(),
     trigger: state.trigger,
-    input: state.input,
-    action: state.action,
+    input: state.input.slice(),
+    action: state.action.slice(),
     handoff: state.handoff
   };
 }

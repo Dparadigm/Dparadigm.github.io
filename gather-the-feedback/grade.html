@@ -193,8 +193,8 @@ function showBoard(b){
   box.appendChild(line("Container", b.container));
   box.appendChild(line("Tools", (b.tools||[]).join(", ")));
   box.appendChild(line("Trigger", b.trigger));
-  box.appendChild(line("Input", b.input));
-  box.appendChild(line("Action", b.action));
+  box.appendChild(line("Input", Array.isArray(b.input) ? b.input.join(", ") : b.input));
+  box.appendChild(line("Action", Array.isArray(b.action) ? b.action.join(", ") : b.action));
   box.appendChild(line("Handoff", b.handoff));
   document.getElementById("board-card").hidden = false;
 }
