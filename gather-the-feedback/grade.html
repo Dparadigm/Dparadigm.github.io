@@ -137,7 +137,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
     <h1>Your <em>grade</em></h1>
   </header>
 
-  <section class="card grade" id="grade-card">
+  <section class="card grade waiting" id="grade-card">
     <div class="lbl">The grade</div>
     <div class="verdict" id="verdict">Waiting</div>
     <p id="grade-lead">Your challenge is being graded. It will update shortly.</p>
@@ -202,7 +202,7 @@ function applyGrade(g){
   var yes = g.verdict === "yes";
   var card = document.getElementById("grade-card");
   var v = document.getElementById("verdict");
-  card.classList.remove("yes","no");
+  card.classList.remove("yes","no","waiting");
   card.classList.add(yes ? "yes" : "no");
   v.className = "verdict " + (yes ? "yes" : "no");
   v.textContent = yes ? "Success" : "Try Again";
@@ -216,8 +216,10 @@ function applyGrade(g){
   document.getElementById("happened-card").hidden = !g.happened;
   document.getElementById("issue-card").hidden = !g.issue;
   document.getElementById("why-card").hidden = !g.why;
-  if (g.board) showBoard(g.board);
-  else if (g.group) showBoard(g);
+  var board = g.board ? Object.assign({}, g.board) : (g.group ? g : null);
+  if (board && !board.group && g.group) board.group = g.group;
+  if (board && !board.members && g.members) board.members = g.members;
+  if (board) showBoard(board);
 }
 function loadLocal(){
   var s = slug();
@@ -227,17 +229,46 @@ function loadLocal(){
     if (raw) showBoard(JSON.parse(raw));
   } catch (e) {}
 }
+function slugCandidates(){
+  var s = slug();
+  if (!s) return [];
+  var out = [s];
+  var bare = s.replace(/^group-/i, "");
+  if (bare && bare !== s) out.push(bare);
+  if (s.indexOf("-") < 0) out.push("group-" + s);
+  return out;
+}
+function fetchGrade(paths, i){
+  i = i || 0;
+  if (i >= paths.length) return Promise.reject(new Error("pending"));
+  return fetch(paths[i] + "?t=" + Date.now(), {cache:"no-store"})
+    .then(function(r){
+      if (!r.ok) return fetchGrade(paths, i + 1);
+      return r.json();
+    });
+}
+var graded = false;
 function poll(){
+  if (graded) return;
   var s = slug();
   if (!s){
     document.getElementById("verdict").textContent = "Missing group";
     document.getElementById("grade-lead").textContent = "Open this page from Submit on the board so we know which group to grade.";
     return;
   }
-  fetch("grades/" + encodeURIComponent(s) + ".json?t=" + Date.now(), {cache:"no-store"})
-    .then(function(r){ if (!r.ok) throw new Error("pending"); return r.json(); })
-    .then(function(g){ applyGrade(g); })
-    .catch(function(){ setTimeout(poll, 2000); });
+  var paths = slugCandidates().map(function(x){ return "grades/" + encodeURIComponent(x) + ".json"; });
+  fetchGrade(paths)
+    .then(function(g){
+      graded = true;
+      applyGrade(g);
+    })
+    .catch(function(){
+      var v = document.getElementById("verdict");
+      if (v && v.textContent === "Waiting") v.textContent = "Waiting…";
+      document.getElementById("grade-lead").textContent =
+        "This challenge is being graded. This page checks every few seconds and updates on its own — no refresh needed.";
+      setTimeout(poll, 2000);
+    });
 }
 loadLocal();
 poll();
