@@ -1,0 +1,28 @@
+{
+  "group": "Group 3 - Stevens",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group 3 - Stevens: AI Automated Workflow; tools In-app feedback button, Feedback log, Email; trigger We ask users what they think; input What they said, Is the tool helping them, Who they are; action Log it and route it to an owner, Confirm receipt with submitting user, Create a ticket; handoff A named owner for feedback.",
+  "issue": "trigger should be A user submits feedback in the tool; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user",
+  "why": "Missed: trigger should be A user submits feedback in the tool; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "In-app feedback button",
+      "Feedback log",
+      "Email"
+    ],
+    "trigger": "We ask users what they think",
+    "input": [
+      "What they said",
+      "Is the tool helping them",
+      "Who they are"
+    ],
+    "action": [
+      "Log it and route it to an owner",
+      "Confirm receipt with submitting user",
+      "Create a ticket"
+    ],
+    "handoff": "A named owner for feedback"
+  }
+}
