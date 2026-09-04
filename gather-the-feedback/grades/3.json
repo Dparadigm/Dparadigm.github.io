@@ -1,0 +1,28 @@
+{
+  "group": "Group 3",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group 3: AI Agent; tools In-app feedback button, Feedback log, Email, Slack / Zoom chat; trigger The user thinks of feedback; input Who they are, Is the tool helping them, What they said, Whether we can fix it; action Create a ticket; handoff The user who submitted.",
+  "issue": "container should be AI Automated Workflow; trigger should be A user submits feedback in the tool; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user; handoff should be A named owner for feedback",
+  "why": "Missed: container should be AI Automated Workflow; trigger should be A user submits feedback in the tool; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user; handoff should be A named owner for feedback.",
+  "board": {
+    "container": "AI Agent",
+    "tools": [
+      "In-app feedback button",
+      "Feedback log",
+      "Email",
+      "Slack / Zoom chat"
+    ],
+    "trigger": "The user thinks of feedback",
+    "input": [
+      "Who they are",
+      "Is the tool helping them",
+      "What they said",
+      "Whether we can fix it"
+    ],
+    "action": [
+      "Create a ticket"
+    ],
+    "handoff": "The user who submitted"
+  }
+}
