@@ -1,0 +1,28 @@
+{
+  "group": "Group 1",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Group 1: AI Automated Workflow; tools In-app feedback button, Feedback log; trigger A user submits feedback in the tool; input What they said, Who they are, Is the tool helping them; action Log it and route it to an owner, Log it, Create a ticket, Confirm receipt with submitting user; handoff A named owner for feedback.",
+  "issue": "tools need Email or Slack / Zoom chat; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user",
+  "why": "Missed: tools need Email or Slack / Zoom chat; input must be exactly What they said and Who they are; action must be exactly Log it and route it to an owner and Confirm receipt with submitting user.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "In-app feedback button",
+      "Feedback log"
+    ],
+    "trigger": "A user submits feedback in the tool",
+    "input": [
+      "What they said",
+      "Who they are",
+      "Is the tool helping them"
+    ],
+    "action": [
+      "Log it and route it to an owner",
+      "Log it",
+      "Create a ticket",
+      "Confirm receipt with submitting user"
+    ],
+    "handoff": "A named owner for feedback"
+  }
+}
