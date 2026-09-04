@@ -1,0 +1,27 @@
+{
+  "group": "Group Test",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Group Test submitted a complete board: AI Automated Workflow; In-app feedback button + Feedback log + Email + Slack / Zoom chat; trigger on submit; input What they said + Who they are; action log-and-route + confirm receipt; handoff to a named owner.",
+  "issue": "",
+  "why": "Every Success-key piece matches \u2014 container, required tools, trigger, exact input set, exact action set, and named owner.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "In-app feedback button",
+      "Feedback log",
+      "Email",
+      "Slack / Zoom chat"
+    ],
+    "trigger": "A user submits feedback in the tool",
+    "input": [
+      "What they said",
+      "Who they are"
+    ],
+    "action": [
+      "Log it and route it to an owner",
+      "Confirm receipt with submitting user"
+    ],
+    "handoff": "A named owner for feedback"
+  }
+}
