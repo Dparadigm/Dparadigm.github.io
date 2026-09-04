@@ -556,7 +556,8 @@ function groupSlug(){
   var n = $("team").value.trim();
   var m = n.match(/(\d+)/);
   if (m) return m[1];
-  return (n || "group").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  n = (n || "group").replace(/^group\b\s*/i, "").trim() || n || "group";
+  return n.toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 }
 function pingHandoff(payload){
   var body = JSON.stringify(payload);
