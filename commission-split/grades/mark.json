@@ -1,0 +1,31 @@
+{
+  "group": "Scribe Mark",
+  "scribe": "Mark",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Mark: AI Agent; tools CRM / policy record, Carrier / product list, Payroll / commission statement, Commission schedule; trigger A policy is marked sold / issued; input Insurance company (carrier), Product sold, Who the salesperson is; action Look up the split from the schedule, Send the splits to be calculated manually, Apply salesperson and company split, Write the split to the commission record; handoff A named commissions / finance owner.",
+  "issue": "container should be AI Automated Workflow; action must be exactly look up + apply salesperson and company split + write to record",
+  "why": "Missed: container should be AI Automated Workflow; action must be exactly look up + apply salesperson and company split + write to record.",
+  "board": {
+    "container": "AI Agent",
+    "tools": [
+      "CRM / policy record",
+      "Carrier / product list",
+      "Payroll / commission statement",
+      "Commission schedule"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Look up the split from the schedule",
+      "Send the splits to be calculated manually",
+      "Apply salesperson and company split",
+      "Write the split to the commission record"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
