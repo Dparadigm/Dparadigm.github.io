@@ -1,0 +1,30 @@
+{
+  "group": "Scribe Mitch",
+  "scribe": "Mitch",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Mitch: AI Automated Workflow; tools CRM / policy record, Carrier / product list, Commission schedule, Payroll / commission statement; trigger A policy is marked sold / issued; input Insurance company (carrier), Product sold, Who the salesperson is; action Look up the split from the schedule, Apply salesperson and company split, Write the split to the commission record; handoff A named commissions / finance owner.",
+  "issue": "",
+  "why": "Every Success-key piece matches.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "CRM / policy record",
+      "Carrier / product list",
+      "Commission schedule",
+      "Payroll / commission statement"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Look up the split from the schedule",
+      "Apply salesperson and company split",
+      "Write the split to the commission record"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
