@@ -1,0 +1,28 @@
+{
+  "group": "Scribe Matthew Dean",
+  "scribe": "Matthew Dean",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Matthew Dean: AI Automated Workflow; tools CRM / policy record, Carrier / product list, Commission schedule; trigger A policy is marked sold / issued; input Insurance company (carrier), Who the salesperson is, Product sold; action Apply salesperson and company split, Look up the split from the schedule; handoff The insurance carrier.",
+  "issue": "action must be exactly look up + apply salesperson and company split + write to record; handoff should be A named commissions / finance owner",
+  "why": "Missed: action must be exactly look up + apply salesperson and company split + write to record; handoff should be A named commissions / finance owner.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "CRM / policy record",
+      "Carrier / product list",
+      "Commission schedule"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Who the salesperson is",
+      "Product sold"
+    ],
+    "action": [
+      "Apply salesperson and company split",
+      "Look up the split from the schedule"
+    ],
+    "handoff": "The insurance carrier"
+  }
+}
