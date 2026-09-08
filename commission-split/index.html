@@ -358,7 +358,7 @@ var TOOLS = ["CRM / policy record","Commission schedule","Carrier / product list
 var CHIPS = {
   trigger: ["A policy is marked sold / issued","Someone asks what the split is","Client calls in","End of the month","The salesperson remembers to check"],
   input: ["Insurance company (carrier)","Product sold","Who the salesperson is","Whether we like the carrier","Premium amount","Which products were not sold"],
-  action: ["Look up the split from the schedule","Send the splits to be calculated manually","Apply salesperson vs brokerage split","Write the split to the commission record","Email the whole company","Guess a 50/50 split","Confirm the split with the owner","Refresh a dashboard only"],
+  action: ["Look up the split from the schedule","Send the splits to be calculated manually","Apply salesperson and company split","Write the split to the commission record","Email the whole company","Guess a 50/50 split","Confirm the split with the owner","Refresh a dashboard only"],
   handoff: ["A named commissions / finance owner","The salesperson who sold it","Whoever is free in the office","The insurance carrier"]
 };
 var MULTI = { tools: TOOLS, input: CHIPS.input, action: CHIPS.action };
