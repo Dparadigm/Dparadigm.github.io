@@ -1,0 +1,30 @@
+{
+  "group": "Scribe Test",
+  "scribe": "Test",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Scribe Test submitted: AI Automated Workflow; CRM + Commission schedule + Carrier/product list + Payroll; trigger policy sold/issued; input carrier + product + salesperson; action look up + apply salesperson and company split + write to record; handoff named commissions/finance owner.",
+  "issue": "",
+  "why": "Every Success-key piece matches.",
+  "board": {
+    "container": "AI Automated Workflow",
+    "tools": [
+      "CRM / policy record",
+      "Commission schedule",
+      "Carrier / product list",
+      "Payroll / commission statement"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Look up the split from the schedule",
+      "Apply salesperson and company split",
+      "Write the split to the commission record"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
