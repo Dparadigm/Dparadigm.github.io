@@ -1,0 +1,30 @@
+{
+  "group": "Scribe Miranda",
+  "scribe": "Miranda",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Miranda: AI Agent; tools Commission schedule, CRM / policy record, Carrier / product list, Payroll / commission statement; trigger A policy is marked sold / issued; input Insurance company (carrier), Product sold, Who the salesperson is; action Apply salesperson and company split, Look up the split from the schedule, Write the split to the commission record; handoff A named commissions / finance owner.",
+  "issue": "container should be AI Automated Workflow",
+  "why": "Missed: container should be AI Automated Workflow.",
+  "board": {
+    "container": "AI Agent",
+    "tools": [
+      "Commission schedule",
+      "CRM / policy record",
+      "Carrier / product list",
+      "Payroll / commission statement"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Apply salesperson and company split",
+      "Look up the split from the schedule",
+      "Write the split to the commission record"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
