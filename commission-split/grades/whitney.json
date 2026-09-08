@@ -1,0 +1,31 @@
+{
+  "group": "Scribe Whitney",
+  "scribe": "Whitney",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Whitney: AI Agent; tools CRM / policy record, Commission schedule, Carrier / product list, Payroll / commission statement; trigger Someone asks what the split is; input Insurance company (carrier), Product sold, Who the salesperson is; action Look up the split from the schedule, Apply salesperson and company split, Write the split to the commission record, Confirm the split with the owner; handoff A named commissions / finance owner.",
+  "issue": "container should be AI Automated Workflow; trigger should be A policy is marked sold / issued; action must be exactly look up + apply salesperson and company split + write to record",
+  "why": "Missed: container should be AI Automated Workflow; trigger should be A policy is marked sold / issued; action must be exactly look up + apply salesperson and company split + write to record.",
+  "board": {
+    "container": "AI Agent",
+    "tools": [
+      "CRM / policy record",
+      "Commission schedule",
+      "Carrier / product list",
+      "Payroll / commission statement"
+    ],
+    "trigger": "Someone asks what the split is",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Look up the split from the schedule",
+      "Apply salesperson and company split",
+      "Write the split to the commission record",
+      "Confirm the split with the owner"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
