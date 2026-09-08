@@ -1,0 +1,30 @@
+{
+  "group": "Scribe Marika",
+  "scribe": "Marika",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Marika: AI Agent; tools CRM / policy record, Carrier / product list, Commission schedule, Payroll / commission statement; trigger A policy is marked sold / issued; input Insurance company (carrier), Product sold, Who the salesperson is; action Look up the split from the schedule, Apply salesperson and company split, Write the split to the commission record; handoff A named commissions / finance owner.",
+  "issue": "container should be AI Automated Workflow",
+  "why": "Missed: container should be AI Automated Workflow.",
+  "board": {
+    "container": "AI Agent",
+    "tools": [
+      "CRM / policy record",
+      "Carrier / product list",
+      "Commission schedule",
+      "Payroll / commission statement"
+    ],
+    "trigger": "A policy is marked sold / issued",
+    "input": [
+      "Insurance company (carrier)",
+      "Product sold",
+      "Who the salesperson is"
+    ],
+    "action": [
+      "Look up the split from the schedule",
+      "Apply salesperson and company split",
+      "Write the split to the commission record"
+    ],
+    "handoff": "A named commissions / finance owner"
+  }
+}
