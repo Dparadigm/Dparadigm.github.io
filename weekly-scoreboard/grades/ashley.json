@@ -1,0 +1,30 @@
+{
+  "scribe": "Ashley",
+  "group": "Scribe Ashley",
+  "members": "",
+  "verdict": "not-yet",
+  "happened": "Ashley: AI Automated Workflow; tools CRM / HubSpot, Data and metrics feeds, Marketing / Metricool; trigger End of the previous week / Monday run; input Which metrics belong on the board, Which date range is \"last week\", Which source systems to pull from; action Pull the metrics from each source, Combine into one weekly view, Publish / refresh the scoreboard; handoff A named ops / leadership owner.",
+  "issue": "The scoreboard destination is missing. Without Ninety.io, the next person still has to guess where last week's numbers live.",
+  "why": "Try Again: tools need CRM / HubSpot and Ninety.io plus Metricool or Data and metrics feeds. This board had CRM and feeds but not Ninety.io.",
+  "board": {
+    "scribe": "Ashley",
+    "container": "AI Automated Workflow",
+    "tools": [
+      "CRM / HubSpot",
+      "Data and metrics feeds",
+      "Marketing / Metricool"
+    ],
+    "trigger": "End of the previous week / Monday run",
+    "input": [
+      "Which metrics belong on the board",
+      "Which date range is \"last week\"",
+      "Which source systems to pull from"
+    ],
+    "action": [
+      "Pull the metrics from each source",
+      "Combine into one weekly view",
+      "Publish / refresh the scoreboard"
+    ],
+    "handoff": "A named ops / leadership owner"
+  }
+}
