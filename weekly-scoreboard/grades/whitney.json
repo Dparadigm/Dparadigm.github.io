@@ -1,0 +1,30 @@
+{
+  "scribe": "Whitney",
+  "group": "Scribe Whitney",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Whitney: AI Automated Workflow; tools CRM / HubSpot, Data and metrics feeds, Ninety.io; trigger End of the previous week / Monday run; input Which date range is \"last week\", Which source systems to pull from, Which metrics belong on the board; action Pull the metrics from each source, Combine into one weekly view, Publish / refresh the scoreboard; handoff A named ops / leadership owner.",
+  "issue": "A next owner would stall if the board did not say which metrics, which week, which sources, or who owns the scoreboard. This board names all of them.",
+  "why": "Success: AI Automated Workflow, CRM + Ninety.io + a real source feed, Monday/last-week trigger, exact inputs, pull/combine/publish, and a named ops owner.",
+  "board": {
+    "scribe": "Whitney",
+    "container": "AI Automated Workflow",
+    "tools": [
+      "CRM / HubSpot",
+      "Data and metrics feeds",
+      "Ninety.io"
+    ],
+    "trigger": "End of the previous week / Monday run",
+    "input": [
+      "Which date range is \"last week\"",
+      "Which source systems to pull from",
+      "Which metrics belong on the board"
+    ],
+    "action": [
+      "Pull the metrics from each source",
+      "Combine into one weekly view",
+      "Publish / refresh the scoreboard"
+    ],
+    "handoff": "A named ops / leadership owner"
+  }
+}
