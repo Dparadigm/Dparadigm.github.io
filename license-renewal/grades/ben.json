@@ -1,0 +1,33 @@
+{
+  "scribe": "Ben",
+  "group": "Scribe Ben",
+  "members": "",
+  "verdict": "yes",
+  "happened": "Ben: AI Automated Workflow; tools Paradigm Life Producer / licensing database, State License System, CE / education tracker, Email; trigger License renewal window opens / due date approaches; input Which agent, Which state license(s) and Product Line(s), Renewal due date / expiration, CE credits completed vs required; action Check license status and due date, Confirm CE requirements are met, Update CRM / Database and/or submit the renewal to state system, Confirm with the compliance / licensing owner; handoff A named compliance / licensing owner.",
+  "issue": "A next owner would stall if the board did not say which agent, which state/product line, when it expires, whether CE is done, or who owns renewal next. This board names all of them.",
+  "why": "Success: AI Automated Workflow; Paradigm Life Producer DB + State License System + CE tracker; due-date trigger; exact inputs; check/CE/update-or-submit; named compliance owner.",
+  "board": {
+    "scribe": "Ben",
+    "container": "AI Automated Workflow",
+    "tools": [
+      "Paradigm Life Producer / licensing database",
+      "State License System",
+      "CE / education tracker",
+      "Email"
+    ],
+    "trigger": "License renewal window opens / due date approaches",
+    "input": [
+      "Which agent",
+      "Which state license(s) and Product Line(s)",
+      "Renewal due date / expiration",
+      "CE credits completed vs required"
+    ],
+    "action": [
+      "Check license status and due date",
+      "Confirm CE requirements are met",
+      "Update CRM / Database and/or submit the renewal to state system",
+      "Confirm with the compliance / licensing owner"
+    ],
+    "handoff": "A named compliance / licensing owner"
+  }
+}
