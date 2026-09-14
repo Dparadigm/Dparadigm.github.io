@@ -292,8 +292,8 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
 <section class="sit">
   <div class="lbl">The situation</div>
   <p>An agent’s insurance license is coming up for renewal.</p>
-  <p>If it lapses, they cannot sell — and the client path stalls.</p>
-  <p>The process spans state rules, CE credits, fees, and who owns the follow-through.</p>
+  <p>If it lapses, they cannot sell.</p>
+  <p>The process spans state rules, CE credits, and who owns the follow-through.</p>
   <p>Build a license-renewal solution.</p>
 </section>
 
@@ -354,11 +354,11 @@ var CONTAINERS = [
   "AI Agent",
   "AI Automated Workflow"
 ];
-var TOOLS = ["Producer / licensing database","State License System","CE / education tracker","CRM / agent record","Email","Slack / Zoom chat","Spreadsheet only"];
+var TOOLS = ["Paradigm Life Producer / licensing database","State License System","CE / education tracker","CRM / agent record","Email","Slack / Zoom chat","Spreadsheet only"];
 var CHIPS = {
   trigger: ["License renewal window opens / due date approaches","Someone asks if they are licensed","A client books an appointment","End of the year","The agent remembers to check"],
-  input: ["Which agent / NPN","Which state license(s) and Product Line(s)","Renewal due date / expiration","CE credits completed vs required","Favorite carrier logo color"],
-  action: ["Check license status and due date","Confirm CE requirements are met","File / complete the renewal (or queue the packet)","Update the licensing record","Guess they are still active","Email the whole company","Confirm with the compliance / licensing owner","Refresh a random dashboard only"],
+  input: ["Which agent","Which state license(s) and Product Line(s)","Renewal due date / expiration","CE credits completed vs required","Favorite carrier logo color"],
+  action: ["Check license status and due date","Confirm CE requirements are met","Update CRM / Database and submit the renewal to state system","Guess they are still active","Email the whole company","Confirm with the compliance / licensing owner","Refresh a random dashboard only"],
   handoff: ["A named compliance / licensing owner","Whoever is free in the office","The last person who replied in Slack","The insurance carrier"]
 };
 var MULTI = { tools: TOOLS, input: CHIPS.input, action: CHIPS.action };
