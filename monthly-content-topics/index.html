@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monthly content topics — how we choose</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --growth:#6FA34D;
+  --growth-soft:#f1f6ee;
+  --income:#65B2E8;
+  --income-soft:#eef6fc;
+  --legacy:#DAA900;
+  --legacy-soft:#fbf6e6;
+  --gray-11:#54565A;
+  --gray-3:#CBCBC8;
+  --ink:#231f20;
+  --body:#515867;
+  --muted:#6e7a87;
+  --shell:#fafafa;
+  --card:#fff;
+  --border:#e2e2e2;
+  --display:"Montserrat","Gotham",sans-serif;
+  --text:"Open Sans","Helvetica Neue",Arial,sans-serif;
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+  --radius:12px;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--shell); color:var(--ink);
+  font-family:var(--text); font-size:16px; line-height:1.55;
+  -webkit-font-smoothing:antialiased;
+}
+body::before{
+  content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+  background-image:url("shield.svg");
+  background-repeat:no-repeat; background-position:center 38%;
+  background-size:auto 48vh; opacity:.28;
+}
+.top, .wrap, .sticky{position:relative; z-index:1}
+.top{
+  background:var(--card); border-bottom:1px solid var(--border);
+  padding:16px 20px 18px;
+}
+.top-inner{max-width:960px; margin:0 auto}
+.brand{display:flex; align-items:center; gap:12px}
+.shield-mark{height:36px; width:auto}
+.wordmark{
+  font-family:var(--display); font-weight:700; font-size:13px;
+  letter-spacing:.18em; text-transform:uppercase;
+}
+.stages{
+  margin-top:4px; font-family:var(--display); font-weight:500;
+  font-size:10px; letter-spacing:.16em; text-transform:uppercase; color:var(--gray-3);
+}
+.stages .g{color:var(--growth)}
+.stages .i{color:var(--income)}
+.stages .l{color:var(--legacy)}
+.wrap{max-width:960px; margin:0 auto; padding:28px 20px 72px}
+.hero{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:28px 28px 24px; margin-bottom:22px;
+}
+.kicker{
+  font-family:var(--display); font-size:11px; font-weight:600;
+  letter-spacing:.14em; text-transform:uppercase; color:var(--growth); margin:0 0 8px;
+}
+h1{
+  font-family:var(--display); font-size:28px; font-weight:700;
+  line-height:1.2; margin:0 0 12px; letter-spacing:-.02em;
+}
+.hero p{margin:0; color:var(--body); max-width:42em}
+.sticky{
+  position:sticky; top:0; z-index:5;
+  background:rgba(250,250,250,.92); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border); margin:0 -20px 22px; padding:10px 20px;
+}
+.nav{
+  display:flex; flex-wrap:wrap; gap:8px; max-width:960px; margin:0 auto;
+}
+.nav a{
+  text-decoration:none; color:var(--ink); background:var(--card);
+  border:1px solid var(--border); border-radius:999px;
+  padding:6px 12px; font-size:13px; font-weight:600;
+}
+.nav a:hover{border-color:var(--growth); color:var(--growth)}
+.section{
+  background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
+  box-shadow:var(--shadow); padding:24px 26px; margin-bottom:18px;
+}
+.section h2{
+  font-family:var(--display); font-size:18px; font-weight:700;
+  margin:0 0 6px; letter-spacing:-.01em;
+}
+.section .lead{margin:0 0 18px; color:var(--body); font-size:15px}
+.flow{
+  display:grid; grid-template-columns:repeat(6, 1fr); gap:10px; align-items:stretch;
+}
+@media (max-width:900px){
+  .flow{grid-template-columns:repeat(2, 1fr)}
+  h1{font-size:24px}
+}
+@media (max-width:520px){
+  .flow{grid-template-columns:1fr}
+}
+.flow-step{
+  border:1px solid var(--border); border-radius:10px; padding:14px 12px;
+  background:var(--shell); text-align:center; position:relative;
+}
+.flow-step .n{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:28px; height:28px; border-radius:50%;
+  background:var(--growth); color:#fff;
+  font-family:var(--display); font-weight:700; font-size:13px; margin-bottom:8px;
+}
+.flow-step h3{
+  font-family:var(--display); font-size:13px; font-weight:700;
+  margin:0 0 6px; line-height:1.25;
+}
+.flow-step p{margin:0; font-size:12px; color:var(--muted); line-height:1.4}
+.flow-step.who-ai{background:var(--income-soft); border-color:#c5dff3}
+.flow-step.who-ai .n{background:var(--income)}
+.flow-step.who-rachel{background:var(--growth-soft); border-color:#c5dbb3}
+.flow-step.who-ws{background:var(--legacy-soft); border-color:#ebd98a}
+.flow-step.who-ws .n{background:var(--legacy); color:#231f20}
+.tracks{
+  display:grid; grid-template-columns:1fr 1fr; gap:14px;
+}
+@media (max-width:700px){.tracks{grid-template-columns:1fr}}
+.track{
+  border:1px solid var(--border); border-radius:10px; padding:18px 16px;
+  background:var(--shell);
+}
+.track .tag{
+  display:inline-block; font-family:var(--display); font-size:10px; font-weight:700;
+  letter-spacing:.12em; text-transform:uppercase; padding:4px 8px; border-radius:6px;
+  margin-bottom:10px;
+}
+.track.a .tag{background:var(--growth-soft); color:#3d6a28}
+.track.b .tag{background:var(--income-soft); color:#2a6a96}
+.track h3{font-family:var(--display); font-size:16px; margin:0 0 8px}
+.track p{margin:0; color:var(--body); font-size:14px}
+.track ul{margin:10px 0 0; padding-left:1.1em; color:var(--body); font-size:14px}
+.walk{display:flex; flex-direction:column; gap:12px}
+.walk-card{
+  display:grid; grid-template-columns:56px 1fr; gap:14px;
+  border:1px solid var(--border); border-radius:10px; padding:16px;
+  background:var(--shell);
+}
+.walk-num{
+  width:56px; height:56px; border-radius:12px;
+  display:flex; align-items:center; justify-content:center;
+  font-family:var(--display); font-weight:700; font-size:22px; color:#fff;
+  background:var(--growth);
+}
+.walk-card:nth-child(1) .walk-num,
+.walk-card:nth-child(2) .walk-num{background:var(--income)}
+.walk-card:nth-child(4) .walk-num{background:var(--legacy); color:#231f20}
+.walk-card h3{font-family:var(--display); font-size:15px; margin:0 0 4px}
+.walk-card p{margin:0; color:var(--body); font-size:14px}
+.walk-card .owner{
+  margin-top:8px; font-size:12px; font-weight:700; color:var(--gray-11);
+  font-family:var(--display); letter-spacing:.04em; text-transform:uppercase;
+}
+.roles{
+  display:grid; grid-template-columns:repeat(2, 1fr); gap:10px;
+}
+@media (max-width:700px){.roles{grid-template-columns:1fr}}
+.role{
+  border:1px solid var(--border); border-radius:10px; padding:14px 14px 12px;
+}
+.role h3{font-family:var(--display); font-size:14px; margin:0 0 4px}
+.role p{margin:0; font-size:13px; color:var(--body)}
+.poll-box{
+  border:1px dashed #b7d4a3; background:var(--growth-soft);
+  border-radius:10px; padding:16px 18px; margin-top:8px;
+}
+.poll-box h3{font-family:var(--display); font-size:14px; margin:0 0 8px}
+.poll-box ol{margin:0; padding-left:1.2em; color:var(--body); font-size:14px}
+.poll-box li{margin:4px 0}
+.legend{
+  display:flex; flex-wrap:wrap; gap:10px 16px; margin:0 0 14px;
+  font-size:12px; color:var(--muted);
+}
+.legend span{display:inline-flex; align-items:center; gap:6px}
+.dot{width:10px; height:10px; border-radius:50%; display:inline-block}
+.dot.ai{background:var(--income)}
+.dot.rachel{background:var(--growth)}
+.dot.ws{background:var(--legacy)}
+.footer-note{
+  margin-top:8px; font-size:13px; color:var(--muted); text-align:center;
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <img class="shield-mark" src="shield-mark.svg" alt="Paradigm Life" />
+      <div>
+        <div class="wordmark">Paradigm Life</div>
+        <div class="stages"><span class="g">Growth</span> · <span class="i">Income</span> · <span class="l">Legacy</span></div>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="kicker">Content planning walkthrough</p>
+    <h1>How we choose monthly topics</h1>
+    <p>
+      A simple loop so podcast, newsletter, and live-stream topics come from
+      who we serve — then wealth strategists help rank what to make next —
+      then you produce and we measure what worked.
+    </p>
+  </section>
+
+  <nav class="sticky" aria-label="Walkthrough sections">
+    <div class="nav">
+      <a href="#picture">Big picture</a>
+      <a href="#tracks">Two tracks</a>
+      <a href="#steps">Month walkthrough</a>
+      <a href="#poll">Zoom poll</a>
+      <a href="#roles">Who does what</a>
+    </div>
+  </nav>
+
+  <section class="section" id="picture">
+    <h2>Big picture</h2>
+    <p class="lead">One monthly loop. Same shape every month. October is the first run.</p>
+    <div class="legend">
+      <span><i class="dot ai"></i> Trinity agents</span>
+      <span><i class="dot rachel"></i> You (Rachel) + Dan</span>
+      <span><i class="dot ws"></i> Wealth strategists</span>
+    </div>
+    <div class="flow" aria-label="Monthly loop">
+      <div class="flow-step who-ai">
+        <div class="n">1</div>
+        <h3>ICP pack</h3>
+        <p>Cornelius confirms who we’re talking to and what they care about</p>
+      </div>
+      <div class="flow-step who-ai">
+        <div class="n">2</div>
+        <h3>Topic options</h3>
+        <p>CMO turns that into 6–10 options with a short “why this audience”</p>
+      </div>
+      <div class="flow-step who-rachel">
+        <div class="n">3</div>
+        <h3>Light edit</h3>
+        <p>You + Dan shape for brand, voice, and calendar reality</p>
+      </div>
+      <div class="flow-step who-ws">
+        <div class="n">4</div>
+        <h3>Force-rank</h3>
+        <p>Wealth strategists rank in Zoom Workplace Polling</p>
+      </div>
+      <div class="flow-step who-rachel">
+        <div class="n">5</div>
+        <h3>Lock &amp; produce</h3>
+        <p>You lock top topics and run production as usual</p>
+      </div>
+      <div class="flow-step who-ai">
+        <div class="n">6</div>
+        <h3>Measure</h3>
+        <p>CMO snapshots what performed → feeds next month</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="tracks">
+    <h2>Two tracks, same loop</h2>
+    <p class="lead">Same process. Different channels.</p>
+    <div class="tracks">
+      <div class="track a">
+        <span class="tag">Track A</span>
+        <h3>New audience — Podcast</h3>
+        <p>Monthly podcast topics chosen from ICP signal + strategist rank, with a co-host interest signal built in.</p>
+        <ul>
+          <li>6–10 topic options</li>
+          <li>Open write-in: “something else the market is talking about”</li>
+          <li>Co-host question in the same poll wave</li>
+        </ul>
+      </div>
+      <div class="track b">
+        <span class="tag">Track B</span>
+        <h3>Existing clients — Newsletter + live streams</h3>
+        <p>Same ICP → options → Zoom rank → measure loop for newsletter themes and live-stream themes.</p>
+        <ul>
+          <li>Can be one poll with two sections, or two short polls</li>
+          <li>Later: strategist-led live streams with shared decks</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="steps">
+    <h2>Month walkthrough</h2>
+    <p class="lead">This is the conversation path — what happens, in order.</p>
+    <div class="walk">
+      <article class="walk-card">
+        <div class="walk-num">1</div>
+        <div>
+          <h3>Start with the audience (Cornelius)</h3>
+          <p>We ask our Trinity ICP agent for a fresh pack: segments, pains, and the language the market uses. Topic ideas have to connect back to that — not only a brainstorm from the calendar.</p>
+          <div class="owner">Owner: Cornelius · Input for: CMO</div>
+        </div>
+      </article>
+      <article class="walk-card">
+        <div class="walk-num">2</div>
+        <div>
+          <h3>Build the option list (CMO)</h3>
+          <p>Our Trinity marketing agent proposes 6–10 options (podcast, and/or newsletter + live stream), each with a one-line reason tied to the ICP. Your calendar is a constraint and a timing filter — not the only source of ideas.</p>
+          <div class="owner">Owner: CMO · Review: Rachel + Dan</div>
+        </div>
+      </article>
+      <article class="walk-card">
+        <div class="walk-num">3</div>
+        <div>
+          <h3>Human pass</h3>
+          <p>You and Dan do a light edit for brand, voice, and anything Patrick’s calendar already commits. Keep the open-ended write-in for strategists.</p>
+          <div class="owner">Owner: Rachel · Support: Dan</div>
+        </div>
+      </article>
+      <article class="walk-card">
+        <div class="walk-num">4</div>
+        <div>
+          <h3>Wealth strategists force-rank (Zoom)</h3>
+          <p>We post a Zoom Workplace Poll: rank the options, add anything missing, and mark co-host interest. Close window is short (for example 48 hours).</p>
+          <div class="owner">Audience: Wealth strategists · Poll run: Rachel (Dan sets the first template)</div>
+        </div>
+      </article>
+      <article class="walk-card">
+        <div class="walk-num">5</div>
+        <div>
+          <h3>Lock top topics and produce</h3>
+          <p>Use the ranks (plus write-ins) to lock the top set for the month. Align timing with sales if needed. Then produce and publish on your existing path.</p>
+          <div class="owner">Owner: Rachel · Align as needed: Patrick / Mike</div>
+        </div>
+      </article>
+      <article class="walk-card">
+        <div class="walk-num">6</div>
+        <div>
+          <h3>Measure and feed next month</h3>
+          <p>After publish, CMO returns a short performance snapshot. That informs next month’s option list — still grounded in Cornelius ICP.</p>
+          <div class="owner">Brief: CMO · Scoreboard row: Rachel</div>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section" id="poll">
+    <h2>Zoom Workplace Poll (what strategists see)</h2>
+    <p class="lead">Delivery is Zoom Workplace Polling — not Slack, not an email survey.</p>
+    <div class="poll-box">
+      <h3>Example — October podcast</h3>
+      <ol>
+        <li><strong>Force-rank:</strong> “Rank these October podcast topic options (1 = most relevant for your clients).”</li>
+        <li><strong>Open-ended:</strong> “Anything missing the market is talking about that should beat these?”</li>
+        <li><strong>Co-host:</strong> “Which of these would you co-host or want to be involved in?” (multi-select; optional “none this month”)</li>
+      </ol>
+    </div>
+    <p class="lead" style="margin-top:16px;margin-bottom:0">
+      If Zoom can’t do a true ranking poll, we fall back to “pick your top 3,” then “which is #1,” plus the same open-ended and co-host questions — so you’re never stuck on the tool.
+    </p>
+  </section>
+
+  <section class="section" id="roles">
+    <h2>Who does what</h2>
+    <p class="lead">Clear lanes so nothing depends on one person reinventing the process each month.</p>
+    <div class="roles">
+      <div class="role">
+        <h3>Rachel</h3>
+        <p>Approves the system, light-edits options, runs the monthly poll after the first template, locks topics, produces, owns the scoreboard row.</p>
+      </div>
+      <div class="role">
+        <h3>Dan</h3>
+        <p>Drafts the mechanics once, helps set the first Zoom poll template, partners on the Wednesday package and the first human pass.</p>
+      </div>
+      <div class="role">
+        <h3>Cornelius (Trinity)</h3>
+        <p>ICP source of truth — who we serve and what they care about this month.</p>
+      </div>
+      <div class="role">
+        <h3>CMO (Trinity)</h3>
+        <p>Turns ICP + performance history into the option list; returns the post-publish measurement brief.</p>
+      </div>
+      <div class="role">
+        <h3>Wealth strategists</h3>
+        <p>Force-rank topics and signal co-host interest so production matches what clients actually need.</p>
+      </div>
+      <div class="role">
+        <h3>Patrick / Mike</h3>
+        <p>Align on locked topics and timing when needed; calendar constraints feed the human edit step.</p>
+      </div>
+    </div>
+  </section>
+
+  <p class="footer-note">Paradigm Life · Monthly content topic system · For walkthrough with Rachel</p>
+</main>
+</body>
+</html>
