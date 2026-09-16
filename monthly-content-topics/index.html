@@ -42,7 +42,7 @@ body::before{
   background-repeat:no-repeat; background-position:center 38%;
   background-size:auto 48vh; opacity:.28;
 }
-.top, .wrap, .sticky, .tab-bar{position:relative; z-index:1}
+.top, .wrap{position:relative; z-index:1}
 .top{
   background:var(--card); border-bottom:1px solid var(--border);
   padding:16px 20px 18px;
@@ -62,7 +62,9 @@ body::before{
 .stages .i{color:var(--income)}
 .stages .l{color:var(--legacy)}
 .tab-bar{
-  background:var(--card); border-bottom:1px solid var(--border);
+  position:sticky; top:0; z-index:6;
+  background:rgba(255,255,255,.96); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
   padding:0 20px;
 }
 .tab-bar-inner{
@@ -96,7 +98,7 @@ h1{
 }
 .hero p{margin:0; color:var(--body); max-width:42em}
 .sticky{
-  position:sticky; top:0; z-index:5;
+  position:sticky; top:52px; z-index:5;
   background:rgba(250,250,250,.92); backdrop-filter:blur(8px);
   border-bottom:1px solid var(--border); margin:0 -20px 22px; padding:10px 20px;
 }
@@ -561,6 +563,18 @@ h1{
     </p>
   </section>
 
+  <nav class="sticky" aria-label="Month 1 resource sections">
+    <div class="nav">
+      <a href="#full-md">Reference MD</a>
+      <a href="#trinity-prompts">Trinity prompts</a>
+      <a href="#card-template">Topic cards</a>
+      <a href="#poll-checklist">Poll checklist</a>
+      <a href="#ops-checklist">Ops checklist</a>
+      <a href="#parking-lot">Parking lot</a>
+    </div>
+  </nav>
+
+
   <section class="section">
 
     <div class="resource-block" id="full-md">
@@ -674,11 +688,15 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
 
     <div class="resource-block" id="parking-lot">
       <h3>6. Parking lot (not month one)</h3>
-      <div class="note">
-        Bucket 4 is parked until after 1-2 months of polls + intake, when people can see dumps turn into shipped content:
-        advisor/team-attributed builds, education-center library, new calculators/apps, courses/masterclasses from Dropbox digs.
-        Month one still surfaces opportunities via co-host, resource, and tool poll questions - without building those systems yet.
-      </div>
+      <p>Ideas from the planning talks that matter later, but are <strong>not</strong> Month 1 or Q4 Rock deliverables. Revisit after 1-2 months of polls and intake, once people can see their input turn into shipped content.</p>
+      <p style="margin-top:10px">Month 1 still <em>discovers</em> opportunities through co-host, resource, and tool poll questions. We do not build the systems below yet.</p>
+      <ul>
+        <li><strong>Advisor / team-attributed content:</strong> Pieces that go out under a wealth strategist or team name (higher trust). Soft signal only via the co-host poll for now.</li>
+        <li><strong>Education-center library:</strong> Portal place for clients to save and revisit content. Longer build; not this rock.</li>
+        <li><strong>Calculators / exercises / workbooks:</strong> Interactive tools that make a topic personal. Discover what already works via the poll; do not invent new apps in Month 1.</li>
+        <li><strong>Lightweight apps (no database):</strong> Simple calculators or demos not tied to CRM. Separate build queue once polls surface winners.</li>
+        <li><strong>Courses / masterclasses / evergreen dig:</strong> Bigger reusable assets mined from Dropbox and intake dumps. Emerges from the feedback loop over time.</li>
+      </ul>
     </div>
   </section>
 
@@ -700,18 +718,28 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     </p>
   </section>
 
+  <nav class="sticky" aria-label="Q4 rock sections">
+    <div class="nav">
+      <a href="#rock-title">Title</a>
+      <a href="#rock-smart">SMART</a>
+      <a href="#rock-milestones">Milestones</a>
+      <a href="#rock-out">Not in this Rock</a>
+    </div>
+  </nav>
+
+
   <section class="section">
-    <div class="resource-block">
+    <div class="resource-block" id="rock-title">
       <h3>Rock title</h3>
       <p><strong>Stand up monthly ICP-to-publish content system for new and existing clients</strong></p>
     </div>
 
-    <div class="resource-block">
+    <div class="resource-block" id="rock-smart">
       <h3>SMART description</h3>
       <p style="font-weight:700;margin:0 0 6px;font-family:var(--display);font-size:13px">Specific</p>
       <p>By 2026-12-31, Rachel owns a repeatable monthly system: Cornelius ICP → CMO topic cards → two Zoom Workplace Polls (new business + existing clients) → lock/produce → CMO measure into next month. Advisors dump ideas via Zoom Team Chat + email forward and see input used. Oct, Nov, and Dec each complete the loop.</p>
       <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Measurable</p>
-      <p>Each month Oct–Dec: dual polls before production lock; topics locked and published on plan; CMO measurement brief filed; at least one close-the-loop note on an advisor dump/resource. Binary at quarter end.</p>
+      <p>Each month Oct-Dec: dual polls before production lock; topics locked and published on plan; CMO measurement brief filed; at least one close-the-loop note on an advisor dump/resource. Binary at quarter end.</p>
       <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Achievable</p>
       <p>Rachel executes; Dan scaffolds October; Cornelius + CMO supply ICP/cards/measure; WS poll and dump. Parked: education center, attributed library, calculator apps. Avalaunch rock stays with Don. ~80% confidence if October template sticks.</p>
       <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Relevant</p>
@@ -720,7 +748,7 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
       <p>Rock due <strong>2026-12-31</strong>. Milestones below are the checkpoints; review weekly and mark the Rock off-track if a milestone slips.</p>
     </div>
 
-    <div class="resource-block">
+    <div class="resource-block" id="rock-milestones">
       <h3>Milestones</h3>
       <div class="template-grid">
         <div class="template-field"><strong>1. Topic-card template + companion one-pager</strong><br>Owner: Dan (+ Rachel review) · Due: 2026-10-03</div>
@@ -733,12 +761,15 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
       </div>
     </div>
 
-    <div class="resource-block">
+    <div class="resource-block" id="rock-out">
       <h3>Not in this Rock</h3>
-      <div class="note">
-        Don’s Avalaunch rock; education-center / advisor-attributed builds; calculator or course builds; agents creating polls or messaging strategists.
-        Polls may discover resources and tools without building those products here.
-      </div>
+      <p>Explicit exclusions so the Rock stays completable in Q4.</p>
+      <ul>
+        <li><strong>Avalaunch company rock:</strong> Owned by Don. Separate Ninety rock.</li>
+        <li><strong>Education-center / advisor-attributed builds:</strong> Parked; not staffed this quarter.</li>
+        <li><strong>Calculator or course builds:</strong> Discover via polls; do not deliver as Rock milestones.</li>
+        <li><strong>Agents creating polls or messaging strategists:</strong> Humans run Zoom polls and intake.</li>
+      </ul>
     </div>
   </section>
 
@@ -798,10 +829,27 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     });
   });
 
-  /* If deep-linked to a walkthrough section, stay on walkthrough tab */
-  if (window.location.hash) {
-    activate("walkthrough");
+  function tabForHash(hash) {
+    if (!hash) return null;
+    var id = hash.replace(/^#/, "");
+    var el = document.getElementById(id);
+    if (!el) return null;
+    var panel = el.closest(".tab-panel");
+    if (!panel || !panel.id) return null;
+    return panel.id.replace(/^panel-/, "");
   }
+
+  document.querySelectorAll(".sticky .nav a").forEach(function (a) {
+    a.addEventListener("click", function () {
+      var href = a.getAttribute("href");
+      if (!href || href.charAt(0) !== "#") return;
+      var tab = tabForHash(href);
+      if (tab) activate(tab);
+    });
+  });
+
+  var initial = tabForHash(window.location.hash);
+  if (initial) activate(initial);
 })();
 </script>
 </body>
