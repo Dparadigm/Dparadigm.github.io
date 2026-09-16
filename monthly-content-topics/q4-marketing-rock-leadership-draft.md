@@ -49,28 +49,43 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 
 ## Milestones (add each in Ninety with owner + due date)
 
-| # | Milestone title | Owner | Due |
-|---|-----------------|-------|-----|
-| 1 | Stand up Zoom sales–marketing intake channel + email forward path | Dan / Rachel | 2026-10-08 |
-| 2 | Publish “Our five ICPs  -  current” one-pager to marketing + sales | CMO + Cornelius (Rachel hosts) | 2026-10-08 |
-| 3 | Lock October 2026 content (titles / what’s shipping) | Rachel | **2026-09-25** |
-| 4 | Run dual Zoom polls for **November** content (2–3 weeks ahead of November) | Rachel | 2026-10-08 |
-| 5 | Lock November 2026 content | Rachel | 2026-10-15 |
-| 6 | All October podcasts recorded and published (weekly: record week before publish) | Rachel | 2026-10-31 |
-| 7 | Run dual Zoom polls for **December** content (2–3 weeks ahead of December) | Rachel | 2026-11-14 |
-| 8 | Lock December 2026 content | Rachel | 2026-11-21 |
-| 9 | All November podcasts recorded and published | Rachel | 2026-11-30 |
-| 10 | Run dual Zoom polls for **January 2027** content (2–3 weeks ahead of January) | Rachel | 2026-12-12 |
-| 11 | Lock January 2027 content | Rachel | 2026-12-19 |
-| 12 | All December podcasts recorded and published | Rachel | 2026-12-31 |
-| 13 | Process fully implemented; Rachel running it with John Keever | Rachel (+ John Keever) | 2026-12-31 |
+Grouped by **calendar month when the work is due** (not the content month the poll is for).
+
+### September 2026
+| Milestone | Owner | Due |
+|-----------|-------|-----|
+| Lock October 2026 content (titles / what’s shipping) | Rachel | **2026-09-25** |
+
+### October 2026
+| Milestone | Owner | Due |
+|-----------|-------|-----|
+| Stand up Zoom sales–marketing intake channel + email forward path | Dan / Rachel | 2026-10-08 |
+| Publish “Our five ICPs — current” one-pager to marketing + sales | CMO + Cornelius (Rachel hosts) | 2026-10-08 |
+| Run dual Zoom polls for **November** content (2–3 weeks ahead of November) | Rachel | 2026-10-08 |
+| Lock November 2026 content | Rachel | 2026-10-15 |
+| All October podcasts recorded and published (weekly: record week before publish) | Rachel | 2026-10-31 |
+
+### November 2026
+| Milestone | Owner | Due |
+|-----------|-------|-----|
+| Run dual Zoom polls for **December** content (2–3 weeks ahead of December) | Rachel | 2026-11-14 |
+| Lock December 2026 content | Rachel | 2026-11-21 |
+| All November podcasts recorded and published | Rachel | 2026-11-30 |
+
+### December 2026
+| Milestone | Owner | Due |
+|-----------|-------|-----|
+| Run dual Zoom polls for **January 2027** content (2–3 weeks ahead of January) | Rachel | 2026-12-12 |
+| Lock January 2027 content | Rachel | 2026-12-19 |
+| All December podcasts recorded and published | Rachel | 2026-12-31 |
+| Process fully implemented; Rachel running it with John Keever | Rachel (+ John Keever) | 2026-12-31 |
 
 **Notes**
 - Topic-card template / companion one-pager are assumed in the loop (not listed as their own milestone).
-- Milestone 3 (October lock) is fixed at **2026-09-25**.
+- October lock is fixed at **2026-09-25**.
 - Poll milestones are for the *upcoming* content month, not the calendar month the poll sits in.
 - Lock → subsequent weeks: record in Riverside the week before publish; publish the following week; one podcast per week.
-- Month-end record/publish milestones (#6, #9, #12) mean every planned episode for that content month made it through record + publish (CMO measure still runs after publish into the next cycle).
+- Month-end record/publish milestones mean every planned episode for that content month made it through record + publish (CMO measure still runs after publish into the next cycle).
 - Lock dates for Nov / Dec / Jan after the dual polls are draft defaults (about a week after poll due); adjust if Rachel wants tighter.
 
 ---
@@ -88,6 +103,7 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 
 - Walkthrough + Month 1 resources: https://dparadigm.github.io/monthly-content-topics/  
 - Full mechanics MD: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md  
+- Google Doc: https://docs.google.com/document/d/1FFYpWABvRkc57KjKg65EaF-itEAmB4m0e_VB__gRKsg/edit  
 
 ---
 

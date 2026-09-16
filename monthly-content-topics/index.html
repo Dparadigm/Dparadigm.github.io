@@ -114,7 +114,7 @@ h1{
   scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
 }
 #full-md, #trinity-prompts, #card-template, #poll-checklist, #ops-checklist, #parking-lot,
-#rock-title, #rock-smart, #rock-milestones, #rock-out,
+#rock-title, #rock-smart, #rock-milestones, #rock-out, #rock-gdoc,
 #context, #picture, #tracks, #steps, #poll, #roles,
 #alex-map, #alex-problem, #alex-oos, #alex-roles, #alex-loop, #alex-skills,
 #alex-schema, #alex-path, #alex-accept, #alex-prompts, #alex-open, #alex-refs,
@@ -251,6 +251,28 @@ h1{
 .resource-block p, .resource-block li{color:var(--body); font-size:14px}
 .resource-block ul, .resource-block ol{margin:8px 0 0; padding-left:1.2em}
 .resource-block li{margin:4px 0}
+.ms-month{
+  border:1px solid var(--border); border-radius:10px; background:var(--shell);
+  margin:0 0 10px; overflow:hidden;
+}
+.ms-month > summary{
+  list-style:none; cursor:pointer; user-select:none;
+  display:flex; align-items:center; justify-content:space-between; gap:12px;
+  padding:12px 14px; font-family:var(--display); font-weight:700; font-size:14px;
+  color:var(--ink);
+}
+.ms-month > summary::-webkit-details-marker{display:none}
+.ms-month > summary::after{
+  content:"▸"; color:var(--muted); font-size:12px; transition:transform .15s ease;
+}
+.ms-month[open] > summary::after{transform:rotate(90deg)}
+.ms-month > summary:hover{background:rgba(0,0,0,.02)}
+.ms-month .ms-body{padding:0 14px 14px}
+.ms-month .template-grid{margin-top:4px}
+.ms-month .ms-count{
+  font-family:var(--body-font, inherit); font-weight:600; font-size:12px;
+  color:var(--muted); margin-left:auto; margin-right:8px;
+}
 .prompt-box{
   background:var(--shell); border:1px solid var(--border); border-radius:10px;
   padding:14px 16px; margin:10px 0 14px; position:relative;
@@ -773,6 +795,7 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     </p>
     <p style="margin-top:12px">
       <a class="link-chip" href="q4-marketing-rock-leadership-draft.md">Open markdown (copy into Ninety)</a>
+      <a class="link-chip" href="https://docs.google.com/document/d/1FFYpWABvRkc57KjKg65EaF-itEAmB4m0e_VB__gRKsg/edit" target="_blank" rel="noopener">Google Doc</a>
       <a class="link-chip" href="https://raw.githubusercontent.com/Dparadigm/Dparadigm.github.io/main/monthly-content-topics/q4-marketing-rock-leadership-draft.md" target="_blank" rel="noopener">Raw on GitHub</a>
     </p>
     <p class="cross-link">Operator refs: <a href="#alex-map">Alex / Ability Path B spec</a> · <a href="https://docs.google.com/document/d/1Y-Yydclv6BZDUPvYszxQRDLICJ7qOVfwRPJbtTqJuW8/edit" target="_blank" rel="noopener">Google Doc (Alex comments)</a></p>
@@ -784,6 +807,7 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
       <a href="#rock-smart">SMART</a>
       <a href="#rock-milestones">Milestones</a>
       <a href="#rock-out">Not in this Rock</a>
+      <a href="#rock-gdoc">Google Doc</a>
     </div>
   </nav>
 
@@ -810,22 +834,52 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
 
         <div class="resource-block" id="rock-milestones">
       <h3>Milestones</h3>
-      <p style="margin:0 0 12px;color:var(--body);font-size:14px">Polls run <strong>2-3 weeks before</strong> the content month. After titles lock, each podcast is <strong>recorded the week before</strong> it publishes (Riverside), then <strong>published the following week</strong> — one new podcast every week. Topic cards / one-pager stay part of the loop (not their own milestone). October lock is <strong>2026-09-25</strong>.</p>
-      <div class="template-grid">
-        <div class="template-field"><strong>1. Zoom intake channel + email forward</strong><br>Owner: Dan / Rachel · Due: 2026-10-08</div>
-        <div class="template-field"><strong>2. Five-ICP one-pager to marketing + sales</strong><br>Owner: CMO + Cornelius (Rachel hosts) · Due: 2026-10-08</div>
-        <div class="template-field"><strong>3. Lock October 2026 content (titles / what’s shipping)</strong><br>Owner: Rachel · Due: <strong>2026-09-25</strong></div>
-        <div class="template-field"><strong>4. Dual Zoom polls for November content</strong><br>Owner: Rachel · Due: 2026-10-08 · 2-3 weeks ahead of November</div>
-        <div class="template-field"><strong>5. Lock November 2026 content</strong><br>Owner: Rachel · Due: 2026-10-15</div>
-        <div class="template-field"><strong>6. All October podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-10-31 · Weekly: record week before publish</div>
-        <div class="template-field"><strong>7. Dual Zoom polls for December content</strong><br>Owner: Rachel · Due: 2026-11-14 · 2-3 weeks ahead of December</div>
-        <div class="template-field"><strong>8. Lock December 2026 content</strong><br>Owner: Rachel · Due: 2026-11-21</div>
-        <div class="template-field"><strong>9. All November podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-11-30</div>
-        <div class="template-field"><strong>10. Dual Zoom polls for January 2027 content</strong><br>Owner: Rachel · Due: 2026-12-12 · 2-3 weeks ahead of January</div>
-        <div class="template-field"><strong>11. Lock January 2027 content</strong><br>Owner: Rachel · Due: 2026-12-19</div>
-        <div class="template-field"><strong>12. All December podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-12-31</div>
-        <div class="template-field"><strong>13. Process fully implemented; Rachel running it with John Keever</strong><br>Owner: Rachel (+ John Keever) · Due: 2026-12-31</div>
-      </div>
+      <p style="margin:0 0 12px;color:var(--body);font-size:14px">Grouped by calendar month (when the work is due). Polls run <strong>2-3 weeks before</strong> the content month. After titles lock, each podcast is <strong>recorded the week before</strong> it publishes (Riverside), then <strong>published the following week</strong> — one new podcast every week. Open a month to see its milestones.</p>
+
+      <details class="ms-month" open>
+        <summary>September 2026 <span class="ms-count">1 milestone</span></summary>
+        <div class="ms-body">
+          <div class="template-grid">
+            <div class="template-field"><strong>Lock October 2026 content (titles / what’s shipping)</strong><br>Owner: Rachel · Due: <strong>2026-09-25</strong></div>
+          </div>
+        </div>
+      </details>
+
+      <details class="ms-month">
+        <summary>October 2026 <span class="ms-count">5 milestones</span></summary>
+        <div class="ms-body">
+          <div class="template-grid">
+            <div class="template-field"><strong>Zoom intake channel + email forward</strong><br>Owner: Dan / Rachel · Due: 2026-10-08</div>
+            <div class="template-field"><strong>Five-ICP one-pager to marketing + sales</strong><br>Owner: CMO + Cornelius (Rachel hosts) · Due: 2026-10-08</div>
+            <div class="template-field"><strong>Dual Zoom polls for November content</strong><br>Owner: Rachel · Due: 2026-10-08 · 2-3 weeks ahead of November</div>
+            <div class="template-field"><strong>Lock November 2026 content</strong><br>Owner: Rachel · Due: 2026-10-15</div>
+            <div class="template-field"><strong>All October podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-10-31 · Weekly: record week before publish</div>
+          </div>
+        </div>
+      </details>
+
+      <details class="ms-month">
+        <summary>November 2026 <span class="ms-count">3 milestones</span></summary>
+        <div class="ms-body">
+          <div class="template-grid">
+            <div class="template-field"><strong>Dual Zoom polls for December content</strong><br>Owner: Rachel · Due: 2026-11-14 · 2-3 weeks ahead of December</div>
+            <div class="template-field"><strong>Lock December 2026 content</strong><br>Owner: Rachel · Due: 2026-11-21</div>
+            <div class="template-field"><strong>All November podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-11-30</div>
+          </div>
+        </div>
+      </details>
+
+      <details class="ms-month">
+        <summary>December 2026 <span class="ms-count">4 milestones</span></summary>
+        <div class="ms-body">
+          <div class="template-grid">
+            <div class="template-field"><strong>Dual Zoom polls for January 2027 content</strong><br>Owner: Rachel · Due: 2026-12-12 · 2-3 weeks ahead of January</div>
+            <div class="template-field"><strong>Lock January 2027 content</strong><br>Owner: Rachel · Due: 2026-12-19</div>
+            <div class="template-field"><strong>All December podcasts recorded and published</strong><br>Owner: Rachel · Due: 2026-12-31</div>
+            <div class="template-field"><strong>Process fully implemented; Rachel running it with John Keever</strong><br>Owner: Rachel (+ John Keever) · Due: 2026-12-31</div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="resource-block" id="rock-out">
@@ -837,6 +891,14 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
         <li><strong>Calculator or course builds:</strong> Discover via polls; do not deliver as Rock milestones.</li>
         <li><strong>Agents creating polls or messaging strategists:</strong> Humans run Zoom polls and intake.</li>
       </ul>
+    </div>
+
+    <div class="resource-block" id="rock-gdoc">
+      <h3>Google Doc</h3>
+      <p>Same draft rock in a Google Doc for comments and copy into Ninety:</p>
+      <p style="margin-top:10px">
+        <a class="link-chip" href="https://docs.google.com/document/d/1FFYpWABvRkc57KjKg65EaF-itEAmB4m0e_VB__gRKsg/edit" target="_blank" rel="noopener">Open Q4 marketing rock (Google Doc)</a>
+      </p>
     </div>
   </section>
 
