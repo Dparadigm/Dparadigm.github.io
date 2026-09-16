@@ -2,7 +2,7 @@
 
 **Status:** Draft only — do not publish to Ninety, do not create live Zoom polls, do not message Rachel until Daniel confirms.  
 **Owner (intended):** Rachel (approves / owns)  
-**Mechanics draft by:** Dan / Atlas  
+**Draft by:** Dan  
 **Due to Patrick + Mike:** End of day Wednesday (Sep 16, 2026)  
 **Delivery for ranking:** Zoom Workplace **Polling** (not Slack, not email survey)
 
@@ -253,7 +253,7 @@ Document the fallback in the rock so Rachel isn’t stuck.
 - [ ] One marketing rock vs two (podcast vs existing) in Ninety  
 - [x] October locks by 2026-09-25 (may be in flight); first ahead dual polls = November (~2026-10-08)  
 - [ ] Exact Zoom channel name + membership; forward-inbox address  
-- [ ] Whether Atlas drafts placeholder ICP topics now or waits for calendar + live Cornelius/CMO pass
+- [ ] Whether to draft placeholder ICP topics now or wait for calendar + live Cornelius/CMO pass
 - [x] Example Trinity ask prompts for Cornelius + CMO drafted in this MD (Rachel may modify; still do not send until confirmed)
 - [x] Two polls (new vs existing); companion one-pager for cards; Rachel owns post-lock format
 - [x] Idea intake = Zoom channel home base + email forward; no content hub until that works

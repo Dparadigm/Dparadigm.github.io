@@ -22,8 +22,23 @@ Today CMO can report and brief. It does not yet own this monthly option-list + m
 
 ---
 
+## 2. Out of scope (month one)
 
-## 2. Role boundaries
+Do **not** build these into the first CMO increment:
+
+- Education center / advisor-attributed content library
+- Calculator / exercise / lightweight app builds
+- Full content hub that scrapes Trinity or replaces Zoom intake
+- Live Zoom poll creation by agents
+- Messaging Rachel or wealth strategists from agents
+
+Riverside MCP was previously discussed for CMO (~2026-09-04). Confirm separately whether it remains on the path; it is **not** required for this content-calendar / topic-options loop.
+
+**Human Zoom poll extras (not agent fields):** Each poll also asks wealth strategists for (a) resources they already send clients and (b) tools / calculators / demos that made a topic click. Those answers are **human discovery only**. They are not CMO topic-card fields and agents do not collect them.
+
+---
+
+## 3. Role boundaries
 
 | Actor | Owns | Does not own |
 |-------|------|----------------|
@@ -34,7 +49,7 @@ Today CMO can report and brief. It does not yet own this monthly option-list + m
 
 ---
 
-## 3. Monthly loop (desired agent behavior)
+## 4. Monthly loop (desired agent behavior)
 
 Cadence: **month-to-month starting October** (not a full-year lock). Calendar (Patrick / Rachel year-end doc) is a **constraint**, not the only source.
 
@@ -59,13 +74,13 @@ CMO measurement brief → next month’s CMO options
 
 ### Parallel human pack (not a new month-one skill unless Alex wants it)
 
-Living one-pager **“Our five ICPs — current”** drafted by CMO + Cornelius for marketing + sales. Distinct from the monthly ICP pack (§4.1). Keep as a readable human reference; HubSpot contact tags remain separate.
+Living one-pager **“Our five ICPs — current”** drafted by CMO + Cornelius for marketing + sales. Distinct from the monthly ICP pack (§5.1). Keep as a readable human reference; HubSpot contact tags remain separate.
 
 ---
 
-## 4. Skills / A2A asks to implement on CMO (and Cornelius)
+## 5. Skills / A2A asks to implement on CMO (and Cornelius)
 
-### 4.1 Skill: `monthly-icp-pack` (Cornelius)
+### 5.1 Skill: `monthly-icp-pack` (Cornelius)
 
 **Trigger:** Scheduled or operator-invoked before monthly planning.  
 **Input:** Target month; whether new vs existing ICPs differ.  
@@ -76,11 +91,11 @@ Living one-pager **“Our five ICPs — current”** drafted by CMO + Cornelius 
 3. Stale / weak / conflicting ICP notes
 4. Explicit: facts only from ICP source of truth; **no episode titles**
 
-### 4.2 Skill: `monthly-topic-options` (CMO)
+### 5.2 Skill: `monthly-topic-options` (CMO)
 
 **Trigger:** After ICP pack available (A2A from Cornelius or attached pack).  
 **Input:** Month; Cornelius ICP pack; recent performance history CMO already trusts; optional calendar constraints.  
-**Output:** 6–10 topic **cards** (see schema §5).  
+**Output:** 6–10 topic **cards** (see schema §6).  
 **Also:**
 
 - Flag thin ICP coverage
@@ -88,7 +103,7 @@ Living one-pager **“Our five ICPs — current”** drafted by CMO + Cornelius 
 - Leave room for open-ended WS write-in (do **not** invent write-in text)
 - Do **not** run Zoom poll or message Rachel
 
-### 4.3 Skill: `post-publish-measurement` (CMO)
+### 5.3 Skill: `post-publish-measurement` (CMO)
 
 **Trigger:** After month’s podcast / newsletter / livestreams ship.  
 **Output:** One short brief:
@@ -99,7 +114,7 @@ Living one-pager **“Our five ICPs — current”** drafted by CMO + Cornelius 
 
 ---
 
-## 5. Topic-card schema (CMO emit)
+## 6. Topic-card schema (CMO emit)
 
 | Field | Required | Notes |
 |-------|----------|--------|
@@ -118,7 +133,7 @@ Poll UX: short titles in Zoom; full cards on companion Notion/Drive one-pager li
 
 ---
 
-## 6. How this relates to existing `/contentcalendar` (CMO repo)
+## 7. How this relates to existing `/contentcalendar` (CMO repo)
 
 Reviewed live skill in `ParadigmLife/cmo-paradigm-life` (`.claude/skills/contentcalendar/SKILL.md`).
 
@@ -144,7 +159,7 @@ Add a thin entry (extend `/contentcalendar` Step 1 argument routing, or a parent
 | Path | Skill surface | Output |
 |------|---------------|--------|
 | A Campaign calendar | Existing `/contentcalendar` Phases 1–2 | Theme Brief + Master Calendar + slots; optional podcast weeks |
-| B Monthly topic options | New: §4.1–4.3 (+ human polls outside agent) | ICP pack → topic cards → (humans poll) → lock; then hand off to `/generate-podcast-brief` or Path A `set-podcast-weeks` |
+| B Monthly topic options | New: §5.1–5.3 (+ human polls outside agent) | ICP pack → topic cards → (humans poll) → lock; then hand off to `/generate-podcast-brief` or Path A `set-podcast-weeks` |
 
 ### Path B channel options (within mode 2)
 
@@ -159,44 +174,43 @@ Rachel’s post-lock awareness format remains human process, not a CMO skill.
 
 ---
 
-## 7. Acceptance criteria (for Ability)
+## 8. Acceptance criteria (for Ability)
 
-- [ ] Cornelius can return a monthly ICP pack matching §4.1 without proposing titles
-- [ ] CMO can return 6–10 topic cards matching §5 from that pack + performance history
+- [ ] Cornelius can return a monthly ICP pack matching §5.1 without proposing titles
+- [ ] CMO can return 6–10 topic cards matching §6 from that pack + performance history
 - [ ] Podcast path clearly selectable (`channel=podcast`, `track=new_business`)
 - [ ] Existing-client options labeled separately (not mixed into one undifferentiated list without `track` / `channel`)
 - [ ] Post-publish measurement brief available as a distinct skill
 - [ ] No agent creates Zoom polls, messages WS, or invents ICP facts
-- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); example prompts available for operator use until A2A is live (Rachel may modify)
+- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); prompts already drafted for operator use until A2A is live
 - [ ] Operator can choose Path A (campaign calendar) vs Path B (monthly topic options) without Path B mutating Path A theme state by accident
 - [ ] Path B does not create Zoom polls or message wealth strategists
 
 ---
 
-## 8. Example operator prompts (interim until skills are wired)
+## 9. Operator prompts (interim until skills are wired)
 
-**Examples only.** Rachel may modify or replace these in Trinity. Do not hard-code them as the only allowed prompt text. Example prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
+Full prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
 
 - Box: `q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md`
 - Live: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md
-- Site: Month 1 resources → Trinity prompt examples
 
-Fine as smoke-test starters; Rachel owns the final prompts she runs.
+Use those verbatim for smoke tests.
 
 ---
 
-## 9. Open questions for Alex
+## 10. Open questions for Alex
 
 1. Prefer **A2A** (CMO requests Cornelius) vs scheduled Cornelius file/snapshot CMO reads (same pattern Ability suggested for Wingman ↔ CMO)? Note: CMO already has `/cornelius-query` async+poll for briefs.
 2. Where should topic-card JSON / markdown land for humans (Drive folder, agent files API, both)?
 3. Is Riverside MCP still in scope for CMO production later, or explicitly out of this content-planning increment?
 4. **Router shape:** Extend `/contentcalendar` Step 1 with a mode prompt, add a parent `/content-planning` skill, or keep Path B as separate slash commands only?
 5. For Path B → production: after Rachel locks topics, should agents auto-call `/generate-podcast-brief`, only write locked titles into calendar state for Path A, or leave handoff fully human?
-6. Any existing CMO skill we should extend vs new skills named as in §4?
+6. Any existing CMO skill we should extend vs new skills named as in §5?
 
 ---
 
-## 10. References
+## 11. References
 
 - Internal draft: `/workspace/q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md`
 - Public draft: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md
