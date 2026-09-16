@@ -31,13 +31,13 @@ Done when:
 4. Intake channel + email forward are live
 5. Five-ICP one-pager is available to marketing + sales
 6. Process is fully implemented and **Rachel is running it with John Keever**
-7. Ability Path B build advances on working targets (confirm with Alex): timeline by **2026-09-25**; ICP/topic-card smoke early Oct; planning cycle early–mid Oct; Path B automation mid/3rd week Oct
+7. Ability Path B build advances on **soft TBD** estimates: last full week of Sep; ICP/topic-card smoke early Oct; planning cycle early–mid Oct; Path B automation mid/3rd week Oct
 
 **Monitor:** Weekly in marketing L10 / scoreboard row Rachel owns. Binary at Rock close: above true, or not.
 
 ### Achievable (competency / commitment / capacity)
 - **Competency:** Rachel (content execution); John Keever (content partner on the running process); Dan (early scaffolding); Cornelius + CMO (ICP pack + cards + measure); Ability (Path B automation per Alex’s spec); wealth strategists (poll + dumps)
-- **Commitment:** Rock owner Rachel; Dan helps stand up intake/ICP and first ahead-of-month poll pattern; Ability owns Path B build; dates below are working targets pending Alex confirm
+- **Commitment:** Rock owner Rachel; Dan helps stand up intake/ICP and first ahead-of-month poll pattern; Ability owns Path B build; dates below are soft TBD estimates
 
 ### Relevant
 Supports ICP-led marketing, existing-client value (reduce “not relevant” unsubscribes), and wealth-strategist participation. Hands a durable process to Rachel + John Keever rather than a one-off campaign.
@@ -81,13 +81,13 @@ Grouped by **calendar month when the work is due** (not the content month the po
 | All December podcasts recorded and published | Rachel | 2026-12-31 |
 | Process fully implemented; Rachel running it with John Keever | Rachel (+ John Keever) | 2026-12-31 |
 
-### Ability.ai build (working targets — confirm with Alex)
+### Ability.ai build (soft TBD estimates)
 | Milestone | Owner | Due |
 |-----------|-------|-----|
-| Ability reviews Path B spec and returns projected timeline | Ability (Alex) | **2026-09-25** (last full week of Sep: Sep 21–25) |
-| First Path B smoke usable (ICP pack and/or topic cards) | Ability | **2026-10-07** (first week / early Oct) |
-| Path B used in at least one real planning cycle | Ability + Rachel | **2026-10-15** (early–mid Oct) |
-| Path B automation reliable enough for the monthly loop | Ability | **2026-10-17** (mid / 3rd week Oct, ~Oct 15–21) |
+| Ability reviews Path B spec and returns projected timeline | Ability (Alex) | **soft TBD** — estimate: last full week of Sep (Sep 21–25) |
+| First Path B smoke usable (ICP pack and/or topic cards) | Ability | **soft TBD** — estimate: first week / early Oct |
+| Path B used in at least one real planning cycle | Ability + Rachel | **soft TBD** — estimate: early–mid Oct |
+| Path B automation reliable enough for the monthly loop | Ability | **soft TBD** — estimate: mid / 3rd week Oct (~Oct 15–21) |
 
 
 **Notes**
@@ -97,7 +97,7 @@ Grouped by **calendar month when the work is due** (not the content month the po
 - Lock → subsequent weeks: record in Riverside the week before publish; publish the following week; one podcast per week.
 - Month-end record/publish milestones mean every planned episode for that content month made it through record + publish (CMO measure still runs after publish into the next cycle).
 - Lock dates for Nov / Dec / Jan after the dual polls are draft defaults (about a week after poll due); adjust if Rachel wants tighter.
-- **Ability milestones are working targets** (last full week of Sep through mid/3rd week of Oct). Confirm with Alex; adjust if his projected timeline differs. Human Zoom polls stay outside agents.
+- **Ability milestones are soft TBD** estimates (last full week of Sep through mid/3rd week of Oct). Human Zoom polls stay outside agents.
 
 
 ---
