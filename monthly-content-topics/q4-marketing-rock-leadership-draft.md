@@ -34,8 +34,6 @@ Done when:
 ### Achievable (competency / commitment / capacity)
 - **Competency:** Rachel (content execution); John Keever (content partner on the running process); Dan (early scaffolding); Cornelius + CMO (ICP pack + cards + measure); wealth strategists (poll + dumps)
 - **Commitment:** Rock owner Rachel; Dan helps stand up intake/ICP and first ahead-of-month poll pattern
-- **Capacity:** No education-center, advisor-attributed library, or calculator-app builds inside this Rock (parked). Avalaunch company rock stays with Don.
-- **80% confidence:** Yes, if October is locked in September and Nov/Dec/Jan reuse the same ahead-of-month poll pattern.
 
 ### Relevant
 Supports ICP-led marketing, existing-client value (reduce “not relevant” unsubscribes), and wealth-strategist participation. Hands a durable process to Rachel + John Keever rather than a one-off campaign.
