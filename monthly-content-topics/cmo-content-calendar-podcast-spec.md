@@ -182,20 +182,21 @@ Rachel’s post-lock awareness format remains human process, not a CMO skill.
 - [ ] Existing-client options labeled separately (not mixed into one undifferentiated list without `track` / `channel`)
 - [ ] Post-publish measurement brief available as a distinct skill
 - [ ] No agent creates Zoom polls, messages WS, or invents ICP facts
-- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); prompts already drafted for operator use until A2A is live
+- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); example prompts available for operator use until A2A is live (Rachel may modify)
 - [ ] Operator can choose Path A (campaign calendar) vs Path B (monthly topic options) without Path B mutating Path A theme state by accident
 - [ ] Path B does not create Zoom polls or message wealth strategists
 
 ---
 
-## 9. Operator prompts (interim until skills are wired)
+## 9. Example operator prompts (interim until skills are wired)
 
-Full prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
+**Examples only.** Rachel may modify or replace these in Trinity. Do not hard-code them as the only allowed prompt text. Example prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
 
 - Box: `q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md`
 - Live: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md
+- Site: Month 1 resources → Trinity prompt examples
 
-Use those verbatim for smoke tests.
+Fine as smoke-test starters; Rachel owns the final prompts she runs.
 
 ---
 

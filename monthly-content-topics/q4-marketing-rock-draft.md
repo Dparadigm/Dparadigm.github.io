@@ -42,7 +42,9 @@
 - Gauge may still condense Trinity CMO email packs for Dan’s desk; that is not a substitute for the monthly Trinity CMO option-list ask.
 - No Trinity / A2A calls in this draft phase.
 
-### Draft Trinity ask prompts (do not send until Daniel confirms)
+### Example Trinity ask prompts (do not send until Daniel confirms)
+
+**Examples only.** Starting points for Trinity — Rachel may edit or replace wording, structure, and outputs. Not definitive scripts for Ability to hard-code or for Rachel to follow verbatim.
 
 #### Ask Cornelius — monthly ICP pack
 
@@ -252,7 +254,7 @@ Document the fallback in the rock so Rachel isn’t stuck.
 - [x] October locks by 2026-09-25 (may be in flight); first ahead dual polls = November (~2026-10-08)  
 - [ ] Exact Zoom channel name + membership; forward-inbox address  
 - [ ] Whether Atlas drafts placeholder ICP topics now or waits for calendar + live Cornelius/CMO pass
-- [x] Trinity ask prompts for Cornelius + CMO drafted in this MD (still do not send until confirmed)
+- [x] Example Trinity ask prompts for Cornelius + CMO drafted in this MD (Rachel may modify; still do not send until confirmed)
 - [x] Two polls (new vs existing); companion one-pager for cards; Rachel owns post-lock format
 - [x] Idea intake = Zoom channel home base + email forward; no content hub until that works
 - [x] ICP one-pager by CMO + Cornelius; v1 audience = marketing + sales; Patrick ping parked
