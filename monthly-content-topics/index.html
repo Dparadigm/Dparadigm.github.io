@@ -118,7 +118,7 @@ h1{
 #context, #picture, #tracks, #steps, #poll, #roles,
 #alex-map, #alex-problem, #alex-roles, #alex-loop, #alex-skills,
 #alex-schema, #alex-path, #alex-accept, #alex-prompts, #alex-open, #alex-refs,
-#walkthrough-hero, #resources-hero, #rock-hero{
+#how-to-read, #resources-tldr, #rock-tldr, #alex-tldr, #walkthrough-hero, #resources-hero, #rock-hero{
   scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
 }
 .nav{
@@ -273,6 +273,56 @@ h1{
   font-family:var(--body-font, inherit); font-weight:600; font-size:12px;
   color:var(--muted); margin-left:auto; margin-right:8px;
 }
+
+.read-guide{
+  border:1px solid var(--border); background:var(--card);
+  border-radius:var(--radius); box-shadow:var(--shadow);
+  padding:22px 24px; margin:0 0 18px;
+}
+.read-guide > h2{
+  font-family:var(--display); font-size:18px; font-weight:700;
+  margin:0 0 6px; letter-spacing:-.01em;
+}
+.read-guide > .lead{margin:0 0 14px; color:var(--body); font-size:15px}
+.read-guide .guide-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:12px;
+}
+@media (max-width:700px){.read-guide .guide-grid{grid-template-columns:1fr}}
+.guide-card, .tldr-card{
+  border:1px solid var(--border); border-radius:10px;
+  background:var(--shell); padding:14px 14px 12px;
+}
+.guide-card h3, .tldr-card h3{
+  font-family:var(--display); font-size:14px; font-weight:700;
+  margin:0 0 6px;
+}
+.guide-card p, .tldr-card p{
+  margin:0; color:var(--body); font-size:13px; line-height:1.45;
+}
+.guide-card a.tab-jump, .tldr-card a.tab-jump{
+  display:inline-block; margin-top:10px; font-size:13px; font-weight:600;
+  color:var(--growth); text-decoration:none;
+}
+.guide-card a.tab-jump:hover, .tldr-card a.tab-jump:hover{text-decoration:underline}
+.tldr-strip{
+  border:1px solid #c5dff3; background:var(--income-soft);
+  border-radius:10px; padding:16px 18px; margin:14px 0 0;
+}
+.tldr-strip > h2{
+  font-family:var(--display); font-size:14px; font-weight:700;
+  margin:0 0 4px; letter-spacing:.04em; text-transform:uppercase; color:#1a5f8a;
+}
+.tldr-strip > .lead{margin:0 0 12px; color:var(--body); font-size:13px}
+.tldr-grid{
+  display:grid; grid-template-columns:repeat(3, 1fr); gap:10px;
+}
+@media (max-width:900px){.tldr-grid{grid-template-columns:1fr}}
+.tldr-card{background:#fff}
+.tldr-card.current{border-color:var(--growth); box-shadow:inset 0 0 0 1px var(--growth)}
+.tldr-card .tag-mini{
+  display:inline-block; font-size:11px; font-weight:700; letter-spacing:.04em;
+  text-transform:uppercase; color:var(--muted); margin-bottom:6px;
+}
 .prompt-box{
   background:var(--shell); border:1px solid var(--border); border-radius:10px;
   padding:14px 16px; margin:10px 0 14px; position:relative;
@@ -386,8 +436,36 @@ h1{
     </div>
   </section>
 
+  <section class="read-guide" id="how-to-read">
+    <h2>How to read this page</h2>
+    <p class="lead">Four tabs. Start on Summary for the story; open the other tabs when you need the pack, the rock, or the Ability build.</p>
+    <div class="guide-grid">
+      <div class="guide-card">
+        <h3>1. Summary (this tab)</h3>
+        <p>The narrative: Q4 rock context, monthly loop, two tracks (new business vs existing clients), Zoom polls, intake, ICP one-pager, and who does what. Read this first so the other tabs make sense.</p>
+        <a class="tab-jump" href="#picture">Scroll to big picture →</a>
+      </div>
+      <div class="guide-card">
+        <h3>2. Month 1 resources</h3>
+        <p>Hands-on pack for locking October and polling November: reference MD, example Trinity prompts (editable), topic-card example, poll/ops checklists, parking lot.</p>
+        <a class="tab-jump" href="#resources-hero">Open Month 1 resources →</a>
+      </div>
+      <div class="guide-card">
+        <h3>3. Q4 draft rock</h3>
+        <p>What leadership reviews for Ninety: rock title, SMART description, milestones by month, Ability.ai build estimates (soft TBD). Draft only — not entered in Ninety yet.</p>
+        <a class="tab-jump" href="#rock-hero">Open Q4 draft rock →</a>
+      </div>
+      <div class="guide-card">
+        <h3>4. Alex / Ability spec</h3>
+        <p>What Ability builds (Path B): skills, topic-card schema, Path A vs B, acceptance criteria, open questions. Google Doc is where Alex comments; this tab mirrors it.</p>
+        <a class="tab-jump" href="#alex-hero">Open Alex / Ability spec →</a>
+      </div>
+    </div>
+  </section>
+
   <nav class="sticky" aria-label="Summary sections">
     <div class="nav">
+      <a href="#how-to-read">How to read</a>
       <a href="#context">Q4 rock</a>
       <a href="#picture">Big picture</a>
       <a href="#tracks">Two tracks</a>
@@ -639,8 +717,34 @@ h1{
     </p>
   </section>
 
+  <div class="tldr-strip" id="resources-tldr">
+    <h2>Other tabs · TLDR</h2>
+    <p class="lead">Quick read on Month 1, the Q4 rock, and the Ability spec. Jump to that tab when you need the full page.</p>
+    <div class="tldr-grid">
+      <div class="tldr-card current">
+        <span class="tag-mini">This tab</span>
+        <h3>Month 1 resources</h3>
+        <p>Operator pack for month one: example Trinity prompts, topic-card template, poll and ops checklists, parking lot. Use when locking October and opening November polls.</p>
+        <a class="tab-jump" href="#resources-hero">Open Month 1 resources →</a>
+      </div>
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Q4 draft rock</h3>
+        <p>Leadership Ninety draft: SMART wording, milestones by month (Sept–Dec), plus Ability.ai build (soft TBD). Not entered in Ninety yet.</p>
+        <a class="tab-jump" href="#rock-hero">Open Q4 draft rock →</a>
+      </div>
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Alex / Ability spec</h3>
+        <p>Path B for Ability: Cornelius ICP → CMO topic cards → measure. Path A stays separate campaign calendar. Spec, schema, acceptance criteria, open questions for Alex.</p>
+        <a class="tab-jump" href="#alex-hero">Open Alex / Ability spec →</a>
+      </div>
+    </div>
+  </div>
+
   <nav class="sticky" aria-label="Month 1 resource sections">
     <div class="nav">
+      <a href="#resources-tldr">Other tabs TLDR</a>
       <a href="#full-md">Reference MD</a>
       <a href="#trinity-prompts">Trinity prompts</a>
       <a href="#card-template">Topic cards</a>
@@ -811,8 +915,34 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     <p class="cross-link">Operator refs: <a href="#alex-map">Alex / Ability Path B spec</a> · <a href="https://docs.google.com/document/d/1Y-Yydclv6BZDUPvYszxQRDLICJ7qOVfwRPJbtTqJuW8/edit" target="_blank" rel="noopener">Google Doc (Alex comments)</a></p>
   </section>
 
+  <div class="tldr-strip" id="rock-tldr">
+    <h2>Other tabs · TLDR</h2>
+    <p class="lead">Quick read on Month 1, the Q4 rock, and the Ability spec. Jump to that tab when you need the full page.</p>
+    <div class="tldr-grid">
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Month 1 resources</h3>
+        <p>Operator pack for month one: example Trinity prompts, topic-card template, poll and ops checklists, parking lot. Use when locking October and opening November polls.</p>
+        <a class="tab-jump" href="#resources-hero">Open Month 1 resources →</a>
+      </div>
+      <div class="tldr-card current">
+        <span class="tag-mini">This tab</span>
+        <h3>Q4 draft rock</h3>
+        <p>Leadership Ninety draft: SMART wording, milestones by month (Sept–Dec), plus Ability.ai build (soft TBD). Not entered in Ninety yet.</p>
+        <a class="tab-jump" href="#rock-hero">Open Q4 draft rock →</a>
+      </div>
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Alex / Ability spec</h3>
+        <p>Path B for Ability: Cornelius ICP → CMO topic cards → measure. Path A stays separate campaign calendar. Spec, schema, acceptance criteria, open questions for Alex.</p>
+        <a class="tab-jump" href="#alex-hero">Open Alex / Ability spec →</a>
+      </div>
+    </div>
+  </div>
+
   <nav class="sticky" aria-label="Q4 rock sections">
     <div class="nav">
+      <a href="#rock-tldr">Other tabs TLDR</a>
       <a href="#rock-title">Title</a>
       <a href="#rock-smart">SMART</a>
       <a href="#rock-milestones">Milestones</a>
@@ -966,8 +1096,34 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     </div>
   </section>
 
+  <div class="tldr-strip" id="alex-tldr">
+    <h2>Other tabs · TLDR</h2>
+    <p class="lead">Quick read on Month 1, the Q4 rock, and the Ability spec. Jump to that tab when you need the full page.</p>
+    <div class="tldr-grid">
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Month 1 resources</h3>
+        <p>Operator pack for month one: example Trinity prompts, topic-card template, poll and ops checklists, parking lot. Use when locking October and opening November polls.</p>
+        <a class="tab-jump" href="#resources-hero">Open Month 1 resources →</a>
+      </div>
+      <div class="tldr-card">
+        <span class="tag-mini">Jump</span>
+        <h3>Q4 draft rock</h3>
+        <p>Leadership Ninety draft: SMART wording, milestones by month (Sept–Dec), plus Ability.ai build (soft TBD). Not entered in Ninety yet.</p>
+        <a class="tab-jump" href="#rock-hero">Open Q4 draft rock →</a>
+      </div>
+      <div class="tldr-card current">
+        <span class="tag-mini">This tab</span>
+        <h3>Alex / Ability spec</h3>
+        <p>Path B for Ability: Cornelius ICP → CMO topic cards → measure. Path A stays separate campaign calendar. Spec, schema, acceptance criteria, open questions for Alex.</p>
+        <a class="tab-jump" href="#alex-hero">Open Alex / Ability spec →</a>
+      </div>
+    </div>
+  </div>
+
   <nav class="sticky" aria-label="Ability spec sections">
     <div class="nav">
+      <a href="#alex-tldr">Other tabs TLDR</a>
       <a href="#alex-map">Maps to rock</a>
       <a href="#alex-problem">1 Problem</a>
       <a href="#alex-roles">2 Roles</a>
