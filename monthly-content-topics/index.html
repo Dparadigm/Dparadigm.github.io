@@ -10,6 +10,8 @@
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
+  --tabs-h:48px;
+  --subnav-h:44px;
   --growth:#6FA34D;
   --growth-soft:#f1f6ee;
   --income:#65B2E8;
@@ -30,7 +32,7 @@
   --radius:12px;
 }
 *{box-sizing:border-box}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; scroll-padding-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);}
 body{
   margin:0; background:var(--shell); color:var(--ink);
   font-family:var(--text); font-size:16px; line-height:1.55;
@@ -73,9 +75,10 @@ body::before{
 .tab-btn{
   appearance:none; background:transparent; border:none;
   border-bottom:3px solid transparent; margin-bottom:-1px;
-  font-family:var(--display); font-weight:600; font-size:14px;
-  padding:14px 18px; cursor:pointer; color:var(--muted);
+  font-family:var(--display); font-weight:600; font-size:13px;
+  padding:12px 16px; cursor:pointer; color:var(--muted);
   letter-spacing:.02em;
+  min-height:var(--tabs-h);
 }
 .tab-btn:hover{color:var(--ink)}
 .tab-btn.active{
@@ -98,9 +101,22 @@ h1{
 }
 .hero p{margin:0; color:var(--body); max-width:42em}
 .sticky{
-  position:sticky; top:52px; z-index:5;
-  background:rgba(250,250,250,.92); backdrop-filter:blur(8px);
-  border-bottom:1px solid var(--border); margin:0 -20px 22px; padding:10px 20px;
+  position:sticky; top:var(--tabs-h); z-index:5;
+  background:rgba(250,250,250,.97); backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--border);
+  margin:0 -20px 14px; padding:8px 20px;
+  box-shadow:0 1px 0 rgba(0,0,0,.03);
+}
+.resource-block,
+.section,
+.flow-step,
+.walk-card{
+  scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
+}
+#full-md, #trinity-prompts, #card-template, #poll-checklist, #ops-checklist, #parking-lot,
+#rock-title, #rock-smart, #rock-milestones, #rock-out,
+#context, #picture, #tracks, #steps, #poll, #roles{
+  scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
 }
 .nav{
   display:flex; flex-wrap:wrap; gap:8px; max-width:960px; margin:0 auto;
@@ -807,7 +823,6 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
       panel.classList.toggle("active", on);
     });
     if (name === "resources" && window.location.hash) {
-      /* leave hash; sticky nav only applies inside walkthrough */
     }
   }
 
@@ -852,11 +867,20 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
   }
 
   document.querySelectorAll(".sticky .nav a").forEach(function (a) {
-    a.addEventListener("click", function () {
+    a.addEventListener("click", function (e) {
       var href = a.getAttribute("href");
       if (!href || href.charAt(0) !== "#") return;
+      var id = href.slice(1);
       var tab = tabForHash(href);
       if (tab) activate(tab);
+      var el = document.getElementById(id);
+      if (!el) return;
+      e.preventDefault();
+      history.replaceState(null, "", href);
+      // Let tab paint, then scroll so heading sits under sticky tabs + subnav
+      requestAnimationFrame(function () {
+        el.scrollIntoView({ behavior: "smooth", block: "start" });
+      });
     });
   });
 
