@@ -1,103 +1,81 @@
-# Q4 Marketing Rock — Draft for leadership (Mike / Patrick / team)
+# Q4 Marketing Rock — Ninety draft (for leadership review)
 
-**Status:** Draft for review — not yet entered in Ninety  
-**Intended owner:** Rachel  
-**Mechanics / system design:** Dan (with Atlas)  
-**Supporting agents:** Trinity Cornelius (ICP), Trinity CMO (options + measurement)  
-**Walkthrough + Month 1 pack:** https://dparadigm.github.io/monthly-content-topics/
-
----
-
-## Rock title (draft)
-
-**Stand up a monthly ICP → topic-card → Zoom force-rank → produce → measure system for new-business and existing-client content.**
+**Status:** Draft for review — not entered in Ninety yet  
+**Seat / owner:** Rachel  
+**Team:** Marketing  
+**Quarter:** Q4 2026 (through 2026-12-31)  
+**Walkthrough / operator pack:** https://dparadigm.github.io/monthly-content-topics/
 
 ---
 
-## Why this rock
+## Rock title (Ninety title field)
 
-Content has skewed toward new-client acquisition. Existing clients often find marketing irrelevant and unsubscribe. We need a repeatable monthly system so podcast, newsletter, and live-stream topics come from ICP signal and wealth-strategist input, not calendar brainstorm alone, and so existing-client value-add is a first-class track.
-
-This is the marketing content rock. Avalaunch company rock stays with Don (separate).
+Stand up monthly ICP-to-publish content system for new and existing clients
 
 ---
 
-## Outcome (how we’ll know it worked)
+## Rock description (paste into Ninety description — SMART)
 
-By end of Q4, marketing runs a **month-to-month** loop (starting October) where:
+### Specific
+By 2026-12-31, Rachel owns a repeatable monthly operating system that chooses podcast (new-business) and newsletter/live-stream (existing-client) topics from Trinity Cornelius ICP facts and Trinity CMO topic cards, force-ranks them with wealth strategists on **two** Zoom Workplace Polls each month, produces and publishes on the existing path, and feeds performance into the next month. Advisors can dump ideas via a Zoom Team Chat channel plus email forward, and see that input get used.
 
-1. Topics are chosen from **ICP-informed topic cards**, not bare titles.  
-2. Wealth strategists **force-rank** via **two Zoom Workplace Polls** each month (new business; existing clients).  
-3. Rachel locks, produces, and publishes on the existing production path.  
-4. Performance feeds the next month’s options.  
-5. Advisors have a simple place to dump ideas (Zoom channel + email forward) and can see that input get used.
+Success looks like: October, November, and December each complete the loop (ICP pack → cards → dual polls → lock/produce → measure) without reinventing the plumbing.
 
----
+### Measurable
+Done when, for each of Oct / Nov / Dec 2026:
+1. Dual Zoom polls (new business + existing clients) completed before production lock
+2. Top topics locked and published on plan for both tracks
+3. CMO post-publish measurement brief filed and used for next month’s cards
+4. At least one close-the-loop note that an advisor dump/resource was used
 
-## Two tracks (same loop)
+**Monitor:** Weekly in marketing L10 / scoreboard row Rachel owns. Binary at quarter end: system ran all three months with the above, or not.
 
-| Track | Channels | Poll |
-|-------|----------|------|
-| **New business** | Podcast-led (repurpose outward) | Dedicated Zoom poll |
-| **Existing clients** | Newsletter + live streams | Dedicated Zoom poll |
+### Achievable (competency / commitment / capacity)
+- **Competency:** Rachel (content execution); Dan (first-month mechanics); Cornelius + CMO (ICP pack + cards + measure); wealth strategists (poll + dumps)
+- **Commitment:** Rock owner Rachel; Dan scaffolds October then steps back
+- **Capacity:** No education-center, advisor-attributed library, or calculator-app builds inside this Rock (parked). Avalaunch company rock stays with Don.
+- **80% confidence:** Yes, if October template is done once and Nov/Dec reuse it.
 
-Same mechanics; separate polls so existing-client value is not crowded out by acquisition topics.
+### Relevant
+Supports clearer ICP-led marketing, existing-client value (reduce “not relevant” unsubscribes), and wealth-strategist participation. Feeds longer-term content quality and future education-center work without staffing that build this quarter.
 
----
-
-## Monthly operating loop
-
-1. **Cornelius** — monthly ICP pack  
-2. **CMO** — 6–10 full **topic cards** (title, audience/track, ICP, what’s in it, light example)  
-3. **Rachel + Dan** — light human edit (brand, voice, calendar constraints)  
-4. **Two Zoom polls** — short titles in the poll; full cards on a companion one-pager linked from Zoom Team Chat; also ask write-in, co-host interest, resources advisors already send, and tools/calculators that make the topic land  
-5. **Lock + produce** — Rachel locks top topics; post-lock “what’s going out” awareness pass (Rachel chooses short note vs internal newsletter)  
-6. **CMO measure** — short performance brief → next month  
-
-**Idea intake (continuous):** Zoom Team Chat sales–marketing channel as home base, plus email forward into the same pile. No heavy content hub until that proves useful.
-
-**ICP reference:** living one-pager “Our five ICPs — current,” drafted by CMO + Cornelius, for marketing and sales. HubSpot tagging continues in parallel.
+### Time-bound
+- **Rock due:** 2026-12-31  
+- **Stop measuring success for this Rock:** end of day 2026-12-31  
+- **Checkpoints:** milestones below (review weekly; mark Rock off-track manually if a milestone slips)
 
 ---
 
-## Milestones (draft)
+## Milestones (add each in Ninety with owner + due date)
 
-| Milestone | Owner | Target |
-|-----------|--------|--------|
-| Topic-card template + companion one-pager pattern live | Dan / Rachel | Month 1 (October) |
-| First dual Zoom polls run (new + existing) | Rachel (Dan helps first template) | October |
-| Zoom intake channel + forward path stood up | Dan / Rachel | October |
-| Five-ICP one-pager published to marketing + sales | CMO + Cornelius | October |
-| October topics locked, produced, measured | Rachel / CMO | October → November handoff |
-| Repeat loop November / December with less Dan scaffolding | Rachel | Ongoing Q4 |
-
----
-
-## Scoreboard ideas (light)
-
-- Poll completed before production lock (Y/N per month, both tracks)  
-- Wealth-strategist response rate  
-- Pieces published vs plan  
-- Top performer vs source (ICP card vs write-in vs calendar-only)  
-- At least one “we used your dump / resource” close-the-loop note per month  
+| # | Milestone title | Owner | Due |
+|---|-----------------|-------|-----|
+| 1 | Publish topic-card template + companion one-pager pattern | Dan (+ Rachel review) | 2026-10-03 |
+| 2 | Stand up Zoom sales–marketing intake channel + email forward path | Dan / Rachel | 2026-10-08 |
+| 3 | Publish “Our five ICPs — current” one-pager to marketing + sales | CMO + Cornelius (Rachel hosts) | 2026-10-10 |
+| 4 | Run first dual Zoom polls for October (new + existing) | Rachel (Dan helps template) | 2026-10-15 |
+| 5 | Lock October topics, produce/publish both tracks, file CMO measurement brief | Rachel / CMO | 2026-10-31 |
+| 6 | Complete November loop (polls → lock → produce → measure) with less Dan scaffolding | Rachel | 2026-11-30 |
+| 7 | Complete December loop; confirm Q4 scoreboard (3/3 months) and close Rock | Rachel | 2026-12-31 |
 
 ---
 
-## In scope / out of scope
+## Explicitly not in this Rock
 
-**In scope:** monthly loop, two polls, topic cards, intake channel + email forward, ICP one-pager, CMO/Cornelius handoffs, measurement into next month.
+- Avalaunch Ninety company marketing rock (Don)
+- Education-center library / advisor-attributed content builds
+- Building calculators, exercise apps, courses, or masterclass curriculum
+- Agents creating Zoom polls or messaging wealth strategists
 
-**Out of scope for this rock (parked):** advisor/team-attributed content library, education-center build, calculator/exercise app builds, courses/masterclass curriculum dig. Poll questions may *discover* tools and resources; we do not build those products inside this rock. Revisit after 1–2 months of the loop shipping.
-
-**Not this rock:** Avalaunch Ninety rock (Don).
+Poll questions may *discover* resources and tools; we do not build those products as Rock deliverables.
 
 ---
 
-## Reference for operators
+## Operator references
 
-- Walkthrough + Month 1 resources (prompts, checklists, full draft MD): https://dparadigm.github.io/monthly-content-topics/  
+- Walkthrough + Month 1 resources: https://dparadigm.github.io/monthly-content-topics/  
 - Full mechanics MD: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md  
 
 ---
 
-*Drafted 2026-09-16 for Daniel’s review before Ninety / leadership share. Not sent.*
+*Drafted 2026-09-16 in Ninety SMART format for Daniel’s review. Not entered in Ninety. Maz optional later for polish inside Ninety UI.*
