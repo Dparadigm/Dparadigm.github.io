@@ -88,14 +88,6 @@ Grouped by **calendar month when the work is due** (not the content month the po
 - Month-end record/publish milestones mean every planned episode for that content month made it through record + publish (CMO measure still runs after publish into the next cycle).
 - Lock dates for Nov / Dec / Jan after the dual polls are draft defaults (about a week after poll due); adjust if Rachel wants tighter.
 
----
-
-## Explicitly not in this Rock
-
-- Avalaunch Ninety company marketing rock (Don)
-- Education-center library / advisor-attributed content builds
-- Building calculators, exercise apps, courses, or masterclass curriculum
-- Agents creating Zoom polls or messaging wealth strategists
 
 ---
 
