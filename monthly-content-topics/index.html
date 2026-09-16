@@ -42,7 +42,7 @@ body::before{
   background-repeat:no-repeat; background-position:center 38%;
   background-size:auto 48vh; opacity:.28;
 }
-.top, .wrap, .sticky{position:relative; z-index:1}
+.top, .wrap, .sticky, .tab-bar{position:relative; z-index:1}
 .top{
   background:var(--card); border-bottom:1px solid var(--border);
   padding:16px 20px 18px;
@@ -61,6 +61,26 @@ body::before{
 .stages .g{color:var(--growth)}
 .stages .i{color:var(--income)}
 .stages .l{color:var(--legacy)}
+.tab-bar{
+  background:var(--card); border-bottom:1px solid var(--border);
+  padding:0 20px;
+}
+.tab-bar-inner{
+  max-width:960px; margin:0 auto; display:flex; gap:0;
+}
+.tab-btn{
+  appearance:none; background:transparent; border:none;
+  border-bottom:3px solid transparent; margin-bottom:-1px;
+  font-family:var(--display); font-weight:600; font-size:14px;
+  padding:14px 18px; cursor:pointer; color:var(--muted);
+  letter-spacing:.02em;
+}
+.tab-btn:hover{color:var(--ink)}
+.tab-btn.active{
+  color:var(--growth); border-bottom-color:var(--growth);
+}
+.tab-panel{display:none}
+.tab-panel.active{display:block}
 .wrap{max-width:960px; margin:0 auto; padding:28px 20px 72px}
 .hero{
   background:var(--card); border:1px solid var(--border); border-radius:var(--radius);
@@ -181,7 +201,7 @@ h1{
   border-radius:10px; padding:16px 18px; margin-top:8px;
 }
 .poll-box h3{font-family:var(--display); font-size:14px; margin:0 0 8px}
-.poll-box ol{margin:0; padding-left:1.2em; color:var(--body); font-size:14px}
+.poll-box ol, .poll-box ul{margin:0; padding-left:1.2em; color:var(--body); font-size:14px}
 .poll-box li{margin:4px 0}
 .legend{
   display:flex; flex-wrap:wrap; gap:10px 16px; margin:0 0 14px;
@@ -202,6 +222,55 @@ h1{
 }
 .context-box p{margin:0; color:var(--body); font-size:14px; max-width:46em}
 .context-box p + p{margin-top:8px}
+.resource-block{margin-bottom:22px}
+.resource-block:last-child{margin-bottom:0}
+.resource-block h3{
+  font-family:var(--display); font-size:15px; font-weight:700; margin:0 0 8px;
+}
+.resource-block p, .resource-block li{color:var(--body); font-size:14px}
+.resource-block ul, .resource-block ol{margin:8px 0 0; padding-left:1.2em}
+.resource-block li{margin:4px 0}
+.prompt-box{
+  background:var(--shell); border:1px solid var(--border); border-radius:10px;
+  padding:14px 16px; margin:10px 0 14px; position:relative;
+}
+.prompt-box pre{
+  margin:0; white-space:pre-wrap; word-break:break-word;
+  font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;
+  font-size:12px; line-height:1.45; color:var(--ink);
+}
+.copy-btn{
+  appearance:none; float:right; margin:-4px 0 8px 8px;
+  background:var(--card); border:1px solid var(--border); border-radius:8px;
+  font-family:var(--display); font-size:11px; font-weight:700;
+  letter-spacing:.04em; text-transform:uppercase; padding:6px 10px;
+  cursor:pointer; color:var(--growth);
+}
+.copy-btn:hover{border-color:var(--growth)}
+.link-chip{
+  display:inline-block; margin:4px 8px 4px 0; padding:8px 12px;
+  background:var(--income-soft); border:1px solid #c5dff3; border-radius:8px;
+  text-decoration:none; color:#2a6a96; font-weight:600; font-size:13px;
+}
+.link-chip:hover{border-color:var(--income)}
+.checklist li{margin:6px 0}
+.note{
+  border-left:3px solid var(--legacy); background:var(--legacy-soft);
+  padding:12px 14px; border-radius:0 8px 8px 0; margin-top:10px;
+  font-size:14px; color:var(--body);
+}
+.template-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:8px; margin-top:10px;
+}
+@media (max-width:600px){.template-grid{grid-template-columns:1fr}}
+.template-field{
+  border:1px dashed var(--border); border-radius:8px; padding:10px 12px;
+  background:var(--shell); font-size:13px; color:var(--body);
+}
+.template-field strong{
+  display:block; font-family:var(--display); font-size:12px;
+  color:var(--ink); margin-bottom:2px; letter-spacing:.02em;
+}
 </style>
 </head>
 <body>
@@ -217,7 +286,18 @@ h1{
   </div>
 </header>
 
+<nav class="tab-bar" aria-label="Page tabs">
+  <div class="tab-bar-inner">
+    <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="walkthrough" id="tab-walkthrough">Walkthrough</button>
+    <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="resources" id="tab-resources">Month 1 resources</button>
+  </div>
+</nav>
+
 <main class="wrap">
+
+  <!-- ========== TAB 1: Walkthrough ========== -->
+  <div class="tab-panel active" id="panel-walkthrough" role="tabpanel" aria-labelledby="tab-walkthrough">
+
   <section class="hero">
     <p class="kicker">Content planning walkthrough</p>
     <h1>How we choose monthly topics</h1>
@@ -226,20 +306,23 @@ h1{
       who we serve, then wealth strategists help rank what to make next,
       then you produce and we measure what worked.
     </p>
-  
+
     <div class="context-box" id="context">
       <h2>Q4 rock context</h2>
       <p>
         This is the working shape of a <strong>Q4 marketing rock</strong>: a repeatable monthly system
-        for choosing podcast, newsletter, and live-stream topics from ICP signal, wealth-strategist
-        ranking, and measurement, so content stays ahead of what the business needs.
+        for choosing specific, useful topics (by policy, need, audience, and ICP), ranking them with
+        wealth strategists via <strong>two Zoom polls</strong> (new business and existing clients),
+        producing across channels, and measuring what worked.
       </p>
       <p>
-        You own approval and execution. Dan is drafting the mechanics with you so the first month
-        is clear, then the loop runs the same way each month after that.
+        Two equal tracks: <strong>new business</strong> (podcast-led) and <strong>existing clients</strong>
+        (newsletter + live streams). Existing-client content has to add real value after purchase,
+        not feel like another acquisition pitch. You own approval and execution. Dan is drafting
+        the mechanics with you so month one is clear.
       </p>
     </div>
-</section>
+  </section>
 
   <nav class="sticky" aria-label="Walkthrough sections">
     <div class="nav">
@@ -247,7 +330,9 @@ h1{
       <a href="#picture">Big picture</a>
       <a href="#tracks">Two tracks</a>
       <a href="#steps">Month walkthrough</a>
-      <a href="#poll">Zoom poll</a>
+      <a href="#poll">Two Zoom polls</a>
+      <a href="#intake">Idea intake</a>
+      <a href="#icp">ICP one-pager</a>
       <a href="#roles">Who does what</a>
     </div>
   </nav>
@@ -268,23 +353,23 @@ h1{
       </div>
       <div class="flow-step who-ai">
         <div class="n">2</div>
-        <h3>Topic options</h3>
-        <p>CMO turns that into 6-10 options with a short “why this audience”</p>
+        <h3>Topic cards</h3>
+        <p>CMO turns that into 6-10 full topic cards (title, audience, ICP, what’s in it, light example)</p>
       </div>
       <div class="flow-step who-rachel">
         <div class="n">3</div>
         <h3>Light edit</h3>
-        <p>You + Dan shape for brand, voice, and calendar reality</p>
+        <p>You + Dan polish for brand, voice, and calendar</p>
       </div>
       <div class="flow-step who-ws">
         <div class="n">4</div>
-        <h3>Force-rank</h3>
-        <p>Wealth strategists rank in Zoom Workplace Polling</p>
+        <h3>Two Zoom polls</h3>
+        <p>New business and existing clients; short titles in poll, cards on a linked one-pager</p>
       </div>
       <div class="flow-step who-rachel">
         <div class="n">5</div>
         <h3>Lock &amp; produce</h3>
-        <p>You lock top topics and run production as usual</p>
+        <p>You lock top topics, choose “what’s going out” format, and produce</p>
       </div>
       <div class="flow-step who-ai">
         <div class="n">6</div>
@@ -296,25 +381,26 @@ h1{
 
   <section class="section" id="tracks">
     <h2>Two tracks, same loop</h2>
-    <p class="lead">Same process. Different channels.</p>
+    <p class="lead">Same process. Different channels. Separate Zoom poll per track.</p>
     <div class="tracks">
       <div class="track a">
-        <span class="tag">Track A</span>
-        <h3>New audience: Podcast</h3>
-        <p>Monthly podcast topics chosen from ICP signal + strategist rank, with a co-host interest signal built in.</p>
+        <span class="tag">Track A · New business</span>
+        <h3>Podcast-led</h3>
+        <p>Topics for people who have not bought yet. One core piece (often the podcast) can repurpose into blog, shorts, and newsletter.</p>
         <ul>
-          <li>6-10 topic options</li>
-          <li>Open write-in: “something else the market is talking about”</li>
-          <li>Co-host question in the same poll wave</li>
+          <li>6-10 topic cards (not bare titles)</li>
+          <li>Open write-in for what the market is talking about</li>
+          <li>Co-host / “want to do something with this” signal</li>
         </ul>
       </div>
       <div class="track b">
-        <span class="tag">Track B</span>
-        <h3>Existing clients: Newsletter + live streams</h3>
-        <p>Same ICP → options → Zoom rank → measure loop for newsletter themes and live-stream themes.</p>
+        <span class="tag">Track B · Existing clients</span>
+        <h3>Newsletter + live streams</h3>
+        <p>Value-add for people who already own a policy. Same loop. Designed so content stays relevant after the sale.</p>
         <ul>
-          <li>Can be one poll with two sections, or two short polls</li>
-          <li>Later: strategist-led live streams with shared decks</li>
+          <li>Same poll pattern, themes for newsletter and live streams</li>
+          <li>Ask what resources advisors already send clients</li>
+          <li>Tools / calculators / demos that make the topic personal</li>
         </ul>
       </div>
     </div>
@@ -335,32 +421,32 @@ h1{
       <article class="walk-card">
         <div class="walk-num">2</div>
         <div>
-          <h3>Build the option list (CMO)</h3>
-          <p>Our Trinity marketing agent proposes 6-10 options (podcast, and/or newsletter + live stream), each with a one-line reason tied to the ICP. Your calendar is a constraint and a timing filter, not the only source of ideas.</p>
+          <h3>Build full topic cards (CMO)</h3>
+          <p>Our Trinity marketing agent proposes 6-10 options as <strong>topic cards</strong>: working title, audience/track, ICP slot, what’s-in-it bullets, and a light example. Calendar is a constraint and timing filter, not the only source of ideas.</p>
           <div class="owner">Owner: CMO · Review: Rachel + Dan</div>
         </div>
       </article>
       <article class="walk-card">
         <div class="walk-num">3</div>
         <div>
-          <h3>Human pass</h3>
-          <p>You and Dan do a light edit for brand, voice, and anything Patrick’s calendar already commits. Keep the open-ended write-in for strategists.</p>
+          <h3>Human light edit</h3>
+          <p>You and Dan polish cards for brand and voice, apply Patrick’s calendar constraints, and keep the open write-in. Full cards stay on a companion one-pager; the poll will show short titles only.</p>
           <div class="owner">Owner: Rachel · Support: Dan</div>
         </div>
       </article>
       <article class="walk-card">
         <div class="walk-num">4</div>
         <div>
-          <h3>Wealth strategists force-rank (Zoom)</h3>
-          <p>We post a Zoom Workplace Poll: rank the options, add anything missing, and mark co-host interest. Close window is short (for example 48 hours).</p>
+          <h3>Two Zoom Workplace Polls</h3>
+          <p>One poll for <strong>new business</strong>, one for <strong>existing clients</strong>. Short titles in the poll; link the topic-card one-pager from the Zoom Team Chat message. Also ask: write-in, co-host interest, resources advisors already send, and tools/calculators/demos. Short close window (for example 48 hours).</p>
           <div class="owner">Audience: Wealth strategists · Poll run: Rachel (Dan sets the first template)</div>
         </div>
       </article>
       <article class="walk-card">
         <div class="walk-num">5</div>
         <div>
-          <h3>Lock top topics and produce</h3>
-          <p>Use the ranks (plus write-ins) to lock the top set for the month. Align timing with sales if needed. Then produce and publish on your existing path.</p>
+          <h3>Lock, “what’s going out,” produce</h3>
+          <p>Lock the top set. You choose the post-lock format (short note vs internal newsletter) so advisors know what to expect. Produce on your path. One core medium can feed multiple channels.</p>
           <div class="owner">Owner: Rachel · Align as needed: Patrick / Mike</div>
         </div>
       </article>
@@ -376,19 +462,57 @@ h1{
   </section>
 
   <section class="section" id="poll">
-    <h2>Zoom Workplace Poll (what strategists see)</h2>
-    <p class="lead">Delivery is Zoom Workplace Polling, not Slack, not an email survey.</p>
+    <h2>Two Zoom Workplace Polls (what strategists see)</h2>
+    <p class="lead">
+      Delivery is Zoom Workplace Polling, not Slack, not an email survey.
+      <strong>Two polls each month</strong> (new business; existing clients) with the same question pattern.
+      Each poll shows short titles only; full topic cards live on a companion one-pager linked from the Zoom Team Chat message that opens the poll.
+    </p>
     <div class="poll-box">
-      <h3>Example: October podcast</h3>
+      <h3>Example poll questions (per track)</h3>
       <ol>
-        <li><strong>Force-rank:</strong> “Rank these October podcast topic options (1 = most relevant for your clients).”</li>
+        <li><strong>Force-rank:</strong> “Rank these topic options (1 = most relevant for your clients). Cards: [link].”</li>
         <li><strong>Open-ended:</strong> “Anything missing the market is talking about that should beat these?”</li>
-        <li><strong>Co-host:</strong> “Which of these would you co-host or want to be involved in?” (multi-select; optional “none this month”)</li>
+        <li><strong>Co-create:</strong> “Which would you co-host, demo, or want to be involved in?” (multi-select; optional “none this month”)</li>
+        <li><strong>Resources:</strong> “For any of these, do you already send an article, checklist, competitor piece, or Dropbox resource we should know about?”</li>
+        <li><strong>Tools:</strong> “Is there a calculator, spreadsheet, Truth Concepts demo, workbook, or third-party app you use to make this personal for a client?”</li>
       </ol>
     </div>
     <p class="lead" style="margin-top:16px;margin-bottom:0">
-      If Zoom can’t do a true ranking poll, we fall back to “pick your top 3,” then “which is #1,” plus the same open-ended and co-host questions, so you’re never stuck on the tool.
+      If Zoom can’t do a true ranking poll, we fall back to “pick your top 3,” then “which is #1,” plus the same follow-on questions, so you’re never stuck on the tool.
     </p>
+  </section>
+
+  <section class="section" id="intake">
+    <h2>Idea intake (sales → marketing)</h2>
+    <p class="lead">Polls are one input. Advisors also need an easy place to dump competitor emails, analogies, client questions, and links without writing an essay.</p>
+    <div class="tracks">
+      <div class="track a">
+        <span class="tag">Home base</span>
+        <h3>Dedicated Zoom Team Chat channel</h3>
+        <p>Sales ↔ marketing collaboration space. Drop links, forwards, voice notes, and poll activity in one place. This is the primary intake path.</p>
+      </div>
+      <div class="track b">
+        <span class="tag">Also useful</span>
+        <h3>Email forward</h3>
+        <p>Optional dedicated inbox so advisors can forward competitor or client emails without expecting a reply every time. Marketing (and later agents) sort and use it.</p>
+      </div>
+    </div>
+    <p class="lead" style="margin-top:14px;margin-bottom:0">
+      No content hub until this simple path works. Collecting is only valuable if we turn ideas into shipped content. Showing that submissions get used is how participation sticks.
+    </p>
+  </section>
+
+  <section class="section" id="icp">
+    <h2>ICP one-pager</h2>
+    <p class="lead">A living human-readable reference so topic cards and polls stay grounded in who we serve.</p>
+    <ul style="margin:0;padding-left:1.2em;color:var(--body);font-size:14px">
+      <li><strong>“Our five ICPs - current”</strong> one-pager (Notion or Drive).</li>
+      <li>Drafted by <strong>CMO + Cornelius</strong> (Cornelius = facts; CMO = readable pack).</li>
+      <li>v1 audience: <strong>marketing and sales</strong>.</li>
+      <li>HubSpot stays contact-level tags; demographic placeholders can lag.</li>
+      <li>Link the one-pager from the topic-card template and the Zoom intake channel when those exist.</li>
+    </ul>
   </section>
 
   <section class="section" id="roles">
@@ -397,23 +521,23 @@ h1{
     <div class="roles">
       <div class="role">
         <h3>Rachel</h3>
-        <p>Approves the system, light-edits options, runs the monthly poll after the first template, locks topics, produces, owns the scoreboard row.</p>
+        <p>Approves the system, light-edits cards, runs the two monthly polls after the first template, locks topics, chooses “what’s going out” format, produces, owns the scoreboard row.</p>
       </div>
       <div class="role">
         <h3>Dan</h3>
-        <p>Drafts the mechanics once, helps set the first Zoom poll template, partners on the Wednesday package and the first human pass.</p>
+        <p>Drafts the mechanics once, helps set the first Zoom poll templates, partners on the first human pass and month-one package.</p>
       </div>
       <div class="role">
         <h3>Cornelius (Trinity)</h3>
-        <p>ICP source of truth: who we serve and what they care about this month.</p>
+        <p>ICP source of truth: who we serve and what they care about this month. Feeds the ICP one-pager and topic cards.</p>
       </div>
       <div class="role">
         <h3>CMO (Trinity)</h3>
-        <p>Turns ICP + performance history into the option list; returns the post-publish measurement brief.</p>
+        <p>Turns ICP + performance history into full topic cards; returns the post-publish measurement brief; co-drafts the readable ICP pack.</p>
       </div>
       <div class="role">
         <h3>Wealth strategists</h3>
-        <p>Force-rank topics and signal co-host interest so production matches what clients actually need.</p>
+        <p>Force-rank topics on both polls and signal co-host interest, resources, and tools so production matches what clients actually need.</p>
       </div>
       <div class="role">
         <h3>Patrick / Mike</h3>
@@ -422,6 +546,220 @@ h1{
     </div>
   </section>
 
-  </main>
+  </div><!-- /panel-walkthrough -->
+
+  <!-- ========== TAB 2: Month 1 resources ========== -->
+  <div class="tab-panel" id="panel-resources" role="tabpanel" aria-labelledby="tab-resources">
+
+  <section class="hero">
+    <p class="kicker">Month 1 package</p>
+    <h1>Resources to run October</h1>
+    <p>
+      Everything you need for the first monthly loop: a concise rock write-up,
+      the full reference draft, Trinity prompts, templates, and checklists.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="resource-block" id="rock-writeup">
+      <h3>1. Draft rock write-up (Ninety-ready)</h3>
+      <p><strong>Outcome:</strong> A repeatable monthly system that chooses specific, useful topics from ICP signal, ranks them with wealth strategists on two Zoom polls (new business and existing clients), produces across channels, and measures what worked - without reinventing the plumbing each month.</p>
+      <p style="margin-top:10px"><strong>Two tracks:</strong></p>
+      <ul>
+        <li><strong>New business</strong> - podcast-led (repurpose into blog, shorts, newsletter as needed).</li>
+        <li><strong>Existing clients</strong> - newsletter + live streams; value-add after purchase, not another acquisition pitch.</li>
+      </ul>
+      <p style="margin-top:10px"><strong>Monthly loop:</strong></p>
+      <ol>
+        <li>Cornelius ICP pack</li>
+        <li>CMO full topic cards (title, audience/track, ICP, what’s in it, light example)</li>
+        <li>Rachel + Dan light edit</li>
+        <li>Two Zoom Workplace Polls (short titles; companion one-pager linked from Team Chat) - also write-in, co-host, resources, tools</li>
+        <li>Lock top topics; Rachel chooses “what’s going out” format; produce</li>
+        <li>CMO measurement snapshot → next month</li>
+      </ol>
+      <p style="margin-top:10px"><strong>Scoreboard ideas (light):</strong> poll completed before production lock; WS response rate; pieces published vs plan; top performer vs topic source (ICP vs write-in vs calendar-only).</p>
+      <p style="margin-top:10px"><strong>Non-goals / parking lot:</strong> Avalaunch Ninety rock (Don); education-center library, advisor-attributed builds, and new calculators/apps are parked after 1-2 months of polls + intake - not month-one milestones.</p>
+    </div>
+
+    <div class="resource-block" id="full-md">
+      <h3>2. Full reference draft</h3>
+      <p>Locked decisions, poll specs, Trinity prompts, and parking lot in one markdown file:</p>
+      <p>
+        <a class="link-chip" href="q4-marketing-rock-draft.md">q4-marketing-rock-draft.md</a>
+        <a class="link-chip" href="https://raw.githubusercontent.com/Dparadigm/Dparadigm.github.io/main/monthly-content-topics/q4-marketing-rock-draft.md" target="_blank" rel="noopener">Raw on GitHub</a>
+      </p>
+    </div>
+
+    <div class="resource-block" id="trinity-prompts">
+      <h3>3. Trinity prompts (copyable)</h3>
+      <p>Do not send until you’re ready to run month one. Copy, fill in the month, attach the ICP pack where noted.</p>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Ask Cornelius - monthly ICP pack</p>
+      <div class="prompt-box">
+        <button type="button" class="copy-btn" data-copy="prompt-cornelius">Copy</button>
+        <pre id="prompt-cornelius">Need the ICP pack for [MONTH] content planning (podcast + existing-client newsletter / live streams).
+
+Return:
+1. Active ICPs / segments we should plan against this month (new audience vs existing clients if they differ)
+2. For each: top pains, language the market uses, what they care about right now
+3. Anything stale, weak, or conflicting in the ICP model that would make topic options unreliable
+4. Short “do not invent” note: facts only from your ICP source of truth
+
+Do not propose episode titles. CMO will turn this into the option list.</pre>
+      </div>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Ask CMO - monthly topic options / cards</p>
+      <div class="prompt-box">
+        <button type="button" class="copy-btn" data-copy="prompt-cmo-options">Copy</button>
+        <pre id="prompt-cmo-options">Using Cornelius’s current ICP pack (attached / linked) plus recent performance history:
+
+Produce 6-10 topic options for [MONTH]:
+- Rock A: podcast topics for new audience
+- Rock B: newsletter themes + live-stream themes (label each)
+
+For each option (full topic card):
+- Working title
+- Audience / track (new business vs existing clients)
+- ICP slot (primary; secondary optional)
+- What’s in it (2-4 bullets)
+- Light example (one sentence)
+- Channel tag: podcast | newsletter | live stream
+- One-line “why this ICP” (trace to Cornelius - no parallel ICP)
+- Confidence: high / medium / low (and why if low)
+
+Also:
+- Flag gaps where Cornelius ICP is thin
+- Suggest which 1-2 options are weakest cuts if we must go to 6
+- Leave room for an open-ended WS write-in (do not invent the write-in text)
+
+Do not run or replace the Zoom poll. Humans will light-edit, then force-rank in two Zoom Workplace Polls.</pre>
+      </div>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Ask CMO - post-publish measurement</p>
+      <div class="prompt-box">
+        <button type="button" class="copy-btn" data-copy="prompt-cmo-measure">Copy</button>
+        <pre id="prompt-cmo-measure">For [MONTH] published [podcast / newsletter / live streams]:
+Snapshot what performed (use whatever metrics we already trust).
+Map top / bottom performers back to the topic options and ICP rationale.
+Recommend 2-3 adjustments for next month’s option list (still grounded in Cornelius).
+Keep it to one short brief Rachel and Dan can skim.</pre>
+      </div>
+    </div>
+
+    <div class="resource-block" id="card-template">
+      <h3>4. Topic card template</h3>
+      <p>Fill one card per option before the poll. Full cards go on the companion one-pager; poll shows short titles only.</p>
+      <div class="template-grid">
+        <div class="template-field"><strong>Working title</strong> _______________</div>
+        <div class="template-field"><strong>Audience / track</strong> New business · Existing clients</div>
+        <div class="template-field"><strong>ICP slot</strong> Primary: _____ · Secondary (optional): _____</div>
+        <div class="template-field"><strong>Channel</strong> Podcast · Newsletter · Live stream</div>
+        <div class="template-field"><strong>What’s in it</strong> Bullet 1 · Bullet 2 · Bullet 3 · (Bullet 4)</div>
+        <div class="template-field"><strong>Light example</strong> One sentence so sales gets it in one read</div>
+        <div class="template-field"><strong>Why this ICP</strong> Trace to Cornelius - one line</div>
+        <div class="template-field"><strong>Confidence</strong> High · Medium · Low (+ why if low)</div>
+      </div>
+    </div>
+
+    <div class="resource-block" id="poll-checklist">
+      <h3>5. Poll question checklist (both polls)</h3>
+      <p>Run the same pattern twice: <code>Q4 New business topics - [Month]</code> and <code>Q4 Existing client topics - [Month]</code>.</p>
+      <ol class="checklist">
+        <li>Force-rank short titles (link topic-card one-pager in the Team Chat message)</li>
+        <li>Open write-in: anything missing the market is talking about</li>
+        <li>Co-host / want to be involved (multi-select; optional “none this month”)</li>
+        <li>Resources you already send (article, analogy, competitor forward, Dropbox)</li>
+        <li>Tools / calculators / Truth Concepts demos / exercises / third-party apps</li>
+        <li>Fallback ready: top 3 multi-select + “which is #1” if Zoom lacks true ranking</li>
+      </ol>
+    </div>
+
+    <div class="resource-block" id="ops-checklist">
+      <h3>6. Ops checklist (month 1 order of operations)</h3>
+      <ol class="checklist">
+        <li>Ask Cornelius for the monthly ICP pack</li>
+        <li>Ask CMO for 6-10 topic cards + rationales</li>
+        <li>Rachel + Dan light-edit for brand/voice and calendar</li>
+        <li>Put full cards on the companion one-pager; short titles into both Zoom poll templates</li>
+        <li>Open both polls in Zoom Workplace → target WS group; link the one-pager in Team Chat</li>
+        <li>Set close time (e.g. 48 hours)</li>
+        <li>Export / screenshot results into a one-pager</li>
+        <li>Lock top 3-4 per track with Patrick as needed</li>
+        <li>Rachel chooses “what’s going out” format and updates production calendar</li>
+        <li>After publish: ask CMO for measurement brief; fill scoreboard row</li>
+      </ol>
+    </div>
+
+    <div class="resource-block" id="parking-lot">
+      <h3>7. Parking lot (not month one)</h3>
+      <div class="note">
+        Bucket 4 is parked until after 1-2 months of polls + intake, when people can see dumps turn into shipped content:
+        advisor/team-attributed builds, education-center library, new calculators/apps, courses/masterclasses from Dropbox digs.
+        Month one still surfaces opportunities via co-host, resource, and tool poll questions - without building those systems yet.
+      </div>
+    </div>
+  </section>
+
+  </div><!-- /panel-resources -->
+
+</main>
+
+<script>
+(function () {
+  var buttons = document.querySelectorAll(".tab-btn");
+  var panels = document.querySelectorAll(".tab-panel");
+
+  function activate(name) {
+    buttons.forEach(function (btn) {
+      var on = btn.getAttribute("data-tab") === name;
+      btn.classList.toggle("active", on);
+      btn.setAttribute("aria-selected", on ? "true" : "false");
+    });
+    panels.forEach(function (panel) {
+      var on = panel.id === "panel-" + name;
+      panel.classList.toggle("active", on);
+    });
+    if (name === "resources" && window.location.hash) {
+      /* leave hash; sticky nav only applies inside walkthrough */
+    }
+  }
+
+  buttons.forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      activate(btn.getAttribute("data-tab"));
+    });
+  });
+
+  document.querySelectorAll(".copy-btn").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var id = btn.getAttribute("data-copy");
+      var el = document.getElementById(id);
+      if (!el) return;
+      var text = el.textContent;
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          btn.textContent = "Copied";
+          setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+        });
+      } else {
+        var range = document.createRange();
+        range.selectNodeContents(el);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+        try { document.execCommand("copy"); } catch (e) {}
+        btn.textContent = "Copied";
+        setTimeout(function () { btn.textContent = "Copy"; }, 1500);
+      }
+    });
+  });
+
+  /* If deep-linked to a walkthrough section, stay on walkthrough tab */
+  if (window.location.hash) {
+    activate("walkthrough");
+  }
+})();
+</script>
 </body>
 </html>
