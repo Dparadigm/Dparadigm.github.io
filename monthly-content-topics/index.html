@@ -115,7 +115,10 @@ h1{
 }
 #full-md, #trinity-prompts, #card-template, #poll-checklist, #ops-checklist, #parking-lot,
 #rock-title, #rock-smart, #rock-milestones, #rock-out,
-#context, #picture, #tracks, #steps, #poll, #roles{
+#context, #picture, #tracks, #steps, #poll, #roles,
+#alex-map, #alex-problem, #alex-oos, #alex-roles, #alex-loop, #alex-skills,
+#alex-schema, #alex-path, #alex-accept, #alex-prompts, #alex-open, #alex-refs,
+#walkthrough-hero, #resources-hero, #rock-hero{
   scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
 }
 .nav{
@@ -289,6 +292,23 @@ h1{
   display:block; font-family:var(--display); font-size:12px;
   color:var(--ink); margin-bottom:2px; letter-spacing:.02em;
 }
+
+.resource-block table{
+  width:100%; border-collapse:collapse; font-size:13px; margin:10px 0 4px;
+}
+.resource-block th, .resource-block td{
+  border:1px solid var(--border); padding:8px 10px; text-align:left; vertical-align:top;
+  color:var(--body);
+}
+.resource-block th{
+  background:var(--shell); font-family:var(--display); font-size:12px;
+  font-weight:700; color:var(--ink); letter-spacing:.02em;
+}
+.cross-link{
+  margin-top:10px; font-size:13px; color:var(--body);
+}
+.cross-link a{color:#2a6a96; font-weight:600; text-decoration:none}
+.cross-link a:hover{text-decoration:underline}
 </style>
 </head>
 <body>
@@ -309,6 +329,7 @@ h1{
     <button type="button" class="tab-btn active" role="tab" aria-selected="true" data-tab="walkthrough" id="tab-walkthrough">Walkthrough</button>
     <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="resources" id="tab-resources">Month 1 resources</button>
     <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="rock" id="tab-rock">Q4 draft rock</button>
+    <button type="button" class="tab-btn" role="tab" aria-selected="false" data-tab="alex" id="tab-alex">Alex / Ability spec</button>
   </div>
 </nav>
 
@@ -317,7 +338,7 @@ h1{
   <!-- ========== TAB 1: Walkthrough ========== -->
   <div class="tab-panel active" id="panel-walkthrough" role="tabpanel" aria-labelledby="tab-walkthrough">
 
-  <section class="hero">
+  <section class="hero" id="walkthrough-hero">
     <p class="kicker">Content planning walkthrough</p>
     <h1>How we choose monthly topics</h1>
     <p>
@@ -550,10 +571,12 @@ h1{
       <div class="role">
         <h3>Cornelius (Trinity)</h3>
         <p>ICP source of truth: who we serve and what they care about this month. Feeds the ICP one-pager and topic cards.</p>
+        <p class="cross-link"><a href="#alex-map">How Path B uses Cornelius + CMO</a></p>
       </div>
       <div class="role">
         <h3>CMO (Trinity)</h3>
         <p>Turns ICP + performance history into full topic cards; returns the post-publish measurement brief; co-drafts the readable ICP pack.</p>
+        <p class="cross-link"><a href="#alex-map">Ability Path B spec (Alex)</a></p>
       </div>
       <div class="role">
         <h3>Wealth strategists</h3>
@@ -575,7 +598,7 @@ h1{
   <!-- ========== TAB 2: Month 1 resources ========== -->
   <div class="tab-panel" id="panel-resources" role="tabpanel" aria-labelledby="tab-resources">
 
-  <section class="hero">
+  <section class="hero" id="resources-hero">
     <p class="kicker">Month 1 package</p>
     <h1>Resources to lock October and poll November</h1>
     <p>
@@ -609,6 +632,7 @@ h1{
 
     <div class="resource-block" id="trinity-prompts">
       <h3>2. Trinity prompts (copyable)</h3>
+      <p class="cross-link" style="margin-top:0"><a href="#alex-map">Full Ability spec →</a></p>
       <p>Do not send until you’re ready to run month one. Copy, fill in the month, attach the ICP pack where noted.</p>
 
       <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Ask Cornelius - monthly ICP pack</p>
@@ -739,7 +763,7 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
   <!-- ========== TAB 3: Q4 draft rock (leadership review) ========== -->
   <div class="tab-panel" id="panel-rock" role="tabpanel" aria-labelledby="tab-rock">
 
-  <section class="hero">
+  <section class="hero" id="rock-hero">
     <p class="kicker">Ninety · Q4 2026</p>
     <h1>Draft rock for leadership review</h1>
     <p>
@@ -750,6 +774,7 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
       <a class="link-chip" href="q4-marketing-rock-leadership-draft.md">Open markdown (copy into Ninety)</a>
       <a class="link-chip" href="https://raw.githubusercontent.com/Dparadigm/Dparadigm.github.io/main/monthly-content-topics/q4-marketing-rock-leadership-draft.md" target="_blank" rel="noopener">Raw on GitHub</a>
     </p>
+    <p class="cross-link">Operator refs: <a href="#alex-map">Alex / Ability Path B spec</a> · <a href="https://docs.google.com/document/d/1Y-Yydclv6BZDUPvYszxQRDLICJ7qOVfwRPJbtTqJuW8/edit" target="_blank" rel="noopener">Google Doc (Alex comments)</a></p>
   </section>
 
   <nav class="sticky" aria-label="Q4 rock sections">
@@ -815,6 +840,297 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
 
 
 
+
+  <!-- ========== TAB 4: Alex / Ability spec ========== -->
+  <div class="tab-panel" id="panel-alex" role="tabpanel" aria-labelledby="tab-alex">
+
+  <section class="hero" id="alex-hero">
+    <p class="kicker">Ability.ai · for Alex Sazonenka</p>
+    <h1>Alex / Ability spec</h1>
+    <p>
+      Path B feeds the Q4 rock’s monthly topic cards; Path A remains the separate campaign calendar.
+    </p>
+    <p style="margin-top:12px">
+      <a class="link-chip" href="https://docs.google.com/document/d/1Y-Yydclv6BZDUPvYszxQRDLICJ7qOVfwRPJbtTqJuW8/edit" target="_blank" rel="noopener">Open Google Doc (Alex comments here)</a>
+      <a class="link-chip" href="cmo-content-calendar-podcast-spec.md">Download MD: cmo-content-calendar-podcast-spec.md</a>
+    </p>
+    <p style="margin-top:10px;font-size:14px;color:var(--body);max-width:46em">
+      Alex comments in the Doc. This tab mirrors the same spec for site context next to the walkthrough, Month 1 resources, and Q4 draft rock.
+    </p>
+
+    <div class="context-box" id="alex-map">
+      <h2>How this maps to the Q4 rock</h2>
+      <p>
+        The <strong>Q4 rock</strong> is the human OS: dual Zoom polls 2-3 weeks ahead of the content month;
+        October lock <strong>2026-09-25</strong>; first ahead polls = November ~<strong>2026-10-08</strong>;
+        close = Rachel running with <strong>John Keever</strong>. Podcast is the <strong>new-business</strong> track.
+      </p>
+      <p>
+        <strong>Path B</strong> is the Trinity machine for that rock’s card step
+        (Cornelius ICP → CMO topic cards → humans poll → Rachel lock → measure).
+      </p>
+      <p>
+        <strong>Path A</strong> <code>/contentcalendar</code> is the <strong>campaign calendar</strong>
+        (theme → multi-channel plan). Different product.
+      </p>
+      <p>
+        After lock: hand off to <code>/generate-podcast-brief</code> and/or Path A podcast weeks.
+        Do not fold Path B into Path A Phase 1 or mutate theme state.
+      </p>
+      <p>
+        Existing-client track = same Path B skill family, separate Zoom poll; not Path A.
+      </p>
+      <p class="cross-link" style="margin-top:12px">
+        Jump: <a href="#walkthrough-hero">Walkthrough</a> ·
+        <a href="#trinity-prompts">Month 1 Trinity prompts</a> ·
+        <a href="#rock-hero">Q4 draft rock</a>
+      </p>
+    </div>
+  </section>
+
+  <nav class="sticky" aria-label="Ability spec sections">
+    <div class="nav">
+      <a href="#alex-map">Maps to rock</a>
+      <a href="#alex-problem">1 Problem</a>
+      <a href="#alex-oos">2 Out of scope</a>
+      <a href="#alex-roles">3 Roles</a>
+      <a href="#alex-loop">4 Loop</a>
+      <a href="#alex-skills">5 Skills</a>
+      <a href="#alex-schema">6 Schema</a>
+      <a href="#alex-path">7 Path A/B</a>
+      <a href="#alex-accept">8 Accept</a>
+      <a href="#alex-prompts">9 Prompts</a>
+      <a href="#alex-open">10 Open Qs</a>
+      <a href="#alex-refs">11 Refs</a>
+    </div>
+  </nav>
+
+  <section class="section">
+
+    <div class="resource-block" id="alex-problem">
+      <h3>1. Problem</h3>
+      <p>Rachel needs a repeatable monthly system for podcast (new-business) and parallel existing-client content (newsletter / livestream) that:</p>
+      <ol>
+        <li>Starts from <strong>Cornelius ICP facts</strong>, not calendar brainstorm alone</li>
+        <li>Produces <strong>scored topic options / topic cards</strong> she can light-edit</li>
+        <li>Feeds <strong>Zoom Workplace Polls</strong> (humans rank; agents do not run or replace the poll)</li>
+        <li>Closes the loop with a <strong>post-publish measurement brief</strong> into next month</li>
+      </ol>
+      <p style="margin-top:10px">Today CMO can report and brief. It does not yet own this monthly option-list + measurement handoff as a clear skill path with Cornelius.</p>
+      <p style="margin-top:10px;font-size:13px;color:var(--muted)"><strong>For:</strong> Alex Sazonenka (Ability.ai) · <strong>From:</strong> Daniel Torsak / Ava (PO) with Atlas (mechanics draft) · <strong>Date:</strong> 2026-09-16 · <strong>Status:</strong> Ready for Alex feedback (Atlas fidelity pass + CMO repo router 2026-09-16) - not live yet</p>
+    </div>
+
+    <div class="resource-block" id="alex-oos">
+      <h3>2. Out of scope (month one)</h3>
+      <p>Do <strong>not</strong> build these into the first CMO increment:</p>
+      <ul>
+        <li>Education center / advisor-attributed content library</li>
+        <li>Calculator / exercise / lightweight app builds</li>
+        <li>Full content hub that scrapes Trinity or replaces Zoom intake</li>
+        <li>Live Zoom poll creation by agents</li>
+        <li>Messaging Rachel or wealth strategists from agents</li>
+      </ul>
+      <p style="margin-top:10px">Riverside MCP was previously discussed for CMO (~2026-09-04). Confirm separately whether it remains on the path; it is <strong>not</strong> required for this content-calendar / topic-options loop.</p>
+      <p style="margin-top:10px"><strong>Human Zoom poll extras (not agent fields):</strong> Each poll also asks wealth strategists for (a) resources they already send clients and (b) tools / calculators / demos that made a topic click. Those answers are <strong>human discovery only</strong>. They are not CMO topic-card fields and agents do not collect them.</p>
+    </div>
+
+    <div class="resource-block" id="alex-roles">
+      <h3>3. Role boundaries</h3>
+      <table>
+        <thead>
+          <tr><th>Actor</th><th>Owns</th><th>Does not own</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Cornelius</strong></td><td>ICP pack: segments, pains, market language, stale/gap flags</td><td>Episode titles, poll posting, production</td></tr>
+          <tr><td><strong>CMO</strong></td><td>Monthly topic options / topic cards; post-publish measurement brief; consumes Cornelius + performance history</td><td>Parallel ICP model; Zoom poll; Rachel’s lock/produce</td></tr>
+          <tr><td><strong>Rachel</strong></td><td>Light edit, polls (after template), lock topics, produce, scoreboard row, post-lock “what’s going out” format</td><td>Inventing ICP facts</td></tr>
+          <tr><td><strong>Dan</strong></td><td>Mechanics draft; first human pass / poll template help</td><td>Long-term rock ownership (Rachel)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="resource-block" id="alex-loop">
+      <h3>4. Monthly loop (desired agent behavior)</h3>
+      <p>Cadence: <strong>month-to-month starting October</strong> (not a full-year lock). Calendar (Patrick / Rachel year-end doc) is a <strong>constraint</strong>, not the only source.</p>
+      <div class="prompt-box">
+        <pre>Cornelius ICP pack
+        ↓
+CMO topic options / topic cards (6-10)
+        ↓
+Human light edit (Dan/Rachel)
+        ↓
+Two Zoom Workplace Polls (new business | existing clients)  ← humans only
+        ↓
+Rachel locks → produces / publishes
+        ↓
+CMO measurement brief → next month’s CMO options</pre>
+      </div>
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Track split</p>
+      <ul>
+        <li><strong>Podcast path</strong> = <strong>new-business</strong> track output (Rock A).</li>
+        <li><strong>Existing-client</strong> track = newsletter + livestream themes (Rock B), <strong>separate</strong> poll, same CMO skill family with a channel tag.</li>
+      </ul>
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Parallel human pack (not a new month-one skill unless Alex wants it)</p>
+      <p>Living one-pager <strong>“Our five ICPs - current”</strong> drafted by CMO + Cornelius for marketing + sales. Distinct from the monthly ICP pack (§5.1). Keep as a readable human reference; HubSpot contact tags remain separate.</p>
+    </div>
+
+    <div class="resource-block" id="alex-skills">
+      <h3>5. Skills / A2A asks to implement on CMO (and Cornelius)</h3>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">5.1 Skill: <code>monthly-icp-pack</code> (Cornelius)</p>
+      <p><strong>Trigger:</strong> Scheduled or operator-invoked before monthly planning.<br>
+      <strong>Input:</strong> Target month; whether new vs existing ICPs differ.<br>
+      <strong>Output (structured):</strong></p>
+      <ol>
+        <li>Active ICPs / segments for the month (new vs existing if different)</li>
+        <li>Per ICP: top pains, market language, what they care about now</li>
+        <li>Stale / weak / conflicting ICP notes</li>
+        <li>Explicit: facts only from ICP source of truth; <strong>no episode titles</strong></li>
+      </ol>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">5.2 Skill: <code>monthly-topic-options</code> (CMO)</p>
+      <p><strong>Trigger:</strong> After ICP pack available (A2A from Cornelius or attached pack).<br>
+      <strong>Input:</strong> Month; Cornelius ICP pack; recent performance history CMO already trusts; optional calendar constraints.<br>
+      <strong>Output:</strong> 6-10 topic <strong>cards</strong> (see schema §6).<br>
+      <strong>Also:</strong></p>
+      <ul>
+        <li>Flag thin ICP coverage</li>
+        <li>Suggest weakest 1-2 cuts if list must shrink to 6</li>
+        <li>Leave room for open-ended WS write-in (do <strong>not</strong> invent write-in text)</li>
+        <li>Do <strong>not</strong> run Zoom poll or message Rachel</li>
+      </ul>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">5.3 Skill: <code>post-publish-measurement</code> (CMO)</p>
+      <p><strong>Trigger:</strong> After month’s podcast / newsletter / livestreams ship.<br>
+      <strong>Output:</strong> One short brief:</p>
+      <ul>
+        <li>What performed (trusted metrics only)</li>
+        <li>Map top/bottom to prior topic options + ICP rationale</li>
+        <li>2-3 adjustments for next month’s options (still grounded in Cornelius)</li>
+      </ul>
+    </div>
+
+    <div class="resource-block" id="alex-schema">
+      <h3>6. Topic-card schema (CMO emit)</h3>
+      <table>
+        <thead>
+          <tr><th>Field</th><th>Required</th><th>Notes</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><code>title</code></td><td>yes</td><td>Short working title (poll shows this)</td></tr>
+          <tr><td><code>channel</code></td><td>yes</td><td><code>podcast</code> | <code>newsletter</code> | <code>live_stream</code></td></tr>
+          <tr><td><code>track</code></td><td>yes</td><td><code>new_business</code> | <code>existing_client</code></td></tr>
+          <tr><td><code>icp_primary</code></td><td>yes</td><td>Trace to Cornelius; no invented ICP</td></tr>
+          <tr><td><code>icp_secondary</code></td><td>no</td><td>Optional</td></tr>
+          <tr><td><code>whats_in_it</code></td><td>yes</td><td>2-4 bullets</td></tr>
+          <tr><td><code>example</code></td><td>yes</td><td>One sentence sales can grasp</td></tr>
+          <tr><td><code>icp_rationale</code></td><td>yes</td><td>One line “why this ICP” from Cornelius</td></tr>
+          <tr><td><code>confidence</code></td><td>yes</td><td><code>high</code> | <code>medium</code> | <code>low</code> (+ why if low)</td></tr>
+          <tr><td><code>calendar_notes</code></td><td>no</td><td>Constraint only (timing / conflicts)</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:10px">Poll UX: short titles in Zoom; full cards on companion Notion/Drive one-pager linked from the Zoom Team Chat message that opens the poll (human-operated).</p>
+    </div>
+
+    <div class="resource-block" id="alex-path">
+      <h3>7. How this relates to existing <code>/contentcalendar</code> (CMO repo)</h3>
+      <p>Reviewed live skill in <code>ParadigmLife/cmo-paradigm-life</code> (<code>.claude/skills/contentcalendar/SKILL.md</code>).</p>
+      <p style="margin-top:10px"><strong>Today’s <code>/contentcalendar</code> is Path A - campaign calendar:</strong></p>
+      <ol>
+        <li>Phase 1: ranked <strong>theme</strong> candidates → human picks theme</li>
+        <li>Phase 2: Master Calendar Brief + multi-channel <strong>month slots</strong></li>
+        <li>Podcast already exists as Phase 2 <strong>slots</strong> via <code>/contentcalendar set-podcast-weeks 1,3</code> (default = prep-only, no episodes)</li>
+        <li>Separate skill <code>/generate-podcast-brief</code> = episode production brief once a topic exists (data + Cornelius), <strong>not</strong> the Zoom WS force-rank loop</li>
+      </ol>
+      <p style="margin-top:10px"><strong>This spec’s monthly topic options is Path B - not the same machine:</strong><br>
+      Cornelius ICP pack → CMO topic cards → human Zoom polls → Rachel locks topics → then <code>/generate-podcast-brief</code> (and/or feed locked titles into Path A weeks).</p>
+      <p style="margin-top:10px">Do <strong>not</strong> silently fold Path B into Phase 1 of Path A. Themes-for-a-full-calendar and ranked-episode-options-for-WS-polls are different products.</p>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Recommended front door (router)</p>
+      <p>Add a thin entry (extend <code>/contentcalendar</code> Step 1 argument routing, or a parent <code>/content-planning</code>) that asks:</p>
+      <div class="note">
+        <p style="margin:0 0 8px">What do you want to run?</p>
+        <ol style="margin:0;padding-left:1.2em">
+          <li><strong>Campaign calendar</strong> - theme → multi-channel month plan (today’s <code>/contentcalendar</code>)</li>
+          <li><strong>Monthly topic options</strong> - podcast / existing-client topic cards for Zoom polls (this spec)</li>
+        </ol>
+      </div>
+      <table>
+        <thead>
+          <tr><th>Path</th><th>Skill surface</th><th>Output</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>A Campaign calendar</td><td>Existing <code>/contentcalendar</code> Phases 1-2</td><td>Theme Brief + Master Calendar + slots; optional podcast weeks</td></tr>
+          <tr><td>B Monthly topic options</td><td>New: §5.1-5.3 (+ human polls outside agent)</td><td>ICP pack → topic cards → (humans poll) → lock; then hand off to <code>/generate-podcast-brief</code> or Path A <code>set-podcast-weeks</code></td></tr>
+        </tbody>
+      </table>
+
+      <p style="font-weight:700;margin:14px 0 6px;font-family:var(--display);font-size:13px">Path B channel options (within mode 2)</p>
+      <p>Once Path B is selected:</p>
+      <ol>
+        <li><strong>Default:</strong> Cornelius → CMO cards → human edit → Zoom poll → Rachel lock → produce</li>
+        <li><strong>Calendar-constrained:</strong> Same, but respect known calendar blocks when scoring/ordering</li>
+        <li><strong>Podcast-first (month one):</strong> <code>channel=podcast</code> + <code>track=new_business</code></li>
+        <li><strong>Parallel existing:</strong> <code>newsletter</code> / <code>live_stream</code> + <code>existing_client</code>; separate human poll</li>
+      </ol>
+      <p style="margin-top:10px">Rachel’s post-lock awareness format remains human process, not a CMO skill.</p>
+    </div>
+
+    <div class="resource-block" id="alex-accept">
+      <h3>8. Acceptance criteria (for Ability)</h3>
+      <ul class="checklist">
+        <li>Cornelius can return a monthly ICP pack matching §5.1 without proposing titles</li>
+        <li>CMO can return 6-10 topic cards matching §6 from that pack + performance history</li>
+        <li>Podcast path clearly selectable (<code>channel=podcast</code>, <code>track=new_business</code>)</li>
+        <li>Existing-client options labeled separately (not mixed into one undifferentiated list without <code>track</code> / <code>channel</code>)</li>
+        <li>Post-publish measurement brief available as a distinct skill</li>
+        <li>No agent creates Zoom polls, messages WS, or invents ICP facts</li>
+        <li>Handoff Cornelius → CMO is documented (A2A or file attachment); prompts already drafted for operator use until A2A is live</li>
+        <li>Operator can choose Path A (campaign calendar) vs Path B (monthly topic options) without Path B mutating Path A theme state by accident</li>
+        <li>Path B does not create Zoom polls or message wealth strategists</li>
+      </ul>
+    </div>
+
+    <div class="resource-block" id="alex-prompts">
+      <h3>9. Operator prompts (interim until skills are wired)</h3>
+      <p>Full prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:</p>
+      <ul>
+        <li>Box: <code>q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md</code></li>
+        <li>Live: <a href="https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md" target="_blank" rel="noopener">https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md</a></li>
+        <li>On this site: <a href="#trinity-prompts">Month 1 Trinity prompts</a></li>
+      </ul>
+      <p style="margin-top:10px">Use those verbatim for smoke tests.</p>
+    </div>
+
+    <div class="resource-block" id="alex-open">
+      <h3>10. Open questions for Alex</h3>
+      <ol>
+        <li>Prefer <strong>A2A</strong> (CMO requests Cornelius) vs scheduled Cornelius file/snapshot CMO reads (same pattern Ability suggested for Wingman ↔ CMO)? Note: CMO already has <code>/cornelius-query</code> async+poll for briefs.</li>
+        <li>Where should topic-card JSON / markdown land for humans (Drive folder, agent files API, both)?</li>
+        <li>Is Riverside MCP still in scope for CMO production later, or explicitly out of this content-planning increment?</li>
+        <li><strong>Router shape:</strong> Extend <code>/contentcalendar</code> Step 1 with a mode prompt, add a parent <code>/content-planning</code> skill, or keep Path B as separate slash commands only?</li>
+        <li>For Path B → production: after Rachel locks topics, should agents auto-call <code>/generate-podcast-brief</code>, only write locked titles into calendar state for Path A, or leave handoff fully human?</li>
+        <li>Any existing CMO skill we should extend vs new skills named as in §5?</li>
+      </ol>
+    </div>
+
+    <div class="resource-block" id="alex-refs">
+      <h3>11. References</h3>
+      <ul>
+        <li>Internal draft: <code>/workspace/q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md</code></li>
+        <li>Public draft: <a href="https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md" target="_blank" rel="noopener">https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md</a></li>
+        <li>Walkthrough: <a href="#walkthrough-hero">this site’s Walkthrough tab</a> · live <a href="https://dparadigm.github.io/monthly-content-topics/" target="_blank" rel="noopener">https://dparadigm.github.io/monthly-content-topics/</a></li>
+        <li>Ability weekly 2026-09-16: Daniel committed to send Alex content-calendar / podcast workflow documentation</li>
+        <li>Downloadable spec: <a href="cmo-content-calendar-podcast-spec.md">cmo-content-calendar-podcast-spec.md</a></li>
+        <li>Google Doc (Alex comments): <a href="https://docs.google.com/document/d/1Y-Yydclv6BZDUPvYszxQRDLICJ7qOVfwRPJbtTqJuW8/edit" target="_blank" rel="noopener">open Doc</a></li>
+      </ul>
+    </div>
+
+  </section>
+
+  </div><!-- /panel-alex -->
+
+
 </main>
 
 <script>
@@ -876,22 +1192,35 @@ Keep it to one short brief Rachel and Dan can skim.</pre>
     return panel.id.replace(/^panel-/, "");
   }
 
-  document.querySelectorAll(".sticky .nav a").forEach(function (a) {
-    a.addEventListener("click", function (e) {
-      var href = a.getAttribute("href");
-      if (!href || href.charAt(0) !== "#") return;
-      var id = href.slice(1);
-      var tab = tabForHash(href);
-      if (tab) activate(tab);
-      var el = document.getElementById(id);
-      if (!el) return;
-      e.preventDefault();
-      history.replaceState(null, "", href);
-      // Let tab paint, then scroll so heading sits under sticky tabs + subnav
+  function handleHashLink(e, a) {
+    var href = a.getAttribute("href");
+    if (!href || href.charAt(0) !== "#") return;
+    var id = href.slice(1);
+    var el = document.getElementById(id);
+    if (!el) return;
+    var tab = tabForHash(href);
+    if (tab) activate(tab);
+    e.preventDefault();
+    history.replaceState(null, "", href);
+    requestAnimationFrame(function () {
+      el.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+    a.addEventListener("click", function (e) { handleHashLink(e, a); });
+  });
+
+  window.addEventListener("hashchange", function () {
+    var tab = tabForHash(window.location.hash);
+    if (tab) activate(tab);
+    var id = (window.location.hash || "").replace(/^#/, "");
+    var el = id ? document.getElementById(id) : null;
+    if (el) {
       requestAnimationFrame(function () {
         el.scrollIntoView({ behavior: "smooth", block: "start" });
       });
-    });
+    }
   });
 
   var initial = tabForHash(window.location.hash);
