@@ -19,15 +19,18 @@ Stand up monthly ICP-to-publish content system for new and existing clients
 ### Specific
 By Rock close, Rachel owns a repeatable monthly operating system that chooses podcast (new-business) and newsletter/live-stream (existing-client) topics from Trinity Cornelius ICP facts and Trinity CMO topic cards, force-ranks them with wealth strategists on **two** Zoom Workplace Polls each cycle, produces and publishes on the existing path, and feeds performance into the next month. Advisors dump ideas via a Zoom Team Chat channel plus email forward and see that input get used.
 
-**Cadence rule:** Dual polls run **2–3 weeks before** the content month (e.g. November content is polled in October). Topic cards and companion one-pager are part of running the loop (not a separate Rock milestone).
+**Cadence rules:**
+- Dual polls run **2–3 weeks before** the content month (e.g. November content is polled in October). Topic cards and companion one-pager are part of running the loop (not a separate Rock milestone).
+- **Podcast production:** Once titles/topics are locked, each episode is recorded the week before it publishes (Riverside), then published the following week. One new podcast publishes every week.
 
 ### Measurable
 Done when:
 1. October 2026 content is locked by **2026-09-25**
-2. November, December, and January 2027 cycles each complete: dual polls (ahead of month) → lock → produce → measure
-3. Intake channel + email forward are live
-4. Five-ICP one-pager is available to marketing + sales
-5. Process is fully implemented and **Rachel is running it with John Keever**
+2. November, December, and January 2027 cycles each complete: dual polls (ahead of month) → lock
+3. All planned podcasts for **October, November, and December** are recorded and published (weekly cadence above)
+4. Intake channel + email forward are live
+5. Five-ICP one-pager is available to marketing + sales
+6. Process is fully implemented and **Rachel is running it with John Keever**
 
 **Monitor:** Weekly in marketing L10 / scoreboard row Rachel owns. Binary at Rock close: above true, or not.
 
@@ -50,19 +53,25 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 |---|-----------------|-------|-----|
 | 1 | Stand up Zoom sales–marketing intake channel + email forward path | Dan / Rachel | 2026-10-08 |
 | 2 | Publish “Our five ICPs  -  current” one-pager to marketing + sales | CMO + Cornelius (Rachel hosts) | 2026-10-08 |
-| 3 | Lock October 2026 content | Rachel | **2026-09-25** |
+| 3 | Lock October 2026 content (titles / what’s shipping) | Rachel | **2026-09-25** |
 | 4 | Run dual Zoom polls for **November** content (2–3 weeks ahead of November) | Rachel | 2026-10-08 |
-| 5 | November content locked, produced, and measured | Rachel / CMO | 2026-10-31 |
-| 6 | Run dual Zoom polls for **December** content (2–3 weeks ahead of December) | Rachel | 2026-11-14 |
-| 7 | December content locked, produced, and measured | Rachel / CMO | 2026-11-30 |
-| 8 | Run dual Zoom polls for **January 2027** content (2–3 weeks ahead of January) | Rachel | 2026-12-12 |
-| 9 | January 2027 content locked (produce path confirmed) | Rachel / CMO | 2026-12-31 |
-| 10 | Process fully implemented; Rachel running it with John Keever | Rachel (+ John Keever) | 2026-12-31 |
+| 5 | Lock November 2026 content | Rachel | 2026-10-15 |
+| 6 | All October podcasts recorded and published (weekly: record week before publish) | Rachel | 2026-10-31 |
+| 7 | Run dual Zoom polls for **December** content (2–3 weeks ahead of December) | Rachel | 2026-11-14 |
+| 8 | Lock December 2026 content | Rachel | 2026-11-21 |
+| 9 | All November podcasts recorded and published | Rachel | 2026-11-30 |
+| 10 | Run dual Zoom polls for **January 2027** content (2–3 weeks ahead of January) | Rachel | 2026-12-12 |
+| 11 | Lock January 2027 content | Rachel | 2026-12-19 |
+| 12 | All December podcasts recorded and published | Rachel | 2026-12-31 |
+| 13 | Process fully implemented; Rachel running it with John Keever | Rachel (+ John Keever) | 2026-12-31 |
 
 **Notes**
 - Topic-card template / companion one-pager are assumed in the loop (not listed as their own milestone).
 - Milestone 3 (October lock) is fixed at **2026-09-25**.
 - Poll milestones are for the *upcoming* content month, not the calendar month the poll sits in.
+- Lock → subsequent weeks: record in Riverside the week before publish; publish the following week; one podcast per week.
+- Month-end record/publish milestones (#6, #9, #12) mean every planned episode for that content month made it through record + publish (CMO measure still runs after publish into the next cycle).
+- Lock dates for Nov / Dec / Jan after the dual polls are draft defaults (about a week after poll due); adjust if Rachel wants tighter.
 
 ---
 
@@ -82,4 +91,4 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 
 ---
 
-*Revised 2026-09-16 for poll-ahead cadence and John Keever implementation close. Not entered in Ninety.*
+*Revised 2026-09-16 for poll-ahead cadence, podcast record/publish lag, and John Keever implementation close. Not entered in Ninety.*

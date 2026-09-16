@@ -101,6 +101,8 @@ A repeatable monthly system that chooses podcast topics from ICP signal + wealth
 
 Month-to-month with dual polls **2-3 weeks before** the content month. October 2026 locks by **2026-09-25** (may already be in flight). First ahead-of-month dual polls in this rock are for **November** (~2026-10-08).
 
+**Podcast production lag:** Locked titles ship in subsequent weeks. Record each episode the week before it publishes (Riverside); publish the following week. One new podcast publishes every week. Rock milestones include whether all planned podcasts for October, November, and December were recorded and published.
+
 ### Monthly loop
 
 1. **Cornelius ICP pack** — Confirm which ICPs apply (new-audience / podcast).
@@ -119,7 +121,7 @@ Month-to-month with dual polls **2-3 weeks before** the content month. October 2
 | Dual Zoom polls posted to wealth strategists (2-3 weeks ahead) | Dan sets template; Rachel runs after | Zoom Workplace Polling |
 | Force-rank + co-host responses collected | Rachel | |
 | Top topics locked for month | Rachel + Patrick/Mike as needed | |
-| Episodes produced / published | Rachel | Existing production path |
+| All month’s podcasts recorded + published | Rachel | Weekly: record week before publish (Riverside); one publish/week |
 | Measurement snapshot for month | CMO brief; Rachel owns scoreboard row | Feeds next month’s CMO options |
 
 ### Scoreboard ideas (light)
