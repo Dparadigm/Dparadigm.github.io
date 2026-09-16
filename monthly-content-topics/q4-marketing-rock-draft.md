@@ -31,7 +31,7 @@
 1. **Cornelius** — Refresh / confirm ICP pack for the month (new vs existing client ICPs if they differ).
 2. **CMO** — Propose 6–10 topic options (podcast for Rock A; newsletter + live-stream themes for Rock B) with one-line “why this ICP” each; flag weak or stale ICP coverage.
 3. **Dan / Rachel (human)** — Light edit for brand/voice and Patrick’s calendar constraints; keep the open-ended write-in.
-4. **Zoom Workplace Poll** — Wealth strategists force-rank + co-host signal (mechanics unchanged).
+4. **Two Zoom Workplace Polls** (2-3 weeks ahead of the content month) — Wealth strategists force-rank + co-host signal on new-business and existing-client tracks.
 5. **Rachel** — Lock top topics, produce, publish.
 6. **CMO** — After publish, measurement snapshot (what performed) feeds next month’s options.
 
@@ -99,7 +99,7 @@ A repeatable monthly system that chooses podcast topics from ICP signal + wealth
 
 ### Cadence
 
-Month-to-month (start with **October**), not a full year lock.
+Month-to-month with dual polls **2-3 weeks before** the content month. October 2026 locks by **2026-09-25** (may already be in flight). First ahead-of-month dual polls in this rock are for **November** (~2026-10-08).
 
 ### Monthly loop
 
@@ -116,7 +116,7 @@ Month-to-month (start with **October**), not a full year lock.
 |-----------|--------|------|
 | Cornelius ICP pack | Cornelius (Trinity) | New vs existing ICPs as needed |
 | October topic option set (ICP-informed) | CMO proposes; Rachel (+ Dan) light-edits | Calendar is constraint, not only source |
-| Zoom poll posted to wealth strategists | Dan sets template; Rachel runs monthly after | Zoom Workplace Polling |
+| Dual Zoom polls posted to wealth strategists (2-3 weeks ahead) | Dan sets template; Rachel runs after | Zoom Workplace Polling |
 | Force-rank + co-host responses collected | Rachel | |
 | Top topics locked for month | Rachel + Patrick/Mike as needed | |
 | Episodes produced / published | Rachel | Existing production path |
@@ -139,7 +139,7 @@ Same ICP → options → Zoom force-rank → measure loop for **newsletter** and
 
 ### Cadence
 
-Month-to-month (October first).
+Same ahead-of-month cadence as Rock A (dual polls 2-3 weeks before the content month).
 
 ### Monthly loop
 
@@ -159,9 +159,11 @@ Patrick/Mike want WS ranking in Zoom; Daniel directed: use **Zoom Workplace Poll
 
 ### Locked poll shape (2026-09-16 talk-through)
 
-- **Two polls each month:** (1) new business, (2) existing clients. Same question pattern; separate so existing-client value is not crowded out.
+- **Two polls each cycle:** (1) new business, (2) existing clients. Same question pattern; separate so existing-client value is not crowded out.
+- **Cadence:** Dual polls run **2-3 weeks before** the content month (November content polled in October). October 2026 lock = **2026-09-25**; first ahead dual polls = November (~2026-10-08).
 - **Poll = short titles only.** Full topic cards live on a companion Notion/Drive one-pager linked from the Zoom Team Chat message that opens the poll.
 - **Post-lock “what’s going out” format:** Rachel decides (short note vs internal newsletter).
+- **Rock close:** Process fully implemented; Rachel running it with **John Keever** (due 2026-12-31).
 
 ### Topic card fields (before the poll)
 
@@ -172,15 +174,15 @@ Patrick/Mike want WS ranking in Zoom; Daniel directed: use **Zoom Workplace Poll
 | ICP slot (primary; secondary optional) | Cornelius | Don’t invent ICPs; flag if unclear |
 | Light example (one sentence) | CMO or human pass | Sales gets it in one read |
 
-### Poll design (per track — October example)
+### Poll design (per track — November ahead-of-month example)
 
-**Poll names (examples):** `Q4 New business topics — October` and `Q4 Existing client topics — October`  
+**Poll names (examples):** `Q4 New business topics — November` and `Q4 Existing client topics — November` (open ~2026-10-08)  
 **Audience:** Wealth strategists via Zoom Team Chat (intake channel = home base when stood up)  
 **Type:** Prefer ranking / ordered preference if Zoom supports it; else Fallback below.  
 **Context:** Link the topic-card one-pager in the chat message that launches the poll.
 
 #### Question 1 — Force-rank topics
-Prompt: “Rank these October topic options (1 = most relevant for your clients). Cards: [link].”  
+Prompt: “Rank these November topic options (1 = most relevant for your clients). Cards: [link].”  
 Options: short working titles only `[Topic 1]` … `[Topic 6-10]`
 
 #### Question 2 — Open-ended
@@ -206,16 +208,17 @@ Document the fallback in the rock so Rachel isn’t stuck.
 
 ### Ops checklist (template for Rachel next month)
 
-1. Ask Cornelius for the monthly ICP pack (prompt above)  
-2. Ask CMO for 6–10 options + rationales (prompt above)  
-3. Dan / Rachel light-edit for brand/voice and calendar constraints  
-4. Paste options into the Zoom poll template  
-5. Open poll in Zoom Workplace → target WS group  
-6. Set close time (e.g. 48 hours)  
-7. Export / screenshot results into a one-pager  
-8. Lock top 3–4 with Patrick as needed  
-9. Update production calendar  
-10. After publish: ask CMO for measurement brief; fill scoreboard row  
+1. Lock October 2026 content by **2026-09-25** if still open  
+2. Ask Cornelius for the ICP pack for the upcoming content month (first ahead cycle = November)  
+3. Ask CMO for 6–10 topic cards + rationales (prompt above)  
+4. Dan / Rachel light-edit for brand/voice and calendar constraints  
+5. Put full cards on companion one-pager; short titles into **both** Zoom poll templates  
+6. Open both polls in Zoom Workplace ~2-3 weeks ahead (November polls ~2026-10-08) → target WS group; link one-pager in Team Chat  
+7. Set close time (e.g. 48 hours)  
+8. Export / screenshot results into a one-pager  
+9. Lock top 3–4 per track with Patrick as needed; Rachel chooses “what’s going out” format  
+10. Update production calendar  
+11. After publish: ask CMO for measurement brief; fill scoreboard row  
 
 ---
 
@@ -225,7 +228,7 @@ Document the fallback in the rock so Rachel isn’t stuck.
 2. Zoom Poll question text + option placeholders for October (podcast)  
 3. Twin poll skeleton for existing (newsletter / live stream)  
 4. One-page “how to run it next month” for Rachel (includes ask Cornelius → ask CMO → edit → Zoom Poll)  
-5. Explicit non-goals: Avalaunch Ninety rock (Don); telling Rachel she owns ICPs yet; live Trinity runs before Daniel confirms  
+5. Explicit non-goals: Avalaunch Ninety rock (Don); live Trinity runs before Daniel confirms  
 6. Named Trinity handoff: Cornelius = ICP facts; CMO = monthly options + measurement brief  
 
 ### Still needed from Patrick (not blocking draft structure)
@@ -244,7 +247,7 @@ Document the fallback in the rock so Rachel isn’t stuck.
 ## Open decisions for Daniel (before any execution)
 
 - [ ] One marketing rock vs two (podcast vs existing) in Ninety  
-- [ ] October-only first poll vs also seed November  
+- [x] October locks by 2026-09-25 (may be in flight); first ahead dual polls = November (~2026-10-08)  
 - [ ] Exact Zoom channel name + membership; forward-inbox address  
 - [ ] Whether Atlas drafts placeholder ICP topics now or waits for calendar + live Cornelius/CMO pass
 - [x] Trinity ask prompts for Cornelius + CMO drafted in this MD (still do not send until confirmed)
@@ -268,11 +271,13 @@ Use this section when drafting the actual Ninety rock. Do not execute live chann
 
 ### Bucket 1 — Monthly loop
 
-1. **Two Zoom Workplace Polls** each month: new business, and existing clients.
-2. **Poll = short titles;** full **topic cards** on a companion Notion/Drive one-pager linked from the Zoom Team Chat message that opens the poll.
-3. **Post-lock “what’s going out”** format is **Rachel’s call** (short note vs internal newsletter).
-4. Topic cards: working title, audience/track, ICP slot, what’s-in-it bullets, light example.
-5. Poll also asks: open write-in, co-host, **resources you already send**, **tools/calculators/demos**.
+1. **Two Zoom Workplace Polls** each cycle: new business, and existing clients.
+2. **Cadence:** Polls run **2-3 weeks before** the content month (poll in month N-1 for month N). October 2026 locks **2026-09-25**; first ahead dual polls are for November (~2026-10-08).
+3. **Poll = short titles;** full **topic cards** on a companion Notion/Drive one-pager linked from the Zoom Team Chat message that opens the poll.
+4. **Post-lock “what’s going out”** format is **Rachel’s call** (short note vs internal newsletter).
+5. Topic cards: working title, audience/track, ICP slot, what’s-in-it bullets, light example (part of the loop; not a separate Rock milestone).
+6. Poll also asks: open write-in, co-host, **resources you already send**, **tools/calculators/demos**.
+7. **Rock close (2026-12-31):** Process fully implemented; Rachel running it with **John Keever**.
 
 ### Bucket 2 — Idea intake
 
@@ -314,3 +319,5 @@ Walked the monthly content framework. Speakers: Dan (P2), Patrick (P1), John (P3
 ### Still draft / do not execute without Daniel confirm
 
 - Live Zoom polls, live Zoom channel, live forward mailbox, Ninety publish, Trinity A2A runs, ICP one-pager publish.
+
+*Public operator copy updated 2026-09-16: ahead-of-month dual-poll cadence, October lock 2026-09-25, John Keever rock close. Internal-only notes stripped.*

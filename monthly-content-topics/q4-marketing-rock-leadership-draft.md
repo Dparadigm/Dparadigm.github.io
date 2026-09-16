@@ -23,7 +23,7 @@ By Rock close, Rachel owns a repeatable monthly operating system that chooses po
 
 ### Measurable
 Done when:
-1. October 2026 content is locked on the agreed September timeline (dates walked with Rachel)
+1. October 2026 content is locked by **2026-09-25**
 2. November, December, and January 2027 cycles each complete: dual polls (ahead of month) → lock → produce → measure
 3. Intake channel + email forward are live
 4. Five-ICP one-pager is available to marketing + sales
@@ -52,7 +52,7 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 |---|-----------------|-------|-----|
 | 1 | Stand up Zoom sales–marketing intake channel + email forward path | Dan / Rachel | 2026-10-08 |
 | 2 | Publish “Our five ICPs  -  current” one-pager to marketing + sales | CMO + Cornelius (Rachel hosts) | 2026-10-08 |
-| 3 | Lock October 2026 content (walk exact poll/lock/produce dates with Rachel; target before end of September) | Rachel | 2026-09-30 |
+| 3 | Lock October 2026 content | Rachel | **2026-09-25** |
 | 4 | Run dual Zoom polls for **November** content (2–3 weeks ahead of November) | Rachel | 2026-10-08 |
 | 5 | November content locked, produced, and measured | Rachel / CMO | 2026-10-31 |
 | 6 | Run dual Zoom polls for **December** content (2–3 weeks ahead of December) | Rachel | 2026-11-14 |
@@ -63,7 +63,7 @@ Supports ICP-led marketing, existing-client value (reduce “not relevant” uns
 
 **Notes**
 - Topic-card template / companion one-pager are assumed in the loop (not listed as their own milestone).
-- Milestone 3 dates should be confirmed with Rachel this week; September end is the target for October content lock.
+- Milestone 3 (October lock) is fixed at **2026-09-25**.
 - Poll milestones are for the *upcoming* content month, not the calendar month the poll sits in.
 
 ---
