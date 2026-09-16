@@ -95,7 +95,7 @@ Grouped by **calendar month when the work is due** (not the content month the po
 
 - Walkthrough + Month 1 resources: https://dparadigm.github.io/monthly-content-topics/  
 - Full mechanics MD: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md  
-- Google Doc: https://docs.google.com/document/d/1FFYpWABvRkc57KjKg65EaF-itEAmB4m0e_VB__gRKsg/edit  
+- Google Doc: https://docs.google.com/document/d/1N2MVa19ViskpCe5ToDM7q0Mh-jJMQJ8FaeXZMf1ezl4/edit  
 
 ---
 
