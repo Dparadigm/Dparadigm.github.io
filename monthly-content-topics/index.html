@@ -51,6 +51,8 @@ body::before{
 }
 .top-inner{max-width:960px; margin:0 auto}
 .brand{display:flex; align-items:center; gap:12px}
+a.brand{text-decoration:none; color:inherit; cursor:pointer}
+a.brand:hover .wordmark{color:var(--growth)}
 .shield-mark{height:36px; width:auto}
 .wordmark{
   font-family:var(--display); font-weight:700; font-size:13px;
@@ -118,7 +120,7 @@ h1{
 #context, #picture, #tracks, #steps, #poll, #roles,
 #alex-map, #alex-problem, #alex-roles, #alex-loop, #alex-skills,
 #alex-schema, #alex-path, #alex-accept, #alex-prompts, #alex-open, #alex-refs,
-#how-to-read, #resources-tldr-self, #rock-tldr-self, #alex-tldr-self, #walkthrough-hero, #resources-hero, #rock-hero{
+#how-to-read, #rock-tldr-self, #alex-tldr-self, #walkthrough-hero, #resources-hero, #rock-hero{
   scroll-margin-top:calc(var(--tabs-h) + var(--subnav-h) + 12px);
 }
 .nav{
@@ -395,13 +397,13 @@ h1{
 <body>
 <header class="top">
   <div class="top-inner">
-    <div class="brand">
+    <a class="brand" href="./" aria-label="Paradigm Life home">
       <img class="shield-mark" src="shield-mark.svg" alt="Paradigm Life" />
       <div>
         <div class="wordmark">Paradigm Life</div>
         <div class="stages"><span class="g">Growth</span> · <span class="i">Income</span> · <span class="l">Legacy</span></div>
       </div>
-    </div>
+    </a>
   </div>
 </header>
 
@@ -726,14 +728,9 @@ h1{
     </p>
   </section>
 
-  <div class="tab-tldr" id="resources-tldr-self">
-    <p class="label">TLDR</p>
-    <p>Hands-on pack to lock October (by 2026-09-25) and open November dual polls (~2026-10-08): reference MD, example Trinity prompts you can edit, topic-card example, poll and ops checklists, and a parking lot for later ideas.</p>
-  </div>
 
   <nav class="sticky" aria-label="Month 1 resource sections">
     <div class="nav">
-      <a href="#resources-tldr-self">TLDR</a>
       <a href="#full-md">Reference MD</a>
       <a href="#trinity-prompts">Trinity prompts</a>
       <a href="#card-template">Topic cards</a>
