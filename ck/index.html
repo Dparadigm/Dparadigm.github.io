@@ -141,9 +141,9 @@ if (!d){
       err.style.display = "block";
       err.textContent = "This link looks damaged. Ask the scribe to copy it again from the submitted screen.";
     } else {
-      title.textContent = (p.scribe ? (p.scribe + " \\u00b7 ") : "") + "Concept submitted";
+      title.textContent = (p.scribe ? (p.scribe + " \u00b7 ") : "") + "Concept submitted";
       renderReview(review, p);
-      document.title = (p.scribe || "Concept") + " \\u00b7 submission";
+      document.title = (p.scribe || "Concept") + " \u00b7 submission";
     }
   });
 }
