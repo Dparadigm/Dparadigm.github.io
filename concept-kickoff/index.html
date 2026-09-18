@@ -30,9 +30,18 @@
 <section class="job"><div class="lbl">Your job</div>
 <p>Spend about 5 minutes in a breakout. Fill every field and the workflow board. Submit so the concept is parked for follow-up. Lock the idea today. Do not polish a finished workflow.</p>
 </section>
-<div class="thanks" id="thanks"><div class="lbl">Submitted</div>
-<h2>Concept parked</h2>
-<p>Your concept is locked for follow-up.</p></div>
+<div class="thanks" id="thanks">
+<div class="lbl">Submitted</div>
+<h2>Concept submitted</h2>
+<p class="thanks-lead">Your unique link and full answers are below. Copy them into Alley Rally Zoom chat for your group.</p>
+<p class="share-wrap"><a class="share-link" id="shareLink" href="#" target="_blank" rel="noopener"></a></p>
+<pre class="summary" id="summary"></pre>
+<div class="actions thanks-actions">
+<button type="button" class="go" id="copySummary">Copy for Zoom</button>
+<button type="button" class="reset" id="editAgain">Edit again</button>
+<span class="copied" id="summaryCopied"></span>
+</div>
+</div>
 <div class="form-block" id="form-block">
 <div class="board"><h2>The board</h2>
 <div class="fields two">
@@ -68,5 +77,6 @@
 <footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
 </div>
 <script src="board.js"></script>
+
 </body>
 </html>

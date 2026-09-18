@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept submission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="top"><div class="top-inner"><div class="brand">
+<img class="shield-mark" src="shield-mark.svg" alt="" />
+<div><div class="wordmark">Paradigm Life®</div>
+<div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div>
+</div></div></div>
+<div class="wrap">
+<header>
+<div class="eyebrow">AI Friday · Multi-week build</div>
+<h1>Concept <em>submission</em></h1>
+</header>
+<div class="thanks show" id="panel">
+<div class="lbl">Shared submission</div>
+<h2 id="title">Loading…</h2>
+<pre class="summary" id="summary"></pre>
+<p class="thanks-lead" id="err" style="display:none"></p>
+<div class="actions thanks-actions">
+<a class="reset" href="./" style="display:inline-flex;align-items:center;text-decoration:none">New concept</a>
+</div>
+</div>
+<footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
+</div>
+<script>
+function decodePayload(d){
+  try {
+    var b64 = d.replace(/-/g,"+").replace(/_/g,"/");
+    while (b64.length % 4) b64 += "=";
+    var json = decodeURIComponent(escape(atob(b64)));
+    return JSON.parse(json);
+  } catch (e) { return null; }
+}
+function formatSummary(p){
+  var lines = [];
+  lines.push("Concept kickoff");
+  if (p.id) lines.push("Id: " + p.id);
+  lines.push("Scribe: " + (p.scribe || ""));
+  if (p.department) lines.push("Department / area: " + p.department);
+  lines.push("Job to be done / problem: " + (p.problem || ""));
+  lines.push("Who benefits: " + (p.whoBenefits || ""));
+  lines.push("First milestone: " + (p.firstMilestone || ""));
+  lines.push("Container: " + (p.container || ""));
+  lines.push("Tools: " + ((p.tools && p.tools.length) ? p.tools.join("; ") : ""));
+  lines.push("Trigger: " + (p.trigger || ""));
+  lines.push("Input: " + ((p.input && p.input.length) ? p.input.join("; ") : ""));
+  lines.push("Action: " + ((p.action && p.action.length) ? p.action.join("; ") : ""));
+  lines.push("Handoff: " + (p.handoff || ""));
+  return lines.join("\n");
+}
+var params = new URLSearchParams(location.search);
+var d = params.get("d");
+var title = document.getElementById("title");
+var summary = document.getElementById("summary");
+var err = document.getElementById("err");
+if (!d){
+  title.textContent = "No submission found";
+  err.style.display = "block";
+  err.textContent = "This link is missing submission data. Ask the scribe for a fresh link from the concept board.";
+} else {
+  var p = decodePayload(d);
+  if (!p){
+    title.textContent = "Could not read submission";
+    err.style.display = "block";
+    err.textContent = "This link looks damaged. Ask the scribe to copy it again from the submitted screen.";
+  } else {
+    title.textContent = (p.scribe ? (p.scribe + " · ") : "") + "Concept submitted";
+    summary.textContent = formatSummary(p);
+    document.title = (p.scribe || "Concept") + " · submission";
+  }
+}
+</script>
+</body>
+</html>
