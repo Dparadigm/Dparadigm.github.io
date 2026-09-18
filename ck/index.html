@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept submission</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260918e" />
+</head>
+<body>
+<div class="top"><div class="top-inner"><div class="brand">
+<img class="shield-mark" src="shield-mark.svg" alt="" />
+<div><div class="wordmark">Paradigm Life®</div>
+<div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div>
+</div></div></div>
+<div class="wrap">
+<header>
+<div class="eyebrow">AI Friday</div>
+<h1>Concept <em>submission</em></h1>
+</header>
+<div class="thanks show" id="panel">
+<div class="lbl">Shared submission</div>
+<h2 id="title">Loading…</h2>
+<div class="review" id="review"></div>
+<p class="thanks-lead" id="err" style="display:none"></p>
+<div class="actions thanks-actions">
+<a class="reset" href="/concept-kickoff/" style="display:inline-flex;align-items:center;text-decoration:none">New concept</a>
+</div>
+</div>
+<footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
+</div>
+<script>
+var CONTAINERS = ["AI Agent", "AI Automated Workflow"];
+var TOOLS = [
+  "CRM / HubSpot","Ninety.io","Email","Slack / Zoom chat","Spreadsheet",
+  "Data and metrics feeds","Marketing / Metricool","Other system"
+];
+var CHIPS = {
+  trigger: ["Time-based / schedule","Inbound / form submit","Manual start","Threshold / alert","Meeting / cadence"],
+  input: ["Who / which record","Date range or window","Source systems","Criteria / rules","Named owner or assignee"],
+  action: ["Pull or gather data","Draft or generate output","Update a system of record","Notify a person","Publish / refresh a view"],
+  handoff: ["A named person","A named team / role","Ops / leadership","The person who started it"]
+};
+function el(t,c,x){ var n=document.createElement(t); if(c) n.className=c; if(x!=null) n.textContent=x; return n; }
+function expandCompact(raw){
+  if (!raw || typeof raw !== "object") return null;
+  if (typeof raw.container === "string" || (raw.tools && raw.tools.length && typeof raw.tools[0] === "string")) return raw;
+  if (!("s" in raw) && !("c" in raw) && !("p" in raw)) return raw;
+  return {
+    kind: raw.k, at: raw.a, scribe: raw.s || "", department: raw.d || "",
+    problem: raw.p || "", whoBenefits: raw.w || "", firstMilestone: raw.m || "",
+    container: CONTAINERS[raw.c] || "",
+    tools: (raw.t || []).map(function(i){ return TOOLS[i]; }).filter(Boolean),
+    trigger: CHIPS.trigger[raw.r] || "",
+    input: (raw.i || []).map(function(i){ return CHIPS.input[i]; }).filter(Boolean),
+    action: (raw.x || []).map(function(i){ return CHIPS.action[i]; }).filter(Boolean),
+    handoff: CHIPS.handoff[raw.h] || "", id: raw.id
+  };
+}
+function bytesFromB64url(d){
+  var b64 = d.replace(/-/g,"+").replace(/_/g,"/");
+  while (b64.length % 4) b64 += "=";
+  var bin = atob(b64);
+  var out = new Uint8Array(bin.length);
+  for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+function decodeSync(d){
+  var b64 = d.replace(/-/g,"+").replace(/_/g,"/");
+  while (b64.length % 4) b64 += "=";
+  var json = decodeURIComponent(escape(atob(b64)));
+  return expandCompact(JSON.parse(json));
+}
+function decodePayload(d){
+  if (!d) return Promise.resolve(null);
+  if (d.charAt(0) === "z"){
+    if (typeof DecompressionStream === "undefined") return Promise.resolve(null);
+    try {
+      var bytes = bytesFromB64url(d.slice(1));
+      var stream = new Blob([bytes]).stream().pipeThrough(new DecompressionStream("deflate-raw"));
+      return new Response(stream).text().then(function(json){
+        return expandCompact(JSON.parse(json));
+      }).catch(function(){ return null; });
+    } catch (e) { return Promise.resolve(null); }
+  }
+  try { return Promise.resolve(decodeSync(d)); }
+  catch (e) { return Promise.resolve(null); }
+}
+function renderReview(host, p){
+  host.innerHTML = "";
+  var fields = [
+    ["Scribe", p.scribe],
+    ["Department / area", p.department],
+    ["Job to be done / problem", p.problem],
+    ["Who benefits", p.whoBenefits],
+    ["First milestone", p.firstMilestone]
+  ];
+  fields.forEach(function(pair){
+    if (!pair[1] && pair[0].indexOf("Department") === 0) return;
+    var row = el("div", "review-field field");
+    row.appendChild(el("div", "fl", pair[0]));
+    row.appendChild(el("div", "review-val", pair[1] || ""));
+    host.appendChild(row);
+  });
+  var board = el("div", "review-board");
+  board.appendChild(el("div", "review-board-hd", "Workflow"));
+  function addRow(label, values){
+    var list = Array.isArray(values) ? values : (values ? [values] : []);
+    if (!list.length) return;
+    var row = el("div", "review-row");
+    row.appendChild(el("div", "k", label));
+    var pills = el("div", "pills");
+    list.forEach(function(t){ pills.appendChild(el("span", "pill", t)); });
+    row.appendChild(pills);
+    board.appendChild(row);
+  }
+  addRow("Container", p.container);
+  addRow("Tools", p.tools);
+  addRow("Trigger", p.trigger);
+  addRow("Input", p.input);
+  addRow("Action", p.action);
+  addRow("Handoff", p.handoff);
+  host.appendChild(board);
+}
+var params = new URLSearchParams(location.search);
+var d = params.get("d");
+var title = document.getElementById("title");
+var review = document.getElementById("review");
+var err = document.getElementById("err");
+if (!d){
+  title.textContent = "No submission found";
+  err.style.display = "block";
+  err.textContent = "This link is missing submission data. Ask the scribe for a fresh link from the concept board.";
+} else {
+  decodePayload(d).then(function(p){
+    if (!p){
+      title.textContent = "Could not read submission";
+      err.style.display = "block";
+      err.textContent = "This link looks damaged. Ask the scribe to copy it again from the submitted screen.";
+    } else {
+      title.textContent = (p.scribe ? (p.scribe + " \u00b7 ") : "") + "Concept submitted";
+      renderReview(review, p);
+      document.title = (p.scribe || "Concept") + " \u00b7 submission";
+    }
+  });
+}
+</script>
+</body>
+</html>
