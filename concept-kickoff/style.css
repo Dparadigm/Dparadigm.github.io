@@ -122,3 +122,15 @@ textarea:focus,input:focus,.chip:focus-visible,.go:focus-visible,.reset:focus-vi
 .thanks h2{margin:0 0 8px;text-transform:none;letter-spacing:0;font-size:22px}.thanks p{margin:0;color:var(--color-text-body)}
 .form-block.hide{display:none}
 footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--color-border-subtle);font-size:13px;color:var(--color-text-body)}
+
+.thanks-lead{margin:0 0 14px;color:var(--color-text-body)}
+.thanks .summary{
+  margin:0 0 14px;padding:14px 16px;background:#fff;border:1px solid var(--color-border-default);
+  border-radius:var(--radius-lg);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
+  font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-word;color:var(--color-ink);
+  max-height:none;
+}
+.thanks-actions{margin-top:4px}
+
+.share-wrap{margin:0 0 12px;word-break:break-all}
+.share-link{color:var(--color-brand-primary);font-weight:600;font-size:13px;line-height:1.4}
