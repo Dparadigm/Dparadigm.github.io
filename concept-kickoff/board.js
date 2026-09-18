@@ -47,13 +47,10 @@ var DEFS = {
   Action: "The action it takes (Select 1-4)",
   Handoff: "Who owns it next (Select 1)"
 };
-
 var state = {container:null, tools:[], trigger:null, input:[], action:[], handoff:null, selected:null};
-
 function $(id){ return document.getElementById(id); }
 function el(t,c,x){ var n=document.createElement(t); if(c) n.className=c; if(x!=null) n.textContent=x; return n; }
 function val(id){ return $(id).value.trim(); }
-
 function boardReady(){
   return !!(state.container && state.tools.length>=1 && state.trigger && state.input.length>=1 && state.action.length>=1 && state.handoff);
 }
@@ -65,7 +62,6 @@ function canSubmit(){
   $("submit").disabled = !ok;
   return ok;
 }
-
 function selectSlot(name){
   state.selected = name;
   document.querySelectorAll(".slot").forEach(function(s){ s.classList.toggle("on", s.dataset.slot===name); });
@@ -85,7 +81,6 @@ function clearBlock(key, e){
   else state[key]=null;
   render();
 }
-
 function slotBox(key, empty, value, multi){
   var box = el("div", "slot"+(value && (!multi || value.length) ? " filled":""));
   box.dataset.slot = key;
@@ -113,7 +108,6 @@ function slotBox(key, empty, value, multi){
   }
   return box;
 }
-
 function leftRow(k, node){
   var r = el("div","row");
   r.appendChild(el("div","k", k));
@@ -122,7 +116,6 @@ function leftRow(k, node){
   wrap.appendChild(r);
   return wrap;
 }
-
 function rightGroup(label, kind, items, usedFn){
   var right = el("div","pair-right");
   var g = el("div","grp");
@@ -142,14 +135,12 @@ function rightGroup(label, kind, items, usedFn){
   right.appendChild(g);
   return right;
 }
-
 function pair(label, leftNode, kind, items, usedFn){
   var p = el("div","pair");
   p.appendChild(leftRow(label, leftNode));
   p.appendChild(rightGroup(label, kind, items, usedFn));
   return p;
 }
-
 function render(){
   var work = $("work");
   work.innerHTML = "";
@@ -161,7 +152,6 @@ function render(){
   work.appendChild(pair("Handoff", slotBox("handoff","Select 1 handoff", state.handoff), "handoff", CHIPS.handoff, function(t){ return state.handoff===t; }));
   canSubmit();
 }
-
 function place(kind, text){
   if (kind==="container"){ setContainer(text); return; }
   if (MULTI[kind]){
@@ -172,7 +162,6 @@ function place(kind, text){
   var key = (state.selected && CHIPS[state.selected]) ? state.selected : kind;
   if (CHIPS[key] && CHIPS[key].indexOf(text)>=0) setBlock(key, text);
 }
-
 function missingBits(){
   var m = [];
   if (!val("scribe")) m.push("scribe");
@@ -187,49 +176,162 @@ function missingBits(){
   if (!state.handoff) m.push("handoff");
   return m;
 }
-
-function encodePayload(p){
-  var json = JSON.stringify(p);
-  var b64 = btoa(unescape(encodeURIComponent(json)));
-  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/,"");
+function idxOf(arr, val){
+  var i = arr.indexOf(val);
+  return i >= 0 ? i : 0;
 }
-
-function shareUrlFor(payload){
-  var base = location.href.split("?")[0].split("#")[0].replace(/index\.html$/i,"");
-  if (base.slice(-1) !== "/") base += "/";
-  return base + "view.html?d=" + encodePayload(payload);
+function idxsOf(arr, vals){
+  return (vals || []).map(function(v){ return arr.indexOf(v); }).filter(function(i){ return i >= 0; });
 }
-
-function formatSummary(p, shareUrl){
-  var lines = [];
-  lines.push("Concept kickoff");
-  if (shareUrl) lines.push("Link: " + shareUrl);
-  lines.push("Scribe: " + (p.scribe || ""));
-  if (p.department) lines.push("Department / area: " + p.department);
-  lines.push("Job to be done / problem: " + (p.problem || ""));
-  lines.push("Who benefits: " + (p.whoBenefits || ""));
-  lines.push("First milestone: " + (p.firstMilestone || ""));
-  lines.push("Container: " + (p.container || ""));
-  lines.push("Tools: " + ((p.tools && p.tools.length) ? p.tools.join("; ") : ""));
-  lines.push("Trigger: " + (p.trigger || ""));
-  lines.push("Input: " + ((p.input && p.input.length) ? p.input.join("; ") : ""));
-  lines.push("Action: " + ((p.action && p.action.length) ? p.action.join("; ") : ""));
-  lines.push("Handoff: " + (p.handoff || ""));
-  return lines.join("\n");
+function toCompact(p){
+  var c = {
+    k: p.kind || "submit",
+    s: p.scribe || "",
+    p: p.problem || "",
+    w: p.whoBenefits || "",
+    m: p.firstMilestone || "",
+    c: idxOf(CONTAINERS, p.container),
+    t: idxsOf(TOOLS, p.tools),
+    r: idxOf(CHIPS.trigger, p.trigger),
+    i: idxsOf(CHIPS.input, p.input),
+    x: idxsOf(CHIPS.action, p.action),
+    h: idxOf(CHIPS.handoff, p.handoff)
+  };
+  if (p.department) c.d = p.department;
+  if (p.at) c.a = p.at;
+  if (p.id) c.id = p.id;
+  return c;
 }
-
-function showSummary(payload){
-  var url = shareUrlFor(payload);
-  window.__conceptShareUrl = url;
-  var text = formatSummary(payload, url);
-  $("summary").textContent = text;
-  window.__conceptSummaryText = text;
-  if ($("shareLink")){
-    $("shareLink").href = url;
-    $("shareLink").textContent = url;
+function expandCompact(raw){
+  if (!raw || typeof raw !== "object") return null;
+  if (typeof raw.container === "string" || (raw.tools && raw.tools.length && typeof raw.tools[0] === "string")) {
+    return raw;
+  }
+  if (!("s" in raw) && !("c" in raw) && !("p" in raw)) return raw;
+  return {
+    kind: raw.k,
+    at: raw.a,
+    scribe: raw.s || "",
+    department: raw.d || "",
+    problem: raw.p || "",
+    whoBenefits: raw.w || "",
+    firstMilestone: raw.m || "",
+    container: CONTAINERS[raw.c] || "",
+    tools: (raw.t || []).map(function(i){ return TOOLS[i]; }).filter(Boolean),
+    trigger: CHIPS.trigger[raw.r] || "",
+    input: (raw.i || []).map(function(i){ return CHIPS.input[i]; }).filter(Boolean),
+    action: (raw.x || []).map(function(i){ return CHIPS.action[i]; }).filter(Boolean),
+    handoff: CHIPS.handoff[raw.h] || "",
+    id: raw.id
+  };
+}
+function b64urlFromStr(str){
+  var b64 = btoa(unescape(encodeURIComponent(str)));
+  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
+}
+function b64urlFromBytes(bytes){
+  var bin = "";
+  for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
+  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
+}
+function bytesFromB64url(d){
+  var b64 = d.replace(/-/g,"+").replace(/_/g,"/");
+  while (b64.length % 4) b64 += "=";
+  var bin = atob(b64);
+  var out = new Uint8Array(bin.length);
+  for (var i = 0; i < bin.length; i++) out[i] = bin.charCodeAt(i);
+  return out;
+}
+function encodeCompactSync(p){
+  return b64urlFromStr(JSON.stringify(toCompact(p)));
+}
+function encodeCompact(p){
+  var json = JSON.stringify(toCompact(p));
+  if (typeof CompressionStream !== "undefined"){
+    try {
+      var stream = new Blob([json]).stream().pipeThrough(new CompressionStream("deflate-raw"));
+      return new Response(stream).arrayBuffer().then(function(buf){
+        return "z" + b64urlFromBytes(new Uint8Array(buf));
+      }).catch(function(){
+        return encodeCompactSync(p);
+      });
+    } catch (e) {
+      return Promise.resolve(encodeCompactSync(p));
+    }
+  }
+  return Promise.resolve(encodeCompactSync(p));
+}
+function encodePayloadLegacy(p){
+  return b64urlFromStr(JSON.stringify(p));
+}
+function shareUrlForEncoded(enc){
+  var origin = (location.origin && location.origin !== "null") ? location.origin : "https://dparadigm.github.io";
+  return origin.replace(/\/$/,"") + "/ck/?d=" + enc;
+}
+function zoomPaste(p, url){
+  return (p.scribe || "Concept") + " \u00b7 concept kickoff\n" + url;
+}
+function renderReview(host, p){
+  if (!host) return;
+  host.innerHTML = "";
+  var fields = [
+    ["Scribe", p.scribe],
+    ["Department / area", p.department],
+    ["Job to be done / problem", p.problem],
+    ["Who benefits", p.whoBenefits],
+    ["First milestone", p.firstMilestone]
+  ];
+  fields.forEach(function(pair){
+    if (!pair[1] && pair[0].indexOf("Department") === 0) return;
+    var row = el("div", "review-field field");
+    row.appendChild(el("div", "fl", pair[0]));
+    row.appendChild(el("div", "review-val", pair[1] || ""));
+    host.appendChild(row);
+  });
+  var board = el("div", "review-board");
+  board.appendChild(el("div", "review-board-hd", "Workflow"));
+  function addRow(label, values){
+    var list = Array.isArray(values) ? values : (values ? [values] : []);
+    if (!list.length) return;
+    var row = el("div", "review-row");
+    row.appendChild(el("div", "k", label));
+    var pills = el("div", "pills");
+    list.forEach(function(t){ pills.appendChild(el("span", "pill", t)); });
+    row.appendChild(pills);
+    board.appendChild(row);
+  }
+  addRow("Container", p.container);
+  addRow("Tools", p.tools);
+  addRow("Trigger", p.trigger);
+  addRow("Input", p.input);
+  addRow("Action", p.action);
+  addRow("Handoff", p.handoff);
+  host.appendChild(board);
+}
+function copyText(text, okMsg){
+  function ok(){
+    if ($("summaryCopied")) $("summaryCopied").textContent = okMsg || "Copied.";
+  }
+  if (navigator.clipboard && navigator.clipboard.writeText){
+    navigator.clipboard.writeText(text).then(ok).catch(function(){
+      var ta = document.createElement("textarea");
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand("copy"); ok(); } catch (e) {}
+      document.body.removeChild(ta);
+    });
+  } else {
+    var ta = document.createElement("textarea");
+    ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand("copy"); ok(); } catch (e) {}
+    document.body.removeChild(ta);
   }
 }
-
+function showSummary(payload, enc){
+  var url = shareUrlForEncoded(enc);
+  window.__conceptShareUrl = url;
+  window.__conceptZoomPaste = zoomPaste(payload, url);
+  renderReview($("review"), payload);
+}
 function boardPayload(kind){
   return {
     kind: kind,
@@ -247,7 +349,6 @@ function boardPayload(kind){
     handoff: state.handoff
   };
 }
-
 function pingHandoff(payload){
   var body = JSON.stringify(payload);
   var jobs = [];
@@ -262,7 +363,6 @@ function pingHandoff(payload){
   return Promise.all(jobs);
 }
 window.HANDOFF_WEBHOOK = "";
-
 var started = false;
 function maybeStart(){
   if (started) return;
@@ -272,14 +372,12 @@ function maybeStart(){
   window.__handoffStart = p;
   pingHandoff(p);
 }
-
 ["scribe","department","problem","whoBenefits","firstMilestone"].forEach(function(id){
   $(id).addEventListener("input", function(){
     canSubmit();
     if (id==="scribe") maybeStart();
   });
 });
-
 $("submit").addEventListener("click", function(){
   var miss = missingBits();
   if (miss.length){
@@ -293,52 +391,47 @@ $("submit").addEventListener("click", function(){
   try { localStorage.setItem("concept-kickoff-board-"+slug, JSON.stringify(payload)); } catch (e) {}
   $("submit").disabled = true;
   $("copied").textContent = "Sending\u2026";
-  pingHandoff(payload).then(function(){
+  Promise.all([pingHandoff(payload), encodeCompact(payload)]).then(function(results){
+    var enc = results[1];
     $("copied").textContent = "";
-    showSummary(payload);
+    showSummary(payload, enc);
     $("form-block").classList.add("hide");
     $("thanks").classList.add("show");
     window.scrollTo({top:0, behavior:"smooth"});
   });
 });
-
-$("copySummary").addEventListener("click", function(){
-  var text = window.__conceptSummaryText || ($("summary") && $("summary").textContent) || "";
-  if (!text) return;
-  function ok(){ $("summaryCopied").textContent = "Copied. Paste into Alley Rally Zoom chat."; }
-  if (navigator.clipboard && navigator.clipboard.writeText){
-    navigator.clipboard.writeText(text).then(ok).catch(function(){
-      var ta = document.createElement("textarea");
-      ta.value = text; document.body.appendChild(ta); ta.select();
-      try { document.execCommand("copy"); ok(); } catch (e) {}
-      document.body.removeChild(ta);
-    });
-  } else {
-    var ta = document.createElement("textarea");
-    ta.value = text; document.body.appendChild(ta); ta.select();
-    try { document.execCommand("copy"); ok(); } catch (e) {}
-    document.body.removeChild(ta);
-  }
-});
-
+if ($("copyLink")){
+  $("copyLink").addEventListener("click", function(){
+    var url = window.__conceptShareUrl || "";
+    if (!url) return;
+    copyText(url, "Link copied.");
+  });
+}
+if ($("copySummary")){
+  $("copySummary").addEventListener("click", function(){
+    var text = window.__conceptZoomPaste || "";
+    if (!text) return;
+    copyText(text, "Copied. Paste into Alley Rally Zoom chat.");
+  });
+}
 $("editAgain").addEventListener("click", function(){
-  $("summaryCopied").textContent = "";
+  if ($("summaryCopied")) $("summaryCopied").textContent = "";
   $("thanks").classList.remove("show");
   $("form-block").classList.remove("hide");
   canSubmit();
   window.scrollTo({top:0, behavior:"smooth"});
 });
-
 $("reset").addEventListener("click", function(){
   state = {container:null, tools:[], trigger:null, input:[], action:[], handoff:null, selected:null};
   started = false;
   ["scribe","department","problem","whoBenefits","firstMilestone"].forEach(function(id){ $(id).value=""; });
   $("copied").textContent = "";
   if ($("summaryCopied")) $("summaryCopied").textContent = "";
-  if ($("summary")) $("summary").textContent = "";
+  if ($("review")) $("review").innerHTML = "";
+  window.__conceptShareUrl = "";
+  window.__conceptZoomPaste = "";
   $("thanks").classList.remove("show");
   $("form-block").classList.remove("hide");
   render();
 });
-
 render();
