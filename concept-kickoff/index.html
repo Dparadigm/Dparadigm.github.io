@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Concept kickoff</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+<div class="top"><div class="top-inner"><div class="brand">
+<img class="shield-mark" src="shield-mark.svg" alt="" />
+<div><div class="wordmark">Paradigm Life®</div>
+<div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div>
+</div></div></div>
+<div class="wrap">
+<header>
+<div class="eyebrow">AI Friday · Multi-week build</div>
+<h1>Concept <em>kickoff</em></h1>
+</header>
+<section class="sit"><div class="lbl">The situation</div>
+<p>Your group owns a real piece of work that still burns time or stalls handoffs. AI can help — but only if the concept is clear enough that someone can start building after today.</p>
+</section>
+<section class="out"><div class="lbl">The outcome</div>
+<p>Walk out with a locked concept: a named problem, who it helps, what done looks like, a first milestone, and who owns it next.</p>
+</section>
+<section class="job"><div class="lbl">Your job</div>
+<p>Spend about 5–15 minutes in breakout. Fill every field. Submit so the concept is parked for follow-up. Do not polish a finished workflow today — lock the idea.</p>
+</section>
+<div class="thanks" id="thanks"><div class="lbl">Submitted</div>
+<h2>Concept parked</h2>
+<p>Your concept is locked for follow-up. No grade for kickoff — just the idea, parked.</p></div>
+<div class="form-block" id="form-block">
+<div class="board"><h2>The board</h2>
+<div class="fields two">
+<div class="field"><div class="fl">Scribe</div><input class="team" id="scribe" type="text" placeholder="Scribe name, e.g. Jordan" autocomplete="off" /></div>
+<div class="field"><div class="fl">Department / area <span class="opt">(optional)</span></div><input class="area" id="department" type="text" placeholder="e.g. Licensing, Ops, Advisors" autocomplete="off" /></div>
+</div>
+<div class="fields" style="margin-top:16px">
+<div class="field"><div class="fl">Job to be done / problem</div><textarea id="problem" class="tall" placeholder="One sentence: what burns time or stalls handoffs?"></textarea></div>
+<div class="field"><div class="fl">Who benefits</div><textarea id="whoBenefits" placeholder="Who gets help when this works?"></textarea></div>
+<div class="field"><div class="fl">What done looks like</div><textarea id="doneLooksLike" class="tall" placeholder="What does usable / shipped look like?"></textarea></div>
+<div class="field"><div class="fl">First milestone</div><textarea id="firstMilestone" placeholder="A concrete first action someone can take next week"></textarea></div>
+<div class="fields two">
+<div class="field"><div class="fl">Named owner after today</div><input class="team" id="owner" type="text" placeholder="Person who owns it next" autocomplete="off" /></div>
+<div class="field"><div class="fl">First tool or AI angle <span class="opt">(optional)</span></div><input class="area" id="toolAngle" type="text" placeholder="e.g. ChatGPT, Zapier, custom agent" autocomplete="off" /></div>
+</div></div></div>
+<div class="ask"><p>Park the concept</p>
+<p class="hint">Fill the required fields. Submit parks the idea for follow-up — no Success / Try Again grade today.</p>
+<div class="actions">
+<button type="button" class="go" id="submit" disabled>Submit</button>
+<button type="button" class="reset" id="reset">Clear form</button>
+<span class="copied" id="copied"></span>
+</div></div></div>
+<footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
+</div>
+<script>
+function $(id){return document.getElementById(id)}
+var REQUIRED=["scribe","problem","whoBenefits","doneLooksLike","firstMilestone","owner"];
+var ALL=["scribe","department","problem","whoBenefits","doneLooksLike","firstMilestone","owner","toolAngle"];
+function val(id){return $(id).value.trim()}
+function canSubmit(){var ok=REQUIRED.every(function(id){return val(id)});$("submit").disabled=!ok;return ok}
+function missingBits(){var labels={scribe:"scribe",problem:"job to be done / problem",whoBenefits:"who benefits",doneLooksLike:"what done looks like",firstMilestone:"first milestone",owner:"named owner after today"};return REQUIRED.filter(function(id){return !val(id)}).map(function(id){return labels[id]})}
+function boardPayload(kind){return{kind:kind,scribe:val("scribe"),department:val("department"),problem:val("problem"),whoBenefits:val("whoBenefits"),doneLooksLike:val("doneLooksLike"),firstMilestone:val("firstMilestone"),owner:val("owner"),toolAngle:val("toolAngle"),timestamp:new Date().toISOString()}}
+function pingHandoff(payload){var body=JSON.stringify(payload);var jobs=[];jobs.push(fetch("https://ntfy.sh/paradigm-concept-kickoff-atlas",{method:"POST",headers:{"Title":(payload.kind||"submit")+" "+(payload.scribe||""),"Tags":"clipboard","Content-Type":"application/json"},body:body}).catch(function(){}));if(window.HANDOFF_WEBHOOK){jobs.push(fetch(window.HANDOFF_WEBHOOK,{method:"POST",headers:{"Content-Type":"application/json"},body:body,mode:"no-cors"}).catch(function(){}))}return Promise.all(jobs)}
+window.HANDOFF_WEBHOOK="";
+var started=false;
+function maybeStart(){if(started)return;if(!val("scribe"))return;started=true;var p=boardPayload("start");window.__handoffStart=p;pingHandoff(p)}
+ALL.forEach(function(id){$(id).addEventListener("input",function(){canSubmit();if(id==="scribe")maybeStart()})});
+$("submit").addEventListener("click",function(){var miss=missingBits();if(miss.length){$("copied").textContent="Still need: "+miss.join(", ")+".";return}var payload=boardPayload("submit");window.__handoffSubmit=payload;try{localStorage.setItem("concept-kickoff-board-"+(payload.scribe||"scribe").toLowerCase().replace(/[^a-z0-9]+/g,"-"),JSON.stringify(payload))}catch(e){}$("submit").disabled=true;$("copied").textContent="Sending…";pingHandoff(payload).then(function(){$("copied").textContent="";$("form-block").classList.add("hide");$("thanks").classList.add("show");window.scrollTo({top:0,behavior:"smooth"})})});
+$("reset").addEventListener("click",function(){started=false;ALL.forEach(function(id){$(id).value=""});$("copied").textContent="";$("thanks").classList.remove("show");$("form-block").classList.remove("hide");canSubmit()});
+canSubmit();
+</script>
+</body>
+</html>
