@@ -227,12 +227,12 @@ function expandCompact(raw){
 }
 function b64urlFromStr(str){
   var b64 = btoa(unescape(encodeURIComponent(str)));
-  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
+  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/," ").trim();
 }
 function b64urlFromBytes(bytes){
   var bin = "";
   for (var i = 0; i < bytes.length; i++) bin += String.fromCharCode(bytes[i]);
-  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/g,"");
+  return btoa(bin).replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/," ").trim();
 }
 function bytesFromB64url(d){
   var b64 = d.replace(/-/g,"+").replace(/_/g,"/");
