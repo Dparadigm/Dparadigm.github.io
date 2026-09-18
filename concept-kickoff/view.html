@@ -27,7 +27,7 @@
 <div class="review" id="review"></div>
 <p class="thanks-lead" id="err" style="display:none"></p>
 <div class="actions thanks-actions">
-<a class="reset" href="./" style="display:inline-flex;align-items:center;text-decoration:none">New concept</a>
+<a class="reset" href="/concept-kickoff/" style="display:inline-flex;align-items:center;text-decoration:none">New concept</a>
 </div>
 </div>
 <footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
@@ -141,9 +141,9 @@ if (!d){
       err.style.display = "block";
       err.textContent = "This link looks damaged. Ask the scribe to copy it again from the submitted screen.";
     } else {
-      title.textContent = (p.scribe ? (p.scribe + " · ") : "") + "Concept submitted";
+      title.textContent = (p.scribe ? (p.scribe + " \u00b7 ") : "") + "Concept submitted";
       renderReview(review, p);
-      document.title = (p.scribe || "Concept") + " · submission";
+      document.title = (p.scribe || "Concept") + " \u00b7 submission";
     }
   });
 }
