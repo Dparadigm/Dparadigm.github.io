@@ -192,7 +192,7 @@ function missingBits(){
 function encodePayload(p){
   var json = JSON.stringify(p);
   var b64 = btoa(unescape(encodeURIComponent(json)));
-  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/\u002c"");
+  return b64.replace(/\+/g,"-").replace(/\//g,"_").replace(/=+$/c"");
 }
 
 function shareUrlFor(payload){
