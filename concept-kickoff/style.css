@@ -124,13 +124,40 @@ textarea:focus,input:focus,.chip:focus-visible,.go:focus-visible,.reset:focus-vi
 footer{margin-top:40px;padding-top:18px;border-top:1px solid var(--color-border-subtle);font-size:13px;color:var(--color-text-body)}
 
 .thanks-lead{margin:0 0 14px;color:var(--color-text-body)}
-.thanks .summary{
-  margin:0 0 14px;padding:14px 16px;background:#fff;border:1px solid var(--color-border-default);
-  border-radius:var(--radius-lg);font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;
-  font-size:13px;line-height:1.55;white-space:pre-wrap;word-break:break-word;color:var(--color-ink);
-  max-height:none;
-}
 .thanks-actions{margin-top:4px}
+.copy-row{margin-top:16px}
 
-.share-wrap{margin:0 0 12px;word-break:break-all}
-.share-link{color:var(--color-brand-primary);font-weight:600;font-size:13px;line-height:1.4}
+.review{
+  margin:0 0 4px;padding:16px 16px 4px;background:#fff;
+  border:1px solid var(--color-border-default);border-radius:var(--radius-lg);
+}
+.review-field{margin:0 0 14px}
+.review-field .fl{margin-bottom:4px}
+.review-val{
+  font-size:15px;line-height:1.45;color:var(--color-ink);
+  padding:8px 12px;background:var(--color-surface-muted);
+  border:1px solid var(--color-border-subtle);border-radius:var(--radius-lg);
+  white-space:pre-wrap;word-break:break-word;
+}
+.review-board{
+  margin:6px 0 12px;border:1px solid var(--color-border-default);
+  border-radius:var(--radius-lg);overflow:hidden;background:var(--color-surface-card);
+}
+.review-board-hd{
+  font-family:var(--font-family-display);font-weight:600;
+  font-size:11px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--color-brand-primary);padding:12px 14px 8px;
+  background:var(--color-surface-accent);border-bottom:1px solid var(--color-border-subtle);
+}
+.review-row{
+  display:grid;grid-template-columns:100px 1fr;gap:10px;
+  padding:10px 14px;border-top:1px solid var(--color-border-subtle);align-items:start;
+}
+.review-row:first-of-type{border-top:0}
+.review-row .k{
+  font-family:var(--font-family-display);font-weight:600;
+  font-size:10px;letter-spacing:.12em;text-transform:uppercase;
+  color:var(--color-brand-gray-11);padding-top:4px;
+}
+.review-row .pills{padding-top:0}
+.review-row .pill{cursor:default}
