@@ -7,7 +7,6 @@ Track: New business only (Rock A). No Rock B on this page yet.
 ## Page chrome
 - Title: October 2026 — New business topics
 - Subhead: Force-rank the short titles in the Zoom poll. Open a topic tab below if you want more context.
-- Note: Marketing will narrow to top picks from your ranking. Draft for Rachel feedback — not final.
 - Brand: Black #000000, Cool Gray 11 #54565A, Cool Gray 3 #C8C8C8, Growth #AAC27F, Income #65B2E8, Legacy #DAA900. Headlines Montserrat/Gotham-like; body Open Sans. Quiet logo space.
 - MUST include: <meta name="robots" content="noindex, nofollow"> and robots.txt already Disallow:/ at site root (do not weaken).
 - Layout: top list of poll titles (1–6), then tab bar one tab per topic. Each tab: Simple section first, then More depth section. Clean, scannable cards like monthly-content-topics / concept-kickoff — not a dense Google Doc.
