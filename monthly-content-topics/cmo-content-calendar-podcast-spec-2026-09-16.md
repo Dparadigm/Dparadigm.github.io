@@ -2,8 +2,8 @@
 
 **For:** Alex Sazonenka (Ability.ai)  
 **From:** Daniel Torsak  
-**Date:** 2026-09-16  
-**Status:** Ready for Alex feedback (CMO repo router 2026-09-16) — not live yet  
+**Date:** 2026-09-21  
+**Status:** Ready for Alex feedback (synced 2026-09-21) — not live yet  
 **Related agents:** CMO (marketing intelligence), Cornelius (ICP source of truth)  
 **Related human:** Rachel (Growth & Marketing Strategy Lead) owns execution and rock approval
 
@@ -35,6 +35,8 @@ Do **not** build these into the first CMO increment:
 Riverside MCP was previously discussed for CMO (~2026-09-04). Confirm separately whether it remains on the path; it is **not** required for this content-calendar / topic-options loop.
 
 **Human Zoom poll extras (not agent fields):** Each poll also asks wealth strategists for (a) resources they already send clients and (b) tools / calculators / demos that made a topic click. Those answers are **human discovery only**. They are not CMO topic-card fields and agents do not collect them.
+
+Ability Canon, Rachel Growth & Marketing companion / connector sequencing are org-level Ability context, not Path B deliverables this increment. Fleet `/capture-feedback` (already shipping on other agents) is out of scope for this Path B build.
 
 ---
 
@@ -69,8 +71,8 @@ CMO measurement brief → next month’s CMO options
 
 ### Track split
 
-- **Podcast path** = **new-business** track output (Rock A).
-- **Existing-client** track = newsletter + livestream themes (Rock B), **separate** poll, same CMO skill family with a channel tag.
+- **Podcast path** = **new-business** track output (Track A).
+- **Existing-client** track = newsletter + livestream themes (Track B), **separate** poll, same CMO skill family with a channel tag.
 
 ### Parallel human pack (not a new month-one skill unless Alex wants it)
 
@@ -182,20 +184,21 @@ Rachel’s post-lock awareness format remains human process, not a CMO skill.
 - [ ] Existing-client options labeled separately (not mixed into one undifferentiated list without `track` / `channel`)
 - [ ] Post-publish measurement brief available as a distinct skill
 - [ ] No agent creates Zoom polls, messages WS, or invents ICP facts
-- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); prompts already drafted for operator use until A2A is live
+- [ ] Handoff Cornelius → CMO is documented (A2A or file attachment); example prompts available for operator use until A2A is live (Rachel may modify)
 - [ ] Operator can choose Path A (campaign calendar) vs Path B (monthly topic options) without Path B mutating Path A theme state by accident
 - [ ] Path B does not create Zoom polls or message wealth strategists
 
 ---
 
-## 9. Operator prompts (interim until skills are wired)
+## 9. Example operator prompts (interim until skills are wired)
 
-Full prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
+**Examples only.** Rachel may modify or replace these in Trinity. Do not hard-code them as the only allowed prompt text. Example prompt text (Ask Cornelius / Ask CMO options / Ask CMO measure) lives in:
 
 - Box: `q4-marketing-rocks/q4-marketing-rock-draft-zoom-polls.md`
 - Live: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md
+- Site: Month 1 resources → Trinity prompt examples
 
-Use those verbatim for smoke tests.
+Fine as smoke-test starters; Rachel owns the final prompts she runs.
 
 ---
 
@@ -216,4 +219,4 @@ Use those verbatim for smoke tests.
 - Public draft: https://dparadigm.github.io/monthly-content-topics/q4-marketing-rock-draft.md
 - Walkthrough: https://dparadigm.github.io/monthly-content-topics/
 - Ability weekly 2026-09-16: Daniel committed to send Alex content-calendar / podcast workflow documentation
-
+- CMO repo (Path A): `ParadigmLife/cmo-paradigm-life` (`.claude/skills/contentcalendar/SKILL.md`)
