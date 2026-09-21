@@ -1,34 +1,14 @@
-name: Deploy GitHub Pages
+# Disabled: this repo publishes GitHub Pages via Deploy from a branch (main / root).
+# Keeping an Actions deploy-pages workflow concurrent with branch deploys causes
+# "Failed to create deployment (status: 400) ... in progress deployment" and stalls the live site.
+# Use workflow_dispatch only if you intentionally switch Settings → Pages → Source to GitHub Actions.
+name: Deploy GitHub Pages (disabled)
 
 on:
-  push:
-    branches: ["main"]
   workflow_dispatch:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
-
-concurrency:
-  group: "pages"
-  cancel-in-progress: false
-
 jobs:
-  deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+  noop:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
-      - name: Setup Pages
-        uses: actions/configure-pages@v5
-      - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
-      - name: Deploy to GitHub Pages
-        id: deployment
-        uses: actions/deploy-pages@v4
+      - run: echo "Branch-based Pages is the active publisher. Switch Settings to GitHub Actions before enabling deploy-pages."
