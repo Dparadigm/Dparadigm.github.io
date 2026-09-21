@@ -10,8 +10,10 @@
 <p style="font-family:system-ui,sans-serif;padding:24px;color:#515867">Loading walkthrough…</p>
 <script>
 (async function () {
-  const b64 = (await fetch("walkthrough.html.gz.b64").then(r => r.text())).replace(/\s+/g, "");
-  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const parts = ["walkthrough.a.b64", "walkthrough.b.b64"];
+  const texts = await Promise.all(parts.map(function (p) { return fetch(p).then(function (r) { return r.text(); }); }));
+  const b64 = texts.join("").replace(/\s+/g, "");
+  const bin = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
   const ds = new DecompressionStream("gzip");
   const stream = new Blob([bin]).stream().pipeThrough(ds);
   const html = await new Response(stream).text();
