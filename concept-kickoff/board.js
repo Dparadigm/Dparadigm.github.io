@@ -269,7 +269,7 @@ function shareUrlForEncoded(enc){
   return origin.replace(/\/$/,"") + "/ck/?d=" + enc;
 }
 function zoomPaste(p, url){
-  return (p.scribe || "Concept") + " \u00b7 concept kickoff\n" + url;
+  return (p.scribe || "Concept") + " \u00b7 opportunity board\n" + url;
 }
 function renderReview(host, p){
   if (!host) return;

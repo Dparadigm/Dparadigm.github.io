@@ -8,15 +8,14 @@
   <text x="540" y="68" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#65B2E8">Income</text>
   <text x="640" y="68" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#C8C8C8">|</text>
   <text x="660" y="68" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#DAA900">Legacy</text>
-  <text x="64" y="200" font-family="Arial, Helvetica, sans-serif" font-size="22" font-weight="700" fill="#54565A" letter-spacing="4">AI FRIDAY</text>
-  <text x="64" y="290" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#000">Concept kickoff</text>
-  <text x="64" y="360" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">Park a clear AI concept with your group.</text>
-  <text x="64" y="405" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">Problem, who benefits, what done looks like,</text>
-  <text x="64" y="450" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">and a first milestone.</text>
+  <text x="64" y="250" font-family="Arial, Helvetica, sans-serif" font-size="64" font-weight="700" fill="#000">Opportunity board</text>
+  <text x="64" y="330" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">Bring a real example. Park a clear concept.</text>
+  <text x="64" y="375" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">Problem, who benefits, what done looks like,</text>
+  <text x="64" y="420" font-family="Arial, Helvetica, sans-serif" font-size="28" fill="#54565A">and a first milestone.</text>
   <rect x="820" y="170" width="316" height="300" rx="24" fill="#fff" stroke="#C8C8C8" stroke-width="2"/>
   <rect x="820" y="170" width="16" height="300" fill="#65B2E8"/>
   <text x="860" y="240" font-family="Arial, Helvetica, sans-serif" font-size="20" fill="#54565A">Breakout</text>
-  <text x="860" y="310" font-family="Arial, Helvetica, sans-serif" font-size="56" font-weight="700" fill="#000">~5 min</text>
+  <text x="860" y="310" font-family="Arial, Helvetica, sans-serif" font-size="48" font-weight="700" fill="#000">5-10 min</text>
   <text x="860" y="380" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#54565A">Submit to park</text>
   <text x="860" y="420" font-family="Arial, Helvetica, sans-serif" font-size="26" fill="#54565A">the concept</text>
   <rect y="558" width="1200" height="72" fill="#000"/>
