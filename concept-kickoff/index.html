@@ -1,1 +1,95 @@
-PLACEHOLDER
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>AI Friday · Concept kickoff</title>
+<meta name="description" content="Park a clear AI concept with your group: the problem, who benefits, what done looks like, and a first milestone." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://dparadigm.github.io/concept-kickoff/" />
+<meta property="og:title" content="AI Friday · Concept kickoff" />
+<meta property="og:description" content="Park a clear AI concept with your group: the problem, who benefits, what done looks like, and a first milestone." />
+<meta property="og:image" content="https://dparadigm.github.io/concept-kickoff/og-image.svg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content="AI Friday · Concept kickoff" />
+<meta name="twitter:description" content="Park a clear AI concept with your group: the problem, who benefits, what done looks like, and a first milestone." />
+<meta name="twitter:image" content="https://dparadigm.github.io/concept-kickoff/og-image.svg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css?v=20260918e" />
+</head>
+<body>
+<div class="top"><div class="top-inner"><div class="brand">
+<img class="shield-mark" src="shield-mark.svg" alt="" />
+<div><div class="wordmark">Paradigm Life®</div>
+<div class="stages"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div>
+</div></div></div>
+<div class="wrap">
+<header>
+<div class="eyebrow">AI Friday</div>
+<h1>Concept <em>kickoff</em></h1>
+</header>
+<section class="sit"><div class="lbl">The situation</div>
+<p>Your group owns a real piece of work that still burns time or stalls handoffs. AI can help, but only if the concept is clear enough that someone can start building after today.</p>
+</section>
+<section class="out"><div class="lbl">The outcome</div>
+<p>Walk out with a locked concept: a named problem, who it helps, what done looks like (as a workflow board), and a first milestone.</p>
+</section>
+<section class="job"><div class="lbl">Your job</div>
+<p>Spend about 5 minutes in a breakout. Fill every field and the workflow board. Submit so the concept is parked for follow-up. Lock the idea today. Do not polish a finished workflow.</p>
+</section>
+<div class="thanks" id="thanks">
+<div class="lbl">Submitted</div>
+<h2>Concept submitted</h2>
+<p class="thanks-lead">Copy your share link, or a short Zoom paste. Your answers are summarized below.</p>
+<div class="review" id="review"></div>
+<div class="actions thanks-actions copy-row">
+<button type="button" class="go" id="copyLink">Copy link</button>
+<button type="button" class="reset" id="copySummary">Copy for Zoom</button>
+<button type="button" class="reset" id="editAgain">Edit again</button>
+<span class="copied" id="summaryCopied"></span>
+</div>
+</div>
+<div class="form-block" id="form-block">
+<div class="board"><h2>The board</h2>
+<div class="fields two">
+<div class="field"><div class="fl">Scribe</div><input class="team" id="scribe" type="text" placeholder="Scribe name, e.g. Jordan" autocomplete="off" /></div>
+<div class="field"><div class="fl">Department / area <span class="opt">(optional)</span></div><input class="area" id="department" type="text" placeholder="e.g. Licensing, Ops, Advisors" autocomplete="off" /></div>
+</div>
+<div class="fields" style="margin-top:16px">
+<div class="field"><div class="fl">Job to be done / problem</div><textarea id="problem" class="tall" placeholder="One sentence: what burns time or stalls handoffs?"></textarea></div>
+<div class="field"><div class="fl">Who benefits</div><textarea id="whoBenefits" placeholder="Who gets help when this works?"></textarea></div>
+<div class="field"><div class="fl">First milestone</div><textarea id="firstMilestone" placeholder="A concrete action someone can take as a first step"></textarea></div>
+</div>
+</div>
+
+<div class="done-section">
+  <h2>What done looks like</h2>
+  <p class="note">Build the workflow on the board. Pick pieces for Container, Tools, Trigger, Input, Action, and Handoff.</p>
+  <div class="heads">
+    <div><h2 class="sub">The board</h2></div>
+    <div>
+      <h2 class="sub">The pieces</h2>
+      <div class="pieces-hd"><span>Pieces</span></div>
+    </div>
+  </div>
+  <div class="work" id="work"></div>
+</div>
+
+<div class="ask"><p>Submit your concept</p>
+<div class="actions">
+<button type="button" class="go" id="submit" disabled>Submit</button>
+<button type="button" class="reset" id="reset">Clear form</button>
+<span class="copied" id="copied"></span>
+</div></div></div>
+<footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
+</div>
+<script src="board.js?v=20260918e"></script>
+
+</body>
+</html>
