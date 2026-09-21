@@ -31,6 +31,10 @@ header{padding:0 0 18px}
 .out{border-left-color:var(--color-brand-primary)}
 .sit .lbl,.out .lbl,.job .lbl{font-family:var(--font-family-display);font-weight:600;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--color-brand-primary);margin-bottom:8px}
 .sit p,.out p,.job p{margin:0;color:var(--color-text-body)}.out p{color:var(--color-ink);font-weight:700}
+.job p+p{margin-top:12px}
+.job ul{margin:10px 0 0;padding-left:1.35em;color:var(--color-ink)}
+.job li{margin:6px 0;line-height:1.45}
+.job li strong{font-weight:700;color:var(--color-ink)}
 h2{font-family:var(--font-family-display);font-weight:700;font-size:16px;margin:0 0 14px;letter-spacing:.04em;text-transform:uppercase}
 h2.sub{margin:0 0 6px}
 .note{color:var(--color-text-body);font-size:14px;margin:0 0 14px}
