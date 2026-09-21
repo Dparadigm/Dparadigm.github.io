@@ -12,11 +12,11 @@
 (async function () {
   const parts = ["walkthrough.a.b64", "walkthrough.b.b64"];
   const texts = await Promise.all(parts.map(function (p) { return fetch(p).then(function (r) { return r.text(); }); }));
-  let b64 = texts.join("").replace(/\s+/g, "");
-  // One-char corruption in part B at index 1339 (n should be v); fix until part B is re-pushed clean
-  if (b64.charAt(1339) === "n") {
-    b64 = b64.substring(0, 1339) + "v" + b64.substring(1340);
+  // One-char corruption in walkthrough.b.b64 at index 1339 (n should be v)
+  if (texts[1] && texts[1].charAt(1339) === "n") {
+    texts[1] = texts[1].substring(0, 1339) + "v" + texts[1].substring(1340);
   }
+  const b64 = texts.join("").replace(/\s+/g, "");
   const bin = Uint8Array.from(atob(b64), function (c) { return c.charCodeAt(0); });
   const ds = new DecompressionStream("gzip");
   const stream = new Blob([bin]).stream().pipeThrough(ds);
