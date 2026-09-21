@@ -1,1 +1,27 @@
-PLACEHOLDER_LOAD_FROM_FILE
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="robots" content="noindex, nofollow" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Monthly content topics: how we choose</title>
+</head>
+<body>
+<p style="font-family:system-ui,sans-serif;padding:24px;color:#515867">Loading walkthrough…</p>
+<script>
+(async function () {
+  const b64 = (await fetch("walkthrough.html.gz.b64").then(r => r.text())).replace(/\s+/g, "");
+  const bin = Uint8Array.from(atob(b64), c => c.charCodeAt(0));
+  const ds = new DecompressionStream("gzip");
+  const stream = new Blob([bin]).stream().pipeThrough(ds);
+  const html = await new Response(stream).text();
+  document.open();
+  document.write(html);
+  document.close();
+})().catch(function (e) {
+  document.body.innerHTML = "<p style=\"font-family:system-ui;padding:24px\">Could not load the walkthrough in this browser. Open the <a href=\"cmo-content-calendar-podcast-spec.md\">Ability spec (MD)</a> or try Chrome/Edge/Firefox.</p>";
+  console.error(e);
+});
+</script>
+</body>
+</html>
