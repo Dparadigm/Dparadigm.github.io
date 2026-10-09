@@ -50,18 +50,43 @@
     });
     return out;
   }
+  /* Platform filter: data tag 'platforms' on each entry, plus a text rule so new entries get tagged too. */
+  var PLATFORMS = ["Portal"];
+  var PLATFORM_RULES = { "Portal": /\bportal\b|family office 360|\bfo ?360\b/i };
+  var CONTAINERS = ["AI Agent", "AI Automated Workflow"];
+  var TOOLS = ["CRM / HubSpot","Ninety.io","Email","Slack / Zoom chat","Spreadsheet","Data and metrics feeds","Marketing / Metricool","Other system"];
+  var CHIPS = {
+    trigger: ["Time-based / schedule","Inbound / form submit","Manual start","Threshold / alert","Meeting / cadence"],
+    input: ["Who / which record","Date range or window","Source systems","Criteria / rules","Named owner or assignee"],
+    action: ["Pull or gather data","Draft or generate output","Update a system of record","Notify a person","Publish / refresh a view"],
+    handoff: ["A named person","A named team / role","Ops / leadership","The person who started it"]
+  };
+  function allText(d){
+    function pick(list, idx){ return (idx || []).map(function(i){ return list[i] || ""; }); }
+    return [d.s, d.d, d.p, d.w, d.m, CONTAINERS[d.c], CHIPS.trigger[d.r], CHIPS.handoff[d.h]]
+      .concat(pick(TOOLS, d.t), pick(CHIPS.input, d.i), pick(CHIPS.action, d.x)).join(" \n ");
+  }
+  function platformsFor(e, d){
+    var out = (e && e.platforms) ? e.platforms.slice() : [];
+    var text = allText(d);
+    PLATFORMS.forEach(function(pf){ if (out.indexOf(pf) < 0 && PLATFORM_RULES[pf] && PLATFORM_RULES[pf].test(text)) out.push(pf); });
+    return out;
+  }
   var FILTER_ICON = '<svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true" focusable="false" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="4" y1="6" x2="20" y2="6"/><line x1="4" y1="12" x2="20" y2="12"/><line x1="4" y1="18" x2="20" y2="18"/><circle cx="9" cy="6" r="2.2" fill="#fff"/><circle cx="15" cy="12" r="2.2" fill="#fff"/><circle cx="7" cy="18" r="2.2" fill="#fff"/></svg>';
   function hashSync(){ return !!document.getElementById("tab-submitted"); }
-  function readHashBenefits(){
+  function readHashList(key){
     var h = location.hash || "";
     var q = h.indexOf("?");
     if (q < 0) return [];
-    var v = new URLSearchParams(h.slice(q + 1)).get("benefits");
+    var v = new URLSearchParams(h.slice(q + 1)).get(key);
     return v ? v.split(",").map(function(x){ return x.trim(); }).filter(Boolean) : [];
   }
-  function writeHashBenefits(sel){
+  function writeHashFilters(sel){
     if (!hashSync() || !history.replaceState) return;
-    var h = "#submitted" + (sel.length ? "?benefits=" + sel.map(encodeURIComponent).join(",") : "");
+    var parts = [];
+    if (sel.benefits.length) parts.push("benefits=" + sel.benefits.map(encodeURIComponent).join(","));
+    if (sel.platform.length) parts.push("platform=" + sel.platform.map(encodeURIComponent).join(","));
+    var h = "#submitted" + (parts.length ? "?" + parts.join("&") : "");
     history.replaceState(null, "", location.pathname + location.search + h);
   }
   function field(label, value){
@@ -84,6 +109,7 @@
       whoBenefits: d.w || "", firstMilestone: d.m || "", url: d.k ? shareUrl(d) : "" };
     r.chips = benefitChips(r.whoBenefits);
     r.groups = benefitGroups(r.chips);
+    r.platforms = platformsFor(e, d);
     return r;
   }
   window.ckShareUrl = shareUrl;
@@ -117,15 +143,22 @@
     var counts = {};
     list.forEach(function(s){ s.groups.forEach(function(g){ counts[g] = (counts[g] || 0) + 1; }); });
     var groupNames = Object.keys(counts).sort(function(a, b){ return counts[b] - counts[a] || (a < b ? -1 : 1); });
-    var selected = readHashBenefits().filter(function(g){ return counts[g]; });
+    var pcounts = {};
+    PLATFORMS.forEach(function(pf){ pcounts[pf] = 0; });
+    list.forEach(function(s){ s.platforms.forEach(function(pf){ if (pf in pcounts) pcounts[pf]++; }); });
+    var selected = {
+      benefits: readHashList("benefits").filter(function(g){ return counts[g]; }),
+      platform: readHashList("platform").filter(function(pf){ return pf in pcounts; })
+    };
+    function nSelected(){ return selected.benefits.length + selected.platform.length; }
     var fwrap = el("div", "sub-filter");
     var fbtn = el("button", "sub-filter-btn");
     fbtn.type = "button";
     fbtn.setAttribute("aria-haspopup", "true");
     fbtn.setAttribute("aria-expanded", "false");
     fbtn.setAttribute("aria-controls", "subFilterPanel");
-    fbtn.setAttribute("aria-label", "Filter by who benefits");
-    fbtn.title = "Filter by who benefits";
+    fbtn.setAttribute("aria-label", "Filter submissions");
+    fbtn.title = "Filter";
     fbtn.innerHTML = FILTER_ICON;
     var badge = el("span", "sub-filter-badge", "");
     badge.setAttribute("aria-hidden", "true");
@@ -134,30 +167,38 @@
     panel.id = "subFilterPanel";
     panel.hidden = true;
     panel.setAttribute("role", "group");
-    panel.setAttribute("aria-label", "Who benefits");
+    panel.setAttribute("aria-label", "Filters");
     var phd = el("div", "sub-filter-hd");
-    phd.appendChild(el("span", "lbl", "Who benefits"));
+    phd.appendChild(el("span", "lbl", "Filters"));
     var clearBtn = el("button", "sub-filter-clear", "Clear");
     clearBtn.type = "button";
     phd.appendChild(clearBtn);
     panel.appendChild(phd);
     var opts = el("div", "sub-filter-opts");
     var boxes = [];
-    groupNames.forEach(function(g, i){
-      var lab = el("label", "sub-filter-opt");
-      var cb = document.createElement("input");
-      cb.type = "checkbox"; cb.value = g; cb.id = "subf-" + i;
-      cb.checked = selected.indexOf(g) >= 0;
-      lab.appendChild(cb);
-      lab.appendChild(el("span", "sub-filter-name", g));
-      lab.appendChild(el("span", "sub-filter-count", String(counts[g])));
-      opts.appendChild(lab);
-      boxes.push(cb);
-      cb.addEventListener("change", function(){
-        selected = boxes.filter(function(b){ return b.checked; }).map(function(b){ return b.value; });
-        applyFilter();
+    function addSection(key, title, names, cnt){
+      var sec = el("fieldset", "sub-filter-sec");
+      sec.appendChild(el("legend", "sub-filter-legend", title));
+      names.forEach(function(g, i){
+        var lab = el("label", "sub-filter-opt");
+        var cb = document.createElement("input");
+        cb.type = "checkbox"; cb.value = g; cb.id = "subf-" + key + "-" + i;
+        cb.setAttribute("data-key", key);
+        cb.checked = selected[key].indexOf(g) >= 0;
+        lab.appendChild(cb);
+        lab.appendChild(el("span", "sub-filter-name", g));
+        lab.appendChild(el("span", "sub-filter-count", String(cnt[g])));
+        sec.appendChild(lab);
+        boxes.push(cb);
+        cb.addEventListener("change", function(){
+          selected[key] = boxes.filter(function(b){ return b.checked && b.getAttribute("data-key") === key; }).map(function(b){ return b.value; });
+          applyFilter();
+        });
       });
-    });
+      opts.appendChild(sec);
+    }
+    addSection("benefits", "Who benefits", groupNames, counts);
+    addSection("platform", "Platform", PLATFORMS, pcounts);
     panel.appendChild(opts);
     fwrap.appendChild(fbtn);
     fwrap.appendChild(panel);
@@ -170,7 +211,7 @@
     fbtn.addEventListener("click", function(){ openPanel(panel.hidden); });
     clearBtn.addEventListener("click", function(){
       boxes.forEach(function(b){ b.checked = false; });
-      selected = [];
+      selected = { benefits: [], platform: [] };
       applyFilter();
       fbtn.focus();
     });
@@ -220,7 +261,7 @@
       })(btn, grid, sec);
       items.forEach(function(s){
         var card = el("article", "sub-card");
-        dayRec.cards.push({ el: card, groups: s.groups });
+        dayRec.cards.push({ el: card, groups: s.groups, platforms: s.platforms });
         var top = el("div", "sub-card-top");
         var whoBox = el("div", "sub-who-box");
         whoBox.appendChild(el("div", "sub-who", clean(s.scribe) || "not given"));
@@ -264,7 +305,9 @@
       daySections.forEach(function(d){
         var n = 0;
         d.cards.forEach(function(c){
-          var ok = !selected.length || c.groups.some(function(g){ return selected.indexOf(g) >= 0; });
+          var okB = !selected.benefits.length || c.groups.some(function(g){ return selected.benefits.indexOf(g) >= 0; });
+          var okP = !selected.platform.length || c.platforms.some(function(pf){ return selected.platform.indexOf(pf) >= 0; });
+          var ok = okB && okP;
           c.el.hidden = !ok;
           if (ok) n++;
         });
@@ -274,11 +317,12 @@
       });
       setTotal(shown);
       noMatch.hidden = shown !== 0;
-      badge.textContent = selected.length ? String(selected.length) : "";
-      badge.hidden = !selected.length;
-      fbtn.classList.toggle("on", selected.length > 0);
-      fbtn.setAttribute("aria-label", "Filter by who benefits" + (selected.length ? ", " + selected.length + " selected" : ""));
-      writeHashBenefits(selected);
+      var n = nSelected();
+      badge.textContent = n ? String(n) : "";
+      badge.hidden = !n;
+      fbtn.classList.toggle("on", n > 0);
+      fbtn.setAttribute("aria-label", "Filter submissions" + (n ? ", " + n + " selected" : ""));
+      writeHashFilters(selected);
     }
     applyFilter();
   };

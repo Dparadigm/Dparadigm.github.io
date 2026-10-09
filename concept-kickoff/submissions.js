@@ -2,13 +2,15 @@
  * Sources checked: ntfy topic paradigm-concept-kickoff-atlas (live cache empty on 2026-10-09; Sep 25 capture kept on the box),
  * Zoom Team Chat (All-Team Alley Rally meeting chat, Alley Rally channel, AI Showcase channel), Slack search, Notion search,
  * and earlier box files (mike-weekly-alley-links.json, opportunity-board-submits-zoom.html).
- * Each 'd' is the compact payload decoded from the share link (?d=) with the same logic as /ck/; the page rebuilds a /ck/ link from it. Field 'src' says where it was found; not shown on the page. */
+ * Each 'd' is the compact payload decoded from the share link (?d=) with the same logic as /ck/; the page rebuilds a /ck/ link from it. Field 'src' says where it was found; not shown on the page.
+ * Field 'platforms' tags platform filters (Portal = mentions portal, Family Office 360, or FO360 in any field). */
 window.CK_SUBMISSIONS = [
 {"src": "Zoom chat: Paradigm Life All-Team Alley Rally meeting chat, posted by Lyndsay Hurst at 2026-10-02T17:36:02Z",
  "d": {"k":"submit","s":"Lyndsay (Wade, Matthew, Mike)","p":"State appointment - Understanding and estimate timeline based on historical communications for when a state appointment request is necessary","w":"Agent/CX/Compliance/Contracting","m":"State level requirements, each individual carrier procedure and how they apply the rules","c":0,"t":[0,2,4,5],"r":2,"i":[3],"x":[0,3,1],"h":3,"d":"Compliance","a":"2026-10-02T17:18:39.675Z","id":"lyndsay-wade-matthew-mike-mur88wu3"}},
 {"src": "Zoom chat: Paradigm Life All-Team Alley Rally meeting chat, posted by Ashley Devereaux at 2026-10-02T17:13:31Z",
  "d": {"k":"submit","s":"Ashley D","p":"Needing a response from another team member that you are waiting for timely information to do the next task in the process","w":"Everyone","m":"Mark e-mails as urgent response needed checks responses and automatically follows up","c":1,"t":[2,4,7],"r":2,"i":[0,3,4,1],"x":[0,1],"h":3,"a":"2026-10-02T17:13:20.465Z","id":"ashley-d-mur822j5"}},
 {"src": "Zoom chat: Paradigm Life All-Team Alley Rally meeting chat, posted by Tammy Mann at 2026-10-02T17:23:59Z",
+ "platforms": ["Portal"],
  "d": {"k":"submit","s":"Tammy","p":"Client Contact Information","w":"Clients, Advisors, CX","m":"Having an option in the portal that a client can update their address with any changes - every 3 months have the client confirm everything is correct","c":1,"t":[0,2,3],"r":0,"i":[0,4,1],"x":[0,2,3,1],"h":1,"a":"2026-10-02T17:12:20.181Z","id":"tammy-mur80s0m"}},
 {"src": "ntfy paradigm-concept-kickoff-atlas capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
  "d": {"k":"submit","s":"Miranda","p":"An audit precheck that would detect routine errors. This would be completed prior to the audit, during the underwriting process.","w":"Compliance and CX","m":"Document the most common errors, and map where the information is from pulled and/or compared to","c":1,"t":[0,4,7],"r":2,"i":[3,2,0,4],"x":[0,1,3],"h":3,"d":"Compliance/CX","a":"2026-09-25T17:14:54.052Z","id":"miranda-muh8142s"}},
