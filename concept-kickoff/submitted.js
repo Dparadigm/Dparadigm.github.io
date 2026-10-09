@@ -54,7 +54,7 @@
   var PLATFORMS = ["Portal"];
   var PLATFORM_RULES = { "Portal": /\bportal\b|family office 360|\bfo ?360\b/i };
   var CONTAINERS = ["AI Agent", "AI Automated Workflow"];
-  var TOOLS = ["CRM / HubSpot","Ninety.io","Email","Slack / Zoom chat","Spreadsheet","Data and metrics feeds","Marketing / Metricool","Other system"];
+  var TOOLS = ["CRM / HubSpot","Ninety.io","Email","Slack / Zoom chat","Spreadsheet","Data and metrics feeds","Marketing / Metricool","Other system","Portal"];
   var CHIPS = {
     trigger: ["Time-based / schedule","Inbound / form submit","Manual start","Threshold / alert","Meeting / cadence"],
     input: ["Who / which record","Date range or window","Source systems","Criteria / rules","Named owner or assignee"],
@@ -229,7 +229,34 @@
     panel.appendChild(opts);
     fwrap.appendChild(fbtn);
     fwrap.appendChild(panel);
-    introRow.appendChild(fwrap);
+    var tools = el("div", "sub-tools");
+    var allBtn = el("button", "sub-all-btn", "Open all");
+    allBtn.type = "button";
+    tools.appendChild(allBtn);
+    tools.appendChild(fwrap);
+    introRow.appendChild(tools);
+    /* Open all / Collapse all: label reflects the date groups currently shown (filters respected). */
+    function setDay(d, open){
+      d.btn.setAttribute("aria-expanded", open ? "true" : "false");
+      d.grid.hidden = !open;
+      d.sec.classList.toggle("collapsed", !open);
+    }
+    function visibleDays(){ return daySections.filter(function(d){ return !d.sec.hidden; }); }
+    function allOpen(){
+      var v = visibleDays();
+      return v.length > 0 && v.every(function(d){ return d.btn.getAttribute("aria-expanded") === "true"; });
+    }
+    function syncAllBtn(){
+      var open = allOpen();
+      allBtn.textContent = open ? "Collapse all" : "Open all";
+      allBtn.setAttribute("aria-expanded", open ? "true" : "false");
+      allBtn.disabled = visibleDays().length === 0;
+    }
+    allBtn.addEventListener("click", function(){
+      var target = !allOpen();
+      daySections.forEach(function(d){ setDay(d, target); });
+      syncAllBtn();
+    });
     function openPanel(open){
       panel.hidden = !open;
       fbtn.setAttribute("aria-expanded", open ? "true" : "false");
@@ -273,12 +300,13 @@
       btn.appendChild(el("span", "sub-day-title", k === "unknown" ? "Date not given" : dayLabel(items[0].at)));
       var dayPill = el("span", "pill", items.length + (items.length === 1 ? " submission" : " submissions"));
       btn.appendChild(dayPill);
-      var dayRec = { sec: sec, pill: dayPill, cards: [] };
+      var dayRec = { sec: sec, pill: dayPill, cards: [], btn: btn, grid: null };
       daySections.push(dayRec);
       h2.appendChild(btn);
       sec.appendChild(h2);
       var grid = el("div", "sub-grid");
       grid.id = panelId;
+      dayRec.grid = grid;
       grid.hidden = !open;
       if (!open) sec.classList.add("collapsed");
       (function(btn, grid, sec){
@@ -287,6 +315,7 @@
           btn.setAttribute("aria-expanded", now ? "true" : "false");
           grid.hidden = !now;
           sec.classList.toggle("collapsed", !now);
+          syncAllBtn();
         });
       })(btn, grid, sec);
       items.forEach(function(s){
@@ -358,7 +387,9 @@
         t.el.textContent = t.title + (k ? " (" + k + ")" : "");
       });
       writeHashFilters(selected);
+      syncAllBtn();
     }
+    allBtn.setAttribute("aria-controls", daySections.map(function(d){ return d.grid.id; }).join(" "));
     applyFilter();
   };
   window.initCkTabs = function(){
