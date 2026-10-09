@@ -7,8 +7,11 @@ var TOOLS = [
   "Spreadsheet",
   "Data and metrics feeds",
   "Marketing / Metricool",
-  "Other system"
+  "Other system",
+  "Portal"
 ];
+/* New tools append to TOOLS (share links store indexes); TOOLS_DISPLAY sets the chip order. */
+var TOOLS_DISPLAY = ["CRM / HubSpot","Ninety.io","Email","Slack / Zoom chat","Spreadsheet","Data and metrics feeds","Marketing / Metricool","Portal","Other system"];
 var CHIPS = {
   trigger: [
     "Time-based / schedule",
@@ -145,7 +148,7 @@ function render(){
   var work = $("work");
   work.innerHTML = "";
   work.appendChild(pair("Container", slotBox("container","Select 1 container piece", state.container), "container", CONTAINERS, function(t){ return state.container===t; }));
-  work.appendChild(pair("Tools", slotBox("tools","Select 1 to 4 tools", state.tools, true), "tools", TOOLS, function(t){ return state.tools.indexOf(t)>=0; }));
+  work.appendChild(pair("Tools", slotBox("tools","Select 1 to 4 tools", state.tools, true), "tools", TOOLS_DISPLAY, function(t){ return state.tools.indexOf(t)>=0; }));
   work.appendChild(pair("Trigger", slotBox("trigger","Select 1 trigger", state.trigger), "trigger", CHIPS.trigger, function(t){ return state.trigger===t; }));
   work.appendChild(pair("Input", slotBox("input","Select 1 to 4 inputs", state.input, true), "input", CHIPS.input, function(t){ return state.input.indexOf(t)>=0; }));
   work.appendChild(pair("Action", slotBox("action","Select 1 to 4 actions", state.action, true), "action", CHIPS.action, function(t){ return state.action.indexOf(t)>=0; }));
