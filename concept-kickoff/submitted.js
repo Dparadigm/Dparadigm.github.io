@@ -176,9 +176,35 @@
     panel.appendChild(phd);
     var opts = el("div", "sub-filter-opts");
     var boxes = [];
+    /* Sections with more than COLLAPSE_AT options get a toggle and start collapsed; smaller ones stay open. */
+    var COLLAPSE_AT = 3;
+    var secTitles = [];
     function addSection(key, title, names, cnt){
       var sec = el("fieldset", "sub-filter-sec");
-      sec.appendChild(el("legend", "sub-filter-legend", title));
+      var legend = el("legend", "sub-filter-legend");
+      var titleEl = el("span", "sub-filter-sec-title", title);
+      secTitles.push({ key: key, title: title, el: titleEl });
+      var body = el("div", "sub-filter-sec-body");
+      body.id = "subf-body-" + key;
+      if (names.length > COLLAPSE_AT){
+        sec.classList.add("collapsible");
+        var tg = el("button", "sub-filter-sec-toggle");
+        tg.type = "button";
+        tg.setAttribute("aria-expanded", "false");
+        tg.setAttribute("aria-controls", body.id);
+        tg.appendChild(el("span", "sub-chev", ""));
+        tg.appendChild(titleEl);
+        legend.appendChild(tg);
+        body.hidden = true;
+        tg.addEventListener("click", function(){
+          var now = tg.getAttribute("aria-expanded") !== "true";
+          tg.setAttribute("aria-expanded", now ? "true" : "false");
+          body.hidden = !now;
+        });
+      } else {
+        legend.appendChild(titleEl);
+      }
+      sec.appendChild(legend);
       names.forEach(function(g, i){
         var lab = el("label", "sub-filter-opt");
         var cb = document.createElement("input");
@@ -188,13 +214,14 @@
         lab.appendChild(cb);
         lab.appendChild(el("span", "sub-filter-name", g));
         lab.appendChild(el("span", "sub-filter-count", String(cnt[g])));
-        sec.appendChild(lab);
+        body.appendChild(lab);
         boxes.push(cb);
         cb.addEventListener("change", function(){
           selected[key] = boxes.filter(function(b){ return b.checked && b.getAttribute("data-key") === key; }).map(function(b){ return b.value; });
           applyFilter();
         });
       });
+      sec.appendChild(body);
       opts.appendChild(sec);
     }
     addSection("benefits", "Who benefits", groupNames, counts);
@@ -206,7 +233,10 @@
     function openPanel(open){
       panel.hidden = !open;
       fbtn.setAttribute("aria-expanded", open ? "true" : "false");
-      if (open && boxes[0]) boxes[0].focus();
+      if (open){
+        var first = Array.prototype.filter.call(opts.querySelectorAll("button, input"), function(n){ return n.offsetParent !== null; })[0];
+        if (first) first.focus();
+      }
     }
     fbtn.addEventListener("click", function(){ openPanel(panel.hidden); });
     clearBtn.addEventListener("click", function(){
@@ -264,6 +294,7 @@
         dayRec.cards.push({ el: card, groups: s.groups, platforms: s.platforms });
         var top = el("div", "sub-card-top");
         var whoBox = el("div", "sub-who-box");
+        whoBox.appendChild(el("div", "sub-who-lbl", "Scribe / Team"));
         whoBox.appendChild(el("div", "sub-who", clean(s.scribe) || "not given"));
         if (clean(s.department)) whoBox.appendChild(el("div", "sub-dept", clean(s.department)));
         top.appendChild(whoBox);
@@ -322,6 +353,10 @@
       badge.hidden = !n;
       fbtn.classList.toggle("on", n > 0);
       fbtn.setAttribute("aria-label", "Filter submissions" + (n ? ", " + n + " selected" : ""));
+      secTitles.forEach(function(t){
+        var k = selected[t.key].length;
+        t.el.textContent = t.title + (k ? " (" + k + ")" : "");
+      });
       writeHashFilters(selected);
     }
     applyFilter();
