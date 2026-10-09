@@ -9,10 +9,19 @@
     return p;
   }
   function dayLabel(iso){
-    return new Intl.DateTimeFormat("en-US", {timeZone: TZ, weekday: "long", month: "short", day: "numeric", year: "numeric"}).format(new Date(iso));
+    return new Intl.DateTimeFormat("en-US", {timeZone: TZ, weekday: "long", month: "long", day: "numeric", year: "numeric"}).format(new Date(iso));
   }
-  function timeLabel(iso){
-    return new Intl.DateTimeFormat("en-US", {timeZone: TZ, hour: "numeric", minute: "2-digit"}).format(new Date(iso)) + " MT";
+  function benefitChips(text){
+    var out = [], seen = {};
+    clean(text).split(/\s*(?:,|\/|&|\band\b)\s*/i).forEach(function(part){
+      var t = part.replace(/^\d+[.)]\s*/, "").replace(/[.;:]+$/, "").trim();
+      if (!t) return;
+      t = t.charAt(0).toUpperCase() + t.slice(1);
+      var key = t.toLowerCase();
+      if (seen[key]) return;
+      seen[key] = 1; out.push(t);
+    });
+    return out;
   }
   function field(label, value){
     var row = el("div", "sub-field");
@@ -52,22 +61,43 @@
       groups[k].push(s);
     });
     order.sort(function(a, b){ return a < b ? 1 : a > b ? -1 : 0; });
-    order.forEach(function(k){
+    order.forEach(function(k, idx){
       var items = groups[k].sort(function(a, b){ return (a.at || "") < (b.at || "") ? -1 : 1; });
       var sec = el("section", "board sub-day");
-      var hd = el("div", "sub-day-hd");
-      hd.appendChild(el("h2", null, k === "unknown" ? "Date not given" : dayLabel(items[0].at)));
-      hd.appendChild(el("span", "pill", items.length + (items.length === 1 ? " submission" : " submissions")));
-      sec.appendChild(hd);
+      var open = idx === 0;
+      var panelId = "sub-day-" + k;
+      var h2 = el("h2", "sub-day-h");
+      var btn = el("button", "sub-day-hd");
+      btn.type = "button";
+      btn.setAttribute("aria-expanded", open ? "true" : "false");
+      btn.setAttribute("aria-controls", panelId);
+      btn.appendChild(el("span", "sub-caret", ""));
+      btn.appendChild(el("span", "sub-day-title", k === "unknown" ? "Date not given" : dayLabel(items[0].at)));
+      btn.appendChild(el("span", "pill", items.length + (items.length === 1 ? " submission" : " submissions")));
+      h2.appendChild(btn);
+      sec.appendChild(h2);
       var grid = el("div", "sub-grid");
+      grid.id = panelId;
+      grid.hidden = !open;
+      if (!open) sec.classList.add("collapsed");
+      (function(btn, grid, sec){
+        btn.addEventListener("click", function(){
+          var now = btn.getAttribute("aria-expanded") !== "true";
+          btn.setAttribute("aria-expanded", now ? "true" : "false");
+          grid.hidden = !now;
+          sec.classList.toggle("collapsed", !now);
+        });
+      })(btn, grid, sec);
       items.forEach(function(s){
         var card = el("article", "sub-card");
         var top = el("div", "sub-card-top");
-        var who = el("div", "sub-who", clean(s.scribe) || "not given");
-        top.appendChild(who);
-        var meta = el("div", "pills");
-        if (clean(s.department)) meta.appendChild(el("span", "pill", clean(s.department)));
-        if (s.at) meta.appendChild(el("span", "pill sub-time", timeLabel(s.at)));
+        var whoBox = el("div", "sub-who-box");
+        whoBox.appendChild(el("div", "sub-who", clean(s.scribe) || "not given"));
+        if (clean(s.department)) whoBox.appendChild(el("div", "sub-dept", clean(s.department)));
+        top.appendChild(whoBox);
+        var meta = el("div", "pills sub-benefits");
+        meta.setAttribute("aria-label", "Who benefits");
+        benefitChips(s.whoBenefits).forEach(function(b){ meta.appendChild(el("span", "pill", b)); });
         top.appendChild(meta);
         card.appendChild(top);
         var job = el("div", "sub-field");
@@ -86,8 +116,8 @@
         card.appendChild(field("First milestone", s.firstMilestone));
         if (s.url){
           var act = el("div", "sub-actions");
-          var open = el("a", "sub-link", "Open full submission"); open.href = s.url; open.target = "_blank"; open.rel = "noopener";
-          act.appendChild(open);
+          var lnk = el("a", "sub-link", "Open full submission"); lnk.href = s.url; lnk.target = "_blank"; lnk.rel = "noopener";
+          act.appendChild(lnk);
           card.appendChild(act);
         }
         grid.appendChild(card);
