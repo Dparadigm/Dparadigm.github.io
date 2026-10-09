@@ -164,7 +164,7 @@ function place(kind, text){
 }
 function missingBits(){
   var m = [];
-  if (!val("scribe")) m.push("scribe");
+  if (!val("scribe")) m.push("scribe / team");
   if (!val("problem")) m.push("job to be done / problem");
   if (!val("whoBenefits")) m.push("who benefits");
   if (!val("firstMilestone")) m.push("first milestone");
@@ -275,7 +275,7 @@ function renderReview(host, p){
   if (!host) return;
   host.innerHTML = "";
   var fields = [
-    ["Scribe", p.scribe],
+    ["Scribe / Team", p.scribe],
     ["Department / area", p.department],
     ["Job to be done / problem", p.problem],
     ["Who benefits", p.whoBenefits],
