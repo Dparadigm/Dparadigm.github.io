@@ -78,8 +78,8 @@
     var fTitle = field("fbTitleIn", "Title", tIn, true);
     var ta = document.createElement("textarea"); ta.required = true; ta.maxLength = 4000;
     var fText = field("fbText", "Feedback", ta, true);
-    var nIn = document.createElement("input"); nIn.type = "text"; nIn.maxLength = 80; nIn.autocomplete = "name";
-    var fName = field("fbName", "Name", nIn, false, true);
+    var nIn = document.createElement("input"); nIn.type = "text"; nIn.maxLength = 80; nIn.autocomplete = "name"; nIn.required = true;
+    var fName = field("fbName", "Name", nIn, true);
     [fAbout, fTitle, fText, fName].forEach(function(f){ form.appendChild(f.wrap); });
     var status = el("p", "fb-status"); status.setAttribute("role", "status"); status.setAttribute("aria-live", "polite");
     form.appendChild(status);
@@ -94,16 +94,18 @@
       if (msg){ f.input.setAttribute("aria-invalid", "true"); f.input.setAttribute("aria-describedby", f.err.id); }
       else { f.input.removeAttribute("aria-invalid"); f.input.removeAttribute("aria-describedby"); }
     }
-    [fTitle, fText].forEach(function(f){ f.input.addEventListener("input", function(){ if (clean(f.input.value)) setErr(f, ""); }); });
+    [fTitle, fText, fName].forEach(function(f){ f.input.addEventListener("input", function(){ if (clean(f.input.value)) setErr(f, ""); }); });
     form.addEventListener("submit", function(e){
       e.preventDefault();
-      var title = clean(tIn.value), text = clean(ta.value);
+      var title = clean(tIn.value), text = clean(ta.value), name = clean(nIn.value);
       setErr(fTitle, title ? "" : "Add a short title.");
       setErr(fText, text ? "" : "Add your feedback.");
+      setErr(fName, name ? "" : "Add your name.");
       if (!title){ tIn.focus(); return; }
       if (!text){ ta.focus(); return; }
+      if (!name){ nIn.focus(); return; }
       var about = sel.value;
-      var payload = { kind: "feedback", about: about, title: title, feedback: text, name: clean(nIn.value),
+      var payload = { kind: "feedback", about: about, title: title, feedback: text, name: name,
         opportunity: about === ABOUT[2] ? opportunityLabel() : "", page: location.href, at: new Date().toISOString() };
       send.disabled = true; cancel.disabled = true;
       status.className = "fb-status"; status.textContent = "Sending\u2026";
