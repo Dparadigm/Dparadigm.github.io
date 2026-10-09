@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="/concept-kickoff/style.css?v=20260918e" />
+<link rel="stylesheet" href="/concept-kickoff/submitted.css?v=20261009a" />
 </head>
 <body>
 <div class="top"><div class="top-inner"><div class="brand">
@@ -41,10 +42,14 @@
 <p class="thanks-lead" id="err" style="display:none"></p>
 <div class="actions thanks-actions">
 <a class="reset" href="/concept-kickoff/" style="display:inline-flex;align-items:center;text-decoration:none">New concept</a>
+<a class="reset" href="/concept-kickoff/#submitted" style="display:inline-flex;align-items:center;text-decoration:none">All submissions</a>
 </div>
 </div>
+<div id="allSubs" hidden></div>
 <footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
 </div>
+<script src="/concept-kickoff/submissions.js?v=20261009a"></script>
+<script src="/concept-kickoff/submitted.js?v=20261009a"></script>
 <script>
 var CONTAINERS = ["AI Agent", "AI Automated Workflow"];
 var TOOLS = [
@@ -144,9 +149,13 @@ var title = document.getElementById("title");
 var review = document.getElementById("review");
 var err = document.getElementById("err");
 if (!d){
-  title.textContent = "No submission found";
-  err.style.display = "block";
-  err.textContent = "This link is missing submission data. Ask the scribe for a fresh link from the concept board.";
+  document.getElementById("panel").hidden = true;
+  var h1 = document.querySelector("header h1");
+  if (h1) h1.innerHTML = "Submitted <em>opportunities</em>";
+  document.title = "AI Friday \u00b7 Submitted opportunities";
+  var all = document.getElementById("allSubs");
+  all.hidden = false;
+  if (window.renderSubmitted) window.renderSubmitted(all);
 } else {
   decodePayload(d).then(function(p){
     if (!p){

@@ -22,6 +22,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css?v=20260921h" />
+<link rel="stylesheet" href="submitted.css?v=20261009a" />
 </head>
 <body>
 <div class="top"><div class="top-inner"><div class="brand">
@@ -33,6 +34,11 @@
 <header>
 <h1>Opportunity <em>board</em></h1>
 </header>
+<nav class="ck-tabs" role="tablist" aria-label="Opportunity board views">
+<button type="button" class="ck-tab on" role="tab" data-tab="board" aria-selected="true">The board</button>
+<button type="button" class="ck-tab" role="tab" data-tab="submitted" aria-selected="false">Submitted opportunities <span class="n" id="subCount"></span></button>
+</nav>
+<div id="tab-board" role="tabpanel">
 <section class="job"><div class="lbl">Bring a real example</div>
 <p>Your breakout mixes people from different departments and backgrounds, so bring real examples from your day:</p>
 <ul>
@@ -89,9 +95,14 @@
 <button type="button" class="reset" id="reset">Clear form</button>
 <span class="copied" id="copied"></span>
 </div></div></div>
+</div>
+<div id="tab-submitted" role="tabpanel" hidden></div>
 <footer>From Daniel · Paradigm Life AI Friday · Lock the idea, then build.</footer>
 </div>
 <script src="board.js?v=20260921h"></script>
+<script src="submissions.js?v=20261009a"></script>
+<script src="submitted.js?v=20261009a"></script>
+<script>initCkTabs();</script>
 
 </body>
 </html>
