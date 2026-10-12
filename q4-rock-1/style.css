@@ -1,0 +1,16 @@
+:root{--g:#73a950;--ink:#231f20;--body:#515867;--line:#e2e2e2}
+*{box-sizing:border-box}body{margin:0;background:#fafafa;color:var(--ink);font:20px/1.5 "Open Sans",Arial,sans-serif}
+.top{background:#fff;border-bottom:1px solid var(--line);padding:14px 24px}.in{max-width:1200px;margin:auto;display:flex;gap:12px;align-items:center}.mark{height:40px}
+.wm{font:700 15px Montserrat,sans-serif;letter-spacing:.18em;text-transform:uppercase}.st{font:500 11px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:#c8c8c8}.g{color:#AAC27F}.i{color:#65B2E8}.l{color:#DAA900}
+.wrap{max-width:1200px;margin:auto;padding:32px 24px 60px}.eyebrow{font:600 15px Montserrat;letter-spacing:.16em;text-transform:uppercase;color:var(--g)}
+h1{font:700 clamp(32px,4.5vw,52px)/1.1 Montserrat,sans-serif;text-transform:uppercase;margin:10px 0}h1 em{font-style:normal;color:var(--g)}.lede{font-size:24px;color:var(--body);max-width:950px}
+.tracks{display:flex;gap:10px;margin:18px 0}.tr,.nav button{font:600 18px Montserrat;padding:12px 22px;border-radius:999px;border:2px solid var(--g);background:#fff;color:var(--g);cursor:pointer}.tr.on,.nav .pri{background:var(--g);color:#fff}
+.flow{list-style:none;padding:0;display:grid;grid-template-columns:repeat(7,1fr);gap:8px;margin:24px 0}
+.flow button{width:100%;height:100%;border:2px solid var(--line);background:#fff;border-radius:12px;padding:14px 6px;font:600 17px Montserrat;cursor:pointer;display:flex;flex-direction:column;align-items:center;gap:6px;transition:.25s}
+.ic{font-size:34px}.n{font-size:13px;color:#999}.done button{border-color:#92c575;background:#f1f6ee}.cur button{border-color:var(--g);background:var(--g);color:#fff;transform:translateY(-6px);box-shadow:0 8px 20px rgba(115,169,80,.35)}.cur .n{color:#fff}
+.panel{background:#fff;border:1px solid var(--line);border-radius:14px;padding:28px;box-shadow:0 4px 16px rgba(0,0,0,.06)}.panel.show{animation:in .4s ease}@keyframes in{from{opacity:0;transform:translateX(30px)}to{opacity:1}}
+.panel h2{font:700 32px Montserrat;margin:0 0 18px}.cols{display:grid;grid-template-columns:1fr 1fr 1fr;gap:16px}.c{background:#f5f7f9;border-radius:12px;padding:18px}.c.ai{background:#f1f6ee;border:2px solid #92c575}
+h3{font:700 15px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:var(--g);margin:0 0 6px}.c p{margin:0}.ex{margin-top:18px;padding:16px 18px;border-left:5px solid #DAA900;background:#fffbea;border-radius:8px}
+.nav{display:flex;justify-content:space-between;align-items:center;margin:20px 0}#count{font:600 18px Montserrat;color:#999}.loop{margin-top:24px}.loop h2{font:700 26px Montserrat;text-transform:uppercase}
+footer{text-align:center;padding:24px;color:#6e7a87;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase}
+@media(max-width:800px){.flow{grid-template-columns:repeat(4,1fr)}.cols{grid-template-columns:1fr}}
