@@ -6,8 +6,8 @@ const S=[
  ec:"A client asks how their plan handles a family change. It becomes a card for the existing client track."},
 {k:"Topic poll",ic:"🗳️",in:"Topic cards plus a companion one pager with the full card details.",
  ai:"AI drafts poll titles and the one pager so strategists can vote fast.",
- out:"Force ranked topics from our wealth strategists, 2 to 3 weeks before the content month.",
- nb:"Strategists vote in the new business Zoom Workplace Poll.",ec:"A separate poll for existing client topics. Never combined into one."},
+ out:"Force ranked topics from our wealth strategists, 2 to 3 weeks before the content month.",real:1,
+ nb:"October's real new business poll asked strategists to rank titles like \"Policy Loans Without Interrupting Growth\" and \"The Paid-Off House Question\".",ec:"A separate poll for existing client topics. Never combined into one."},
 {k:"Lock",ic:"🔒",in:"Poll results.",ai:"AI builds the brief list for each locked topic.",out:"The month's topics locked per track, each with a brief.",
  nb:"Top ranked prospect topics locked for the month.",ec:"Top ranked client topics locked, tagged so they can be reused later."},
 {k:"Create",ic:"🎙️",in:"Locked topics and briefs.",ai:"AI helps with outlines, show notes, clips, and supporting pieces from each recording.",
@@ -27,7 +27,7 @@ function go(n){i=Math.max(0,Math.min(S.length-1,n));const s=S[i];
 p.classList.remove("show");void p.offsetWidth;p.classList.add("show");
 p.innerHTML=`<h2><span>${s.ic}</span> Step ${i+1}: ${s.k}</h2><div class="cols">
 <div class="c"><h3>Goes in</h3><p>${s.in}</p></div><div class="c ai"><h3>What happens + AI</h3><p>${s.ai}</p></div><div class="c"><h3>Comes out</h3><p>${s.out}</p></div></div>
-<div class="ex"><b>Example (${t=="nb"?"new business":"existing clients"}):</b> ${s[t]}</div>`;
+${s.real?`<div class="real"><h3>See a real one</h3><div class="shots"><a href="../october-topic-poll/" target="_blank"><img src="${IMG.oct}" alt="October 2026 new business poll page"><span>October 2026 new business poll companion</span></a><a href="../monthly-content-topics/#poll" target="_blank"><img src="${IMG.how}" alt="Two Zoom Workplace Polls explainer"><span>How the two Zoom polls work</span></a></div></div>`:""}<div class="ex"><b>Example (${t=="nb"?"new business":"existing clients"}):</b> ${s[t]}</div>`;
 document.getElementById("count").textContent=`${i+1} / ${S.length}`;
 document.getElementById("next").textContent=i==S.length-1?"Back to start":"Next step";}
 document.getElementById("next").onclick=()=>go(i==S.length-1?0:i+1);document.getElementById("prev").onclick=()=>go(i-1);

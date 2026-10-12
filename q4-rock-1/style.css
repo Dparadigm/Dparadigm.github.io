@@ -14,3 +14,4 @@ h3{font:700 15px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:
 .nav{display:flex;justify-content:space-between;align-items:center;margin:20px 0}#count{font:600 18px Montserrat;color:#999}.loop{margin-top:24px}.loop h2{font:700 26px Montserrat;text-transform:uppercase}
 footer{text-align:center;padding:24px;color:#6e7a87;font:600 14px Montserrat;letter-spacing:.14em;text-transform:uppercase}
 @media(max-width:800px){.flow{grid-template-columns:repeat(4,1fr)}.cols{grid-template-columns:1fr}}
+.real{margin-top:18px}.shots{display:grid;grid-template-columns:1fr 1fr;gap:16px}.shots a{display:block;border:1px solid var(--line);border-radius:10px;overflow:hidden;text-decoration:none;color:var(--ink);background:#fff}.shots img{width:100%;display:block;max-height:260px;object-fit:cover;object-position:top}.shots span{display:block;padding:10px 14px;font:600 16px Montserrat}
