@@ -1,3 +1,4 @@
+const D={nb:"People who don't work with us yet. We reach them with the podcast, our website, and ads.",ec:"People we already serve. We reach them with a live stream and the newsletter."};
 const S=[
 {k:"Research",sub:"who we serve best",ic:"🎯",in:"Client questions and ideas from our advisors.",ai:"AI groups similar ideas and suggests topics.",out:"A short list of topic ideas.",hil:"Advisors bring the questions. Marketing reviews the ideas.",
  nb:"Prospects keep asking an advisor the same question. It becomes a topic idea.",ec:"A client asks how their plan works after a new baby. That becomes a topic idea."},
@@ -6,11 +7,11 @@ const S=[
 {k:"Pick",sub:"lock the month",ic:"🔒",in:"The poll results.",ai:"AI drafts a short plan for each topic.",out:"The month's topics, locked in.",hil:"Marketing makes the final pick.",
  nb:"The top topics for future clients become the plan.",ec:"The top topics for current clients become their plan."},
 {k:"Create",sub:"make the content",ic:"🎙️",in:"The chosen topics.",ai:"AI turns one recording into clips, posts, and notes.",out:"Many short pieces each week.",hil:"A person edits everything. Advisors check accuracy and compliance.",
- nb:"One podcast episode becomes a week of short clips.",ec:"One live client session becomes a week of short clips."},
+ nb:"We record a podcast episode and cut it into short clips.",ec:"We hold a live stream for clients and cut it into short clips."},
 {k:"Publish",sub:"share it",ic:"🚀",in:"The finished pieces.",ai:"AI fits each piece to where it will appear.",out:"Content live on our website, podcast, and social media.",hil:"Marketing approves what goes where.",
- nb:"Someone sees a clip, visits our site, and a reminder ad brings them back.",ec:"Clients find it on the client side of our website."},
+ nb:"The podcast and clips go on our website and social media. Ads help new people find them.",ec:"The live stream replay goes on the client side of our website, the front door to Family Office 360."},
 {k:"Newsletter",sub:"one easy email",ic:"✉️",in:"The month's best content.",ai:"AI drafts a summary email.",out:"A newsletter that links back to the content.",hil:"A person writes and approves the final email.",
- nb:"Future clients get highlights and one next step.",ec:"Clients get highlights that fit their plan."},
+ nb:"Future clients get podcast highlights and one next step.",ec:"Clients get live stream highlights and an invite to the next one."},
 {k:"Scorecard",sub:"see what worked",ic:"📊",in:"Views, clicks, and what sales hears.",ai:"AI gathers the numbers each week.",out:"A simple weekly report card.",hil:"The team reads it and decides what's next.",
  nb:"Lots of prospects ask about one topic, so we make more on it.",ec:"Clients watch one topic the most, so we do more like it."}];
 let i=0,t="nb";const f=document.getElementById("flow"),p=document.getElementById("panel");
@@ -21,7 +22,7 @@ p.classList.remove("show");void p.offsetWidth;p.classList.add("show");
 p.innerHTML=`<h2><span>${s.ic}</span> Step ${i+1}: ${s.k} <small>${s.sub}</small></h2><div class="cols">
 <div class="c"><h3>What we start with</h3><p>${s.in}</p></div><div class="c ai"><h3>How AI helps</h3><p>${s.ai}</p></div><div class="c"><h3>What we end up with</h3><p>${s.out}</p></div></div>
 <div class="hil"><span class="hi">🧑‍💼</span><div><b>Human in the loop</b><p>${s.hil}</p></div></div>${s.real?`<div class="real"><h3>See a real one</h3><div class="shots"><a href="../october-topic-poll/" target="_blank"><img src="${IMG.oct}" alt="October 2026 new business poll page"><span>The real October poll page</span></a><a href="../monthly-content-topics/#poll" target="_blank"><img src="${IMG.how}" alt="Two Zoom Workplace Polls explainer"><span>How our two polls work</span></a></div></div>`:""}<div class="ex"><b>Example (${t=="nb"?"future clients":"current clients"}):</b> ${s[t]}</div>`;
-document.getElementById("count").textContent=`${i+1} / ${S.length}`;
+document.getElementById("tdesc").textContent=D[t];document.getElementById("count").textContent=`${i+1} / ${S.length}`;
 document.getElementById("next").textContent=i==S.length-1?"Back to start":"Next step";}
 document.getElementById("next").onclick=()=>go(i==S.length-1?0:i+1);document.getElementById("prev").onclick=()=>go(i-1);
 document.querySelectorAll(".tr").forEach(b=>b.onclick=()=>{t=b.dataset.t;document.querySelectorAll(".tr").forEach(x=>x.classList.toggle("on",x==b));go(i)});
