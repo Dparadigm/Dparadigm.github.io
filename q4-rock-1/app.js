@@ -1,33 +1,36 @@
 const S=[
-{k:"ICP research",ic:"🎯",in:"Our five ICPs (the people we serve best), Trinity Cornelius ICP facts, ideas advisors drop in Zoom Team Chat or forward by email.",
- ai:"AI turns ICP facts and advisor ideas into ready to rank topic cards (Trinity CMO cards, scaffolded through Ability Path B).",
- out:"A stack of topic cards, each with a clear title, ICP, and track.",
- nb:"An advisor hears the same question from three prospects and drops it in the intake channel. It becomes a topic card aimed at a matching ICP.",
- ec:"A client asks how their plan handles a family change. It becomes a card for the existing client track."},
-{k:"Topic poll",ic:"🗳️",in:"Topic cards plus a companion one pager with the full card details.",
- ai:"AI drafts poll titles and the one pager so strategists can vote fast.",
- out:"Force ranked topics from our wealth strategists, 2 to 3 weeks before the content month.",real:1,
- nb:"October's real new business poll asked strategists to rank titles like \"Policy Loans Without Interrupting Growth\" and \"The Paid-Off House Question\".",ec:"A separate poll for existing client topics. Never combined into one."},
-{k:"Lock",ic:"🔒",in:"Poll results.",ai:"AI builds the brief list for each locked topic.",out:"The month's topics locked per track, each with a brief.",
- nb:"Top ranked prospect topics locked for the month.",ec:"Top ranked client topics locked, tagged so they can be reused later."},
-{k:"Create",ic:"🎙️",in:"Locked topics and briefs.",ai:"AI helps with outlines, show notes, clips, and supporting pieces from each recording.",
- out:"Weekly recordings and the content cut from them. The target is 23 pieces a week.",
- nb:"Record the podcast episode, then cut it into supporting content.",ec:"Record the live stream, then cut it into supporting content."},
-{k:"Publish",ic:"🚀",in:"Finished content.",ai:"AI helps package each piece for its channel.",out:"Content live on our channels, boosted by rebuilt paid media and retargeting.",
- nb:"Website, newsletter, podcast, supporting content, plus paid media and retargeting.",ec:"Website gateway to Family Office 360, newsletter, live stream, and later the in portal Education Center."},
-{k:"Newsletter",ic:"✉️",in:"The month's published pieces.",ai:"AI pulls the best of the month into a newsletter brief.",out:"A newsletter that sends people back to the content.",
- nb:"Prospects get the highlights and a single next step.",ec:"Clients get the highlights tied to their plan."},
-{k:"Scorecard",ic:"📊",in:"Performance per piece and per track, plus what sales hears from prospects.",ai:"AI helps compile the numbers so the scorecard is ready every week.",
- out:"A weekly scorecard, a month end measure for each track, and feedback into next month's cards.",
- nb:"Sales tells marketing which topics started real conversations.",ec:"We see which topics clients engaged with most."}];
+{k:"Who we're talking to",ic:"🎯",in:"A short description of the kinds of people we serve best (our ideal clients). Plus ideas from our advisors, shared in a Zoom chat or by forwarding an email.",
+ ai:"AI helps turn those ideas into simple topic cards. Each card is one possible subject, with a short title and who it is for.",
+ out:"A pile of topic ideas, each one aimed at a real kind of person we help.",
+ nb:"An advisor keeps hearing the same question from people who are not clients yet. They drop it in the Zoom chat. It becomes a topic card.",
+ ec:"A client asks how their plan works after a new baby. That question becomes a topic card for our current clients."},
+{k:"Ask the team what to talk about",ic:"🗳️",in:"The topic cards, plus a one page summary with more detail on each.",
+ ai:"AI helps write short, clear poll choices and the one page summary, so voting takes a few minutes.",
+ out:"Our wealth strategists vote in a quick Zoom poll. We get a ranked list, about 2 to 3 weeks before the month starts.",real:1,
+ nb:"October's real poll for future clients asked strategists to rank topics like \"Policy Loans Without Interrupting Growth\" and \"The Paid-Off House Question\".",
+ ec:"Current clients get their own separate poll, so their topics are picked just for them."},
+{k:"Pick the topics",ic:"🔒",in:"The poll results.",ai:"AI helps write a brief for each winner. A brief is a short plan: the main point, who it is for, and what to cover.",
+ out:"The month's topics are locked in. No more changing them, so the team can get to work.",
+ nb:"The top voted topics for future clients become the month's plan.",ec:"The top voted topics for current clients become their plan, labeled so we can find and reuse them later."},
+{k:"Make the content",ic:"🎙️",in:"The chosen topics and their briefs.",ai:"AI helps with outlines, episode notes, short video clips, and smaller posts made from each recording.",
+ out:"Each week, one recording becomes many smaller pieces: clips, posts, and articles. The goal is 23 pieces a week.",
+ nb:"We record a podcast episode. Then we cut it into short clips and posts.",ec:"We hold a live video session for clients. Then we cut it into short clips and posts."},
+{k:"Share it",ic:"🚀",in:"The finished pieces.",ai:"AI helps shape each piece for the place it will appear.",
+ out:"The content goes live where people will see it: our website, the newsletter, the podcast, and social media. We also pay for ads so more of the right people see it, and show reminder ads to people who already visited our site.",
+ nb:"Someone hears a clip, visits our website, and later sees a reminder ad that brings them back.",ec:"Clients find it on the client side of our website, the front door to Family Office 360, and later inside the client portal."},
+{k:"Send the newsletter",ic:"✉️",in:"Everything we published that month.",ai:"AI helps pull the best of the month into one easy email.",out:"A newsletter that points people back to the full content.",
+ nb:"Future clients get a few highlights and one clear next step.",ec:"Clients get the highlights that relate to their own plan."},
+{k:"See what worked",ic:"📊",in:"How many people watched, read, or clicked each piece. Plus what our salespeople hear in real conversations.",ai:"AI helps gather the numbers so the weekly report card is ready on time.",
+ out:"A simple weekly report card (we call it a scorecard). At month end we look back, and the lessons shape next month's topics.",
+ nb:"A salesperson says, \"Three people asked me about policy loans this week.\" That topic gets more attention next month.",ec:"We see which topics clients opened and watched the most, and do more like them."}];
 let i=0,t="nb";const f=document.getElementById("flow"),p=document.getElementById("panel");
 S.forEach((s,n)=>{const li=document.createElement("li");li.innerHTML=`<button><span class="ic">${s.ic}</span><span class="n">${n+1}</span>${s.k}</button>`;li.onclick=()=>go(n);f.appendChild(li)});
 function go(n){i=Math.max(0,Math.min(S.length-1,n));const s=S[i];
 [...f.children].forEach((c,k)=>c.className=k<i?"done":k==i?"cur":"");
 p.classList.remove("show");void p.offsetWidth;p.classList.add("show");
 p.innerHTML=`<h2><span>${s.ic}</span> Step ${i+1}: ${s.k}</h2><div class="cols">
-<div class="c"><h3>Goes in</h3><p>${s.in}</p></div><div class="c ai"><h3>What happens + AI</h3><p>${s.ai}</p></div><div class="c"><h3>Comes out</h3><p>${s.out}</p></div></div>
-${s.real?`<div class="real"><h3>See a real one</h3><div class="shots"><a href="../october-topic-poll/" target="_blank"><img src="${IMG.oct}" alt="October 2026 new business poll page"><span>October 2026 new business poll companion</span></a><a href="../monthly-content-topics/#poll" target="_blank"><img src="${IMG.how}" alt="Two Zoom Workplace Polls explainer"><span>How the two Zoom polls work</span></a></div></div>`:""}<div class="ex"><b>Example (${t=="nb"?"new business":"existing clients"}):</b> ${s[t]}</div>`;
+<div class="c"><h3>What we start with</h3><p>${s.in}</p></div><div class="c ai"><h3>How AI helps</h3><p>${s.ai}</p></div><div class="c"><h3>What we end up with</h3><p>${s.out}</p></div></div>
+${s.real?`<div class="real"><h3>See a real one</h3><div class="shots"><a href="../october-topic-poll/" target="_blank"><img src="${IMG.oct}" alt="October 2026 new business poll page"><span>The real October poll page</span></a><a href="../monthly-content-topics/#poll" target="_blank"><img src="${IMG.how}" alt="Two Zoom Workplace Polls explainer"><span>How our two polls work</span></a></div></div>`:""}<div class="ex"><b>Example (${t=="nb"?"future clients":"current clients"}):</b> ${s[t]}</div>`;
 document.getElementById("count").textContent=`${i+1} / ${S.length}`;
 document.getElementById("next").textContent=i==S.length-1?"Back to start":"Next step";}
 document.getElementById("next").onclick=()=>go(i==S.length-1?0:i+1);document.getElementById("prev").onclick=()=>go(i-1);
