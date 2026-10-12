@@ -20,3 +20,4 @@ footer{text-align:center;padding:24px;color:#6e7a87;font:600 14px Montserrat;let
 .hil{margin-top:18px;display:flex;gap:14px;align-items:flex-start;background:#eaf4fc;border:2px solid #65B2E8;border-radius:12px;padding:14px 18px}.hil .hi{font-size:34px;line-height:1}.hil b{font:700 15px Montserrat;letter-spacing:.12em;text-transform:uppercase;color:#2f6db0}.hil p{margin:2px 0 0}
 .panel h2 small{font:500 20px Montserrat;color:#6e7a87;margin-left:8px}
 .tdesc{font-size:21px;color:#515867;margin:-6px 0 4px;font-style:italic}
+.ci ul{margin:0;padding-left:20px}.ci li{margin:0 0 4px}
