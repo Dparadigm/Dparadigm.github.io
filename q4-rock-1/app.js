@@ -1,4 +1,4 @@
-const D={nb:"People who don't work with us yet. We reach them with the podcast, our website, and ads.",ec:"People we already serve. We reach them with a live stream and the newsletter."};
+const D={nb:"People who don't work with us yet. We reach them with the podcast, our website, and ads.",ec:"People we already serve. We reach them with the live stream, newsletter, and portal Education Center."};
 const S=[
 {k:"Research",sub:"who we serve best",ic:"🎯",in:"Client questions and ideas from our advisors.",ai:"AI groups similar ideas and suggests topics.",out:"A short list of topic ideas.",hil:"Advisors bring the questions. Marketing reviews the ideas.",
  nb:"Prospects keep asking an advisor the same question. It becomes a topic idea.",ec:"A client asks how their plan works after a new baby. That becomes a topic idea."},
