@@ -6,7 +6,7 @@ const S=[
  nb:"October's real poll ranked topics like \"The Paid-Off House Question\".",ec:"Current clients get their own separate poll."},
 {k:"Pick",sub:"lock the month",ic:"🔒",in:"The poll results.",ai:"AI drafts a short plan for each topic.",out:"The month's topics, locked in.",hil:"Marketing makes the final pick.",
  nb:"The top topics for future clients become the plan.",ec:"The top topics for current clients become their plan."},
-{k:"Create",sub:"make the content",ic:"🎙️",in:"The chosen topics.",ai:"AI turns one podcast episode into clips, posts, and notes.",ai_ec:"AI turns one live stream into clips and notes.",out:"Many short pieces each week.",out_ec:"Many short pieces from each live stream.",hil:"A person edits everything. Advisors check accuracy and compliance.",
+{k:"Create",sub:"make the content",ic:"🎙️",in:"The chosen topics.",ai:"AI turns one podcast episode into clips, posts, and notes.",ai_ec:"AI turns one live stream into clips and notes.",out:"Many short pieces each week.",out_ec:"Many short pieces from each live stream.",hil:"A person edits and reviews.",
  nb:"We record a podcast episode and cut it into short clips.",ec:"We hold a live stream for clients and cut it into short clips."},
 {k:"Publish",sub:"share it",ic:"🚀",in:"The finished pieces.",in_ec:"The live stream replay and clips.",ai:"AI fits each piece to where it will appear.",out:"Content live on our website, podcast, and social media.",out_ec:"The replay and clips live on the client side of our website.",hil:"Marketing approves what goes where.",
  nb:"The podcast and clips go on our website and social media. Ads help new people find them.",ec:"The live stream replay goes on the client side of our website, the front door to Family Office 360."},
