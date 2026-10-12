@@ -1,7 +1,7 @@
 const S=[
 {k:"Research",sub:"who we serve best",ic:"🎯",in:"Client questions and ideas from our advisors.",ai:"AI groups similar ideas and suggests topics.",out:"A short list of topic ideas.",hil:"Advisors bring the questions. Marketing reviews the ideas.",
  nb:"Prospects keep asking an advisor the same question. It becomes a topic idea.",ec:"A client asks how their plan works after a new baby. That becomes a topic idea."},
-{k:"Poll",sub:"the team votes",ic:"🗳️",in:"The topic ideas, with a one page summary.",ai:"AI writes short, clear poll choices.",out:"A ranked list of topics.",hil:"Advisors and strategists vote.",real:1,
+{k:"Poll",sub:"the team votes",ic:"🗳️",in:"The topic ideas, with a one page summary.",ai:"AI writes short, clear poll choices.",out:"A ranked list of topics.",hil:"Strategists vote.",real:1,
  nb:"October's real poll ranked topics like \"The Paid-Off House Question\".",ec:"Current clients get their own separate poll."},
 {k:"Pick",sub:"lock the month",ic:"🔒",in:"The poll results.",ai:"AI drafts a short plan for each topic.",out:"The month's topics, locked in.",hil:"Marketing makes the final pick.",
  nb:"The top topics for future clients become the plan.",ec:"The top topics for current clients become their plan."},
