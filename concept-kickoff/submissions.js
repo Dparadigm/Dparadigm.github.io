@@ -1,5 +1,5 @@
 /* Opportunity board submissions, deduped. Built 2026-10-09 by Atlas.
- * Sources checked: ntfy topic paradigm-concept-kickoff-atlas (live cache empty on 2026-10-09; Sep 25 capture kept on the box),
+ * Sources checked: the old notification topic (live cache empty on 2026-10-09; Sep 25 capture kept on the box),
  * Zoom Team Chat (All-Team Alley Rally meeting chat, Alley Rally channel, AI Showcase channel), Slack search, Notion search,
  * and earlier box files (mike-weekly-alley-links.json, opportunity-board-submits-zoom.html).
  * Each 'd' is the compact payload decoded from the share link (?d=) with the same logic as /ck/; the page rebuilds a /ck/ link from it. Field 'src' says where it was found; not shown on the page.
@@ -12,13 +12,13 @@ window.CK_SUBMISSIONS = [
 {"src": "Zoom chat: Paradigm Life All-Team Alley Rally meeting chat, posted by Tammy Mann at 2026-10-02T17:23:59Z",
  "platforms": ["Portal"],
  "d": {"k":"submit","s":"Tammy","p":"Client Contact Information","w":"Clients, Advisors, CX","m":"Having an option in the portal that a client can update their address with any changes - every 3 months have the client confirm everything is correct","c":1,"t":[0,2,3],"r":0,"i":[0,4,1],"x":[0,2,3,1],"h":1,"a":"2026-10-02T17:12:20.181Z","id":"tammy-mur80s0m"}},
-{"src": "ntfy paradigm-concept-kickoff-atlas capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
+{"src": "notification capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
  "d": {"k":"submit","s":"Miranda","p":"An audit precheck that would detect routine errors. This would be completed prior to the audit, during the underwriting process.","w":"Compliance and CX","m":"Document the most common errors, and map where the information is from pulled and/or compared to","c":1,"t":[0,4,7],"r":2,"i":[3,2,0,4],"x":[0,1,3],"h":3,"d":"Compliance/CX","a":"2026-09-25T17:14:54.052Z","id":"miranda-muh8142s"}},
-{"src": "ntfy paradigm-concept-kickoff-atlas capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
+{"src": "notification capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
  "d": {"k":"submit","s":"David","p":"Automated confirmation texts and email for appointments","w":"Assistants, Agents, SD, and the clients/leads","m":"An appointment is scheduled, then a reminder text is generated 24 hours prior to the appointment","c":1,"t":[0,2,3,5],"r":0,"i":[0,1,4,2],"x":[1,2,3,0],"h":0,"d":"Assistants and SD","a":"2026-09-25T17:14:27.825Z","id":"david-muh80ju9"}},
-{"src": "ntfy paradigm-concept-kickoff-atlas capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
+{"src": "notification capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
  "d": {"k":"submit","s":"Ashley D","p":"Commissions automated for orphaned clients and organize it by if they have been contacted or how long it has been since they have been contacted","w":"Accounting and Sales","m":"Receiving the latest commissions report","c":1,"t":[0,4,2],"r":0,"i":[0,1,4],"x":[0,1,3,2],"h":1,"a":"2026-09-25T17:14:22.595Z","id":"ashley-d-muh80fsz"}},
-{"src": "ntfy paradigm-concept-kickoff-atlas capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
+{"src": "notification capture /workspace/ck-friday-20260925-watch.ndjson; share link in /workspace/mike-weekly-alley-links.json; also pasted in Zoom Alley Rally meeting chat 2026-09-25",
  "d": {"k":"submit","s":"Anai Hernandez","p":"Emails or other correspondence (Voicemails, text, etc.) noted in CRM.","w":"Client, agents, and CX team, compliance.","m":"Client reaches out/ missed call/ all contact","c":1,"t":[0,3,2,7],"r":1,"i":[0,4,2],"x":[0,2],"h":0,"a":"2026-09-25T17:12:54.589Z","id":"anai-hernandez-muh7yjwd"}},
 {"src": "Zoom chat: Paradigm Life All-Team Alley Rally, Dan Torsak recap post 2026-09-21 11:42 AM MT; also /workspace/mike-weekly-alley-links.json",
  "d": {"k":"submit","s":"Henderson","p":"Tracking AML training","w":"Sales team, underwriting, CX, licensing","m":"Entering all the certificates that have been received to track dates","c":1,"t":[0,2,5,7],"r":0,"i":[0,1,4,3],"x":[0,3,2,4],"h":0,"d":"Sales","a":"2026-09-21T17:13:46.414Z","id":"henderson-mubi897z"}},

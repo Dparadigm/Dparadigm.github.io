@@ -250,17 +250,8 @@ function boardPayload(kind){
 }
 
 function pingHandoff(payload){
-  var body = JSON.stringify(payload);
-  var jobs = [];
-  jobs.push(fetch("https://ntfy.sh/paradigm-concept-kickoff-atlas", {
-    method: "POST",
-    headers: {"Title": (payload.kind||"submit") + " " + (payload.scribe||""), "Tags": "clipboard", "Content-Type": "application/json"},
-    body: body
-  }).catch(function(){}));
-  if (window.HANDOFF_WEBHOOK){
-    jobs.push(fetch(window.HANDOFF_WEBHOOK, {method:"POST", headers:{"Content-Type":"application/json"}, body:body, mode:"no-cors"}).catch(function(){}));
-  }
-  return Promise.all(jobs);
+  /* Sending is paused. */
+  return Promise.resolve([]);
 }
 window.HANDOFF_WEBHOOK = "";
 
