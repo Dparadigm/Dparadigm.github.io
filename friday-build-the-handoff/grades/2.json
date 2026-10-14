@@ -10,7 +10,7 @@
     "tools": ["Email", "CRM / case record"],
     "trigger": "An email request lands",
     "input": "What is being asked",
-    "instruction": "Never want it to assume. Must identfy, client policy, the ask",
+    "instruction": "Never want it to assume. Must identify, client policy, the ask",
     "action": "Name a specialist",
     "handoff": "An associate who is not out"
   }

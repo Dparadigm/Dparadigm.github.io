@@ -335,7 +335,7 @@ footer{margin-top:40px; padding-top:18px; border-top:1px solid var(--color-borde
   <p>Submit for a grade</p>
   <p class="hint">Every slot needs the right number of pieces. You'll get Success or Try Again, plus the reason why.</p>
   <div class="actions">
-    <button type="button" class="go" id="submit">Submit</button>
+    <button type="button" class="go" id="submit" disabled hidden>Submit</button><p class="paused-note">Submissions are paused for now.</p>
     <button type="button" class="reset" id="reset">Clear form</button>
     <span class="copied" id="copied"></span>
   </div>
@@ -581,18 +581,8 @@ function groupSlug(){
   return (n || "group").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
 }
 function pingHandoff(payload){
-  var body = JSON.stringify(payload);
-  var jobs = [];
-  jobs.push(fetch("https://ntfy.sh/paradigm-market-alley-rally-atlas", {
-    method: "POST",
-    headers: {"Title": (payload.kind||"submit") + " " + (payload.group||""), "Tags": "clipboard", "Content-Type": "application/json"},
-    body: body
-  }).catch(function(){}));
-  var url = window.HANDOFF_WEBHOOK;
-  if (url){
-    jobs.push(fetch(url, {method:"POST", headers:{"Content-Type":"application/json"}, body:body, mode:"no-cors"}).catch(function(){}));
-  }
-  return Promise.all(jobs);
+  /* Sending is paused. */
+  return Promise.resolve([]);
 }
 window.HANDOFF_WEBHOOK = "";
 var started = false;
