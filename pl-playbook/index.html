@@ -1,0 +1,861 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta name="robots" content="noindex, nofollow, noarchive, nosnippet, noimageindex, notranslate">
+<meta name="googlebot" content="noindex, nofollow, noarchive, nosnippet, noimageindex">
+<meta name="bingbot" content="noindex, nofollow, noarchive, nosnippet">
+<meta name="referrer" content="no-referrer">
+<meta property="og:title" content="Internal document">
+<meta property="og:description" content="Internal. Not for distribution.">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Internal document">
+<meta name="twitter:description" content="Internal. Not for distribution.">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Paradigm Life playbook: adapting what works (DRAFT for collaboration) | Paradigm Life internal</title>
+<style>
+:root{--navy:#0B2545;--blue:#13315C;--sky:#EAF0F8;--gold:#C9A227;--gold-soft:#F6EFD6;--ink:#1d2533;--muted:#5b6578;--line:#dfe4ec;--ok:#1f7a4d;--inf:#a86b00;--unk:#6b7280}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:16px}
+body{margin:0;font-family:Inter,"Segoe UI",Helvetica,Arial,sans-serif;color:var(--ink);background:#f7f8fb;line-height:1.55;font-size:16px}
+a{color:var(--blue)}
+a:hover{color:var(--navy)}
+.hero{background:linear-gradient(135deg,var(--navy),var(--blue));color:#fff;border-bottom:5px solid var(--gold)}
+.hero-inner{max-width:1240px;margin:0 auto;padding:40px 28px 30px}
+.eyebrow{display:inline-block;background:rgba(201,162,39,.18);border:1px solid var(--gold);color:#f3dc8a;font-size:12.5px;letter-spacing:.04em;text-transform:uppercase;padding:4px 10px;border-radius:4px;margin-bottom:14px}
+.hero h1{font-size:34px;line-height:1.2;margin:0 0 10px;font-weight:700}
+.hero .sub{font-size:17px;opacity:.92;margin:0 0 10px;max-width:900px}
+.hero .meta{font-size:14px;color:#f3dc8a;margin:0 0 16px}
+.legend{font-size:13px;opacity:.95;display:flex;flex-wrap:wrap;gap:6px 10px;align-items:center}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:10px;border:1px solid;white-space:nowrap;vertical-align:1px}
+.tag.ok{color:var(--ok);background:#e7f5ee;border-color:#9fd3b6}
+.tag.inf{color:var(--inf);background:#fff4dc;border-color:#ecc77a}
+.tag.unk{color:var(--unk);background:#f0f1f4;border-color:#c9ccd3}
+.layout{max-width:1240px;margin:0 auto;display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding:24px 28px}
+.toc{position:sticky;top:16px;align-self:start;background:#fff;border:1px solid var(--line);border-top:4px solid var(--gold);border-radius:8px;padding:14px 10px}
+.toc-title{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);margin:0 8px 8px}
+.toc a{display:block;text-decoration:none;color:var(--navy);font-size:14.5px;padding:6px 8px;border-radius:5px}
+.toc a:hover{background:var(--sky)}
+.toc a.active{background:var(--navy);color:#fff}
+main{min-width:0}
+section{background:#fff;border:1px solid var(--line);border-radius:10px;padding:26px 30px;margin-bottom:22px}
+h2{font-size:24px;color:var(--navy);margin:0 0 14px;display:flex;align-items:center;gap:10px}
+h2 .num{display:inline-flex;width:32px;height:32px;border-radius:50%;background:var(--gold);color:var(--navy);font-size:16px;align-items:center;justify-content:center;flex:none}
+h3{color:var(--blue);font-size:18.5px;margin:22px 0 10px}
+h4{margin:0 0 4px;color:var(--navy);font-size:16px}
+.lead{color:var(--muted);margin-top:0}
+.small{font-size:13.5px;color:var(--muted)}
+sup.ref{font-size:11px;line-height:0;white-space:nowrap;margin-left:1px}
+sup.ref a{text-decoration:none;color:var(--blue);font-weight:600}
+ul.tldr{padding-left:20px;margin:0 0 18px}
+ul.tldr li{margin-bottom:10px;padding-left:4px}
+ul.tldr li::marker{color:var(--gold)}
+.table-wrap{overflow-x:auto;margin:10px 0 8px;border:1px solid var(--line);border-radius:8px}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th{background:var(--navy);color:#fff;text-align:left;font-weight:600;padding:9px 11px;font-size:13.5px}
+td{padding:9px 11px;border-top:1px solid var(--line);vertical-align:top}
+tbody tr:nth-child(even) td{background:#fafbfd}
+table.compact{font-size:13.5px}
+td.group{background:var(--gold-soft)!important;color:var(--navy);font-weight:700}
+.adid{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;word-break:break-all}
+.funnel{border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:8px;padding:6px 20px 14px;margin:18px 0;background:#fdfdfe}
+.funnel h3{margin-top:14px}
+pre.mermaid{background:var(--sky);border-radius:8px;padding:14px;overflow-x:auto;text-align:center;margin:10px 0 14px;font-size:12px;white-space:pre}
+pre.mermaid svg{max-width:100%;height:auto}
+pre.mermaid.mm-failed{display:none}
+.fallback-note{display:none;font-size:14px;background:var(--sky);padding:10px 14px;border-radius:8px}
+.fallback-note.show{display:block}
+ol.steps{list-style:none;counter-reset:s;padding:0;margin:0;display:grid;gap:8px}
+ol.steps li{counter-increment:s;background:#fff;border:1px solid var(--line);border-radius:8px;padding:10px 12px 10px 46px;position:relative;font-size:15px}
+ol.steps li::before{content:counter(s);position:absolute;left:12px;top:10px;width:24px;height:24px;border-radius:50%;background:var(--navy);color:#fff;font-size:13px;display:flex;align-items:center;justify-content:center;font-weight:700}
+.step{display:inline-block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--navy);background:var(--gold-soft);border:1px solid #e6d38f;border-radius:4px;padding:0 6px;margin-right:6px}
+.callout{background:var(--gold-soft);border-left:4px solid var(--gold);padding:12px 16px;border-radius:6px;margin-bottom:10px}
+figure.shot{margin:14px 0 0}
+figure.shot img{width:100%;border:1px solid var(--line);border-radius:8px;display:block}
+figure.shot figcaption{font-size:13px;color:var(--muted);margin-top:6px}
+.small-shot{max-width:560px}
+.shots-row{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+details.hist{border:1px solid var(--line);border-radius:8px;padding:10px 16px;margin:14px 0;background:#fcfcfd}
+details.hist summary{cursor:pointer;font-weight:600;color:var(--navy)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.card{border:1px solid var(--line);border-radius:8px;padding:4px 18px 10px;background:#fdfdfe}
+.card ul{padding-left:18px}
+.card li{margin-bottom:7px;font-size:14.5px}
+.options{display:grid;gap:12px}
+.opt{display:flex;gap:14px;border:1px solid var(--line);border-radius:8px;padding:14px 16px;background:#fdfdfe}
+.opt p{margin:0;font-size:15px}
+.opt-n{flex:none;width:34px;height:34px;border-radius:8px;background:var(--navy);color:var(--gold);font-weight:700;display:flex;align-items:center;justify-content:center}
+ul.gaps li{margin-bottom:8px}
+h3.srcg{font-size:15.5px;margin:18px 0 6px;border-bottom:2px solid var(--gold-soft);padding-bottom:4px}
+ol.srcs{font-size:13.5px;padding-left:34px;margin:0}
+ol.srcs li{margin-bottom:6px}
+ol.srcs li a{word-break:break-all}
+ol.srcs li:target{background:var(--gold-soft);border-radius:4px}
+.path{font-family:ui-monospace,Menlo,Consolas,monospace;font-size:12px;color:var(--muted)}
+.foot{font-size:13px;color:var(--muted);text-align:center;padding:10px 0 30px}
+@media (max-width:980px){
+  .layout{grid-template-columns:1fr;padding:0 0 20px;gap:0}
+  .toc{position:sticky;top:0;z-index:10;border-radius:0;border-left:0;border-right:0;border-top:0;border-bottom:3px solid var(--gold);display:flex;overflow-x:auto;white-space:nowrap;padding:8px;gap:2px}
+  .toc-title{display:none}
+  .toc a{font-size:13.5px;padding:6px 10px}
+  main{padding:14px}
+  section{padding:20px 16px}
+  .grid2,.shots-row{grid-template-columns:1fr}
+  .hero h1{font-size:26px}
+  .hero-inner{padding:28px 18px 22px}
+}
+@media print{
+  body{background:#fff;font-size:11pt}
+  .toc{display:none}
+  .layout{display:block;padding:0}
+  section{border:0;padding:0 0 10pt;margin:0 0 14pt;page-break-inside:auto}
+  .funnel,ol.steps li,tr,figure{page-break-inside:avoid}
+  h2,h3{page-break-after:avoid}
+  .hero{background:#fff!important;color:var(--navy);border-bottom:3pt solid var(--gold)}
+  .hero .meta,.eyebrow{color:var(--navy)}
+  .legend{color:var(--ink)}
+  details.hist{display:block}
+  details.hist>*{display:block}
+  a{color:var(--ink);text-decoration:none}
+  ol.srcs li a::after{content:""}
+  th{background:#e9edf3!important;color:var(--navy)}
+  pre.mermaid{background:#fff;border:1px solid var(--line)}
+  .table-wrap{overflow:visible;border:0}
+}
+/* playbook additions */
+.hero .companion{font-size:14.5px;margin:0 0 14px}
+.hero .companion a{color:#fff;font-weight:600;text-decoration:underline;text-decoration-color:var(--gold);text-underline-offset:3px}
+.draft-banner{background:var(--gold-soft);border-bottom:2px solid var(--gold);color:var(--navy);text-align:center;padding:12px 20px;font-size:16px}
+.badge{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 8px;border-radius:4px;white-space:nowrap;vertical-align:2px;border:1px solid}
+.badge.start{color:#6b5408;background:#fbf4dc;border-color:#e3cc7c}
+.badge.rc{color:var(--navy);background:var(--sky);border-color:#a9bcd6}
+.badge.comp{color:#8a1f1f;background:#fdecec;border-color:#e7b0b0}
+.hero .badge.rc{background:#EAF0F8}
+h3 .badge,h2 .badge{font-size:11.5px;font-weight:600}
+.eff{display:inline-block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.04em;padding:1px 7px;border-radius:10px;border:1px solid;white-space:nowrap}
+.eff.light{color:var(--ok);background:#e7f5ee;border-color:#9fd3b6}
+.eff.medium{color:var(--inf);background:#fff4dc;border-color:#ecc77a}
+.eff.heavy{color:#8a1f1f;background:#fdecec;border-color:#e7b0b0}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin:12px 0 10px}
+.mopt{border:1px solid var(--line);border-radius:8px;padding:12px 14px;background:#fdfdfe;display:flex;flex-direction:column;gap:6px}
+.mopt.is-start{border-color:#e3cc7c;box-shadow:inset 0 3px 0 var(--gold);background:#fffdf6}
+.mopt-h{display:flex;gap:10px;align-items:flex-start}
+.mopt-h h4{font-size:15px;line-height:1.3;margin:2px 0 0}
+.mopt-l{flex:none;width:26px;height:26px;border-radius:6px;background:var(--navy);color:var(--gold);font-weight:700;font-size:14px;display:flex;align-items:center;justify-content:center}
+.mopt-b{display:flex;gap:6px;flex-wrap:wrap}
+.mopt p{margin:0;font-size:14px}
+.mopt p.needs{color:var(--muted);font-size:13.5px;border-top:1px dashed var(--line);padding-top:6px;margin-top:auto}
+.card.good{border-top:3px solid var(--ok)}
+.card.bad{border-top:3px solid #b54545}
+.phases{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}
+.phase{border:1px solid var(--line);border-left:5px solid var(--gold);border-radius:8px;padding:10px 14px;background:#fdfdfe}
+.phase p{margin:4px 0 0;font-size:14.5px}
+.phase-n{font-weight:700;color:var(--navy)}
+ol.fields{columns:2;font-size:15px;margin:6px 0 10px}
+ol.fields li{margin-bottom:4px;break-inside:avoid}
+.warn{background:#fdecec;border-left:4px solid #b54545;padding:10px 14px;border-radius:6px;margin-bottom:10px;color:#5a1414}
+.hooks{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hook{border:1px solid var(--line);border-radius:8px;padding:10px 14px;background:#fdfdfe}
+.hook p{margin:4px 0 0;font-size:14.5px;font-style:italic}
+.hook-t{font-weight:700;color:var(--blue);font-size:13.5px;text-transform:uppercase;letter-spacing:.04em}
+.risk{border:1px solid var(--line);border-left:5px solid var(--blue);border-radius:8px;padding:10px 16px;margin-bottom:10px}
+.risk p,.risk li{font-size:15px}
+.risk p{margin:4px 0}
+ul.srcs{font-size:13.5px;padding-left:22px;margin:0}
+ul.srcs li{margin-bottom:6px}
+ul.srcs li a{word-break:break-all}
+ol.steps.timeline .step{display:inline-block;margin-bottom:2px}
+@media (max-width:980px){.phases,.hooks{grid-template-columns:1fr} ol.fields{columns:1}}
+@media print{
+  .draft-banner{border:1pt solid var(--gold)}
+  .hero .companion a{color:var(--navy)}
+  .mopt,.hook,.risk,.phase{page-break-inside:avoid}
+  .menu{grid-template-columns:1fr 1fr}
+}
+
+</style>
+</head>
+<body>
+<header class="hero" id="top">
+  <div class="hero-inner">
+    <div class="eyebrow">Internal working draft. Not for distribution outside Paradigm Life.</div>
+    <h1>Paradigm Life playbook: adapting what works (DRAFT for collaboration)</h1>
+    <p class="sub">Adapting the Gunderson playbook with assets Paradigm Life already has: Patrick Donohoe, The Perpetual Wealth Podcast, <em>Heads I Win, Tails You Lose</em>, the 4-3-2-1 whitepaper, a WealthScore waitlist, and Family Office 360.</p>
+    <p class="meta">Prepared Oct 20, 2026 (MT) for Dan Torsak, COO, and Rachel Glaittli, who drives this work &middot; Version 2</p>
+    <p class="companion">Companion page: <a href="https://dparadigm.github.io/gunderson-teardown/" target="_blank" rel="noopener noreferrer nofollow">Garrett Gunderson marketing system: competitive teardown</a></p>
+    <div class="legend">
+      <span class="tag ok">Confirmed</span> stated by Dan or seen in a cited source
+      <span class="tag inf">Working assumption</span> a planning choice, not confirmed
+      <span class="tag unk">Unverified</span> still needs checking
+      <span class="badge start">Starting suggestion</span> a place to start, not a decision
+      <span class="badge rc">Rachel's call</span> belongs to Rachel as campaign owner
+    </div>
+  </div>
+</header>
+
+<div class="draft-banner" role="note"><strong>Draft for discussion with Rachel.</strong> Nothing here is decided, built, or approved. Ad hooks need compliance review.</div>
+
+<div class="layout">
+<nav class="toc" aria-label="Sections">
+  <div class="toc-title">On this page</div>
+  <a href="#summary">Executive summary</a>
+  <a href="#how">0. How to read this</a>
+  <a href="#thesis">1. Thesis</a>
+  <a href="#timing">2. Status and timing</a>
+  <a href="#waitlist">3. WealthScore waitlist</a>
+  <a href="#side">4. Side by side</a>
+  <a href="#flywheel">5. The flywheel</a>
+  <a href="#funnels">6. Funnels</a>
+  <a href="#paid">7. Paid tests</a>
+  <a href="#cadence">8. Cadence by phase</a>
+  <a href="#tools">9. Tools and production</a>
+  <a href="#risks">10. Risks and compliance</a>
+  <a href="#decide">11. Questions to decide</a>
+  <a href="#open">12. Open questions</a>
+  <a href="#owners">13. Suggested owners</a>
+  <a href="#agree">14. Agree or differ</a>
+  <a href="#first">15. First steps</a>
+  <a href="#sources">Sources</a>
+</nav>
+
+<main>
+
+<section id="summary">
+  <h2><span class="num">&#9733;</span> Executive summary</h2>
+  <p class="lead">A starting point for collaboration with Rachel, who drives this work. Every section offers options Rachel could choose from, with one marked "starting suggestion" only so there's somewhere to begin. Nothing here is built, published, scheduled, or sent. Every number cites where it came from. Anything marked Unverified still needs checking.</p>
+  <ul class="tldr">
+    <li><strong>Garrett's edge is a system, not any one ad.</strong> One face, one weekly sit-down, cut into daily clips, a weekly live, blog posts, and podcast audio, with paid ads pointing to free offers that feed email, quizzes, and an application (section 1).</li>
+    <li><strong>We already have most of the raw inputs:</strong> Patrick, a 482-episode podcast, a book with a confirmed free-plus-shipping offer (not live yet), the 4-3-2-1 whitepaper, and Family Office 360 in build.</li>
+    <li><span class="tag ok">Confirmed</span> <strong>The WealthScore is not live</strong> and has no confirmed public launch date (Dan, Oct 20). So everything that used to send people to a live score now points to a <strong>WealthScore waitlist</strong> until launch. The plan is phased: pre-launch, launch, post-launch.</li>
+    <li><span class="tag inf">Working assumption</span> <strong>Nov 15, 2026 is a planning date only.</strong> Ninety has no rock or milestone titled as a public WealthScore launch; Nov 15 is the date the FO360 rock names for teams and households to be on the path, which reads as a client launch, not a public one (section 2).</li>
+    <li><strong>The lead campaign is the waitlist</strong> (section 3): honesty rules first ("The WealthScore isn't live yet"), light capture fields, a pre-launch 4-3-2-1 content arc, a weekly live, an email sequence, and a launch-day plan that triggers once a date is confirmed in writing.</li>
+    <li><strong>Our lane could be measurable architecture:</strong> the 4-3-2-1 system, a score, and a ranked Gap Report, rather than the Rockefeller, family bank, and "be your own bank" messaging Garrett and others share.</li>
+    <li><strong>Before anything goes out:</strong> check our own pages and ads for implied availability of the score, and send a compliance pack (section 10 and section 15).</li>
+  </ul>
+  <div class="callout"><strong>What changed in v2:</strong> Dan confirmed on Oct 20 that <strong>the WealthScore is not live</strong> and has no confirmed public launch date. Everything that used to send people to a live score now points to a <strong>WealthScore waitlist</strong> until launch. The plan is phased: pre-launch, launch, post-launch. <span class="small">Previous version: pl-playbook-draft.v1.md.</span></div>
+</section>
+
+<section id="how">
+  <h2><span class="num">0</span> How to read this</h2>
+  <ul class="tldr">
+    <li>Each activity has a menu of 3 to 5 options: a one-line description, rough effort (<span class="eff light">Light</span>, <span class="eff medium">Medium</span>, or <span class="eff heavy">Heavy</span>), and what it would need.</li>
+    <li><span class="badge start">Starting suggestion</span> marks one option per menu as a place to start the conversation. It is not a decision.</li>
+    <li><span class="badge rc">Rachel's call</span> marks choices that belong to Rachel as campaign owner.</li>
+    <li>Questions for Dan and Rachel to answer together are in <a href="#decide">section 11</a>.</li>
+  </ul>
+</section>
+
+<section id="thesis">
+  <h2><span class="num">1</span> Thesis</h2>
+  <p>Garrett's edge isn't any one ad. It's a system. One face records one weekly sit-down. That recording gets cut into about 4 clips a day, a weekly live, blog posts, and podcast audio, and his paid ads point to free offers (a free book where you pay shipping, a free digital book, an overview video) that feed email, quizzes, and an application (cadence.md, ads-research.md). He also uses pre-launch mechanics: X1 Wealth ran a "Founding Member" waitlist before opening (whimsical-board.md &sect;8), and Multiplier uses a one-question qualifier before the application (ads-research.md).</p>
+  <p>We already have most of the raw inputs: Patrick, a 482-episode podcast, a book with a confirmed free-plus-shipping offer (not live yet), the 4-3-2-1 whitepaper, and Family Office 360 in build. The WealthScore is coming but <strong>not live yet</strong>. That's an opening, not a gap: a waitlist could build an audience that understands the 4-3-2-1 system before the score exists, so launch day has people ready to use it.</p>
+  <div class="grid2">
+    <div class="card good"><h4>Could copy</h4><ul><li>The cadence</li><li>The repurposing</li><li>The single face</li><li>The offer ladder</li><li>The pre-launch waitlist</li><li>The one-question qualifier</li><li>Tracking on organic posts</li></ul></div>
+    <div class="card bad"><h4>Shouldn't copy</h4><ul><li>Absolute claims ("safer than banks," "untouchable," guarantees)</li><li>Scarcity that isn't real ("Founding Member spots are limited" unless it's true)</li><li>The sameness. Garrett, Wealth Factory, and the Infinite Banking crowd all sell Rockefeller, family bank, and "be your own bank."</li></ul></div>
+  </div>
+  <div class="callout" style="margin-top:14px">Our lane could be measurable architecture: the 4-3-2-1 system, a score, and a ranked Gap Report. <strong>"Our product is architecture"</strong> (Patrick, Rally, Oct 19) is the line that sets us apart.</div>
+</section>
+
+<section id="timing">
+  <h2><span class="num">2</span> Status and timing: what Ninety says about the launch</h2>
+  <p class="lead"><span class="tag ok">Confirmed</span> Dan says the WealthScore is not live and its launch date is unknown (Oct 20). Ninety (read only, Oct 20, all 4 teams Dan can see) has <strong>no rock or milestone titled as a public WealthScore launch</strong>. The closest dated items:</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>Rock (team)</th><th>Owner</th><th>Due</th><th>Status</th><th>Relevant milestones</th></tr></thead>
+    <tbody>
+      <tr><td><a href="https://app.ninety.io/rocks/6abfb6af37162faa6fb10340" target="_blank" rel="noopener noreferrer nofollow">Deliver Family Office 360&trade;</a> (Leadership, company rock, Q4)</td><td>Mark Hansens</td><td>Dec 31, 2026</td><td>On Track</td><td><strong>Oct 16:</strong> "WealthScore + Gap formulas checked; WealthScore UX aligned; Login dashboard UX in process" (open, past due). <strong>Oct 30:</strong> Login Dashboard UX and Education Center live (open). <strong>Nov 13:</strong> "...UAT ready for Nov 15 team launch" (open). <strong>Nov 27:</strong> all-teams rollout (open). <strong>Dec 31:</strong> "Full annual cycle path live; Consultation booking live; Gap Report UI/UX live" (open). Definition of done: "On November 15, every team and every household is on this path."</td></tr>
+      <tr><td><a href="https://app.ninety.io/rocks/6ac96744c6cea0e4f66a9282" target="_blank" rel="noopener noreferrer nofollow">Rock 1: Build and launch a scalable marketing engine</a> (Leadership)</td><td>Rachel Glaittli</td><td>Dec 31, 2026</td><td>On Track</td><td><strong>Nov 14:</strong> "WealthScore Landing Page For Client Referrals" (open). Oct 31: retargeting deployed (open). Nov 17: spend ramped through Phase 3 (open).</td></tr>
+      <tr><td><a href="https://app.ninety.io/rocks/6aaad4b5075edb562d769d0a" target="_blank" rel="noopener noreferrer nofollow">One Marketing Message, One Ask</a> (Marketing)</td><td>Rachel Glaittli</td><td>Dec 31, 2026</td><td>On Track</td><td>Done means "3 pages live with the free WealthScore checkup as the only CTA." Milestone "3 pages live, single CTA" is marked done (Oct 17). Nov 3: "Publishing ramping; paid spend only under signed limit" (open).</td></tr>
+      <tr><td><a href="https://app.ninety.io/rocks/6ac016ec42d1397bc60557e6" target="_blank" rel="noopener noreferrer nofollow">Every Household Has a Team</a> (Leadership)</td><td>Ben Curtis</td><td>Dec 31, 2026</td><td>On Track</td><td>Nov 15: "Pilot team operating" (open). WealthScore is step 1 ("Score") of the annual path.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Rock links open in Ninety and need a Paradigm Life sign-in.</p>
+  <div class="callout"><span class="tag inf">Working assumption</span> <strong>Planning launch date (working assumption, not confirmed): Nov 15, 2026.</strong> It's the date the FO360 rock names for teams and households to be on the path that starts with the WealthScore.</div>
+  <h3>Caveats</h3>
+  <ul class="gaps">
+    <li>It reads as a <strong>team and household (client) launch</strong>, not a public prospect launch. Rachel's FO360 plan sets the order as staff first, then engaged clients, then team re-engagement, then public, with "Public date not set" (Rachel's page).</li>
+    <li>The Oct 16 WealthScore milestone is still open.</li>
+    <li>If the One Marketing Message pages already use the WealthScore checkup as their only CTA, they may imply the score is available. Worth checking (<a href="#risks">section 10</a>).</li>
+  </ul>
+  <h3>Phases</h3>
+  <div class="phases">
+    <div class="phase"><div class="phase-n">Pre-launch</div><p>From now to Nov 15 (about 3.5 weeks), and longer for the public if the public date is later.</p></div>
+    <div class="phase"><div class="phase-n">Launch</div><p>Once Dan or Mark confirms a date in writing.</p></div>
+    <div class="phase"><div class="phase-n">Post-launch</div><p>After that.</p></div>
+  </div>
+  <p class="small">If the date moves, the pre-launch arc simply extends (<a href="#s3-4">section 3.4</a>).</p>
+</section>
+
+<section id="waitlist">
+  <h2><span class="num">3</span> Lead campaign: WealthScore waitlist (pre-launch)</h2>
+  <p class="lead"><span class="badge rc">Rachel's call</span> on every menu in this section. This builds on her FO360 waitlist mockup (<a href="https://rglaittli.github.io/upcoming-campaigns/#featured" target="_blank" rel="noopener noreferrer nofollow">rglaittli.github.io/upcoming-campaigns/#featured</a>, referenced read only), which already proposes a "Coming soon" page, a simple signup with a current-client checkbox, teaser posts "with no date, pricing or feature promises," an email to the list, and a podcast mention.</p>
+
+  <h3 id="s3-1">3.1 Honesty rules (apply to every option)</h3>
+  <ol class="steps">
+    <li>Say plainly: <strong>"The WealthScore isn't live yet."</strong> Every page, ad, clip CTA, and email says it's coming, never that it's available now.</li>
+    <li>No launch date in public copy until Dan or Mark confirms one. "Coming soon" or "launching later this year" only if leadership approves that wording.</li>
+    <li>"Founding cohort" or "early access" only describes what's true: people on the list hear first and get access first. No "limited spots" unless spots really are limited.</li>
+    <li>Keep the score disclaimer from whitepaper p24 and p97 wherever the score is described: it "does not predict markets or guarantee outcomes."</li>
+    <li>Never promise a score of 100 means "fully on track" (a household meeting every benchmark scores about 84, Appendix A working session).</li>
+    <li>Don't promote FO360 features that won't be live at release (Rachel's page; whitepaper notes &sect;6).</li>
+  </ol>
+
+  <h3 id="s3-2">3.2 Offer and positioning <span class="badge rc">Rachel's call</span></h3>
+  <p>Core line options: "Be first to get your WealthScore." "Join the founding cohort." "Get early access when it opens."</p>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>WealthScore-only waitlist</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>&quot;Be first to get your score&quot;: early access plus weekly 4-3-2-1 lessons while you wait</p><p class="needs"><strong>Needs:</strong> Page home (3.8), HubSpot form, honest copy approved</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Founding cohort</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Same as A, framed as the first group in, with an invitation to a founding-cohort live session at launch</p><p class="needs"><strong>Needs:</strong> A plus a defined founding benefit that&#x27;s real (for example, first access and a group walkthrough)</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Fold into Rachel&#x27;s FO360 waitlist</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>One waitlist for FO360 and the WealthScore, as her mockup already shows the score as step 1</p><p class="needs"><strong>Needs:</strong> Agreement on one form and one list; FO360 launch order respected</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Waitlist plus bonus bundle</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>A or B, plus the free audiobook now and a short 4-3-2-1 guide as sign-up bonuses</p><p class="needs"><strong>Needs:</strong> Audiobook link (exists at learn.paradigmlife.net/free-audiobook), a short guide written from the whitepaper without the flagged claims</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">E</span><h4>Client-referral waitlist</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>A version current clients share with friends and family, tied to Rachel&#x27;s Nov 14 &quot;WealthScore Landing Page For Client Referrals&quot; milestone</p><p class="needs"><strong>Needs:</strong> Referral wording approved by compliance; client segment and permissions</p></div>
+</div>
+
+  <h3 id="s3-3">3.3 Capture <span class="badge rc">Rachel's call</span></h3>
+  <p>Light fields only, modeled on Multiplier's one-question qualifier but without its phone, income, and SMS fields (ads-research.md):</p>
+  <ol class="fields">
+    <li>First name</li>
+    <li>Email</li>
+    <li>"Which stage are you in?" Building / Distribution / Not sure</li>
+    <li>"Which of these worries you most?" Certainty / Vitality / Independence / Freedom / Not sure (with one-line plain descriptions)</li>
+    <li>Optional: "I'm a current Paradigm Life client" checkbox (from Rachel's mockup)</li>
+    <li>Email consent line</li>
+  </ol>
+  <p>Written to HubSpot with a lead-source label (for example "WealthScore Waitlist") plus UTMs. Life stage and dimension would likely need custom HubSpot properties (<span class="tag unk">Unverified</span> whether they exist). No phone, income, assets, or account details.</p>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>4 fields plus checkbox</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Fields 1 to 6 above</p><p class="needs"><strong>Needs:</strong> 2 custom HubSpot properties, lead-source value</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Email only, questions after</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Email on the page, then the two questions in the confirmation email or thank-you page</p><p class="needs"><strong>Needs:</strong> Thank-you page or email survey link</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Add optional phone for a strategy call</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>A plus an optional phone field shown only to people who ask for a call</p><p class="needs"><strong>Needs:</strong> Sales routing; compliance review; no SMS without TCPA review</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Short quiz-style form</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>The two questions as clickable cards, one per screen, like Garrett&#x27;s quizzes</p><p class="needs"><strong>Needs:</strong> Multi-step form tool (HubSpot or the page host)</p></div>
+</div>
+
+  <h3 id="s3-4">3.4 Pre-launch content arc (teach 4-3-2-1 before the score exists) <span class="badge rc">Rachel's call</span></h3>
+  <p>Weekly theme options for the pre-launch window (about 4 weeks to Nov 15, extendable):</p>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Week</th><th>Theme</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Week of Oct 26</strong></td><td>1 Purpose, and why a score. Anchor on the Oct 16 episode "How Healthy Is Your Financial Picture? Taking the WealthScore Together," framed as a preview of how the score works (check its CTA first, since the title could imply the score is open now).</td></tr>
+      <tr><td><strong>Week of Nov 2</strong></td><td>The 4 Dimensions (Certainty, Vitality, Independence, Freedom).</td></tr>
+      <tr><td><strong>Week of Nov 9</strong></td><td>The 3 Pillars ("Cash Flow is the gate," Protection, Asset Allocation).</td></tr>
+      <tr><td><strong>Week of Nov 16 or launch week</strong></td><td>The 2 Life Stages and the Hierarchy ("Net worth measures quantity. The Hierarchy measures quality.").</td></tr>
+      <tr><td><strong>If the date slips</strong></td><td>One dimension per week in depth, then common gaps by life stage.</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Podcast plus clips plus weekly live</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff medium">Medium</span></div><p>The weekly episode carries the theme; clips repeat it daily; the live (3.5) walks through it</p><p class="needs"><strong>Needs:</strong> Topic lock in Rachel&#x27;s monthly loop; clip review</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Clips and email only</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Use the Oct 16 episode and back catalog clips, no new live yet</p><p class="needs"><strong>Needs:</strong> Clip selection and review</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Short &quot;4-3-2-1 in 5 minutes&quot; series</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>5 short Patrick videos, one per element, recorded in one session</p><p class="needs"><strong>Needs:</strong> One recording slot; edit; compliance read</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Book and whitepaper as the spine</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Each week maps to a book chapter or whitepaper section, offered as a sign-up bonus</p><p class="needs"><strong>Needs:</strong> Mapping chapters to themes; short guide (3.2 D)</p></div>
+</div>
+
+  <h3 id="s3-5">3.5 Weekly live (renamed so it doesn't depend on a live score) <span class="badge rc">Rachel's call</span></h3>
+  <p>Garrett runs Tax Tip Tuesday weekly around 4:30 PM MT (cadence.md). Name options: "4-3-2-1 Live," "Perpetual Wealth Live," "Ask Patrick Live." The old name "WealthScore Live" could return post-launch.</p>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>&quot;Perpetual Wealth Live,&quot; weekly, 30 min</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff medium">Medium</span></div><p>Patrick or a strategist teaches that week&#x27;s 4-3-2-1 theme, takes questions, invites people to the waitlist</p><p class="needs"><strong>Needs:</strong> Host, YouTube live setup, a fixed slot (for example Thursdays at noon MT, a proposal only)</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>&quot;4-3-2-1 Live,&quot; 4-week mini series</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Four sessions, one per element, then pause until launch</p><p class="needs"><strong>Needs:</strong> Same as A for 4 weeks</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Fold into Rachel&#x27;s November webinars</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Use her planned webinar series as the pre-launch live</p><p class="needs"><strong>Needs:</strong> Her webinar dates; waitlist CTA added</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Monthly instead of weekly</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>One live a month, clipped heavily</p><p class="needs"><strong>Needs:</strong> Host and slot</p></div>
+</div>
+
+  <h3 id="s3-6">3.6 Waitlist email sequence <span class="badge rc">Rachel's call</span></h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Confirm, weekly lessons, launch-day email</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff medium">Medium</span></div><p>Day 0 confirmation (what it is, not live yet, what to expect, bonus links); weekly education email matching 3.4 while they wait; launch-day &quot;your WealthScore is open&quot; email; a reminder 3 days later</p><p class="needs"><strong>Needs:</strong> HubSpot workflow; John or Rachel copy; compliance read</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Confirmation plus launch email only</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Minimal: confirm now, email again at launch</p><p class="needs"><strong>Needs:</strong> HubSpot workflow</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Reuse the 7-day 4-3-2-1 nurture</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Section 4 (d) runs right after sign-up, then holding emails until launch</p><p class="needs"><strong>Needs:</strong> Nurture copy; holding-email cadence</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Segmented by life stage</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>A, with Building and Distribution versions of each lesson</p><p class="needs"><strong>Needs:</strong> Two copy tracks; segmentation</p></div>
+</div>
+  <p class="small">Every email in every option could offer a strategy call as a secondary CTA, since a call can happen while the score is still in build. Holding emails if the date slips: one honest line ("still building, here's this week's lesson").</p>
+
+  <h3 id="s3-7">3.7 Referral or "move up the list" (optional) <span class="badge comp">Needs compliance review</span> <span class="badge rc">Rachel's call</span></h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Plain share link, no reward</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>&quot;Know someone who&#x27;d want this? Share the link.&quot;</p><p class="needs"><strong>Needs:</strong> Share link with UTM</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Move up the list</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Sharing moves you earlier in the access queue</p><p class="needs"><strong>Needs:</strong> Referral tracking tool; compliance on incentives; only works if access is actually staggered</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Client referral page</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Tied to Rachel&#x27;s Nov 14 client-referral milestone</p><p class="needs"><strong>Needs:</strong> Compliance on client referral wording; client permissions</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>None</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Keep the waitlist simple</p><p class="needs"><strong>Needs:</strong> Nothing</p></div>
+</div>
+
+  <h3 id="s3-8">3.8 Where the waitlist page lives (decision, not built) <span class="badge rc">Rachel's call</span></h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>HubSpot landing page</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Form writes straight to HubSpot with the lead source</p><p class="needs"><strong>Needs:</strong> HubSpot page and form access; brand template</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Book site on Cloudflare</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>Lives with the book offer</p><p class="needs"><strong>Needs:</strong> The Cloudflare book site, which is planned, not built (per Dan)</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>GitHub Pages (temporary)</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Fast to stand up, temporary only</p><p class="needs"><strong>Needs:</strong> A HubSpot form embed; a later move</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Page on paradigmlife.net</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Main site, near the /4321 bridge page</p><p class="needs"><strong>Needs:</strong> Web access; /4321 fixes first</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">E</span><h4>Rachel&#x27;s FO360 waitlist page</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Her mockup, connected to HubSpot</p><p class="needs"><strong>Needs:</strong> Her approval; &quot;Form not connected: HubSpot TBD&quot; resolved</p></div>
+</div>
+  <p class="small">Note: a public page exists at portal.paradigmlife.net/wealthscore, and paradigmlife.net/wealthscore returns 404 (checked Oct 20). Since Dan says the score is not live, the portal page shouldn't get traffic until he or Mark confirms.</p>
+
+  <h3 id="s3-9">3.9 Waitlist ad hooks</h3>
+  <div class="warn"><strong>DRAFT. NEEDS COMPLIANCE REVIEW.</strong> Patrick's first-person voice. No stats, no guarantees, no implied availability.</div>
+  <div class="hooks">
+    <div class="hook"><span class="hook-t">1. Certainty</span><p>"Most people can tell me their net worth. Almost nobody can tell me whether their financial life is actually healthy. We're building a score for that. It isn't live yet. Join the waitlist and be among the first to get yours."</p></div>
+    <div class="hook"><span class="hook-t">2. Cash Flow</span><p>"I've talked with people who paid off every debt and still felt broke. Cash flow is the gate. Our WealthScore will show where yours stands. It's not open yet, so I'm starting a list."</p></div>
+    <div class="hook"><span class="hook-t">3. Architecture</span><p>"An architect never argues for the window over the beam. So why is every financial pitch you hear an argument for one product? I start with the blueprint. We're turning that blueprint into a score. Get on the list to hear first when it opens."</p></div>
+    <div class="hook"><span class="hook-t">4. Independence</span><p>"Here's how I define independence: choosing to, not having to. Most plans can't tell you how far you are from it. We're building a score that will. It isn't live yet. Join the waitlist."</p></div>
+    <div class="hook"><span class="hook-t">5. Life Stages</span><p>"The moves that build wealth aren't the moves that pay you from it. While the WealthScore is being finished, I'll send you one short lesson a week on which stage you're in."</p></div>
+    <div class="hook"><span class="hook-t">6. Book</span><p>"I wrote Heads I Win, Tails You Lose to question the money advice most of us were handed. Join the WealthScore waitlist and I'll send you the audiobook free while you wait." <span class="small">(Use only once the bonus is approved.)</span></p></div>
+  </div>
+
+  <h3 id="s3-10">3.10 Metrics <span class="badge rc">Rachel's call</span></h3>
+  <p>Targets would be Rachel's to set (her page: "Baselines and targets to be set"). Options to track:</p>
+  <ul class="gaps">
+    <li>Waitlist signups, weekly and total</li>
+    <li>Source (UTM and HubSpot lead source: clip, podcast, live, email, book, paid)</li>
+    <li>Life stage mix and dimension mix (also useful topic input for Rachel's monthly loop)</li>
+    <li>Current client vs prospect share</li>
+    <li>Email engagement on the weekly lessons</li>
+    <li>Strategy calls booked from the waitlist (available during the wait)</li>
+    <li>At launch: share of the waitlist that completes a WealthScore</li>
+  </ul>
+  <p><span class="badge start">Starting suggestion</span> Add signups, source, and strategy calls to the existing marketing scorecard. <span class="badge rc">Rachel's call</span></p>
+
+  <h3 id="s3-11">3.11 Launch-day plan (triggers once a date is confirmed in writing)</h3>
+  <ol class="steps timeline">
+    <li><span class="step">When the date is set</span>Confirm what launches (clients only, or public), the URL, and the final page.</li>
+    <li><span class="step">About 1 week before</span>"Opening soon" email to the list; swap page copy draft for review; prep launch clips and live.</li>
+    <li><span class="step">About 1 day before</span>Final checks on the score page, HubSpot workflow, and tracking.</li>
+    <li><span class="step">Launch day</span>Launch email to the waitlist first (current clients first, if the FO360 order applies); page flips from "join the waitlist" to "get your score"; live session (the founding-cohort walkthrough, if 3.2 B); hooks switch to the post-launch set.</li>
+    <li><span class="step">About 3 and 7 days after</span>Reminder to anyone who hasn't taken it; first read on waitlist-to-score conversion.</li>
+  </ol>
+</section>
+
+<section id="side">
+  <h2><span class="num">4</span> Side by side</h2>
+  <p class="lead">His playbook, our existing assets, the gap today, and where the options live.</p>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>His playbook element (source)</th><th>Our existing asset (source)</th><th>Gap today</th><th>Options (see menus)</th></tr></thead>
+    <tbody>
+      <tr><td>One face: Garrett on every channel and ad (ads-research.md, cadence.md)</td><td>Patrick hosts The Perpetual Wealth Podcast, wrote the book, and authored the whitepaper (Riverside; headsortailsiwin.com; whitepaper notes)</td><td>The "Patrick Donohoe" brand in Metricool has <strong>no social networks connected</strong>. Only the "Paradigm Life" brand has FB, IG, X, LinkedIn, YouTube, FB Ads, and Google Ads (Metricool getBrandSettings, Oct 20)</td><td>Patrick as the face, with co-hosts. A Patrick personal channel is a question for Dan and Patrick</td></tr>
+      <tr><td>Weekly long-form sit-down: 3 long YouTube videos in 30 days (cadence.md)</td><td>4 new episodes Sep 17 to Oct 16 (Riverside). Weekly "Record + produce podcast" milestones run through Dec 23 on Rachel's Rock 1 (Ninety)</td><td>The Oct 16 episode wasn't in the YouTube feed as of Oct 20 (channel RSS)</td><td><a href="#s5-1">5.1</a></td></tr>
+      <tr><td>About 4 Shorts a day: 105 Shorts Sep 20 to Oct 20 (cadence.md)</td><td>@ParadigmLife (9.58K subscribers) posted 13 Shorts plus 2 long videos Sep 25 to Oct 18, about 1 a day since Oct 8 (channel RSS). 336 Shorts and 253 videos in total (yt-dlp)</td><td>About a quarter of his pace. Views 7 to 254 per Short (RSS)</td><td><a href="#s5-2">5.2</a></td></tr>
+      <tr><td>The same clips on X at fixed times (9, 12, 3, 6 MT) (cadence.md)</td><td>Metricool connects FB, IG, X, LinkedIn, and YouTube for Paradigm Life</td><td>Cross-channel fixed-time posting not confirmed</td><td><a href="#s5-2">5.2</a></td></tr>
+      <tr><td>2 or 3 SEO blog posts a week (cadence.md)</td><td>8 posts Sep 23 to Oct 14 on paradigmlife.net (wp-json)</td><td>Rachel's page: blog traffic but "no conversions reported"</td><td><a href="#s5-4">5.4</a></td></tr>
+      <tr><td>Weekly live, Tax Tip Tuesday (cadence.md)</td><td>3 streams on the channel (yt-dlp). Rachel plans November webinars</td><td>No recurring live</td><td><a href="#s3-5">3.5</a></td></tr>
+      <tr><td>Pre-launch waitlist: X1 Wealth "Founding Member" waitlist (whimsical-board.md &sect;8)</td><td>Rachel's FO360 waitlist mockup (Rachel's page)</td><td>Form "not connected: HubSpot TBD"; no WealthScore waitlist</td><td><a href="#waitlist">Section 3</a></td></tr>
+      <tr><td>Free book, pay shipping, plus the Money Unmasked free digital book (ad-library-findings.md)</td><td><em>Heads I Win, Tails You Lose</em>: free chapter, Amazon ebook, audiobook; free audiobook at learn.paradigmlife.net/free-audiobook. Rachel's page: free physical copy or audiobook offer "confirmed"</td><td>Free physical copy not live; no nurture; no ads seen</td><td><a href="#f-a">6 (a)</a>, next step is the waitlist</td></tr>
+      <tr><td>Quizzes and a qualifier (ads-research.md)</td><td>WealthScore 0 to 100 plus the Gap Report (whitepaper pp22 to 27). <strong>Not live</strong> (Dan, Oct 20)</td><td>No live score; a public page exists at portal.paradigmlife.net/wealthscore but shouldn't get traffic until confirmed</td><td>Pre-launch: waitlist capture questions (<a href="#s3-3">3.3</a>). Post-launch: <a href="#f-e">6 (e)</a></td></tr>
+      <tr><td>8-minute Multiplier overview video, a qualifying question, an application (ad-library-findings.md)</td><td>Rachel's Core Content Series: a VSL of about 10 minutes plus three webinars, Patrick recording from Oct 20 (Rachel's page)</td><td>Not recorded; FO360 public date not set</td><td><a href="#f-b">6 (b)</a></td></tr>
+      <tr><td>"Multiplier Reviews" testimonial test, about 15 video ads Oct 9 to 11 (ad-library-findings.md)</td><td>Rachel's "It Doesn't Just Happen" (anonymous situations); 3 /4321 testimonials need review</td><td>No reviewed set</td><td><a href="#f-c">6 (c)</a></td></tr>
+      <tr><td>7-day Legacy Builder email sequence into a $300 product (whimsical-board.md)</td><td>The whitepaper's 4-3-2-1 structure; John's re-engagement emails (Rachel's page)</td><td>No book or whitepaper nurture</td><td><a href="#f-d">6 (d)</a> and <a href="#s3-6">3.6</a></td></tr>
+      <tr><td>SMS consent on almost every funnel (ads-research.md)</td><td>Not on our book pages</td><td>No SMS</td><td>Optional, needs TCPA review</td></tr>
+      <tr><td>UTMs on organic YouTube descriptions (ads-research.md)</td><td>Rachel proposes UTMs and HubSpot capture everywhere</td><td>Not on clips</td><td>utm_content = video ID could be standard</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="flywheel">
+  <h2><span class="num">5</span> The flywheel: activity menus</h2>
+  <p class="lead">Throughout pre-launch, every CTA points to the waitlist (or a strategy call). After launch, CTAs could switch to the score.</p>
+  <pre class="mermaid">
+flowchart TB
+  SB["Rachel's monthly topic loop<br/>and Synthesis Brief"]
+  EP["Weekly anchor:<br/>Perpetual Wealth Podcast episode"]:::gold
+  YT["Full episode on<br/>YouTube, Spotify, Apple"]
+  CL["Daily clips,<br/>human reviewed"]
+  MC["Metricool: Shorts,<br/>IG, FB, LinkedIn, X"]
+  BL["Companion blog post"]
+  NL["Prospect and<br/>client newsletters"]
+  LV["Perpetual Wealth Live,<br/>weekly 4-3-2-1 lesson"]
+  OF{"Offers"}
+  BK["Free book or audiobook"]
+  WL["WealthScore waitlist:<br/>name, email, life stage,<br/>top dimension"]:::gold
+  VSL["FO360 overview video"]
+  EM["Waitlist emails:<br/>weekly 4-3-2-1 lessons"]
+  CALL["Strategy call,<br/>available during the wait"]
+  WS["WealthScore opens to<br/>the waitlist first"]
+  GR["Gap Report"]
+  FO["Family Office 360<br/>and household team"]
+  SB --> EP
+  EP --> YT
+  EP --> CL
+  CL --> MC
+  EP --> BL
+  EP --> NL
+  EP --> LV
+  MC --> OF
+  BL --> OF
+  NL --> OF
+  LV --> OF
+  OF --> BK
+  OF --> WL
+  OF --> VSL
+  BK --> WL
+  VSL --> WL
+  WL --> EM
+  EM --> CALL
+  EM -. "launch date confirmed" .-> WS
+  WS --> GR
+  GR --> CALL
+  CALL --> FO
+  FO --> EP
+  classDef gold fill:#C9A227,stroke:#0B2545,color:#0B2545
+  </pre>
+  <p class="fallback-note">Text version: Rachel's monthly topic loop and Synthesis Brief feed the weekly anchor (a Perpetual Wealth Podcast episode). The episode goes out in full on YouTube, Spotify, and Apple, and also feeds daily human-reviewed clips (published through Metricool to Shorts, IG, FB, LinkedIn, and X), a companion blog post, the prospect and client newsletters, and Perpetual Wealth Live (a weekly 4-3-2-1 lesson). Clips, blog, newsletters, and the live all point to the offers: the free book or audiobook, the WealthScore waitlist (name, email, life stage, top dimension), and the FO360 overview video. The book and the video also lead to the waitlist. The waitlist gets weekly 4-3-2-1 lesson emails, which lead to a strategy call (available during the wait). Once a launch date is confirmed, the WealthScore opens to the waitlist first, then the Gap Report, then the strategy call, then Family Office 360 and the household team, which feeds back into the weekly episode.</p>
+
+  <h3 id="s5-1">5.1 Weekly anchor <span class="badge rc">Rachel's call</span></h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Keep the current weekly record and produce, add full video to YouTube within 48 hours</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Rachel&#x27;s Rock 1 already schedules weekly podcast milestones</p><p class="needs"><strong>Needs:</strong> YouTube connected in Riverside hosting</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Theme each pre-launch episode to the 4-3-2-1 arc</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>The episode carries that week&#x27;s waitlist lesson</p><p class="needs"><strong>Needs:</strong> Topic lock in the monthly loop</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Add a dedicated monthly shoot</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Like the One Marketing Message &quot;dedicated shoot,&quot; for ad and clip material</p><p class="needs"><strong>Needs:</strong> Patrick time; editor</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Remaster back-catalog episodes</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Re-release strong older episodes with new intros on 4-3-2-1</p><p class="needs"><strong>Needs:</strong> Episode selection; Patrick intro recordings</p></div>
+</div>
+  <p class="small"><strong>Rachel's call.</strong> Wealth Strategists (for example Paul Seitz and Wade Reed, who already appear) could be recurring co-hosts.</p>
+
+  <h3 id="s5-2">5.2 Daily clips</h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Sustain 1 a day, every network</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Today&#x27;s pace, cross-posted via Metricool after approval</p><p class="needs"><strong>Needs:</strong> Reviewer; Metricool slots</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>2 a day</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>1 new plus 1 back catalog</p><p class="needs"><strong>Needs:</strong> More editing time</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>3 a day</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>Closer to his unique-piece pace of about 4 to 5 (cadence.md)</p><p class="needs"><strong>Needs:</strong> Dedicated editor or agency</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Audiograms from the back catalog</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>For older episodes that may be audio only</p><p class="needs"><strong>Needs:</strong> Audiogram template; check which episodes have video (UNVERIFIED)</p></div>
+</div>
+  <p class="small">Back catalog: Riverside lists 482 episodes (Podcast Addict shows 478). At about 10 usable clips from each of 50 strong episodes, that's about 500 clips, <span class="tag inf">an estimate, not a measurement</span>. Rachel's page targets "23 pieces per week (not yet reached), ramping toward a proposed 23 per day," and both of her Q4 rocks name 23+ posts a week. Garrett's verified pace is about 7.7 items a day (cadence.md). <span class="badge rc">Rachel's call</span> on volume and how posts are counted.</p>
+
+  <h3 id="s5-3">5.3 Weekly live</h3>
+  <p>See <a href="#s3-5">3.5</a>.</p>
+
+  <h3 id="s5-4">5.4 Blog</h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>One companion post per episode with a waitlist CTA</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Matches the weekly theme</p><p class="needs"><strong>Needs:</strong> Writer; CTA block</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Update top existing posts with a waitlist CTA</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Rachel&#x27;s in-progress blog CTA work</p><p class="needs"><strong>Needs:</strong> Her list of high-traffic posts</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>2 or 3 SEO posts a week</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>His pace (cadence.md)</p><p class="needs"><strong>Needs:</strong> Writer capacity; SEO research</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Transcript-based posts</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Light edit of episode transcripts</p><p class="needs"><strong>Needs:</strong> Editing for compliance</p></div>
+</div>
+
+  <h3 id="s5-5">5.5 Newsletters</h3>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Feature the episode and a waitlist invite in the prospect newsletter</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>One block per issue</p><p class="needs"><strong>Needs:</strong> Newsletter copy slot</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Client newsletter re-teaches 4-3-2-1</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Answers Patrick&#x27;s Rally point that clients don&#x27;t remember why their plan exists</p><p class="needs"><strong>Needs:</strong> Copy; client-first launch order respected</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>One dedicated waitlist announcement to subscribed contacts</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Rachel&#x27;s FO360 plan proposes this; opted-out households reached through their team</p><p class="needs"><strong>Needs:</strong> Segment; copy approval</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Both newsletters plus the live replay</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Fuller version once the live is running</p><p class="needs"><strong>Needs:</strong> A, B, and replay links</p></div>
+</div>
+</section>
+
+<section id="funnels">
+  <h2><span class="num">6</span> Funnels</h2>
+
+  <div class="funnel" id="f-a">
+    <h3>(a) Book as the free lead magnet, next step the waitlist (Rachel's "Heads I Win, Tails You Lose" campaign) <span class="badge rc">Rachel's call</span></h3>
+    <p>Flow: ad, clip, or podcast mention, then the book page, then HubSpot capture, then the waitlist (or a waitlist checkbox on the same form), then the waitlist emails. The book site is moving to the new platform (Rachel's page), and per Dan the Cloudflare-hosted book site is <strong>planned, not built</strong>.</p>
+    <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Free audiobook now, waitlist checkbox on the form</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Uses what&#x27;s already live</p><p class="needs"><strong>Needs:</strong> Form edit; copy review</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Free physical copy, pay shipping</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>The confirmed offer, once live</p><p class="needs"><strong>Needs:</strong> Fulfillment; checkout; book site</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Free chapter as is, waitlist on the thank-you page</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Smallest change</p><p class="needs"><strong>Needs:</strong> Thank-you page edit</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Book quiz into the waitlist</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Rachel&#x27;s experiment idea, ending at the waitlist instead of the score until launch</p><p class="needs"><strong>Needs:</strong> Quiz build; compliance</p></div>
+</div>
+    <p class="small"><strong>Gaps against Garrett's funnel:</strong> no upsell (he bumps to the $44.90 Rich Life Bundle; a free Study Guide at academy.paradigmlife.net could stand in, no paid bump); no email sequence yet; tracking shows GTM-WCPFSC4 and HubSpot forms, no Meta pixel seen though GTM could load it (<span class="tag unk">Unverified</span>); Ad Library not checked for headsortailsiwin.com ads (<span class="tag unk">Unverified</span>); current copy ("time-tested and proven," "don't want you to know," "improved returns with minimal risk," "thousands") needs compliance review before paid traffic. <strong>Rachel's call.</strong></p>
+  </div>
+
+  <div class="funnel" id="f-b">
+    <h3>(b) FO360 overview video, then a qualifier (our counter to Multiplier; Rachel's Core Content Series and FO360 waitlist) <span class="badge rc">Rachel's call</span></h3>
+    <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>VSL, then the waitlist with the life-stage question</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff medium">Medium</span></div><p>One qualifier, like Multiplier&#x27;s, ending at the waitlist pre-launch</p><p class="needs"><strong>Needs:</strong> VSL recorded; page home</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>VSL, then strategy call booking</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>For warm viewers ready now</p><p class="needs"><strong>Needs:</strong> Booking link; routing</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Short teaser clips first, VSL after launch</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Hold the full VSL until features are live</p><p class="needs"><strong>Needs:</strong> Clip cuts</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Webinar series as the bridge</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>Rachel&#x27;s three webinars</p><p class="needs"><strong>Needs:</strong> Her webinar plan</p></div>
+</div>
+    <p class="small">Promote only features that will be live at release. Hold paid until the FO360 date is set. Post-launch, the next step after the call could be a Gap Report walkthrough, our version of his "Report of Findings." <strong>Rachel's call.</strong></p>
+  </div>
+
+  <div class="funnel" id="f-c">
+    <h3>(c) Testimonial or review set (Rachel's "It Doesn't Just Happen") <span class="badge comp">Needs compliance review</span></h3>
+    <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Anonymous situations only</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Rachel&#x27;s current approach</p><p class="needs"><strong>Needs:</strong> Copy review</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Short consented client videos about the process</h4></div><div class="mopt-b"><span class="eff heavy">Heavy</span></div><p>Never about returns</p><p class="needs"><strong>Needs:</strong> Written consent; compliance; disclosures</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Strategist-told stories</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Strategists describe a typical situation, no client identity</p><p class="needs"><strong>Needs:</strong> Compliance read</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Founding-cohort reactions after launch</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Waitlist members on taking the score</p><p class="needs"><strong>Needs:</strong> Launch; consent; compliance</p></div>
+</div>
+    <p class="small"><strong>NEEDS COMPLIANCE REVIEW. No client PII.</strong></p>
+  </div>
+
+  <div class="funnel" id="f-d">
+    <h3>(d) Email nurture tied to 4-3-2-1 (John could draft, building on his re-engagement sequence)</h3>
+    <p>Day outline (pre-launch version):</p>
+    <ol class="steps">
+      <li><span class="step">Day 0</span>Delivery plus "Life is the goal; money is the means."</li>
+      <li><span class="step">Day 1</span>1 Purpose.</li>
+      <li><span class="step">Day 2</span>4 Dimensions (canonical one-liners as written).</li>
+      <li><span class="step">Day 3</span>3 Pillars ("Cash Flow is the gate").</li>
+      <li><span class="step">Day 4</span>2 Life Stages ("Certainty and control are traded, not simply stacked.").</li>
+      <li><span class="step">Day 5</span>Hierarchy ("Net worth measures quantity. The Hierarchy measures quality.").</li>
+      <li><span class="step">Day 6</span><strong>Join the WealthScore waitlist to be first when it opens</strong> (or, for people already on it, "you're on the list; here's what the score will look at").</li>
+      <li><span class="step">Day 7</span>Invitation to the weekly live or a strategy call, plus a podcast episode.</li>
+    </ol>
+    <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>7 days, then the waitlist</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff medium">Medium</span></div><p>Outline above</p><p class="needs"><strong>Needs:</strong> Copy; HubSpot workflow; compliance</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Merge into the waitlist sequence (3.6)</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>One sequence instead of two</p><p class="needs"><strong>Needs:</strong> Agreement on one flow</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>5-day short version</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>One email per element</p><p class="needs"><strong>Needs:</strong> Shorter copy</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Weekly instead of daily</h4></div><div class="mopt-b"><span class="eff light">Light</span></div><p>Same content, slower</p><p class="needs"><strong>Needs:</strong> Workflow timing</p></div>
+</div>
+  </div>
+
+  <div class="funnel" id="f-e">
+    <h3>(e) WealthScore as the quiz and qualifier (post-launch only)</h3>
+    <p>Once the score is confirmed live: hook ad or clip, a cleaned-up /4321 bridge page naming all of 4-3-2-1, the score, the Gap Report, a strategy call, FO360. The waitlist gets it first. Keep the p24 and p97 disclaimer, and never market 100 as fully on track.</p>
+  </div>
+</section>
+
+<section id="paid">
+  <h2><span class="num">7</span> Paid tests <span class="badge rc">Rachel's call</span></h2>
+  <p class="lead">Context: per the Oct 12 L10 notes, Avalaunch is on a 30-day notice and its spend "had not generated a positive return" (Kyle topics file). Rachel's Rock 1 has "Spend ramped through Phase 3" due Nov 17, and One Marketing Message says "paid spend only under signed limit" (Ninety). Rachel's page has Avalaunch running "independently."</p>
+  <div class="menu">
+<div class="mopt is-start"><div class="mopt-h"><span class="mopt-l">A</span><h4>Organic only until launch</h4></div><div class="mopt-b"><span class="badge start">Starting suggestion</span><span class="eff light">Light</span></div><p>Let clips and email build the waitlist; no paid to the waitlist yet</p><p class="needs"><strong>Needs:</strong> Nothing new</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">B</span><h4>Small waitlist test</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>2 or 3 cells from the matrix below, under the signed limit</p><p class="needs"><strong>Needs:</strong> Page home; compliance on hooks; signed limit</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">C</span><h4>Retargeting only</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Retarget podcast and site visitors to the waitlist</p><p class="needs"><strong>Needs:</strong> Retargeting live (Rock 1, due Oct 31)</p></div>
+<div class="mopt"><div class="mopt-h"><span class="mopt-l">D</span><h4>Book offer only</h4></div><div class="mopt-b"><span class="eff medium">Medium</span></div><p>Paid to the audiobook offer, waitlist as the next step</p><p class="needs"><strong>Needs:</strong> Book copy reviewed</p></div>
+</div>
+  <p class="small"><strong>Rachel's call</strong>, with Dan on spend and agency questions.</p>
+  <h3>Test matrix</h3>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Test cell</th><th>4-3-2-1 theme</th><th>Format</th><th>Landing page (pre-launch)</th></tr></thead>
+    <tbody>
+      <tr><td><strong>A</strong></td><td>Certainty / Cash Flow gate</td><td>30 to 60 sec Patrick clip</td><td>WealthScore waitlist</td></tr>
+      <tr><td><strong>B</strong></td><td>Vitality / coordination ("architecture")</td><td>2 to 3 min clip, then the VSL when ready</td><td>VSL page or FO360 waitlist</td></tr>
+      <tr><td><strong>C</strong></td><td>Independence / Hierarchy</td><td>Static quote card plus long first-person copy</td><td>Free book or audiobook</td></tr>
+      <tr><td><strong>D</strong></td><td>Freedom / Purpose</td><td>45 to 60 sec clip</td><td>Free audiobook</td></tr>
+      <tr><td><strong>E</strong></td><td>Building vs Distribution</td><td>60 sec clip</td><td>WealthScore waitlist</td></tr>
+      <tr><td><strong>F</strong></td><td>Book retargeting</td><td>Static book image</td><td>Free book</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small">Hooks: <a href="#s3-9">section 3.9</a> (pre-launch). Post-launch versions could swap "join the waitlist" for "take the WealthScore" once it's live and approved.</p>
+</section>
+
+<section id="cadence">
+  <h2><span class="num">8</span> Cadence by phase (options, not targets) <span class="badge rc">Rachel's call</span></h2>
+  <div class="table-wrap">
+  <table class="compact">
+    <thead><tr><th>Phase</th><th>Weekly anchor</th><th>Clips a day</th><th>Blog a week</th><th>Live</th><th>Newsletter</th><th>Main CTA</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Pre-launch</strong> (now to the confirmed date; planning anchor Nov 15)</td><td>1 episode a week on the 4-3-2-1 arc, all on YouTube</td><td>1 a day (current pace)</td><td>1 companion post</td><td>Plan and pilot Perpetual Wealth Live</td><td>Episode plus waitlist invite</td><td>WealthScore waitlist</td></tr>
+      <tr><td><strong>Launch</strong> (launch week)</td><td>Launch episode</td><td>1 to 2 a day</td><td>1</td><td>Launch or founding-cohort session</td><td>Launch email to the waitlist first</td><td>"Your WealthScore is open"</td></tr>
+      <tr><td><strong>Post-launch</strong> (after launch, through Dec 31 and into 2027)</td><td>1 a week plus live replays</td><td>2 to 3 a day if capacity allows</td><td>2 to 3</td><td>Weekly; could be renamed WealthScore Live</td><td>Prospect plus client editions</td><td>WealthScore, then Gap Report, then call</td></tr>
+    </tbody>
+  </table>
+  </div>
+  <p class="small"><strong>Rachel's call</strong> on every number.</p>
+</section>
+
+<section id="tools">
+  <h2><span class="num">9</span> Tools and production</h2>
+  <ul class="gaps">
+    <li><strong>Riverside:</strong> Magic Clips and captions for first cuts. <strong>A human edits and approves every clip.</strong> A recent Avalaunch ad looked like an unreviewed Riverside Magic edit, which is the failure to avoid.</li>
+    <li><strong>AI clipping</strong> (Riverside, Opus Clip, or Descript) helps with finding moments, captions, reframing, and draft titles. It doesn't help with picking compliant moments, catching absolute claims, or brand tone. Those stay human.</li>
+    <li><strong>AI faceless video:</strong> Rachel's page says a faceless AI version of the Core Content Series comes first, for internal feel only. Public content could keep Patrick on camera. Garrett shows no sign of AI avatars (ads-research.md).</li>
+    <li><strong>Metricool:</strong> the Paradigm Life brand connects FB, IG, X, LinkedIn, YouTube, and both ad accounts. Posts go out only after approval.</li>
+    <li><strong>YouTube:</strong> connect it in Riverside hosting so every episode publishes with video. Riverside platform links currently list only Apple and Spotify.</li>
+    <li><strong>Spotify and Apple video:</strong> Spotify needs manual MP4 uploads per episode in Spotify for Creators. Apple needs video approval plus an API key, applies only going forward, and may need the Riverside Grow plan or higher (earlier chat).</li>
+    <li><strong>HubSpot:</strong> waitlist form, lead-source label, life-stage and dimension properties, the waitlist workflow, and a utm_content per clip.</li>
+  </ul>
+</section>
+
+<section id="risks">
+  <h2><span class="num">10</span> Risks and compliance</h2>
+  <div class="risk">
+    <h4>Implied availability</h4>
+    <p>Nothing should suggest the WealthScore is open before launch. Worth checking:</p>
+    <ul>
+      <li>the 3 One Marketing Message pages, which use "the free WealthScore checkup as the only CTA" (Ninety, milestone marked done Oct 17)</li>
+      <li>the Oct 16 episode's CTA</li>
+      <li>Avalaunch ads that pointed to the score (promotion was paused while a page issue was fixed, Kyle topics, Oct 12 L10)</li>
+      <li>portal.paradigmlife.net/wealthscore, a public page that shouldn't get traffic until confirmed</li>
+    </ul>
+  </div>
+  <div class="risk">
+    <h4>Never use</h4>
+    <p>"thousands of clients" and "more than two decades" (whitepaper p7); "cannot lose value" (p13); "guaranteed cash value growth" (p75); "indisruptible" (pp72, 82); "no other firm&hellip; can even come close" and "thousands and thousands" (Rally); "Now we have asset management" until approved wording exists; the Pfau uplift figures unless labeled modeled and commissioned; any Family Bank interest-returns-to-family framing.</p>
+  </div>
+  <div class="risk">
+    <h4>Still open and not to be used</h4>
+    <p>Household counts, legacy-benefit claims, assets claims, and since-2007 or tenure claims.</p>
+  </div>
+  <div class="risk">
+    <h4>On our own live pages already</h4>
+    <p>Patrick's bio page says "over 8,000 clients" and "Since 2007," and says the book "has sold over 60,000 copies." headsortailsiwin.com cites "thousands" and an Investopedia honor. The audiobook page says "Improved returns with minimal risk." These need review before paid traffic.</p>
+  </div>
+  <div class="risk">
+    <h4>Waitlist specifics</h4>
+    <p>No fake scarcity; referral incentives need compliance review; light PII only; email consent captured.</p>
+  </div>
+  <div class="risk">
+    <h4>Product</h4>
+    <p>Don't market FO360 features as live until confirmed. Garrett's Multiplier pitch is close to FO360 ("coordinated team," "Report of Findings"), so leading with the measurable 4-3-2-1 framing could reduce sameness.</p>
+  </div>
+  <div class="risk">
+    <h4>Operations</h4>
+    <p>SMS needs TCPA review; testimonials need written consent and disclosures; every AI clip needs human review; fix /4321 first (template placeholders, the Family Bank conflict, "Research Proved," the "It's" typo).</p>
+  </div>
+</section>
+
+<section id="decide">
+  <h2><span class="num">11</span> Questions for Dan and Rachel to answer together</h2>
+  <ol class="steps">
+    <li><strong>WealthScore launch date:</strong> is Nov 15 (the FO360 team and household launch in Ninety) the right planning anchor, and when could the public get the score? Who confirms the date in writing, Dan or Mark?</li>
+    <li><strong>Waitlist shape:</strong> WealthScore-only, a founding cohort, or folded into Rachel's FO360 waitlist? <span class="badge rc">Rachel's call, with Dan</span></li>
+    <li><strong>Waitlist page home:</strong> HubSpot landing page, the planned Cloudflare book site, GitHub Pages as a stopgap, paradigmlife.net, or Rachel's FO360 page?</li>
+    <li><strong>Patrick as the main face,</strong> and does the weekly recording slot already on Rachel's Rock 1 cover it?</li>
+    <li><strong>Weekly live:</strong> name, slot, and host, or fold it into Rachel's November webinars?</li>
+    <li><strong>Patrick personal channels:</strong> yes or no? His Metricool brand has nothing connected.</li>
+    <li><strong>Book site timeline,</strong> and is the free audiobook OK as a waitlist bonus now?</li>
+    <li><strong>Paid:</strong> organic only until launch, or a small test under the signed limit, and who runs it given the Avalaunch notice?</li>
+    <li><strong>Referral mechanics:</strong> include at all, and in what form?</li>
+    <li><strong>Compliance pack:</strong> when to send the waitlist copy, hooks, book and audiobook copy, and the nurture outline.</li>
+  </ol>
+</section>
+
+<section id="open">
+  <h2><span class="num">12</span> Open questions</h2>
+  <ul class="gaps">
+    <li><span class="tag unk">Unknown</span> <strong>WealthScore launch date</strong> (public and client) is unconfirmed. Ninety has no WealthScore launch rock; the FO360 rock's Oct 16 WealthScore milestone is still open.</li>
+    <li><span class="tag unk">Unknown</span> Do the 3 One Marketing Message pages currently send traffic to the score?</li>
+    <li><span class="tag unk">Unverified</span> Do the HubSpot life-stage and dimension properties exist?</li>
+    <li><span class="tag unk">Unverified</span> Which back-catalog episodes have video?</li>
+    <li><span class="tag unk">Unverified</span> Is there a Meta pixel via GTM on the book site?</li>
+    <li><span class="tag unk">Unverified</span> Are any ads currently running to headsortailsiwin.com?</li>
+    <li><span class="tag unk">Unknown</span> Does the Oct 16 episode's CTA imply the score is live?</li>
+  </ul>
+</section>
+
+<section id="owners">
+  <h2><span class="num">13</span> Suggested owners (Rachel drives)</h2>
+  <div class="table-wrap">
+  <table>
+    <thead><tr><th>Who</th><th>Suggested role</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Rachel</strong></td><td>Campaign owner, chooses from every menu, Avalaunch point person; merges anything useful into her upcoming campaigns plan.</td></tr>
+      <tr><td><strong>John</strong></td><td>Waitlist and nurture email copy, building on his re-engagement draft.</td></tr>
+      <tr><td><strong>Patrick</strong></td><td>Weekly recording, live host, book voice, final say on his voice.</td></tr>
+      <tr><td><strong>Mark</strong></td><td>Confirms what's live in the portal and when.</td></tr>
+      <tr><td><strong>Avalaunch / Kyle</strong></td><td>Paid tests, subject to the notice decision.</td></tr>
+      <tr><td><strong>Ability / Trinity agents</strong></td><td>First drafts of clip titles, blog companions, and hooks from whitepaper v3.1, human reviewed. (Contacting Ability only if Dan asks.)</td></tr>
+      <tr><td><strong>Compliance</strong></td><td>Waitlist copy, testimonials, hooks, book site copy, referral mechanics, SMS.</td></tr>
+    </tbody>
+  </table>
+  </div>
+</section>
+
+<section id="agree">
+  <h2><span class="num">14</span> Where Rachel's upcoming campaigns and the Gunderson playbook agree or differ</h2>
+  <div class="grid2">
+    <div class="card good"><h4>Agree</h4><ul>
+      <li>A pre-launch waitlist (her FO360 waitlist; his X1 Founding Member waitlist)</li>
+      <li>A free book where the reader pays shipping (her book site campaign)</li>
+      <li>A quiz leading to the WealthScore (post-launch)</li>
+      <li>A VSL bridge (Core Content Series)</li>
+      <li>Email nurture</li>
+      <li>Contrarian content (Sacred Cows)</li>
+      <li>Clips and audiograms from every episode (Podcast Marketing)</li>
+      <li>UTMs and HubSpot capture</li>
+      <li>A worksheet lead magnet (Write Your Own Rules, a lighter cousin of his Tax Navigator guide)</li>
+    </ul></div>
+    <div class="card"><h4>Differ</h4>
+    <div class="table-wrap"><table class="compact">
+      <thead><tr><th>Topic</th><th>Rachel's plan</th><th>Gunderson</th></tr></thead>
+      <tbody>
+        <tr><td><strong>Paid and organic</strong></td><td>Runs Avalaunch "independently."</td><td>Organic clips double as ad creative.</td></tr>
+        <tr><td><strong>Testimonials</strong></td><td>Anonymous situations.</td><td>"Reviews" ads are on camera.</td></tr>
+        <tr><td><strong>Tone</strong></td><td>Sacred Cows "challenge the system, never the person." Hers seems the better fit.</td><td>Hooks name people ("Dave Ramsey ignores economics").</td></tr>
+        <tr><td><strong>Faces</strong></td><td>Several faces.</td><td>One face.</td></tr>
+        <tr><td><strong>Live</strong></td><td>Webinars planned for November.</td><td>Weekly live.</td></tr>
+        <tr><td><strong>SMS</strong></td><td>Not mentioned.</td><td>Collects it everywhere.</td></tr>
+        <tr><td><strong>Scarcity</strong></td><td>Her mockup makes no scarcity claim, which seems safer.</td><td>X1 says "Founding Member spots are limited."</td></tr>
+        <tr><td><strong>Volume</strong></td><td>Proposed 23 a day, about three times his verified pace.</td><td>About 7.7 items a day (cadence.md).</td></tr>
+      </tbody>
+    </table></div>
+    </div>
+  </div>
+</section>
+
+<section id="first">
+  <h2><span class="num">15</span> Possible first steps for next week (all need Dan's or Rachel's OK)</h2>
+  <ol class="steps">
+    <li><strong>Dan and Rachel session (30 min):</strong> work through <a href="#decide">section 11</a>, starting with the launch date and the waitlist shape and page home.</li>
+    <li><strong>Plumbing, no publishing:</strong> connect YouTube in Riverside, put the Oct 16 episode on YouTube with a waitlist CTA, and check the 3 One Marketing Message pages and portal.paradigmlife.net/wealthscore for implied availability.</li>
+    <li><strong>Compliance pack:</strong> the waitlist page copy, the 6 waitlist hooks, the confirmation email, and the book and audiobook copy, plus the /4321 fixes before any traffic goes to it.</li>
+  </ol>
+</section>
+
+<section id="sources">
+  <h2><span class="num">&#167;</span> Sources</h2>
+  <p class="small">The parenthetical source names in each section refer to these. Internal items are notes, tools, or meetings that have no public link. Checks were made Oct 20, 2026 unless noted.</p>
+  <h3 class="srcg">Companion research (Garrett Gunderson)</h3><ul class="srcs">
+<li>Competitive teardown page: Garrett Gunderson marketing system (summarizes cadence.md, ads-research.md, ad-library-findings.md, whimsical-board.md)<br><a href="https://dparadigm.github.io/gunderson-teardown/" target="_blank" rel="noopener noreferrer nofollow">https://dparadigm.github.io/gunderson-teardown/</a></li>
+<li>cadence.md: Garrett&#x27;s content cadence counts, Sep 20 to Oct 20, 2026 (internal research note) <span class="path">internal</span></li>
+<li>ads-research.md: Garrett&#x27;s funnels, qualifiers, SMS, UTMs, and AI use (internal research note) <span class="path">internal</span></li>
+<li>ad-library-findings.md: Meta Ad Library and Google Ads Transparency findings (internal research note) <span class="path">internal</span></li>
+<li>whimsical-board.md: notes from Dan&#x27;s Whimsical board, including X1 Wealth Founding Member waitlist (§8) and the 7-day Legacy Builder sequence (internal research note) <span class="path">internal</span></li>
+</ul>
+<h3 class="srcg">Ninety (read only, Oct 20, 2026; sign-in needed)</h3><ul class="srcs">
+<li>Deliver Family Office 360™ (Leadership, company rock, Q4)<br><a href="https://app.ninety.io/rocks/6abfb6af37162faa6fb10340" target="_blank" rel="noopener noreferrer nofollow">https://app.ninety.io/rocks/6abfb6af37162faa6fb10340</a></li>
+<li>Rock 1: Build and launch a scalable marketing engine (Leadership)<br><a href="https://app.ninety.io/rocks/6ac96744c6cea0e4f66a9282" target="_blank" rel="noopener noreferrer nofollow">https://app.ninety.io/rocks/6ac96744c6cea0e4f66a9282</a></li>
+<li>One Marketing Message, One Ask (Marketing)<br><a href="https://app.ninety.io/rocks/6aaad4b5075edb562d769d0a" target="_blank" rel="noopener noreferrer nofollow">https://app.ninety.io/rocks/6aaad4b5075edb562d769d0a</a></li>
+<li>Every Household Has a Team (Leadership)<br><a href="https://app.ninety.io/rocks/6ac016ec42d1397bc60557e6" target="_blank" rel="noopener noreferrer nofollow">https://app.ninety.io/rocks/6ac016ec42d1397bc60557e6</a></li>
+</ul>
+<h3 class="srcg">Rachel&#x27;s plans</h3><ul class="srcs">
+<li>Rachel&#x27;s upcoming campaigns page, including the FO360 waitlist mockup (referenced read only)<br><a href="https://rglaittli.github.io/upcoming-campaigns/#featured" target="_blank" rel="noopener noreferrer nofollow">https://rglaittli.github.io/upcoming-campaigns/#featured</a></li>
+</ul>
+<h3 class="srcg">Paradigm Life assets and pages</h3><ul class="srcs">
+<li>Heads I Win, Tails You Lose book site<br><a href="https://headsortailsiwin.com/" target="_blank" rel="noopener noreferrer nofollow">https://headsortailsiwin.com/</a></li>
+<li>Free audiobook page<br><a href="https://learn.paradigmlife.net/free-audiobook" target="_blank" rel="noopener noreferrer nofollow">https://learn.paradigmlife.net/free-audiobook</a></li>
+<li>WealthScore portal page (public; should not get traffic until confirmed)<br><a href="https://portal.paradigmlife.net/wealthscore" target="_blank" rel="noopener noreferrer nofollow">https://portal.paradigmlife.net/wealthscore</a></li>
+<li>Heads I Win, Tails You Lose Study Guide (academy.paradigmlife.net)<br><a href="https://academy.paradigmlife.net/course/heads-i-win-tails-you-lose-study-guide" target="_blank" rel="noopener noreferrer nofollow">https://academy.paradigmlife.net/course/heads-i-win-tails-you-lose-study-guide</a></li>
+<li>paradigmlife.net blog (post counts via wp-json)<br><a href="https://paradigmlife.net/blog/" target="_blank" rel="noopener noreferrer nofollow">https://paradigmlife.net/blog/</a></li>
+<li>Paradigm Life YouTube channel RSS feed (@ParadigmLife)<br><a href="https://www.youtube.com/feeds/videos.xml?channel_id=UCKmGmR4v96Ia6N494cM1Kgw" target="_blank" rel="noopener noreferrer nofollow">https://www.youtube.com/feeds/videos.xml?channel_id=UCKmGmR4v96Ia6N494cM1Kgw</a></li>
+<li>Patrick&#x27;s bio page (claims noted in section 10) <span class="path">internal</span></li>
+<li>4-3-2-1 whitepaper (v3.1) and whitepaper notes: score disclaimer p24 and p97, Gap Report pp22 to 27, flagged claims <span class="path">internal</span></li>
+</ul>
+<h3 class="srcg">Internal tools, meetings, and notes</h3><ul class="srcs">
+<li>Dan Torsak, Oct 20, 2026: WealthScore not live, no confirmed launch date; Cloudflare book site planned, not built <span class="path">internal</span></li>
+<li>Metricool getBrandSettings, Oct 20, 2026 (Paradigm Life and Patrick Donohoe brands) <span class="path">internal</span></li>
+<li>Riverside: Perpetual Wealth Podcast episode list (482 episodes) and platform links <span class="path">internal</span></li>
+<li>yt-dlp counts of the Paradigm Life channel (Shorts, videos, streams) <span class="path">internal</span></li>
+<li>Podcast Addict episode count (478) <span class="path">internal</span></li>
+<li>Rally, Oct 19 (Patrick: &quot;Our product is architecture&quot;) <span class="path">internal</span></li>
+<li>Kyle topics file and Oct 12 L10 notes (Avalaunch notice and paused promotion) <span class="path">internal</span></li>
+<li>Appendix A working session (benchmark household scores about 84) <span class="path">internal</span></li>
+<li>Earlier chat on Spotify and Apple video requirements <span class="path">internal</span></li>
+<li>Previous version of this draft: pl-playbook-draft.v1.md <span class="path">internal</span></li>
+</ul>
+</section>
+
+<footer class="foot">Internal working draft for Paradigm Life. Prepared Oct 20, 2026 (MT). Nothing here is decided, built, or approved. <a href="#top">Back to top</a></footer>
+</main>
+</div>
+
+<script>
+(function(){
+  // Mermaid is optional. If it does not load, raw diagram code is hidden and the text steps remain.
+  function fallback(){
+    document.querySelectorAll('pre.mermaid').forEach(function(p){p.classList.add('mm-failed');});
+    document.querySelectorAll('.fallback-note').forEach(function(p){p.classList.add('show');});
+  }
+  var s=document.createElement('script');
+  s.src='https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js';
+  s.onload=function(){
+    try{
+      mermaid.initialize({startOnLoad:false,securityLevel:'strict',theme:'base',
+        themeVariables:{primaryColor:'#EAF0F8',primaryBorderColor:'#13315C',primaryTextColor:'#0B2545',lineColor:'#13315C',fontFamily:'Inter, Segoe UI, Helvetica, Arial, sans-serif',fontSize:'14px'},
+        flowchart:{htmlLabels:true,curve:'basis'}});
+      mermaid.run({querySelector:'pre.mermaid'}).then(function(){document.body.classList.add('mm-done');}).catch(fallback);
+    }catch(e){fallback();}
+  };
+  s.onerror=fallback;
+  document.head.appendChild(s);
+  // highlight current section in nav
+  var links=[].slice.call(document.querySelectorAll('.toc a'));
+  var secs=links.map(function(a){return document.querySelector(a.getAttribute('href'));});
+  function onScroll(){
+    var y=window.scrollY+120, idx=0;
+    secs.forEach(function(s,i){if(s&&s.offsetTop<=y) idx=i;});
+    links.forEach(function(a,i){a.classList.toggle('active',i===idx);});
+  }
+  window.addEventListener('scroll',onScroll,{passive:true}); onScroll();
+  window.addEventListener('beforeprint',function(){document.querySelectorAll('details').forEach(function(d){d.open=true;});});
+})();
+</script>
+</body>
+</html>
