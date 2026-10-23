@@ -87,23 +87,36 @@ footer{text-align:center;padding:28px;color:var(--muted);font:600 14px var(--dis
   .ms .dot{top:2px;left:0}.ms .lab,.ms.end .lab,.ms.rt .lab,.ms.lf .lab{position:static;width:auto;text-align:left}
 }
 @media(max-width:520px){.chips{grid-template-columns:1fr}}
+.chips{margin-bottom:14px}
+button.chip{font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%;transition:border-color .2s,background .2s,box-shadow .2s,transform .2s}
+button.chip:hover{border-color:var(--growth);transform:translateY(-2px)}
+button.chip:focus-visible{outline:3px solid var(--g);outline-offset:2px}
+button.chip[aria-expanded="true"]{border:2px solid var(--g);background:var(--accent);box-shadow:0 8px 20px rgba(115,169,80,.25)}
+button.chip[aria-expanded="true"] .ico{background:var(--g)}
+button.chip[aria-expanded="true"] svg{stroke:#fff}
+.chip-panel{background:var(--card);border:2px solid var(--g);border-left-width:6px;border-radius:14px;box-shadow:var(--shadow);padding:18px 22px;margin:0 0 24px;animation:chipin .3s ease}
+.chip-panel p{margin:0;font-size:clamp(18px,1.8vw,22px);color:var(--ink)}
+.chip-panel b{font-family:var(--display);color:var(--g)}
+@keyframes chipin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
+.lanes-h{margin-top:26px}
 </style>
 </head>
 <body>
 <header class="top"><div class="in"><img src="../concept-kickoff/shield-mark.svg" alt="" class="mark"><div><div class="wm">Paradigm Life®</div><div class="st"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div></div></header>
 <main class="wrap">
 <div class="eyebrow">AI Friday &nbsp;|&nbsp; Q4 2026</div>
-<h1>Trinity <em>1.0</em> is here</h1>
-<p class="lede">Live since Oct 21. Here is what comes next, through December.</p>
+<h1><em>Workspace</em> is here</h1>
+<p class="lede">Here is what comes next, through December.</p>
 
 <section class="chips" aria-label="What Trinity 1.0 brings">
-  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z"/></svg></span><b>One Inbox</b></div>
-  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Approvals built in</b></div>
-  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Agents with owners and goals</b></div>
-  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><b>Workspace for the whole team</b></div>
+  <button type="button" class="chip" id="chip-inbox" aria-expanded="false" aria-controls="chip-panel" data-k="inbox"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z"/></svg></span><b>One Inbox</b></button>
+  <button type="button" class="chip" id="chip-approve" aria-expanded="false" aria-controls="chip-panel" data-k="approve"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Approvals built in</b></button>
+  <button type="button" class="chip" id="chip-owners" aria-expanded="false" aria-controls="chip-panel" data-k="owners"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Agents with owners and goals</b></button>
+  <button type="button" class="chip" id="chip-team" aria-expanded="false" aria-controls="chip-panel" data-k="team"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><b>Workspace for the whole team</b></button>
 </section>
+<div id="chip-panel" class="chip-panel" role="region" aria-live="polite" hidden><p id="chip-text"></p></div>
 
-<h2>Three lanes</h2>
+<h2 class="lanes-h">Three lanes</h2>
 <section class="lanes">
   <article class="lane t">
     <div class="lh"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 15.3c.6-.2 1.3-.3 2-.3 3 0 6 2 6 5"/></svg></span><h3>Tandem</h3></div>
@@ -175,5 +188,11 @@ footer{text-align:center;padding:28px;color:var(--muted);font:600 14px var(--dis
 <p class="asof">Status as of Oct 23, 2026</p>
 </main>
 <footer>Paradigm Life</footer>
+<script>
+(function(){var D={"inbox": "Questions and approvals from every agent land in one place. Pick an answer, write your own, discuss it, or dismiss it.", "approve": "Any agent skill can be set to need approval from a named person. The agent waits until that person says yes.", "owners": "Each agent gets a main contact, the people it works with, and business goals to hit. A short setup per agent turns this on.", "team": "Team members sign in straight to Workspace. It adds Projects for longer work and suggestions of things you can ask each agent."};var chips=[].slice.call(document.querySelectorAll('button.chip'));var panel=document.getElementById('chip-panel');var txt=document.getElementById('chip-text');
+chips.forEach(function(c){c.addEventListener('click',function(){var open=c.getAttribute('aria-expanded')==='true';chips.forEach(function(o){o.setAttribute('aria-expanded','false')});
+if(open){panel.hidden=true;return}c.setAttribute('aria-expanded','true');txt.innerHTML='<b>'+c.querySelector('b').textContent+'.</b> '+D[c.dataset.k];panel.hidden=false;panel.style.animation='none';void panel.offsetWidth;panel.style.animation='';});});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){var o=document.querySelector('button.chip[aria-expanded="true"]');panel.hidden=true;if(o){o.setAttribute('aria-expanded','false');o.focus()}}});})();
+</script>
 </body>
 </html>
