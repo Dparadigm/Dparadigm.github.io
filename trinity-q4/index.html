@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trinity 1.0 this quarter | Paradigm Life</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500;600;700&family=Open+Sans:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#73a950;--g-dark:#5f9143;--growth:#AAC27F;--income:#65B2E8;--income-deep:#2f6db0;--legacy:#DAA900;
+  --ink:#231f20;--body:#515867;--muted:#6e7a87;--line:#e2e2e2;--line-soft:#eceef0;
+  --shell:#fafafa;--card:#fff;--accent:#f1f6ee;--blue-soft:#eaf4fc;--gold-soft:#fffbea;
+  --display:"Montserrat","Gotham",sans-serif;--sans:"Open Sans","Helvetica Neue",Arial,sans-serif;
+  --shadow:0 4px 16px rgba(0,0,0,.06);
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--shell);color:var(--ink);font:18px/1.45 var(--sans);-webkit-font-smoothing:antialiased}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;background:url("../concept-kickoff/shield.svg") center 50%/auto 60vh no-repeat;opacity:.25;z-index:0}
+.top,.wrap,footer{position:relative;z-index:1}
+.top{background:var(--card);border-bottom:1px solid var(--line);padding:14px 24px}
+.in{max-width:1240px;margin:auto;display:flex;gap:12px;align-items:center}
+.mark{height:40px}
+.wm{font:700 15px var(--display);letter-spacing:.18em;text-transform:uppercase}
+.st{font:500 11px var(--display);letter-spacing:.16em;text-transform:uppercase;color:#c8c8c8;margin-top:4px}
+.st .g{color:var(--growth)}.st .i{color:var(--income)}.st .l{color:var(--legacy)}
+.wrap{max-width:1240px;margin:auto;padding:36px 24px 40px}
+.eyebrow{font:600 15px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--g)}
+h1{font:700 clamp(36px,5.5vw,64px)/1.05 var(--display);text-transform:uppercase;letter-spacing:-.01em;margin:10px 0 8px}
+h1 em{font-style:normal;color:var(--g)}
+.lede{font-size:clamp(18px,2vw,24px);color:var(--body);margin:0 0 26px}
+.chips{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:38px}
+.chip{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:18px 16px;display:flex;align-items:center;gap:14px}
+.chip .ico{flex:0 0 52px;height:52px;border-radius:50%;background:var(--accent);display:grid;place-items:center}
+.chip svg{width:28px;height:28px;stroke:var(--g);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.chip b{font:700 17px/1.25 var(--display)}
+h2{font:700 clamp(22px,2.4vw,28px) var(--display);text-transform:uppercase;letter-spacing:.04em;margin:0 0 16px}
+.lanes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:40px}
+.lane{background:var(--card);border:1px solid var(--line);border-top:6px solid var(--c);border-radius:14px;box-shadow:var(--shadow);padding:22px 22px 18px}
+.lane.t{--c:var(--g);--soft:var(--accent)}.lane.w{--c:var(--income);--soft:var(--blue-soft)}.lane.s{--c:var(--legacy);--soft:var(--gold-soft)}
+.lh{display:flex;align-items:center;gap:14px;margin-bottom:6px}
+.lh .ico{flex:0 0 60px;height:60px;border-radius:16px;background:var(--soft);display:grid;place-items:center}
+.lh svg{width:34px;height:34px;stroke:var(--c);fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.lh h3{font:700 30px var(--display);text-transform:uppercase;margin:0}
+.tag{font:600 18px/1.35 var(--display);color:var(--body);margin:6px 0 16px;min-height:2.7em}
+.grp{border-top:1px solid var(--line-soft);padding:12px 0 10px}
+.pill{display:inline-block;font:700 12px var(--display);letter-spacing:.12em;text-transform:uppercase;padding:5px 12px;border-radius:999px;margin-bottom:8px}
+.pill.live{background:var(--g);color:#fff}
+.pill.prog{background:var(--blue-soft);color:var(--income-deep);border:1.5px solid var(--income)}
+.pill.next{background:var(--gold-soft);color:#8a6b00;border:1.5px dashed var(--legacy)}
+ul{list-style:none;margin:0;padding:0}
+li{display:flex;align-items:baseline;gap:10px;padding:3px 0;font-size:18px}
+li::before{content:"";flex:0 0 10px;height:10px;border-radius:50%;background:var(--c);transform:translateY(-1px)}
+.grp.p li::before{background:var(--card);border:2px solid var(--c)}
+.grp.n li::before{background:var(--card);border:2px dashed var(--c)}
+li .d{margin-left:auto;font:600 13px var(--display);color:var(--muted);white-space:nowrap;letter-spacing:.04em}
+.tl{background:var(--card);border:1px solid var(--line);border-radius:14px;box-shadow:var(--shadow);padding:26px 28px 18px}
+.track{position:relative;height:250px;margin:0 10px}
+.axis{position:absolute;left:0;right:0;top:125px;height:4px;background:var(--line);border-radius:2px}
+.axis .done{position:absolute;left:0;top:0;bottom:0;width:24.2%;background:var(--g);border-radius:2px}
+.mon{position:absolute;bottom:0;transform:translateX(-50%);font:700 14px var(--display);letter-spacing:.16em;text-transform:uppercase;color:var(--muted)}
+.tick{position:absolute;top:113px;width:2px;height:28px;background:var(--line)}
+.ms{position:absolute;top:0;width:0;height:250px}
+.ms .dot{position:absolute;top:116px;left:-11px;width:22px;height:22px;border-radius:50%;background:var(--g);border:3px solid var(--g);box-shadow:0 0 0 4px #fff}
+.ms.tg .dot{background:#fff;border:3px dashed var(--legacy)}
+.ms.now .dot{background:var(--income);border-color:var(--income)}
+.ms .lab{position:absolute;width:170px;left:-85px;text-align:center}
+.ms.up .lab{bottom:146px}.ms.dn .lab{top:150px}
+.ms.end .lab,.ms.rt .lab{left:auto;right:-14px;text-align:right}
+.ms.lf .lab{left:-14px;text-align:left}
+.ms .dt{font:700 16px var(--display);color:var(--ink)}
+.ms .tx{font-size:15px;line-height:1.3;color:var(--body)}
+.ms.tg .dt::after{content:" target";font-weight:600;font-size:12px;color:#8a6b00;text-transform:uppercase;letter-spacing:.08em}
+.legend{display:flex;gap:22px;flex-wrap:wrap;font:600 14px var(--display);color:var(--muted);margin-top:8px}
+.legend span{display:inline-flex;align-items:center;gap:8px}
+.legend i{width:14px;height:14px;border-radius:50%;display:inline-block}
+.legend .a{background:var(--g)}.legend .b{background:var(--income)}.legend .c{border:2px dashed var(--legacy)}
+footer{text-align:center;padding:28px;color:var(--muted);font:600 14px var(--display);letter-spacing:.14em;text-transform:uppercase}
+.asof{text-align:center;font-size:14px;color:var(--muted);margin-top:18px}
+@media(max-width:1000px){.chips{grid-template-columns:repeat(2,1fr)}.lanes{grid-template-columns:1fr}.tag{min-height:0}}
+@media(max-width:760px){
+  .track{height:auto;margin:0}.axis,.tick,.mon{display:none}
+  .ms{position:relative;left:auto!important;width:auto;height:auto;padding:0 0 16px 38px}
+  .ms::before{content:"";position:absolute;left:10px;top:4px;bottom:-4px;width:3px;background:var(--line)}
+  .ms .dot{top:2px;left:0}.ms .lab,.ms.end .lab,.ms.rt .lab,.ms.lf .lab{position:static;width:auto;text-align:left}
+}
+@media(max-width:520px){.chips{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+<header class="top"><div class="in"><img src="../concept-kickoff/shield-mark.svg" alt="" class="mark"><div><div class="wm">Paradigm Life®</div><div class="st"><span class="g">Growth</span> &nbsp;|&nbsp; <span class="i">Income</span> &nbsp;|&nbsp; <span class="l">Legacy</span></div></div></div></header>
+<main class="wrap">
+<div class="eyebrow">AI Friday &nbsp;|&nbsp; Q4 2026</div>
+<h1>Trinity <em>1.0</em> is here</h1>
+<p class="lede">Live since Oct 21. Here is what comes next, through December.</p>
+
+<section class="chips" aria-label="What Trinity 1.0 brings">
+  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><path d="M22 12h-6l-2 3h-4l-2-3H2"/><path d="M5.5 5h13L22 12v6a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2v-6z"/></svg></span><b>One Inbox</b></div>
+  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Approvals built in</b></div>
+  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Agents with owners and goals</b></div>
+  <div class="chip"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><b>Workspace for the whole team</b></div>
+</section>
+
+<h2>Three lanes</h2>
+<section class="lanes">
+  <article class="lane t">
+    <div class="lh"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5"/><path d="M14 15.3c.6-.2 1.3-.3 2-.3 3 0 6 2 6 5"/></svg></span><h3>Tandem</h3></div>
+    <p class="tag">An AI companion for every role</p>
+    <div class="grp l"><span class="pill live">Live</span><ul>
+      <li>Agents know who they serve<span class="d">Oct 21</span></li>
+      <li>Briefs wait until it is ready<span class="d">Oct 21</span></li>
+      <li>Decisions kept on record<span class="d">Oct 21</span></li>
+    </ul></div>
+    <div class="grp p"><span class="pill prog">In progress</span><ul>
+      <li>Shared company playbook</li>
+    </ul></div>
+    <div class="grp n"><span class="pill next">Coming</span><ul>
+      <li>Weekly brief organized by role<span class="d">Oct 25</span></li>
+      <li>Goals for marketing agents<span class="d">Planned</span></li>
+    </ul></div>
+  </article>
+
+  <article class="lane w">
+    <div class="lh"><span class="ico"><svg viewBox="0 0 24 24"><path d="M17.8 19.2 16 11l3.5-3.5C21 6 21.5 4 21 3c-1-.5-3 0-4.5 1.5L13 8 4.8 6.2c-.5-.1-.9.1-1.1.5l-.3.5c-.2.5-.1 1 .3 1.3L9 12l-2 3H4l-1 1 3 2 2 3 1-1v-3l3-2 3.5 5.3c.3.4.8.5 1.3.3l.5-.2c.4-.3.6-.7.5-1.2z"/></svg></span><h3>Wingman</h3></div>
+    <p class="tag">Your personal AI teammate, seat by seat</p>
+    <div class="grp l"><span class="pill live">Live</span><ul>
+      <li>Advisor email ideas flow in<span class="d">Oct 12</span></li>
+    </ul></div>
+    <div class="grp p"><span class="pill prog">In progress</span><ul>
+      <li>Dan's test drive</li>
+      <li>Private sign-in per person<span class="d">Target Oct 30</span></li>
+    </ul></div>
+    <div class="grp n"><span class="pill next">Coming</span><ul>
+      <li>Rachel's Wingman, after sign-off</li>
+      <li>More roles next<span class="d">Planned</span></li>
+    </ul></div>
+  </article>
+
+  <article class="lane s">
+    <div class="lh"><span class="ico"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="14" rx="2"/><path d="M8 21h8M12 18v3"/><path d="M7 9h6M7 13h10"/></svg></span><h3>Workspace</h3></div>
+    <p class="tag">Where the team works with agents</p>
+    <div class="grp l"><span class="pill live">Live</span><ul>
+      <li>One Inbox<span class="d">Oct 21</span></li>
+      <li>Projects<span class="d">Oct 21</span></li>
+      <li>Things you can ask<span class="d">Oct 21</span></li>
+      <li>Public chat links fixed<span class="d">Oct 21</span></li>
+    </ul></div>
+    <div class="grp p"><span class="pill prog">In progress</span><ul>
+      <li>Team sign-ins rolling out</li>
+      <li>Projects view fix<span class="d">Next release</span></li>
+    </ul></div>
+    <div class="grp n"><span class="pill next">Coming</span><ul>
+      <li>Publish after approval<span class="d">Planned</span></li>
+    </ul></div>
+  </article>
+</section>
+
+<h2>Q4 timeline</h2>
+<section class="tl">
+  <div class="track">
+    <div class="axis"><div class="done"></div></div>
+    <div class="tick" style="left:0"></div><div class="tick" style="left:34.1%"></div><div class="tick" style="left:67%"></div><div class="tick" style="left:100%"></div>
+    <div class="mon" style="left:17%">October</div><div class="mon" style="left:50.5%">November</div><div class="mon" style="left:83.5%">December</div>
+    <div class="ms up rt" style="left:22%"><span class="dot"></span><div class="lab"><div class="dt">Oct 21</div><div class="tx">Trinity 1.0 live</div></div></div>
+    <div class="ms dn now rt" style="left:26.4%"><span class="dot"></span><div class="lab"><div class="dt">Oct 25</div><div class="tx">First brief by role</div></div></div>
+    <div class="ms up tg lf" style="left:31.9%"><span class="dot"></span><div class="lab"><div class="dt">Oct 30</div><div class="tx">Private sign-in</div></div></div>
+    <div class="ms dn now lf" style="left:34.1%"><span class="dot"></span><div class="lab"><div class="dt">Nov 1</div><div class="tx">October results in brief</div></div></div>
+    <div class="ms up tg" style="left:48.4%"><span class="dot"></span><div class="lab"><div class="dt">Nov 14</div><div class="tx">Monthly topic loop reliable</div></div></div>
+    <div class="ms dn tg end" style="left:100%"><span class="dot"></span><div class="lab"><div class="dt">Dec 31</div><div class="tx">Team runs content loop solo</div></div></div>
+  </div>
+  <div class="legend"><span><i class="a"></i>Done</span><span><i class="b"></i>Scheduled</span><span><i class="c"></i>Target, may move</span></div>
+</section>
+<p class="asof">Status as of Oct 23, 2026</p>
+</main>
+<footer>Paradigm Life</footer>
+</body>
+</html>
