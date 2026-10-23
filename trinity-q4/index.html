@@ -97,6 +97,20 @@ button.chip[aria-expanded="true"] svg{stroke:#fff}
 .chip-panel{background:var(--card);border:2px solid var(--g);border-left-width:6px;border-radius:14px;box-shadow:var(--shadow);padding:18px 22px;margin:0 0 24px;animation:chipin .3s ease}
 .chip-panel p{margin:0;font-size:clamp(18px,1.8vw,22px);color:var(--ink)}
 .chip-panel b{font-family:var(--display);color:var(--g)}
+.chips{grid-template-columns:repeat(5,1fr);gap:12px}
+.chip{padding:16px 14px;gap:12px}.chip .ico{flex:0 0 46px;height:46px}.chip svg{width:24px;height:24px}.chip b{font-size:16px}
+@media(max-width:1000px){.chips{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:760px){.chips{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:520px){.chips{grid-template-columns:1fr}}
+.shots{display:flex;flex-wrap:wrap;gap:14px;margin-top:14px;align-items:flex-start}.shots:empty{display:none}
+.shot{margin:0;flex:1 1 auto;min-width:0;border:1px solid var(--line);border-radius:12px;overflow:hidden;box-shadow:0 6px 18px rgba(35,31,32,.12);background:#fff;cursor:zoom-in;padding:0}
+.shot img{display:block;width:100%;height:auto}
+.shots.pair .shot{flex:0 1 auto}.shots.pair .shot img{height:300px;width:auto;max-width:100%;object-fit:contain}
+.shot-cap{flex-basis:100%;font-size:14px;color:var(--muted);margin-top:-4px}
+@media(max-width:760px){.shots.pair .shot img{height:auto;max-height:300px;width:auto;max-width:100%}}
+.lb{position:fixed;inset:0;background:rgba(35,31,32,.85);display:grid;place-items:center;z-index:50;padding:24px;cursor:zoom-out;animation:chipin .2s ease}
+.lb[hidden]{display:none}.lb img{max-width:96vw;max-height:90vh;border-radius:10px;box-shadow:0 10px 40px rgba(0,0,0,.4);background:#fff}
+.lb-x{position:absolute;top:14px;right:18px;font:700 34px/1 var(--display);color:#fff;background:none;border:0;cursor:pointer}
 @keyframes chipin{from{opacity:0;transform:translateY(-8px)}to{opacity:1;transform:none}}
 .lanes-h{margin-top:26px}
 </style>
@@ -113,8 +127,10 @@ button.chip[aria-expanded="true"] svg{stroke:#fff}
   <button type="button" class="chip" id="chip-approve" aria-expanded="false" aria-controls="chip-panel" data-k="approve"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><path d="m9 12 2 2 4-4"/></svg></span><b>Approvals built in</b></button>
   <button type="button" class="chip" id="chip-owners" aria-expanded="false" aria-controls="chip-panel" data-k="owners"><span class="ico"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1"/></svg></span><b>Agents with owners and goals</b></button>
   <button type="button" class="chip" id="chip-team" aria-expanded="false" aria-controls="chip-panel" data-k="team"><span class="ico"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg></span><b>Workspace for the whole team</b></button>
+  <button type="button" class="chip" id="chip-projects" aria-expanded="false" aria-controls="chip-panel" data-k="projects"><span class="ico"><svg viewBox="0 0 24 24"><path d="M3 7a2 2 0 0 1 2-2h4l2 2h8a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/></svg></span><b>Projects</b></button>
 </section>
-<div id="chip-panel" class="chip-panel" role="region" aria-live="polite" hidden><p id="chip-text"></p></div>
+<div id="chip-panel" class="chip-panel" role="region" aria-live="polite" hidden><p id="chip-text"></p><div id="chip-shots" class="shots"></div></div>
+<div id="lb" class="lb" role="dialog" aria-modal="true" aria-label="Screenshot" hidden><button type="button" class="lb-x" aria-label="Close">&times;</button><img id="lb-img" alt=""></div>
 
 <h2 class="lanes-h">Three lanes</h2>
 <section class="lanes">
@@ -188,10 +204,16 @@ button.chip[aria-expanded="true"] svg{stroke:#fff}
 </main>
 <footer>Paradigm Life</footer>
 <script>
-(function(){var D={"inbox": "Questions and approvals from every agent land in one place. Pick an answer, write your own, discuss it, or dismiss it.", "approve": "Any agent skill can be set to need approval from a named person. The agent waits until that person says yes.", "owners": "Each agent gets a main contact, the people it works with, and business goals to hit. A short setup per agent turns this on.", "team": "Team members sign in straight to Workspace. It adds Projects for longer work and suggestions of things you can ask each agent."};var chips=[].slice.call(document.querySelectorAll('button.chip'));var panel=document.getElementById('chip-panel');var txt=document.getElementById('chip-text');
+(function(){var D={"inbox": ["Questions and approvals from every agent land in one place. Pick an answer, write your own, discuss it, or dismiss it.", [["img/inbox.svg", "Trinity Workspace Inbox with Action, Unread and All tabs"]], ""], "approve": ["Any agent skill can be set to need approval from a named person. The agent waits until that person says yes.", [], ""], "owners": ["Each agent gets a main contact, the people it works with, and business goals to hit. A short setup per agent turns this on.", [], ""], "team": ["Team members sign in straight to Workspace. It adds Projects for longer work and suggestions of things you can ask each agent.", [["img/agent-page.svg", "Copywriter agent page in Workspace with stats and Things you can ask"]], ""], "projects": ["Projects hold work that outlasts a chat, with a goal, tasks and a log. A Steward agent checks in and records its health.", [["img/sidebar.svg", "Workspace sidebar with Inbox and Projects"], ["img/rail-more.svg", "Agent panel More menu: Projects, Asks, Work, Loops"]], "Sidebar and agent panel: Projects, Asks, Work, Loops."]};
+var chips=[].slice.call(document.querySelectorAll('button.chip'));var panel=document.getElementById('chip-panel');var txt=document.getElementById('chip-text');var shots=document.getElementById('chip-shots');var lb=document.getElementById('lb');var lbi=document.getElementById('lb-img');var last=null;
+function render(c){var d=D[c.dataset.k];txt.innerHTML='<b>'+c.querySelector('b').textContent+'.</b> '+d[0];shots.innerHTML='';shots.className='shots'+(d[1].length>1?' pair':'');
+d[1].forEach(function(im){var f=document.createElement('button');f.type='button';f.className='shot';f.setAttribute('aria-label','Enlarge: '+im[1]);var i=document.createElement('img');i.src=im[0];i.alt=im[1];i.loading='lazy';f.appendChild(i);f.addEventListener('click',function(){last=f;lbi.src=im[0];lbi.alt=im[1];lb.hidden=false;lb.querySelector('.lb-x').focus()});shots.appendChild(f)});
+if(d[2]){var cp=document.createElement('div');cp.className='shot-cap';cp.textContent=d[2];shots.appendChild(cp)}}
+function closeLb(){lb.hidden=true;lbi.src='';if(last)last.focus()}
+lb.addEventListener('click',closeLb);
 chips.forEach(function(c){c.addEventListener('click',function(){var open=c.getAttribute('aria-expanded')==='true';chips.forEach(function(o){o.setAttribute('aria-expanded','false')});
-if(open){panel.hidden=true;return}c.setAttribute('aria-expanded','true');txt.innerHTML='<b>'+c.querySelector('b').textContent+'.</b> '+D[c.dataset.k];panel.hidden=false;panel.style.animation='none';void panel.offsetWidth;panel.style.animation='';});});
-document.addEventListener('keydown',function(e){if(e.key==='Escape'&&!panel.hidden){var o=document.querySelector('button.chip[aria-expanded="true"]');panel.hidden=true;if(o){o.setAttribute('aria-expanded','false');o.focus()}}});})();
+if(open){panel.hidden=true}else{c.setAttribute('aria-expanded','true');render(c);panel.hidden=false;panel.style.animation='none';panel.offsetHeight;panel.style.animation=''}})});
+document.addEventListener('keydown',function(e){if(e.key!=='Escape')return;if(!lb.hidden){closeLb();return}if(!panel.hidden){var o=document.querySelector('button.chip[aria-expanded="true"]');panel.hidden=true;if(o){o.setAttribute('aria-expanded','false');o.focus()}}});})();
 </script>
 </body>
 </html>
